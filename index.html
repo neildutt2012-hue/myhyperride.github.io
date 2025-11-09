@@ -1,133 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Hyper Ride | Futuristic Car & Tech Reviews</title>
-  <style>
-    body {
-      background-color: #0b0b0f;
-      color: #e4e4e4;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>My Hyper Ride — Cars • Tech • AI</title>
+<meta name="description" content="My Hyper Ride — data-driven car & tech reviews, A vs B comparisons, Top lists, and credible testing methodology. Dark, futuristic design." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+<style>
+/* ---------------------- THEME & BASE ---------------------- */
+:root{
+--bg:#06070a; --surface:#0f1116; --muted:#9fb0bf; --text:#e9f4ff;
+--accent:#00e0ff; --accent-2:#00ff9d; --glass:rgba(255,255,255,0.03);
+--card-shadow: 0 10px 30px rgba(2,20,30,0.6);
+--radius:14px; --max-width:1200px; --transition:280ms cubic-bezier(.2,.9,.3,1);
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#040506);color:var(--text);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:var(--max-width);margin:28px auto;padding:20px}
 
-    header {
-      background: linear-gradient(90deg, #00e0ff, #00ff9d);
-      padding: 20px;
-      text-align: center;
-      color: #0b0b0f;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 1.5em;
-    }
 
-    section {
-      padding: 40px 10%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+/* ---------------------- HEADER ---------------------- */
+header{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;gap:14px;align-items:center}
+.logo{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 12px 40px rgba(0,224,255,0.06)}
+h1{margin:0;font-size:18px}
+.subtitle{color:var(--muted);font-size:13px}
+nav{display:flex;gap:12px;align-items:center}
+.navlink{padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
+.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021018;padding:8px 12px;border-radius:10px;font-weight:700}
 
-    h2 {
-      color: #00e0ff;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
 
-    .card {
-      background-color: #121218;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
-      padding: 20px;
-      margin: 20px 0;
-    }
+/* ---------------------- LAYOUT GRID ---------------------- */
+.grid{display:grid;grid-template-columns:1fr 340px;gap:24px;margin-top:20px}
+main{min-height:420px}
+aside{position:relative}
 
-    .highlight {
-      color: #00ff9d;
-      font-weight: bold;
-    }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
+/* ---------------------- HERO ---------------------- */
+.hero{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:22px;border-radius:var(--radius);box-shadow:var(--card-shadow);display:flex;gap:20px;align-items:center}
+.hero-left{flex:1}
+.kicker{display:inline-block;background:rgba(0,224,255,0.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+.hero h2{margin:10px 0 0 0;font-size:22px}
+.hero p{margin:8px 0 0 0;color:var(--muted)}
 
-    th, td {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 12px;
-      text-align: left;
-    }
 
-    th {
-      color: #00ff9d;
-      text-transform: uppercase;
-    }
+/* ---------------------- CARDS ---------------------- */
+.card{background:var(--surface);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.muted{color:var(--muted);font-size:13px}
 
-    footer {
-      background-color: #09090c;
-      text-align: center;
-      color: #666;
-      padding: 20px;
-      font-size: 0.9em;
-    }
 
-    .winner {
-      background-color: rgba(0, 255, 157, 0.1);
-      border-left: 4px solid #00ff9d;
-      padding: 10px;
-      margin: 10px 0;
-    }
-  </style>
-</head>
-<body>
+/* ---------------------- TOP TEN ---------------------- */
+.top-table{width:100%;border-collapse:collapse;margin-top:10px}
+.top-table th{color:var(--muted);font-size:13px;text-align:left;padding:8px}
+.top-table td{padding:12px;border-top:1px solid rgba(255,255,255,0.03)}
+.badge{display:inline-block;padding:6px 9px;border-radius:10px;background:linear-gradient(90deg,var(--accent),rgba(0,224,255,0.12));color:#001018;font-weight:700}
 
-  <header>My Hyper Ride 🚗 | Futuristic Car & Tech Reviews</header>
 
-  <section>
-    <h2>🚘 Tesla Model S Plaid vs Lucid Air Sapphire</h2>
-    <div class="card">
-      <p><span class="highlight">Winner:</span> Lucid Air Sapphire</p>
-      <div class="winner">
-        <strong>Why:</strong> Lucid offers superior thermal control, sustained power, and better long-term reliability under high-speed conditions.  
-        <br><strong>How:</strong> Triple motor setup with optimized torque vectoring keeps traction at high speed, beating the Plaid in control and range efficiency.
-      </div>
-      <p><strong>Credibility:</strong> Based on NeuralRank 2.0 data blend — performance (40%), comfort (25%), tech (20%), safety (15%).</p>
-    </div>
-  </section>
+/* ---------------------- COMPARISON ---------------------- */
+.compare{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+.compare .col{flex:1;min-width:240px;border-radius:12px;padding:14px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.03));border:1px solid rgba(255,255,255,0.02)}
+.score{font-size:28px;font-weight:800;color:var(--accent)}
+.winner-mark{border-left:4px solid var(--accent-2);padding-left:12px}
 
-  <section>
-    <h2>🏆 Top 10 Family Cars of 2025</h2>
-    <div class="card">
-      <table>
-        <tr><th>Rank</th><th>Car</th><th>Why It Wins</th><th>How It Excels</th></tr>
-        <tr><td>1</td><td>Toyota Highlander Hybrid</td><td>Ultra-reliable, great mileage</td><td>Refined hybrid engine and advanced cruise assist</td></tr>
-        <tr><td>2</td><td>Kia Telluride 2025</td><td>Luxury feel, affordable price</td><td>Intelligent terrain modes and strong structure</td></tr>
-        <tr><td>3</td><td>Honda Pilot TrailSport</td><td>Built for adventure families</td><td>Adaptive AWD and rugged tuning</td></tr>
-      </table>
-      <p><strong>Verdict:</strong> Highlander Hybrid dominates for its mix of efficiency, safety, and low maintenance cost.</p>
-    </div>
-  </section>
 
-  <section>
-    <h2>🔬 Credibility & Testing</h2>
-    <div class="card">
-      <p>All reviews are powered by <strong>NeuralRank™</strong>, My Hyper Ride’s data intelligence model.  
-      It scores vehicles using verified data sources including <em>Euro NCAP</em>, <em>IIHS</em>, and manufacturer telemetrics.</p>
-      <ul>
-        <li>Performance: 40%</li>
-        <li>Comfort & Space: 25%</li>
-        <li>Tech & Safety: 20%</li>
-        <li>Reliability: 15%</li>
-      </ul>
-      <p>Each review is double-checked for accuracy using technical spec sheets, AI-assisted simulations, and verified owner feedback.</p>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 My Hyper Ride | Data-driven reviews for the next generation of performance and technology.
-  </footer>
-</body>
+/* ---------------------- REVIEWS GRID ---------------------- */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+.review-card{padding:14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.02);transition:transform var(--transition), box-shadow var(--transition);}
+.review-card:hover{transform:translateY(-6px);box-shadow:0 18px 60px rgba(0,0,0,0.7)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 </html>
