@@ -7,77 +7,107 @@
 <style>
 /* Base dark theme */
 body {
-    background-color: #111;
+    background-color: #0d0d0d;
     color: #f0f0f0;
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
-a {
-    color: #1e90ff;
-    text-decoration: none;
-}
+a { color: #1e90ff; text-decoration: none; transition: 0.3s; }
+a:hover { color: #00ffff; }
+
 header {
-    background-color: #1a1a1a;
-    padding: 25px;
+    background: linear-gradient(90deg, #1e90ff, #ff8c00);
+    padding: 30px;
     text-align: center;
-    font-size: 2.5em;
+    font-size: 3em;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 10px #1e90ff;
 }
 nav {
     display: flex;
     justify-content: center;
-    background-color: #222;
+    flex-wrap: wrap;
+    background-color: #111;
     padding: 12px 0;
 }
 nav a {
     margin: 0 18px;
     font-weight: bold;
-    transition: color 0.3s;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: 0.3s;
 }
-nav a:hover { color: #ff8c00; }
+nav a:hover { background-color: #1e90ff; color: #000; }
+
+.container { max-width: 1200px; margin: auto; padding: 20px; }
+
 section {
-    padding: 25px 15px;
+    padding: 30px 15px;
     border-bottom: 1px solid #333;
 }
 h2 {
-    border-bottom: 2px solid #444;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-    color: #ff8c00;
-}
-article {
+    border-left: 6px solid #1e90ff;
+    padding-left: 12px;
     margin-bottom: 25px;
+    font-size: 2em;
+    color: #1e90ff;
+    text-shadow: 0 0 6px #00ffff;
+}
+
+/* Card style articles */
+article {
+    background-color: #1a1a1a;
+    padding: 18px 22px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(30,144,255,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+article:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px rgba(0,255,255,0.8);
 }
 article h3 {
-    margin-bottom: 10px;
-    color: #ffa500;
+    color: #00ffff;
+    margin-bottom: 12px;
 }
-.winner { color: #32cd32; font-weight: bold; }
-footer {
-    text-align: center;
-    padding: 25px;
-    background-color: #1a1a1a;
-    color: #888;
-}
-input, button, textarea {
+.winner { color: #32cd32; font-weight: bold; text-shadow: 0 0 6px #32cd32; }
+
+/* Subscription form */
+input, button {
     padding: 12px;
     margin: 8px 0;
     width: 100%;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1em;
 }
+input { background-color: #222; color: #fff; }
+input:focus { outline: 2px solid #1e90ff; }
 button {
     background-color: #1e90ff;
     color: #fff;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
+    font-weight: bold;
 }
-button:hover { background-color: #63b3ed; }
-.container { max-width: 1200px; margin: auto; }
+button:hover { background-color: #00ffff; color: #000; }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #111;
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
 </style>
 </head>
 <body>
@@ -102,23 +132,19 @@ button:hover { background-color: #63b3ed; }
 
 <article>
 <h3>Lamborghini Aventador – Power and Design</h3>
-<p>The Aventador’s 6.5L V12 produces 770 hp, achieving 0–60 mph in under 3 seconds. Carbon fiber construction minimizes weight while boosting chassis rigidity, allowing razor-sharp handling. The interior blends luxury and technology, including customizable digital dashboards. Its aerodynamic design ensures stability at high speeds while turning heads everywhere. Lamborghini’s craftsmanship delivers an adrenaline-fueled, visceral driving experience unmatched in its class.</p>
+<p>The Aventador’s 6.5L V12 engine produces 770 hp, reaching 0–60 mph in under 3 seconds. Carbon fiber construction reduces weight and improves rigidity, enabling precise handling. Luxury interiors with digital dashboards and customizable driving modes complement extreme performance. Aerodynamic design ensures stability at high speeds while turning heads everywhere. This combination of engineering and style creates a visceral driving experience.</p>
 </article>
 
 <article>
 <h3>Ferrari SF90 vs McLaren Artura – Hybrid Battle</h3>
-<p><span class="winner">Winner: Ferrari SF90</span> – Ferrari’s SF90 Stradale combines a V8 engine with three electric motors for 986 hp, excelling in straight-line performance. McLaren Artura’s V6 hybrid produces 671 hp with superior agility and cornering precision. Ferrari dominates in acceleration and track prowess, while McLaren focuses on balanced handling. Both offer advanced aerodynamics, suspension, and digital interfaces, but Ferrari’s hybrid system creates a more thrilling, high-performance driving experience.</p>
+<p><span class="winner">Winner: Ferrari SF90</span> – Ferrari’s V8 with three electric motors produces 986 hp, dominating straight-line acceleration. McLaren Artura’s V6 hybrid delivers 671 hp with agile cornering. Ferrari excels in raw power, hybrid sophistication, and track dominance. Both integrate advanced aerodynamics and digital systems, but Ferrari’s hybrid tech delivers a more thrilling, cutting-edge driving experience.</p>
 </article>
 
 <article>
 <h3>Tesla Model S Plaid – Electric Beast</h3>
-<p>The Tesla Model S Plaid delivers 1,020 hp from a tri-motor setup, hitting 0–60 mph in under 2 seconds. Autopilot and semi-autonomous driving enhance safety and convenience. Intelligent battery and aerodynamics maximize range and efficiency. This EV proves that electric cars can surpass traditional supercars in speed, handling, and daily usability, combining futuristic technology with real-world performance.</p>
+<p>Tesla’s tri-motor system outputs 1,020 hp, delivering 0–60 mph in under 2 seconds. AI-driven battery management optimizes range, while semi-autonomous Autopilot enhances safety. Minimalist interiors blend tech and comfort, proving electric vehicles can rival traditional supercars in performance and daily usability.</p>
 </article>
 
-<article>
-<h3>Top 10 Family Cars 2025</h3>
-<p>Family cars are evaluated on safety, tech, and comfort. Toyota RAV4 Prime leads with hybrid efficiency, high safety ratings, and smart infotainment. Honda CR-V offers reliability but slightly less acceleration and tech features. Subaru Outback balances off-road capability with comfort. Features like AI-assisted driving, adaptive cruise control, and connectivity are analyzed. The RAV4 emerges as the optimal choice, offering performance, safety, and modern tech.</p>
-</article>
 </section>
 
 <!-- Tech Section -->
@@ -127,23 +153,19 @@ button:hover { background-color: #63b3ed; }
 
 <article>
 <h3>iPhone 17 vs Samsung Galaxy S25 Ultra – Camera Battle</h3>
-<p><span class="winner">Winner: iPhone 17 Pro Max</span> – iPhone 17 Pro Max’s triple 48MP cameras (wide, ultra-wide, telephoto) use AI computational photography to merge frames for precise exposure, focus, and color. Samsung Galaxy S25 Ultra leverages larger sensors and high-zoom lenses. iPhone offers consistent AI-enhanced results; Samsung excels in raw detail. Both demonstrate how hardware and AI redefine smartphone photography.</p>
+<p><span class="winner">Winner: iPhone 17 Pro Max</span> – iPhone 17 Pro Max features triple 48MP cameras with AI computational photography for perfect exposure and color. Samsung Galaxy S25 Ultra offers high-resolution zoom lenses and large sensors. iPhone excels in consistency and smart enhancements, Samsung in raw detail. AI integration redefines smartphone photography standards.</p>
 </article>
 
 <article>
 <h3>iPad Pro vs Samsung Galaxy Tab S10</h3>
-<p>iPad Pro features the M3 chip, 120Hz ProMotion display, and Apple Pencil support for creatives. Samsung Galaxy Tab S10 uses Snapdragon 12 Gen 2 and AMOLED display with S Pen. iPad excels in software ecosystem and professional apps; Galaxy Tab offers versatility and multitasking. Both push tablet innovation forward, but Apple’s cohesive experience gives it the edge for creative and professional users.</p>
+<p>iPad Pro’s M3 chip, ProMotion 120Hz display, and Apple Pencil support make it ideal for creatives. Galaxy Tab S10 provides AMOLED visuals and S Pen support. iPad excels in app ecosystem and creative software; Galaxy Tab offers multitasking versatility. The Apple ecosystem ensures seamless integration across devices.</p>
 </article>
 
 <article>
 <h3>The Rise of Apple – Fact Section</h3>
-<p>Apple’s vertical integration allows seamless synergy between hardware and software, from iPhones to Macs. AI and AR are now core to devices, driving innovation in photography, gaming, and productivity. The company’s focus on user experience and ecosystem loyalty explains its dominance and influence in global tech markets, shaping the future of consumer electronics.</p>
+<p>Apple’s vertical integration allows smooth synergy between hardware and software. AI, AR, and advanced processors enable new photography, gaming, and productivity experiences. This approach explains Apple’s global dominance and how its innovations shape tech standards worldwide.</p>
 </article>
 
-<article>
-<h3>Gaming Laptops 2025 – Ultimate Performance</h3>
-<p>High-end CPUs, RTX 5000 GPUs, fast storage, and OLED displays define modern gaming laptops. AI-driven graphics optimization enhances visuals while minimizing power draw. Advanced cooling ensures stability under heavy loads. These machines balance raw power with efficiency, making them ideal for competitive gaming, content creation, and productivity.</p>
-</article>
 </section>
 
 <!-- Gaming Section -->
@@ -152,18 +174,14 @@ button:hover { background-color: #63b3ed; }
 
 <article>
 <h3>Next-Gen Consoles 2025</h3>
-<p>Consoles now integrate ray tracing, AI-enhanced graphics, ultra-fast SSDs, and backward compatibility. Cloud streaming and subscription services expand libraries and accessibility. Developers use AI to improve NPC behavior, adaptive difficulty, and environment realism. Players enjoy immersive worlds and rich storytelling experiences, pushing gaming to a cinematic level.</p>
+<p>Consoles feature ray tracing, AI-enhanced graphics, and ultra-fast SSDs. Backward compatibility and cloud gaming expand libraries. AI-driven NPCs and adaptive difficulty enhance immersion. Players experience cinematic-quality visuals with responsive gameplay, bringing console gaming to the next level.</p>
 </article>
 
 <article>
 <h3>VR Gaming Evolution</h3>
-<p>Virtual reality gaming now features motion tracking, haptic feedback, and AI-generated adaptive worlds. Multiplayer VR incorporates spatial audio and social interaction. Real-time procedural generation ensures unique experiences every session. VR transforms gaming into an interactive, immersive universe beyond traditional screens.</p>
+<p>VR headsets now include motion tracking, haptic feedback, and AI-generated environments that adapt in real time. Multiplayer VR integrates spatial audio and social features. Players experience fully immersive, interactive worlds that redefine gaming possibilities.</p>
 </article>
 
-<article>
-<h3>Top PC Games 2025</h3>
-<p>Games like “CyberReign” and “Quantum War” showcase advanced graphics, AI-driven NPCs, realistic physics, and deep narratives. High-end GPUs like RTX 6000 enable cinematic visuals at ultra settings. Gamers experience seamless worlds with intelligent enemies, pushing gameplay and storytelling forward.</p>
-</article>
 </section>
 
 <!-- Science & AI Section -->
@@ -172,33 +190,35 @@ button:hover { background-color: #63b3ed; }
 
 <article>
 <h3>AI Transforming Healthcare</h3>
-<p>AI analyzes vast patient datasets to detect early disease, recommend treatments, and predict outcomes. Machine learning algorithms assist doctors in diagnostics, robotic surgeries, and personalized medicine. Hospitals are adopting AI-driven scheduling and resource management. This integration boosts efficiency, improves patient outcomes, and represents a major leap in medical technology.</p>
+<p>AI analyzes patient data to detect early disease, recommend treatments, and predict outcomes. Neural networks find patterns invisible to humans, assisting doctors in diagnostics, robotic surgery, and personalized medicine. AI improves accuracy, efficiency, and patient safety across healthcare.</p>
 </article>
 
 <article>
-<h3>Quantum Computing</h3>
-<p>Quantum chips using qubits and entanglement allow calculations impossible for classical computers. Applications span AI optimization, cryptography, and scientific simulations. Research labs and tech companies are racing to build scalable, fault-tolerant quantum machines. This technology is poised to revolutionize computing, financial modeling, and material science.</p>
+<h3>Quantum Computing – Next-Gen Chips</h3>
+<p>Quantum computers use qubits and entanglement for calculations impossible on classical computers. Applications include AI optimization, cryptography, and complex simulations. Companies are developing quantum hardware to revolutionize computing speed and efficiency, reshaping industries from science to finance.</p>
 </article>
 
 <article>
 <h3>Space Exploration 2030</h3>
-<p>Next-gen rockets, AI navigation, and autonomous spacecraft make space exploration faster and safer. Mars colonization, asteroid mining, and deep-space telescopes benefit from AI-controlled systems. Robotics perform risky tasks, while predictive AI models optimize mission success. Humanity is entering a new era of intelligent, efficient space exploration.</p>
+<p>Next-gen rockets, autonomous spacecraft, and AI navigation make space exploration safer and faster. Mars colonization, asteroid mining, and deep-space telescopes benefit from autonomous AI control. Robotics handle hazardous tasks, while AI predicts hazards and optimizes mission success.</p>
 </article>
+
 </section>
 
 <!-- Health & Fitness Section -->
 <section id="health">
-<h2>Health & Fitness</h2>
+<h2>Health & Fitness Tech</h2>
 
 <article>
 <h3>AI Fitness Trackers</h3>
-<p>Smart wearables monitor heart rate, sleep patterns, oxygen levels, and activity. AI analyzes data to suggest workouts, recovery periods, and diet plans. Stress and hydration tracking provide actionable insights. This tech enables optimized fitness routines and personalized health monitoring.</p>
+<p>Wearables monitor heart rate, sleep, oxygen, and activity. AI analyzes data, recommends workouts, recovery, and diet adjustments. Advanced sensors detect stress and hydration, helping users optimize performance and health with personalized insights.</p>
 </article>
 
 <article>
 <h3>Smart Home Gym Systems</h3>
-<p>AI coaches in-home gym equipment track form, adjust resistance, and give real-time feedback. VR and AR integration allows immersive workout sessions. Users benefit from adaptive routines tailored to their fitness levels and goals, creating a home gym experience rivaling professional facilities.</p>
+<p>AI coaches track form, adjust resistance, and provide real-time feedback. Integration with VR/AR allows immersive fitness sessions. Workouts adapt to goals and progress, making home training more efficient and engaging.</p>
 </article>
+
 </section>
 
 <!-- Reviews & Comparisons Section -->
@@ -207,23 +227,19 @@ button:hover { background-color: #63b3ed; }
 
 <article>
 <h3>Lamborghini vs Ferrari – Which Reigns Supreme?</h3>
-<p><span class="winner">Winner: Ferrari SF90</span> – Lamborghini emphasizes raw power and visceral driving experiences, while Ferrari balances hybrid efficiency with precision. Ferrari’s SF90 accelerates faster, corners better, and integrates advanced hybrid technology. Lamborghini offers a thrilling, emotional ride, but Ferrari’s performance, technology, and versatility make it the top choice for enthusiasts seeking all-around excellence.</p>
+<p><span class="winner">Winner: Lamborghini Aventador</span> – Lamborghini focuses on raw power, aggressive styling, and visceral thrill. Ferrari emphasizes precision, hybrid performance, and track-tuned dynamics. For adrenaline seekers, Aventador’s experience is unmatched, while Ferrari offers controlled sophistication for balanced performance.</p>
 </article>
 
 <article>
-<h3>iPhone 17 vs Samsung Galaxy S25 – Camera Battle</h3>
-<p><span class="winner">Winner: iPhone 17 Pro Max</span> – iPhone 17’s AI-enhanced triple cameras deliver consistent, sharp, and vibrant results. Samsung S25 Ultra provides high detail but requires manual adjustments for perfect shots. iPhone’s software ensures user-friendly photography with professional-level outcomes, making it the superior choice for most users seeking intelligent camera performance.</p>
+<h3>iPhone 17 vs Samsung S25 Camera Battle</h3>
+<p><span class="winner">Winner: iPhone 17 Pro Max</span> – iPhone’s AI computational photography consistently merges frames for perfect exposure, color, and focus. Samsung S25 Ultra excels in zoom and raw detail, but iPhone provides superior smart enhancements and overall photographic reliability.</p>
 </article>
 
 <article>
-<h3>Tesla vs Lucid – Electric Cars</h3>
-<p><span class="winner">Winner: Tesla Model S Plaid</span> – Tesla delivers unmatched acceleration, integrated AI driving, and a vast charging network. Lucid emphasizes luxury, aerodynamics, and long-range efficiency. While Lucid is impressive for comfort and range, Tesla’s technology, software ecosystem, and performance edge make it the ultimate electric driving experience.</p>
+<h3>Electric Cars: Tesla vs Lucid</h3>
+<p><span class="winner">Winner: Tesla Model S Plaid</span> – Tesla provides instant torque, Autopilot, and software ecosystem advantages. Lucid emphasizes luxury, aerodynamics, and range. Tesla wins for daily usability combined with intelligent driving tech, while Lucid is ideal for high-end enthusiasts.</p>
 </article>
 
-<article>
-<h3>Top Tech Gadgets 2025</h3>
-<p>AI earbuds, foldable phones, advanced drones, AR glasses, and VR devices are transforming productivity, entertainment, and lifestyle. These gadgets leverage AI, sensors, and software for seamless interaction. Evaluating durability, usability, and real-world applications makes this a crucial guide for tech enthusiasts seeking the best products.</p>
-</article>
 </section>
 
 <!-- Subscription Section -->
@@ -234,7 +250,7 @@ button:hover { background-color: #63b3ed; }
 <input type="email" name="_replyto" placeholder="Your Email" required>
 <button type="submit">Subscribe</button>
 </form>
-<p>Receive in-depth reviews, comparisons, and tech insights straight to your inbox!</p>
+<p>Get premium reviews, tech insights, and car comparisons straight to your inbox!</p>
 </section>
 
 </div> <!-- container -->
