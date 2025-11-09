@@ -1,74 +1,388 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>My Hyper Ride — Cars • Tech • AI</title>
-<meta name="description" content="My Hyper Ride — data-driven car & tech reviews, A vs B comparisons, Top lists, and credible testing methodology. Dark, futuristic design." />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+<title>NeuroBoost / TorqueTech Reviews — Top Family Cars & Deep Comparisons</title>
+
+<!-- Minimal, modern dark theme -->
 <style>
-/* ---------------------- THEME & BASE ---------------------- */
-:root{
---bg:#06070a; --surface:#0f1116; --muted:#9fb0bf; --text:#e9f4ff;
---accent:#00e0ff; --accent-2:#00ff9d; --glass:rgba(255,255,255,0.03);
---card-shadow: 0 10px 30px rgba(2,20,30,0.6);
---radius:14px; --max-width:1200px; --transition:280ms cubic-bezier(.2,.9,.3,1);
-font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:linear-gradient(180deg,var(--bg),#040506);color:var(--text);-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none}
-.wrap{max-width:var(--max-width);margin:28px auto;padding:20px}
+  :root{
+    --bg:#07070a;
+    --panel:#0f1115;
+    --muted:#9aa4b2;
+    --accent:#00d1ff;
+    --accent2:#ff9f1c;
+    --card:#121417;
+    --glass: rgba(255,255,255,0.03);
+    --maxw:1100px;
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+    background:linear-gradient(180deg,var(--bg),#0a0b0e 60%);
+    color:#e6eef3;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+    padding:28px 20px;
+    display:flex;
+    justify-content:center;
+  }
 
+  .wrap{width:100%;max-width:var(--maxw);}
 
-/* ---------------------- HEADER ---------------------- */
-header{display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;gap:14px;align-items:center}
-.logo{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 12px 40px rgba(0,224,255,0.06)}
-h1{margin:0;font-size:18px}
-.subtitle{color:var(--muted);font-size:13px}
-nav{display:flex;gap:12px;align-items:center}
-.navlink{padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
-.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021018;padding:8px 12px;border-radius:10px;font-weight:700}
+  header.site {
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:20px;
+  }
 
+  .logo {
+    width:72px;height:72px;border-radius:14px;
+    background:linear-gradient(135deg,var(--accent),#7b61ff);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;color:#061017;font-size:20px;box-shadow:0 6px 30px rgba(0,0,0,0.6);
+  }
 
-/* ---------------------- LAYOUT GRID ---------------------- */
-.grid{display:grid;grid-template-columns:1fr 340px;gap:24px;margin-top:20px}
-main{min-height:420px}
-aside{position:relative}
+  .title {
+    display:flex;flex-direction:column;
+  }
+  .title h1{margin:0;font-size:22px;letter-spacing:-0.3px}
+  .title p{margin:3px 0 0;font-size:13px;color:var(--muted)}
 
+  nav.topnav{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+  nav.topnav a {
+    padding:8px 12px;border-radius:10px;background:var(--glass);color:var(--muted);
+    text-decoration:none;font-weight:600;font-size:13px;border:1px solid rgba(255,255,255,0.02)
+  }
+  nav.topnav a:hover{color:var(--accent);transform:translateY(-2px)}
 
-/* ---------------------- HERO ---------------------- */
-.hero{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:22px;border-radius:var(--radius);box-shadow:var(--card-shadow);display:flex;gap:20px;align-items:center}
-.hero-left{flex:1}
-.kicker{display:inline-block;background:rgba(0,224,255,0.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
-.hero h2{margin:10px 0 0 0;font-size:22px}
-.hero p{margin:8px 0 0 0;color:var(--muted)}
+  /* hero search */
+  .hero {
+    display:flex;gap:18px;align-items:center;margin:18px 0 28px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    padding:18px;border-radius:14px;backdrop-filter: blur(6px);
+  }
+  .hero .left{flex:1}
+  .hero h2{margin:0 0 6px;font-size:20px}
+  .hero p{margin:0;color:var(--muted);font-size:14px}
+  .searchbar{margin-top:10px;display:flex;gap:8px}
+  .searchbar input{
+    flex:1;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+    background:#07080a;color:var(--muted)
+  }
+  .searchbar button{
+    padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),#7be0ff);
+    color:#041017;border:none;font-weight:700;cursor:pointer;
+  }
 
+  main {margin-top:14px;display:grid;grid-template-columns:1fr;gap:18px}
 
-/* ---------------------- CARDS ---------------------- */
-.card{background:var(--surface);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-.muted{color:var(--muted);font-size:13px}
+  .panel{
+    background:linear-gradient(180deg,var(--panel), #0b0d10);
+    border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  }
 
+  /* cards and lists */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)
+  }
+  .card h4{margin:0 0 8px}
+  .muted{color:var(--muted);font-size:13px}
 
-/* ---------------------- TOP TEN ---------------------- */
-.top-table{width:100%;border-collapse:collapse;margin-top:10px}
-.top-table th{color:var(--muted);font-size:13px;text-align:left;padding:8px}
-.top-table td{padding:12px;border-top:1px solid rgba(255,255,255,0.03)}
-.badge{display:inline-block;padding:6px 9px;border-radius:10px;background:linear-gradient(90deg,var(--accent),rgba(0,224,255,0.12));color:#001018;font-weight:700}
+  /* Comparison blocks */
+  .comparison {
+    display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start;
+  }
+  .compare-col{
+    flex:1;min-width:220px;background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)
+  }
+  .vs {
+    align-self:center;font-weight:900;color:var(--accent2);
+    font-size:18px;padding:6px 10px;border-radius:8px;background:rgba(255,159,28,0.06);
+  }
 
+  .winner {
+    margin-top:10px;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(0,209,255,0.06), rgba(255,159,28,0.03));
+    border:1px solid rgba(0,209,255,0.06)
+  }
+  .winner h4{margin:0 0 6px;color:var(--accent)}
+  .explain{color:var(--muted);font-size:14px}
 
-/* ---------------------- COMPARISON ---------------------- */
-.compare{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
-.compare .col{flex:1;min-width:240px;border-radius:12px;padding:14px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.03));border:1px solid rgba(255,255,255,0.02)}
-.score{font-size:28px;font-weight:800;color:var(--accent)}
-.winner-mark{border-left:4px solid var(--accent-2);padding-left:12px}
+  details {margin-top:10px}
+  summary{cursor:pointer;font-weight:700}
 
+  table.specs{width:100%;border-collapse:collapse;margin-top:10px;background:transparent}
+  table.specs td{padding:6px 8px;border-top:1px dashed rgba(255,255,255,0.03);font-size:14px}
+  table.specs tr:first-child td{border-top:none}
 
-/* ---------------------- REVIEWS GRID ---------------------- */
-.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
-.review-card{padding:14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.02);transition:transform var(--transition), box-shadow var(--transition);}
-.review-card:hover{transform:translateY(-6px);box-shadow:0 18px 60px rgba(0,0,0,0.7)}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .badge{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-weight:700;color:var(--muted);font-size:13px}
+
+  footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:30px}
+  /* small screens fix */
+  @media (max-width:640px){
+    header.site{flex-direction:column;align-items:flex-start}
+    .hero{flex-direction:column}
+    .comparison{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <header class="site">
+    <div class="logo">NT</div>
+    <div class="title">
+      <h1>NeuroBoost / TorqueTech Reviews</h1>
+      <p>Deep reviews, clear winners, and honest explanations — tech & cars tested like a pro.</p>
+      <nav class="topnav" aria-label="quick links">
+        <a href="#top10">Top 10 Family Cars 2025</a>
+        <a href="#comparisons">A vs B Comparisons</a>
+        <a href="#method">How We Judge</a>
+        <a href="#tech">Tech & Gadgets</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: Search & Quick links -->
+  <section class="hero panel">
+    <div class="left">
+      <h2>Want quick answers? Read our head-to-head comparisons — winner, why, and proof.</h2>
+      <p class="muted">We test and reason using real-world criteria: safety, reliability, space, running cost, tech, and owner experience. Click a comparison or search below.</p>
+
+      <div class="searchbar" role="search">
+        <input id="q" placeholder="Search articles, cars, or comparisons (e.g., 'CR-V vs RAV4')" />
+        <button onclick="doSearch()">Search</button>
+      </div>
+
+      <div class="toc" style="margin-top:12px">
+        <div class="badge">Family Cars</div>
+        <div class="badge">Tech Reviews</div>
+        <div class="badge">Comparisons</div>
+        <div class="badge">Methodology</div>
+      </div>
+    </div>
+    <div style="width:220px;text-align:center">
+      <img alt="car and tech" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='120'><rect rx='16' width='100%25' height='100%25' fill='%230b0c0f' stroke='%2300d1ff' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='14'>TorqueTech</text></svg>" style="max-width:100%;border-radius:10px;display:block;margin:auto;"/>
+    </div>
+  </section>
+
+  <!-- Top 10 Family Cars -->
+  <section id="top10" class="panel">
+    <h2>Top 10 Family Cars of 2025 — picks & why they matter</h2>
+    <p class="muted">Family cars chosen for space, safety, running cost, reliability, and value. Click any card for a deep-dive (specs & verdict).</p>
+
+    <div class="grid" style="margin-top:14px">
+      <!-- Card template: change titles/content as needed -->
+      <div class="card">
+        <h4>1. Honda CR-V (Top Value Family SUV)</h4>
+        <p class="muted">Why: balanced reliability, roomy cabin, excellent safety tech, and low running costs.</p>
+        <details>
+          <summary>Full analysis & specs</summary>
+          <p>Honda CR-V remains a top family pick because it blends comfort with excellent fuel efficiency and an interior layout designed for child seats and cargo. The CR-V’s suspension is tuned for comfort, making long trips easier on the family. Maintenance costs are low compared to premium rivals, and its resale value is strong.</p>
+          <table class="specs">
+            <tr><td>Seats</td><td>5</td></tr>
+            <tr><td>Safety</td><td>Adaptive cruise, lane assist, high IIHS scores</td></tr>
+            <tr><td>Why pick it</td><td>Value + reliability + space</td></tr>
+          </table>
+        </details>
+      </div>
+
+      <div class="card">
+        <h4>2. Toyota RAV4 (Reliable all-rounder)</h4>
+        <p class="muted">Why: Toyota’s proven reliability, hybrid options, and sensible ergonomics.</p>
+        <details>
+          <summary>Full analysis & specs</summary>
+          <p>The RAV4 offers hybrid powertrains with excellent real-world economy, plus a comfortable ride. Safety tech is mature, and Toyota’s dealer network ensures easy service. Cargo volume and ease of use make it ideal for parents.</p>
+        </details>
+      </div>
+
+      <div class="card">
+        <h4>3. Kia Telluride / Hyundai Palisade (Family space & comfort)</h4>
+        <p class="muted">Why: three-row comfort, premium interior at non-premium price.</p>
+        <details>
+          <summary>Full analysis & specs</summary>
+          <p>For larger families, Telluride and Palisade offer luxury-level seats and features at accessible prices. They come with long warranties, which reduces ownership anxiety for families.</p>
+        </details>
+      </div>
+
+      <div class="card">
+        <h4>4. Subaru Outback (Adventure-friendly family wagon)</h4>
+        <p class="muted">Why: standard AWD, great safety and cargo flexibility.</p>
+        <details><summary>Full analysis</summary><p>Outback’s higher ground clearance and symmetrical AWD make it a good choice for families that travel off the beaten path.</p></details>
+      </div>
+
+      <div class="card"><h4>5. Volkswagen ID.4 / EV family picks</h4><p class="muted">Why: practicality + electric range for everyday family use.</p><details><summary>Full analysis</summary><p>EVs like the ID.4 offer low running costs and quiet cabins — perfect for city & family life. Consider charging infrastructure and range depending on your area.</p></details></div>
+
+      <div class="card"><h4>6. Mazda CX-5 (Driver comfort + style)</h4><p class="muted">Why: driving feel and interior quality</p><details><summary>Full</summary><p>Mazda CX-5 gives a near-premium interior and a nice on-road experience while staying affordable.</p></details></div>
+
+      <div class="card"><h4>7. Ford Escape / Kuga</h4><p class="muted">Why: options, hybrid choices, and good tech.</p></div>
+      <div class="card"><h4>8. Volvo XC40 / XC60 (Safety-first)</h4><p class="muted">Why: top safety features and Scandinavian practicality.</p></div>
+      <div class="card"><h4>9. Chevrolet Traverse or similar 3-row</h4><p class="muted">Why: cargo + passenger capacity.</p></div>
+      <div class="card"><h4>10. Tesla Model Y (EV family crossover)</h4><p class="muted">Why: electric range, low running cost, spacious interior in a compact footprint.</p></div>
+    </div>
+  </section>
+
+  <!-- Head-to-head comparisons -->
+  <section id="comparisons" class="panel">
+    <h2>A vs B — Head-to-Head Reviews (clear winner + deep explanation)</h2>
+    <p class="muted">Each comparison shows the winner, why it wins (detailed reasoning), and how we weighed reliability, value, safety, and tech. Sources: manufacturer specs, safety agencies, and independent tests (links added where available).</p>
+
+    <!-- Comparison 1: Honda CR-V vs Toyota RAV4 -->
+    <article style="margin-top:12px" class="card">
+      <h3>Honda CR-V vs Toyota RAV4 — Winner: <span style="color:var(--accent)">Honda CR-V</span></h3>
+      <div class="comparison">
+        <div class="compare-col">
+          <strong>Honda CR-V</strong>
+          <p class="muted">Pros: reliability, comfortable ride, lower running cost, spacious cabin layout for kids and car seats.</p>
+          <table class="specs">
+            <tr><td>Powertrains</td><td>Gas / Hybrid available</td></tr>
+            <tr><td>Why families like it</td><td>Ease of use, cabin ergonomics</td></tr>
+          </table>
+        </div>
+
+        <div class="vs">VS</div>
+
+        <div class="compare-col">
+          <strong>Toyota RAV4</strong>
+          <p class="muted">Pros: strong hybrid economy, Toyota service network, rugged styling for those who want it.</p>
+          <table class="specs">
+            <tr><td>Powertrains</td><td>Gas / Hybrid / Off-road trims</td></tr>
+            <tr><td>Why families consider it</td><td>Fuel economy in hybrid trims, resale value</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="winner">
+        <h4>Why CR-V wins here</h4>
+        <p class="explain">We chose the CR-V as the winner because, for most families, the CR-V balances comfort and long-term cost better. With slightly more user-friendly interior layout, lower reported running/maintenance cost in many markets, and comfortable daily ride, it reduces friction for parents. The RAV4 wins on hybrid efficiency and has strong resale, but the CR-V wins the everyday-family category because parents value cabin usability and predictable ownership costs more than marginal gains in fuel economy. <strong>How we judged:</strong> 40% reliability & running cost, 30% family comfort & space, 20% safety tech, 10% driving dynamics.</p>
+        <details>
+          <summary>Sources & notes</summary>
+          <p class="muted">Source: Manufacturer specs, IIHS/NHTSA ratings, owner reliability surveys (add links here).</p>
+        </details>
+      </div>
+    </article>
+
+    <!-- Comparison 2: Tesla Model Y vs Volkswagen ID.4 -->
+    <article class="card" style="margin-top:12px">
+      <h3>Tesla Model Y vs VW ID.4 — Winner: <span style="color:var(--accent)">Tesla Model Y</span></h3>
+      <div class="comparison">
+        <div class="compare-col">
+          <strong>Tesla Model Y</strong>
+          <p class="muted">Pros: extensive charging network (where available), software updates, strong range, roomy interior with minimalist layout.</p>
+          <table class="specs"><tr><td>Strength</td><td>Range + charging ecosystem</td></tr></table>
+        </div>
+        <div class="vs">VS</div>
+        <div class="compare-col">
+          <strong>VW ID.4</strong>
+          <p class="muted">Pros: comfortable ride, good interior ergonomics, simpler ownership in some markets. Better dealer support in places Tesla is weaker.</p>
+          <table class="specs"><tr><td>Strength</td><td>Practicality & cost</td></tr></table>
+        </div>
+      </div>
+
+      <div class="winner">
+        <h4>Why Model Y wins</h4>
+        <p class="explain">Model Y takes the win where charging infrastructure and OTA updates matter. For families living in regions with good Tesla Supercharger coverage, the convenience and long trips without range anxiety make Model Y superior. The ID.4 is often cheaper up-front and more traditional in ownership — a fine choice — but Model Y’s ecosystem gives it the edge in real-world convenience. <strong>How we judged:</strong> 35% charging/long-trip practicality, 25% cost, 20% comfort/space, 20% tech & updates.</p>
+      </div>
+    </article>
+
+    <!-- Comparison 3: Honda CR-V vs Mazda CX-5 (example A vs B where B wins) -->
+    <article class="card" style="margin-top:12px">
+      <h3>Honda CR-V vs Mazda CX-5 — Winner: <span style="color:var(--accent)">Mazda CX-5</span></h3>
+      <div class="comparison">
+        <div class="compare-col"><strong>Honda CR-V</strong><p class="muted">Good balance, reliable, family utility.</p></div>
+        <div class="vs">VS</div>
+        <div class="compare-col"><strong>Mazda CX-5</strong><p class="muted">Premium-feel interior, engaging driving, refined design.</p></div>
+      </div>
+      <div class="winner">
+        <h4>Why Mazda CX-5 wins</h4>
+        <p class="explain">We declare the CX-5 the winner when the buyer prioritizes driving enjoyment and interior quality. While the CR-V may be fractionally more practical, the CX-5 offers a near-premium cabin and better dynamics that families appreciate for daily commutes and weekend trips. If your priority is outright cargo volume and cheapest ownership, CR-V is still a top pick, but for most buyers who want a nicer daily experience, CX-5 wins.</p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Tech section with comparisons -->
+  <section id="tech" class="panel">
+    <h2>Tech & Gadgets — winners explained</h2>
+    <div class="grid">
+      <div class="card">
+        <h4>iPhone 17 vs Samsung S25 — Camera Battle</h4>
+        <p class="muted"><strong>Winner:</strong> Depends on use case — we give the edge to iPhone 17 for consistency and video; Samsung for raw detail and zoom.</p>
+        <details>
+          <summary>Deep explanation</summary>
+          <p>iPhone tends to produce consistent color and smart exposure due to computational photography and optimized filmic video pipelines. Samsung often wins pixel-level detail and zoom performance thanks to sensor/optics innovations. If you shoot video and want natural skin tones, pick iPhone. If you want detailed zoomed photos and heavy editing, Samsung may be better. We weigh video & everyday usability more heavily for social creators.</p>
+        </details>
+      </div>
+
+      <div class="card">
+        <h4>Gaming Laptops 2025 — Winner: High-Performance Balance</h4>
+        <p class="muted">We favor laptops that balance GPU power, thermals, and battery life — not only raw specs.</p>
+        <details><summary>Why</summary><p>RTX-class GPUs + advanced cooling + OLED 240Hz panels deliver great experiences without thermal throttling. Prioritize thermal solutions and sustained fps over a single-sprint benchmark number.</p></details>
+      </div>
+
+      <div class="card">
+        <h4>AI in Cars — Who's leading</h4>
+        <p class="muted">Winner: Companies who combine good sensors with robust edge AI and OTA updates — judged by real-world testing, safety data, and continuous improvement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology & Credibility -->
+  <section id="method" class="panel">
+    <h2>How we judge — our methodology (credibility matters)</h2>
+    <p class="muted">We use a transparent scoring system so you can see why a product wins. Sources are checked (manufacturer specs, safety test agencies, owner reliability surveys, and independent tests).</p>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:12px">
+      <div style="flex:1;min-width:240px" class="card">
+        <h4>Scoring breakdown</h4>
+        <p class="muted">Example weights we use (adjust per article):</p>
+        <ul class="muted">
+          <li>Reliability & running cost — 35%</li>
+          <li>Family comfort & space — 30%</li>
+          <li>Safety & features — 20%</li>
+          <li>Driving dynamics & tech — 15%</li>
+        </ul>
+      </div>
+
+      <div style="flex:1;min-width:240px" class="card">
+        <h4>Sources & verification</h4>
+        <p class="muted">We pull from: manufacturer spec pages, IIHS / NHTSA (safety), independent reviews (Car & Driver, Edmunds), and owner surveys. Whenever possible, we link to sources — you can add links in the "Sources" details when publishing.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="muted">© 2025 NeuroBoost / TorqueTech — Data-driven reviews. Add your sources for full transparency.</div>
+  </footer>
+</div>
+
+<script>
+  /* Simple search (client-side) for headings & cards */
+  function doSearch(){
+    const q = document.getElementById('q').value.trim().toLowerCase();
+    if(!q){ window.scrollTo({top:document.getElementById('top').offsetTop, behavior:'smooth'}); return; }
+    // naive search: jump to first matching element with textContent
+    const all = document.querySelectorAll('.wrap h3, .wrap h4, .wrap p, details summary');
+    for(let el of all){
+      if(el.textContent.toLowerCase().includes(q)){
+        el.scrollIntoView({behavior:'smooth', block:'center'}); el.style.transition='background 0.4s';
+        const o = el.style.background; el.style.background='rgba(0,209,255,0.06)';
+        setTimeout(()=>el.style.background=o,2000);
+        return;
+      }
+    }
+    alert('No results found for \"'+q+'\" — try a different keyword.');
+  }
+</script>
+
+</body>
 </html>
