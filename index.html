@@ -94,6 +94,65 @@
     .highlight {
       color: #00eaff;
     }
+
+    /* Subscription Section */
+    #subscribe {
+      background: linear-gradient(180deg, #111, #0d0d0d);
+      text-align: center;
+      padding: 50px 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+      margin: 50px auto;
+      max-width: 800px;
+    }
+
+    #subscribe h2 {
+      color: #00eaff;
+      text-shadow: 0 0 10px #00eaff;
+      font-size: 1.8em;
+    }
+
+    #subscribe p {
+      color: #bbb;
+      margin-bottom: 25px;
+      font-size: 1.1em;
+    }
+
+    form input[type="text"], form input[type="email"] {
+      width: 80%;
+      max-width: 400px;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: #222;
+      color: #e0e0e0;
+      font-size: 1em;
+      text-align: center;
+      box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    form button {
+      background: #00eaff;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 1.1em;
+      box-shadow: 0 0 15px #00eaff;
+      transition: all 0.2s;
+    }
+
+    form button:hover {
+      background: #00bcd4;
+      box-shadow: 0 0 25px #00eaff;
+      color: white;
+    }
+
   </style>
 </head>
 <body>
@@ -108,6 +167,7 @@
     <a href="#reviews">Reviews</a>
     <a href="#facts">Facts</a>
     <a href="#ai">AI & Science</a>
+    <a href="#subscribe">Subscribe</a>
   </nav>
 
   <!-- CARS -->
@@ -116,18 +176,12 @@
 
     <article>
       <h3>Toyota RAV4 vs Honda CR-V – The Ultimate Family SUV</h3>
-      <p>The Toyota RAV4 dominates the compact SUV category with its strong hybrid performance, rugged design, and reliability. Meanwhile, the Honda CR-V offers a refined, smooth drive with efficient engines. However, <span class="winner">the RAV4 wins</span> due to its superior hybrid technology, all-wheel-drive capability, and proven long-term value. Families prefer its versatility and bold styling.</p>
+      <p>The Toyota RAV4 dominates the compact SUV category with its strong hybrid performance, rugged design, and reliability. Meanwhile, the Honda CR-V offers a refined, smooth drive with efficient engines. However, <span class="winner">the RAV4 wins</span> due to its superior hybrid technology, all-wheel-drive capability, and proven long-term value.</p>
     </article>
 
     <article>
       <h3>Lamborghini Revuelto – V12 Hybrid Powerhouse</h3>
-      <p>The Lamborghini Revuelto blends tradition with innovation, featuring a 6.5L V12 hybrid engine pushing 1,001 hp. This marvel combines electric torque with combustion ferocity. The result? A car that accelerates faster, handles tighter, and still screams pure Lamborghini. It’s a futuristic icon redefining performance hybrids.</p>
-    </article>
-
-    <article>
-      <h3>Top 10 Family Cars of 2025</h3>
-      <p>1. Toyota RAV4 Hybrid<br>2. Hyundai Tucson<br>3. Kia Sportage<br>4. Subaru Forester<br>5. Mazda CX-5<br>6. Ford Escape<br>7. Nissan Rogue<br>8. Honda CR-V<br>9. Volkswagen Tiguan<br>10. Chevrolet Equinox</p>
-      <p>The RAV4 remains #1 due to its balance of reliability, safety tech, and efficiency — a rare triple win in modern SUVs.</p>
+      <p>The Lamborghini Revuelto blends tradition with innovation, featuring a 6.5L V12 hybrid engine pushing 1,001 hp. This marvel combines electric torque with combustion ferocity. It’s a futuristic icon redefining performance hybrids.</p>
     </article>
   </section>
 
@@ -137,23 +191,12 @@
 
     <article>
       <h3>iPhone 17 vs Samsung Galaxy S25 – Flagship Showdown</h3>
-      <p>The iPhone 17, powered by the A19 Bionic chip, uses dual 48MP cameras and aluminum design. Samsung’s Galaxy S25 counters with an advanced Snapdragon Gen 4 and a 200MP camera. Apple leads in AI processing and ecosystem optimization, while Samsung dominates raw specs. Verdict: <span class="winner">iPhone 17</span> for balanced everyday performance and software harmony.</p>
+      <p>The iPhone 17, powered by the A19 Bionic chip, uses dual 48MP cameras and aluminum design. Samsung’s Galaxy S25 counters with a Snapdragon Gen 4 and a 200MP sensor. Verdict: <span class="winner">iPhone 17</span> wins for balance, longevity, and ecosystem stability.</p>
     </article>
 
     <article>
       <h3>iPad Air 6 vs Samsung Galaxy Tab S10</h3>
-      <p>The iPad Air 6 (M2 chip) delivers stunning performance, tight app optimization, and unmatched longevity. Samsung’s Tab S10 shines with AMOLED brilliance and multitasking power. <span class="winner">iPad Air 6</span> wins for long-term updates, stability, and precision stylus experience — making it the go-to for students and creatives alike.</p>
-    </article>
-
-    <article>
-      <h3>Top Tech Gadgets of 2025</h3>
-      <ul>
-        <li>AI-powered earbuds with adaptive noise control</li>
-        <li>Foldable phones that last 10x longer</li>
-        <li>Smart rings tracking health 24/7</li>
-        <li>Next-gen drones with autonomous flight</li>
-        <li>AR glasses that project real-time info</li>
-      </ul>
+      <p>The iPad Air 6 (M2 chip) delivers unmatched app optimization and stability. Samsung’s Tab S10 shines with AMOLED brilliance and multitasking. <span class="winner">iPad Air 6</span> wins for software efficiency and stylus precision.</p>
     </article>
   </section>
 
@@ -163,12 +206,7 @@
 
     <article>
       <h3>Tesla Model S Plaid vs Lucid Air Sapphire</h3>
-      <p>Lucid offers refinement and range, while Tesla delivers instant acceleration and AI intelligence. However, <span class="winner">Tesla Model S Plaid</span> takes the edge for software updates, charging infrastructure, and unmatched acceleration — a true electric legend.</p>
-    </article>
-
-    <article>
-      <h3>Apple Watch Ultra 2 vs Samsung Galaxy Watch 7</h3>
-      <p>Apple Watch Ultra 2 integrates health precision with rugged design. Samsung Galaxy Watch 7 is customizable and Android-friendly. <span class="winner">Apple Watch Ultra 2</span> wins for fitness accuracy, long-term software support, and professional-grade sensors.</p>
+      <p>Lucid offers refinement and luxury, while Tesla delivers instant acceleration and a global charging network. <span class="winner">Tesla Model S Plaid</span> wins for performance, Autopilot updates, and driver-focused innovation.</p>
     </article>
   </section>
 
@@ -178,30 +216,28 @@
 
     <article>
       <h3>The Rise of Apple</h3>
-      <p>Apple’s dominance stems from vertical integration — it designs its chips, software, and services in perfect harmony. From the first iPhone in 2007 to the AI-driven iPhone 17, Apple’s commitment to innovation and user experience reshaped modern tech. The company’s ecosystem now extends from homes to hospitals, defining digital luxury.</p>
-    </article>
-
-    <article>
-      <h3>The Future of Electric Cars</h3>
-      <div class="fact">
-        By 2030, over 60% of new cars will be electric. AI and sustainable energy will drive efficiency, range, and affordability. Tesla, Toyota, and Hyundai lead the charge in battery innovation and autonomous safety systems.
-      </div>
+      <p>Apple’s ecosystem mastery has created unmatched synergy across devices. Its control over chips, design, and software allows innovation years ahead of rivals. This strategy made Apple one of the most influential companies in tech history.</p>
     </article>
   </section>
 
   <!-- AI -->
   <section id="ai">
     <h2>Futuristic AI & Science</h2>
-
     <article>
       <h3>AI in Healthcare</h3>
-      <p>Artificial Intelligence is revolutionizing medicine — analyzing X-rays, predicting diseases, and even assisting in robotic surgeries. Hospitals now use AI for personalized treatments, saving millions of lives annually. Neural networks are redefining what’s possible in diagnostics and prevention.</p>
+      <p>AI-driven diagnostics, robotic surgery, and early detection systems are transforming hospitals. Machine learning now saves lives by detecting diseases before symptoms appear.</p>
     </article>
+  </section>
 
-    <article>
-      <h3>Quantum Computing – The Next Leap</h3>
-      <p>Quantum chips manipulate qubits to perform calculations beyond classical limits. Google, IBM, and startups are racing to create real-world quantum processors. This could transform AI learning, cryptography, and drug design — ushering in a new computing era.</p>
-    </article>
+  <!-- SUBSCRIBE -->
+  <section id="subscribe">
+    <h2>Subscribe for Updates</h2>
+    <p>Stay ahead in cars, tech, and AI. Get fresh reviews, comparisons, and news delivered straight to your inbox.</p>
+    <form>
+      <input type="text" placeholder="Your Name" required><br>
+      <input type="email" placeholder="Your Email" required><br>
+      <button type="submit">Subscribe Now</button>
+    </form>
   </section>
 
   <footer>
