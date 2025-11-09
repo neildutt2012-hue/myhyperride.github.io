@@ -1,268 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Hyper Ride</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Hyper Ride</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
 
-        /* Body */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0b0b0b;
-            color: #fff;
-            line-height: 1.6;
-        }
+/* Body */
+body {
+    font-family:'Roboto', sans-serif;
+    background-color:#0b0b0b;
+    color:#fff;
+    line-height:1.6;
+}
 
-        /* Navbar */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background-color: #111;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 0 10px #00f;
-        }
+/* Header */
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background-color:#111;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 0 10px #00f;
+}
+header h1 {
+    font-size:1.8rem;
+    color:#00f;
+    text-shadow:0 0 10px #00f;
+}
+nav a {
+    color:#fff;
+    margin-left:20px;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+nav a:hover { color:#00f; }
 
-        header h1 {
-            font-size: 1.8rem;
-            color: #00f;
-            text-shadow: 0 0 10px #00f;
-        }
+/* Hero */
+.hero {
+    background:url('https://images.unsplash.com/photo-1571607381456-4a514e1b08f6?auto=format&fit=crop&w=1500&q=80') no-repeat center/cover;
+    height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#00f;
+    text-shadow:0 0 15px #00f;
+}
+.hero h2 { font-size:3rem; margin-bottom:20px; }
+.hero p { font-size:1.3rem; }
 
-        nav a {
-            color: #fff;
-            margin-left: 20px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+/* Sections */
+section {
+    padding:50px;
+}
+section h2 {
+    font-size:2rem;
+    margin-bottom:30px;
+    color:#00f;
+    text-shadow:0 0 8px #00f;
+    border-bottom:2px solid #00f;
+    display:inline-block;
+    padding-bottom:5px;
+}
+.articles {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:20px;
+}
+.card {
+    background-color:#111;
+    border:1px solid #00f;
+    border-radius:10px;
+    overflow:hidden;
+    transition:0.3s;
+    box-shadow:0 0 10px #00f;
+}
+.card:hover {
+    transform:translateY(-10px);
+    box-shadow:0 0 25px #00f;
+}
+.card img {
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+.card-content {
+    padding:15px;
+}
+.card-content h3 {
+    font-size:1.2rem;
+    margin-bottom:10px;
+}
+.card-content p { font-size:0.9rem; color:#ccc; }
 
-        nav a:hover {
-            color: #00f;
-        }
+/* Subscription */
+#subscribe {
+    padding:50px;
+    text-align:center;
+    background:#111;
+    border-top:2px solid #00f;
+    border-bottom:2px solid #00f;
+}
+#subscribe h2 { color:#00f; text-shadow:0 0 10px #00f; margin-bottom:10px; }
+#subscribe p { color:#ccc; margin-bottom:30px; }
+#subscribe input {
+    padding:10px 15px;
+    border-radius:5px;
+    border:1px solid #00f;
+    width:250px;
+    background:#111;
+    color:#fff;
+}
+#subscribe button {
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    background:#00f;
+    color:#fff;
+    cursor:pointer;
+    margin-left:10px;
+    transition:0.3s;
+}
+#subscribe button:hover { background:#009; }
 
-        /* Hero */
-        .hero {
-            background: url('https://images.unsplash.com/photo-1571607381456-4a514e1b08f6?auto=format&fit=crop&w=1500&q=80') no-repeat center/cover;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #00f;
-            text-shadow: 0 0 15px #00f;
-        }
+/* Footer */
+footer {
+    background-color:#111;
+    text-align:center;
+    padding:30px;
+    border-top:2px solid #00f;
+    margin-top:50px;
+}
+footer p { color:#ccc; }
 
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 50px;
-        }
-
-        section h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #00f;
-            text-shadow: 0 0 8px #00f;
-            border-bottom: 2px solid #00f;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .articles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: #111;
-            border: 1px solid #00f;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: 0.3s;
-            box-shadow: 0 0 10px #00f;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px #00f;
-        }
-
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 15px;
-        }
-
-        .card-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .card-content p {
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #111;
-            text-align: center;
-            padding: 30px;
-            border-top: 2px solid #00f;
-            margin-top: 50px;
-        }
-
-        footer p {
-            color: #ccc;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-            }
-            nav {
-                margin-top: 10px;
-            }
-        }
-    </style>
+/* Responsive */
+@media(max-width:768px){
+    header { flex-direction:column; }
+    nav { margin-top:10px; }
+}
+</style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <header>
-        <h1>My Hyper Ride</h1>
-        <nav>
-            <a href="#cars">Cars</a>
-            <a href="#tech">Tech</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#comparisons">Comparisons</a>
-            <a href="#top10">Top 10 & Facts</a>
-        </nav>
-    </header>
+<!-- Navbar -->
+<header>
+    <h1>My Hyper Ride</h1>
+    <nav>
+        <a href="#cars">Cars</a>
+        <a href="#supercars">Supercars</a>
+        <a href="#tech">Tech & Gadgets</a>
+        <a href="#reviews">Reviews & Comparisons</a>
+        <a href="#top10">Top 10 & Facts</a>
+        <a href="#subscribe">Subscribe</a>
+    </nav>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Ultimate Car & Tech News Hub</h2>
-        <p>Reviews, Comparisons, Facts & Top 10 Lists</p>
-    </section>
+<!-- Hero -->
+<section class="hero">
+    <h2>Ultimate Car & Tech News Hub</h2>
+    <p>Reviews, Comparisons, Facts & Top 10 Lists</p>
+</section>
 
-    <!-- Cars Section -->
-    <section id="cars">
-        <h2>Cars</h2>
-        <div class="articles">
-            <!-- 10 Article Cards -->
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,1"><div class="card-content"><h3>Top 10 Family Cars 2025</h3><p>Explore the best family-friendly cars of 2025.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,2"><div class="card-content"><h3>Electric Cars to Watch</h3><p>Upcoming electric vehicles changing the market.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,3"><div class="card-content"><h3>SUV vs Sedan</h3><p>Which is the better choice for you?</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,4"><div class="card-content"><h3>Affordable Sports Cars</h3><p>Top budget-friendly sports cars in 2025.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,5"><div class="card-content"><h3>Luxury Cars Review</h3><p>The finest luxury cars reviewed for enthusiasts.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,6"><div class="card-content"><h3>Concept Cars 2025</h3><p>Futuristic designs that may hit roads soon.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,7"><div class="card-content"><h3>Fastest Cars in the World</h3><p>Top speed machines on the planet.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,8"><div class="card-content"><h3>Car Maintenance Tips</h3><p>Keep your car in perfect condition.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,9"><div class="card-content"><h3>Future of Self-Driving Cars</h3><p>What lies ahead in autonomous driving.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,10"><div class="card-content"><h3>Best Off-Road Vehicles</h3><p>Top vehicles for off-road adventures.</p></div></div>
-        </div>
-    </section>
+<!-- Cars Section -->
+<section id="cars">
+<h2>Cars</h2>
+<div class="articles">
+<!-- 10 placeholder articles -->
+<div class="card"><img src="https://source.unsplash.com/400x200/?car"><div class="card-content"><h3>Top 10 Family Cars 2025</h3><p>Explore the best family-friendly cars of 2025.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?suv"><div class="card-content"><h3>Best SUVs 2025</h3><p>Comfort, safety and performance combined.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?sedan"><div class="card-content"><h3>Luxury Sedans</h3><p>Top luxury sedans you should know.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?electriccar"><div class="card-content"><h3>Electric Cars to Watch</h3><p>Upcoming EVs changing the market.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?sports-car"><div class="card-content"><h3>Affordable Sports Cars</h3><p>Budget-friendly speed machines.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?luxurycar"><div class="card-content"><h3>Luxury Cars Review</h3><p>Top luxury cars reviewed.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?conceptcar"><div class="card-content"><h3>Concept Cars 2025</h3><p>Futuristic designs coming soon.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?car-maintenance"><div class="card-content"><h3>Car Maintenance Tips</h3><p>Keep your vehicle perfect.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?fastcar"><div class="card-content"><h3>Fastest Cars in the World</h3><p>Top speed machines analyzed.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?selfdrivingcar"><div class="card-content"><h3>Future of Self-Driving Cars</h3><p>Autonomous driving innovations.</p></div></div>
+</div>
+</section>
 
-    <!-- Tech Section -->
-    <section id="tech">
-        <h2>Tech</h2>
-        <div class="articles">
-            <!-- 10 Article Cards -->
-            <div class="card"><img src="https://source.unsplash.com/400x200/?iphone"><div class="card-content"><h3>iPhone 17 Review</h3><p>Deep dive into Apple’s latest flagship.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?tablet"><div class="card-content"><h3>iPad vs Samsung Tablet</h3><p>Which tablet reigns supreme?</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?laptop"><div class="card-content"><h3>Laptop Buying Guide</h3><p>Best laptops for work and play.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?smartwatch"><div class="card-content"><h3>Smartwatch Comparison</h3><p>Apple vs Samsung smartwatches reviewed.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?vr"><div class="card-content"><h3>VR Headsets of the Year</h3><p>Experience immersive virtual reality.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?gamingpc"><div class="card-content"><h3>Top Gaming PCs</h3><p>Best gaming rigs of 2025.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?headphones"><div class="card-content"><h3>Best Noise-Canceling Headphones</h3><p>Block out the world with these headphones.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?foldablephone"><div class="card-content"><h3>Foldable Phones Explained</h3><p>Do they really work? Full review.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?ai"><div class="card-content"><h3>AI Gadgets Changing Life</h3><p>How AI is shaping our daily routines.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?cartech"><div class="card-content"><h3>Future of Tech in Cars</h3><p>Top innovations driving the car industry.</p></div></div>
-        </div>
-    </section>
+<!-- Supercars Section -->
+<section id="supercars">
+<h2>Supercars</h2>
+<div class="articles">
+<!-- 10 placeholder articles -->
+<div class="card"><img src="https://source.unsplash.com/400x200/?supercar"><div class="card-content"><h3>Top 10 Supercars 2025</h3><p>High-performance vehicles reviewed.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?hypercar"><div class="card-content"><h3>Hypercar Reviews</h3><p>Extreme speed and luxury combined.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?trackcar"><div class="card-content"><h3>Track Cars Compared</h3><p>Best cars for the racetrack.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?electriccar"><div class="card-content"><h3>EV Supercars</h3><p>Electric supercars performance review.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?exoticcar"><div class="card-content"><h3>Exotic Brands</h3><p>The most exotic supercars available.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?engine"><div class="card-content"><h3>Engine Technology</h3><p>Supercars' engineering secrets.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?designcar"><div class="card-content"><h3>Car Designs</h3><p>Stunning aesthetics in supercars.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?speedcar"><div class="card-content"><h3>Top Speed Records</h3><p>The fastest vehicles in history.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?conceptcar"><div class="card-content"><h3>Concept Supercars</h3><p>Future hypercar designs.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?luxurycar"><div class="card-content"><h3>Luxury Supercars</h3><p>Performance meets opulence.</p></div></div>
+</div>
+</section>
 
-    <!-- Reviews Section -->
-    <section id="reviews">
-        <h2>Reviews</h2>
-        <div class="articles">
-            <!-- 10 Article Cards (Placeholders) -->
-            <div class="card"><img src="https://source.unsplash.com/400x200/?tesla"><div class="card-content"><h3>Tesla Model S Plaid Review</h3><p>Performance, tech, and comfort reviewed.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?bmw"><div class="card-content"><h3>BMW iX vs Mercedes EQS</h3><p>Luxury EV comparison.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?macbook"><div class="card-content"><h3>MacBook Air M3 vs Dell XPS 13</h3><p>Which laptop is better for you?</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?pixel"><div class="card-content"><h3>Google Pixel 12 vs iPhone 17</h3><p>Camera, software, and performance.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?ebike"><div class="card-content"><h3>Best Electric Bikes</h3><p>Top models for city and trail riding.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?autonomouscar"><div class="card-content"><h3>Tesla FSD Feature Review</h3><p>Is full self-driving safe yet?</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?camera"><div class="card-content"><h3>Top 5 Action Cameras</h3><p>Perfect for adventure filming.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?tire"><div class="card-content"><h3>Best Car Tires 2025</h3><p>Top choices for safety and performance.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?phone"><div class="card-content"><h3>Best Budget Smartphones</h3><p>Affordable phones that perform well.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?smarthome"><div class="card-content"><h3>Smart Home Devices</h3><p>Upgrade your home with tech.</p></div></div>
-        </div>
-    </section>
+<!-- Tech & Gadgets Section -->
+<section id="tech">
+<h2>Tech & Gadgets</h2>
+<div class="articles">
+<!-- 10 placeholder articles -->
+<div class="card"><img src="https://source.unsplash.com/400x200/?iphone"><div class="card-content"><h3>iPhone 17 Review</h3><p>Deep dive into Apple's flagship.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?tablet"><div class="card-content"><h3>iPad vs Samsung Tablet</h3><p>Which tablet reigns supreme?</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?laptop"><div class="card-content"><h3>Laptop Buying Guide</h3><p>Best laptops for work & play.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?smartwatch"><div class="card-content"><h3>Smartwatch Comparison</h3><p>Apple vs Samsung smartwatches.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?vr"><div class="card-content"><h3>VR Headsets 2025</h3><p>Experience immersive virtual reality.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?gamingpc"><div class="card-content"><h3>Top Gaming PCs</h3><p>Best gaming rigs of 2025.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?headphones"><div class="card-content"><h3>Best Noise-Canceling Headphones</h3><p>Block out distractions.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?foldablephone"><div class="card-content"><h3>Foldable Phones</h3><p>Are they worth it?</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?ai"><div class="card-content"><h3>AI Gadgets</h3><p>Innovative gadgets powered by AI.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?cartech"><div class="card-content"><h3>Tech in Cars</h3><p>Automotive tech innovations.</p></div></div>
+</div>
+</section>
 
-    <!-- Comparisons Section -->
-    <section id="comparisons">
-        <h2>Comparisons</h2>
-        <div class="articles">
-            <!-- 10 Article Cards -->
-            <div class="card"><img src="https://source.unsplash.com/400x200/?iphone,samsung"><div class="card-content"><h3>iPhone vs Samsung Flagship</h3><p>Battle of the smartphones.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?tesla,lucid"><div class="card-content"><h3>Tesla vs Lucid</h3><p>EV performance comparison.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?tablet"><div class="card-content"><h3>Android Tablets vs iPads</h3><p>Which tablet is better for you?</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?laptop"><div class="card-content"><h3>Windows Laptops vs MacBooks</h3><p>Operating system and performance compared.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?gamingconsole"><div class="card-content"><h3>Gaming Consoles Comparison</h3><p>PS5 vs Xbox Series X vs Switch.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car"><div class="card-content"><h3>EV vs Gas Cars</h3><p>Which makes more sense today?</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?smartwatch"><div class="card-content"><h3>Smartwatches Comparison</h3><p>Which smartwatch suits your needs?</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?drone"><div class="card-content"><h3>Drone Models Compared</h3><p>Top drones for photography and fun.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?headphones"><div class="card-content"><h3>Headphones: Wired vs Wireless</h3><p>Pros and cons explained.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?sports car"><div class="card-content"><h3>Sports Car Performance Comparison</h3><p>Which car dominates the track?</p></div></div>
-        </div>
-    </section>
+<!-- Reviews & Comparisons Section -->
+<section id="reviews">
+<h2>Reviews & Comparisons</h2>
+<div class="articles">
+<!-- 10 placeholder articles -->
+<div class="card"><img src="https://source.unsplash.com/400x200/?tesla"><div class="card-content"><h3>Tesla Model S Review</h3><p>Performance, tech & comfort analyzed.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?bmw"><div class="card-content"><h3>BMW iX vs Mercedes EQS</h3><p>Luxury EV comparison.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?macbook"><div class="card-content"><h3>MacBook Air M3 vs Dell XPS 13</h3><p>Laptop comparison for work & play.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?pixel"><div class="card-content"><h3>Google Pixel vs iPhone 17</h3><p>Camera & performance comparison.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?ebike"><div class="card-content"><h3>Best Electric Bikes</h3><p>Top models for city & trail.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?autonomouscar"><div class="card-content"><h3>Tesla FSD Feature</h3><p>Autonomous driving analysis.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?camera"><div class="card-content"><h3>Top Action Cameras</h3><p>Perfect for adventure filming.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?tire"><div class="card-content"><h3>Best Car Tires 2025</h3><p>Safety & performance guide.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?phone"><div class="card-content"><h3>Budget Smartphones</h3><p>Affordable phones that perform well.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?smarthome"><div class="card-content"><h3>Smart Home Devices</h3><p>Upgrade your home with tech.</p></div></div>
+</div>
+</section>
 
-    <!-- Top 10 & Facts Section -->
-    <section id="top10">
-        <h2>Top 10 & Facts</h2>
-        <div class="articles">
-            <!-- 10 Article Cards -->
-            <div class="card"><img src="https://source.unsplash.com/400x200/?apple"><div class="card-content"><h3>Rise of Apple</h3><p>How Apple became a tech giant.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car"><div class="card-content"><h3>Most Expensive Cars Ever</h3><p>Top luxury cars by price.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?ev"><div class="card-content"><h3>Top 10 EV Innovations</h3><p>Electric vehicles leading innovation.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?safety"><div class="card-content"><h3>Best Car Safety Features</h3><p>Cars that protect you best.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?technology"><div class="card-content"><h3>Tech Milestones Last Decade</h3><p>Important tech breakthroughs 2015-2025.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?speed"><div class="card-content"><h3>Cars That Broke Speed Records</h3><p>Fastest cars in history.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?ai"><div class="card-content"><h3>AI in Everyday Life</h3><p>How artificial intelligence impacts us.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?smartphone"><div class="card-content"><h3>Most Popular Smartphones</h3><p>Phones dominating the market.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?car,concept"><div class="card-content"><h3>Future Car Technologies</h3><p>What’s coming in automotive tech.</p></div></div>
-            <div class="card"><img src="https://source.unsplash.com/400x200/?weirdcar"><div class="card-content"><h3>Weirdest Car Concepts</h3><p>The strangest car designs ever made.</p></div></div>
-        </div>
-    </section>
+<!-- Top 10 & Facts Section -->
+<section id="top10">
+<h2>Top 10 & Facts</h2>
+<div class="articles">
+<!-- 10 placeholder articles -->
+<div class="card"><img src="https://source.unsplash.com/400x200/?apple"><div class="card-content"><h3>Rise of Apple</h3><p>How Apple became a tech giant.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?expensivecar"><div class="card-content"><h3>Most Expensive Cars Ever</h3><p>Luxury cars by price.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?ev"><div class="card-content"><h3>Top 10 EV Innovations</h3><p>Electric vehicles leading innovation.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?safety"><div class="card-content"><h3>Car Safety Features</h3><p>Cars that protect you best.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?technology"><div class="card-content"><h3>Tech Milestones</h3><p>Important breakthroughs 2015-2025.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?speedcar"><div class="card-content"><h3>Speed Records</h3><p>Fastest cars ever made.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?ai"><div class="card-content"><h3>AI in Daily Life</h3><p>How AI impacts us.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?smartphone"><div class="card-content"><h3>Popular Smartphones</h3><p>Phones dominating the market.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?cartech"><div class="card-content"><h3>Future Car Tech</h3><p>Upcoming automotive innovations.</p></div></div>
+<div class="card"><img src="https://source.unsplash.com/400x200/?weirdcar"><div class="card-content"><h3>Weirdest Car Concepts</h3><p>Strangest designs ever.</p></div></div>
+</div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 My Hyper Ride. All rights reserved.</p>
-    </footer>
+<!-- Subscription Section -->
+<section id="subscribe">
+<h2>Subscribe for Updates</h2>
+<p>Get the latest car & tech news directly to your inbox.</p>
+<form id="subscribeForm">
+<input type="email" id="email" placeholder="Enter your email" required>
+<button type="submit">Subscribe</button>
+</form>
+<p id="subMessage"></p>
+</section>
+
+<script>
+const form = document.getElementById('subscribeForm');
+const message = document.getElementById('subMessage');
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    if(email.includes('@')) {
+        message.textContent = "Subscribed successfully!";
+        message.style.color="#0f0";
+    } else {
+        message.textContent = "Please enter a valid email.";
+        message.style.color="#f00";
+    }
+    form.reset();
+});
+</script>
+
+<!-- Footer -->
+<footer>
+<p>&copy; 2025 My Hyper Ride. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
