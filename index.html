@@ -4,57 +4,101 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Hyper Ride</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* Global Styles */
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif;}
-body {background:#0b0b0b; color:#fff; line-height:1.6;}
-a {text-decoration:none; color:inherit;}
-header {display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background:#111; position:sticky; top:0; z-index:100; box-shadow:0 0 15px #00f;}
-header h1 {font-size:2rem; color:#00f; text-shadow:0 0 15px #0ff;}
-nav a {color:#fff; margin-left:20px; font-weight:500; transition:0.3s;}
-nav a:hover {color:#0ff;}
-/* Smooth scroll */
-html {scroll-behavior: smooth;}
-
-/* Hero Slider */
-.hero {position:relative; height:60vh; overflow:hidden;}
-.hero-slide {position:absolute; width:100%; height:100%; object-fit:cover; transition:opacity 1s ease;}
-.hero-text {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:#0ff; text-shadow:0 0 15px #00f;}
-.hero-text h2 {font-size:3rem; margin-bottom:20px; animation: glow 2s infinite alternate;}
-.hero-text p {font-size:1.3rem;}
-@keyframes glow {0%{text-shadow:0 0 5px #0ff;}100%{text-shadow:0 0 20px #00f;}}
-
-/* Sections */
-section {padding:50px;}
-section h2 {font-size:2rem; margin-bottom:30px; color:#00f; text-shadow:0 0 8px #0ff; border-bottom:2px solid #00f; display:inline-block; padding-bottom:5px;}
-.articles {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
-.card {background:#111; border:1px solid #0ff; border-radius:10px; overflow:hidden; transition:0.3s; box-shadow:0 0 10px #00f;}
-.card:hover {transform:translateY(-10px); box-shadow:0 0 25px #0ff;}
-.card img {width:100%; height:150px; object-fit:cover;}
-.card-content {padding:15px;}
-.card-content h3 {font-size:1.2rem; margin-bottom:10px;}
-.card-content p {font-size:0.9rem; color:#ccc;}
-
-/* Subscription */
-#subscribe {padding:50px; text-align:center; background:#111; border-top:2px solid #00f; border-bottom:2px solid #00f;}
-#subscribe h2 {color:#0ff; text-shadow:0 0 10px #0ff; margin-bottom:10px;}
-#subscribe p {color:#ccc; margin-bottom:30px;}
-#subscribe input {padding:10px 15px; border-radius:5px; border:1px solid #0ff; width:250px; background:#111; color:#fff;}
-#subscribe button {padding:10px 20px; border:none; border-radius:5px; background:#0ff; color:#111; cursor:pointer; margin-left:10px; transition:0.3s; font-weight:700;}
-#subscribe button:hover {background:#00f; color:#fff;}
-
-/* Footer */
-footer {background:#111; text-align:center; padding:30px; border-top:2px solid #00f; color:#ccc;}
-
-/* Responsive */
-@media(max-width:768px){header{flex-direction:column;} nav{margin-top:10px;} .hero-text h2{font-size:2rem;} .hero-text p{font-size:1rem;}}
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #1f1f1f;
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00aced;
+}
+nav {
+    background-color: #1a1a1a;
+    padding: 10px;
+    text-align: center;
+}
+nav a {
+    color: #e0e0e0;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+section {
+    padding: 40px 20px;
+}
+section h2 {
+    font-size: 1.8rem;
+    color: #00aced;
+    border-bottom: 2px solid #00aced;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.article {
+    margin-bottom: 20px;
+}
+.article h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+.article p {
+    font-size: 1rem;
+    color: #cccccc;
+}
+#subscribe {
+    padding: 40px 20px;
+    background-color: #1f1f1f;
+    text-align: center;
+    border-top: 2px solid #00aced;
+}
+#subscribe input[type="email"] {
+    padding: 10px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #00aced;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+#subscribe button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00aced;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+#subscribe button:hover {
+    background-color: #0086b3;
+}
+footer {
+    background-color: #1a1a1a;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #00aced;
+    color: #cccccc;
+}
+@media(max-width:768px){
+    nav a {display: block; margin: 5px 0;}
+}
 </style>
 </head>
 <body>
 
-<header>
-<h1>My Hyper Ride</h1>
+<header>My Hyper Ride</header>
 <nav>
 <a href="#cars">Cars</a>
 <a href="#supercars">Supercars</a>
@@ -63,73 +107,86 @@ footer {background:#111; text-align:center; padding:30px; border-top:2px solid #
 <a href="#top10">Top 10 & Facts</a>
 <a href="#subscribe">Subscribe</a>
 </nav>
-</header>
-
-<!-- Hero Slider -->
-<section class="hero">
-<img class="hero-slide" src="https://images.unsplash.com/photo-1571607381456-4a514e1b08f6?auto=format&fit=crop&w=1500&q=80">
-<img class="hero-slide" src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1500&q=80" style="opacity:0;">
-<img class="hero-slide" src="https://images.unsplash.com/photo-1571607381449-b1f7a8e0d7e8?auto=format&fit=crop&w=1500&q=80" style="opacity:0;">
-<div class="hero-text">
-<h2>Ultimate Car & Tech News Hub</h2>
-<p>Reviews, Comparisons, Facts & Top 10 Lists for true enthusiasts</p>
-</div>
-</section>
-
-<script>
-// Hero slider
-let slides = document.querySelectorAll('.hero-slide');
-let currentSlide = 0;
-setInterval(() => {
-    slides[currentSlide].style.opacity = 0;
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].style.opacity = 1;
-}, 5000);
-</script>
 
 <!-- Cars Section -->
 <section id="cars">
 <h2>Cars</h2>
-<div class="articles">
-<!-- 10 Articles -->
-<div class="card"><img src="https://source.unsplash.com/400x200/?car"><div class="card-content"><h3>Top 10 Family Cars 2025</h3><p>Looking for the perfect family car? In 2025, several models combine safety, comfort, and efficiency. From SUVs to crossovers, these vehicles prioritize passenger protection and spacious interiors. Modern infotainment systems make long trips enjoyable for everyone. Fuel efficiency and low maintenance costs are additional bonuses. These are truly the top picks for family-friendly driving.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?suv"><div class="card-content"><h3>Best SUVs for Every Budget</h3><p>SUVs dominate the market with versatility and style. Our 2025 picks range from affordable options to luxury models. Safety features, storage capacity, and off-road capabilities are considered. Advanced driving assists enhance convenience and confidence. Each SUV offers a unique blend of performance and comfort. Whether commuting or adventure-bound, there’s an SUV for everyone.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?sedan"><div class="card-content"><h3>Luxury Sedans Redefined</h3><p>The luxury sedan market in 2025 is more competitive than ever. Leading brands have elevated comfort, technology, and design. Interiors feature premium materials, ambient lighting, and next-gen infotainment. Performance metrics like acceleration and handling are exceptional. Safety remains a top priority with advanced sensors. These sedans blend prestige with practicality for discerning buyers.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?electriccar"><div class="card-content"><h3>Electric Cars to Watch</h3><p>Electric vehicles (EVs) are reshaping the automotive industry. Cutting-edge batteries and charging technologies enable longer ranges. 2025 introduces several innovative models with futuristic designs and high performance. EVs now rival gas-powered cars in acceleration and comfort. Sustainability, low maintenance, and reduced emissions make them highly desirable. Watch these models closely as they dominate the roads.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?sports-car"><div class="card-content"><h3>Affordable Sports Cars</h3><p>Speed and excitement don’t have to break the bank. Affordable sports cars combine sleek design, responsive handling, and thrilling performance. 2025 sees a new range of models with turbocharged engines and modern tech. Safety features ensure a secure driving experience. These vehicles are perfect for enthusiasts who crave performance without spending a fortune. Get ready for pure driving joy.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?luxurycar"><div class="card-content"><h3>Luxury Cars Review 2025</h3><p>Luxury vehicles redefine opulence and performance. Our reviews cover interiors, technology, ride quality, and fuel efficiency. Brands push boundaries with sleek exteriors and cutting-edge features. Comfort is unmatched, making each journey a premium experience. Safety, design, and environmental considerations are highlighted. Explore the pinnacle of automotive excellence in 2025.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?conceptcar"><div class="card-content"><h3>Concept Cars Coming Soon</h3><p>Automakers showcase future designs through concept cars. 2025 introduces vehicles with autonomous tech, AI integration, and eco-friendly solutions. Innovative interiors and bold exteriors turn heads. Performance and sustainability are often tested in prototypes. These cars inspire the next generation of production vehicles. Concept cars are a glimpse into the automotive future.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?car-maintenance"><div class="card-content"><h3>Car Maintenance Tips</h3><p>Proper car care ensures safety, longevity, and performance. Our guide covers regular checks, tire maintenance, and oil changes. 2025 cars feature advanced electronics, requiring specific diagnostics. Seasonal tips keep vehicles running smoothly year-round. Simple preventive measures save significant repair costs. Stay ahead and protect your investment with these essential tips.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?fastcar"><div class="card-content"><h3>Fastest Cars in the World</h3><p>Speed enthusiasts rejoice! The fastest cars of 2025 combine extreme aerodynamics, engine power, and precision handling. Each model pushes the boundaries of engineering. Acceleration, top speed, and braking performance are critical metrics. Innovative materials reduce weight while enhancing safety. These cars are engineering marvels designed for the thrill of high-speed driving.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?selfdrivingcar"><div class="card-content"><h3>The Future of Self-Driving Cars</h3><p>Autonomous vehicles are closer to mainstream than ever. 2025 models integrate advanced sensors, AI algorithms, and safety redundancies. Companies test cars for urban, highway, and complex scenarios. Legal and ethical frameworks are evolving alongside technology. These vehicles promise reduced accidents and greater convenience. Self-driving cars are redefining how we travel in the modern world.</p></div></div>
-</div>
+<div class="article"><h3>Top 10 Family Cars 2025</h3><p>Looking for the perfect family car? In 2025, several models combine safety, comfort, and efficiency. SUVs and crossovers provide spacious interiors and modern infotainment. Fuel efficiency and low maintenance are important factors. Safety ratings make these cars reliable for all passengers. Family-friendly vehicles have never been better.</p></div>
+<div class="article"><h3>Best SUVs for Every Budget</h3><p>SUVs dominate the market with versatility and style. From affordable to luxury, there are options for all budgets. Advanced safety features protect your family and passengers. Storage capacity and driving comfort are prioritized. Modern tech enhances convenience and driving pleasure. Every SUV offers a unique combination of performance and utility.</p></div>
+<div class="article"><h3>Luxury Sedans Redefined</h3><p>Luxury sedans offer refined comfort, technology, and elegant design. In 2025, top models feature advanced infotainment and driver assistance. Interior materials are premium and ergonomically designed. Performance and fuel efficiency are balanced for everyday use. Safety systems provide peace of mind. Sedans combine prestige with practical usability.</p></div>
+<div class="article"><h3>Electric Cars to Watch</h3><p>Electric vehicles are rapidly changing the automotive industry. New battery technology provides longer range and faster charging. 2025 introduces several innovative EV models. Performance now rivals traditional gasoline cars. Sustainability and low maintenance make EVs highly desirable. They represent the future of personal transportation.</p></div>
+<div class="article"><h3>Affordable Sports Cars</h3><p>Exciting sports cars are now accessible to more drivers. Sleek design, responsive handling, and turbocharged engines offer fun without overspending. Safety features are modern and reliable. Interior technology enhances driver experience. Perfect for enthusiasts who crave thrill and performance. Affordable options make sports cars attainable for everyone.</p></div>
+<div class="article"><h3>Luxury Cars Review 2025</h3><p>Luxury vehicles offer premium interiors and advanced technology. Ride quality, comfort, and design are carefully crafted. 2025 models include hybrid and electric options. Performance metrics like acceleration and handling are impressive. Safety and innovation are prioritized. Luxury cars provide unmatched driving experiences for owners.</p></div>
+<div class="article"><h3>Concept Cars Coming Soon</h3><p>Concept cars give a glimpse of the automotive future. Manufacturers showcase autonomous and AI-assisted designs. Innovative interiors and futuristic exteriors inspire next-generation vehicles. Performance and sustainability are tested in prototypes. Concepts influence production models and trends. They excite enthusiasts with cutting-edge ideas.</p></div>
+<div class="article"><h3>Car Maintenance Tips</h3><p>Regular maintenance ensures long vehicle life and safety. Essential tips include tire care, oil changes, and seasonal checks. 2025 cars include advanced electronic diagnostics. Preventive care reduces costly repairs. Safety and performance improve with proper maintenance. Following guidelines protects your investment.</p></div>
+<div class="article"><h3>Fastest Cars in the World</h3><p>High-performance cars reach extreme speeds with precision handling. 2025 models feature aerodynamics, lightweight materials, and powerful engines. Acceleration and braking performance are optimized. Luxury and comfort are balanced with speed. These cars represent the pinnacle of automotive engineering. Enthusiasts admire their design and capabilities.</p></div>
+<div class="article"><h3>The Future of Self-Driving Cars</h3><p>Autonomous vehicles are becoming closer to reality. Advanced sensors, AI algorithms, and safety redundancies define 2025 models. Companies test cars in urban and highway scenarios. Legal and ethical frameworks evolve with technology. Reduced accidents and convenience are promised. Self-driving vehicles are reshaping transportation.</p></div>
 </section>
 
-<!-- Next: Supercars Section -->
+<!-- Supercars Section -->
 <section id="supercars">
 <h2>Supercars</h2>
-<div class="articles">
-<!-- 10 Supercar articles with 4–6 lines each -->
-<div class="card"><img src="https://source.unsplash.com/400x200/?supercar"><div class="card-content"><h3>Top Hypercars 2025</h3><p>2025 hypercars redefine speed and design. With advanced aerodynamics, hybrid powertrains, and extreme acceleration, these vehicles dominate racetracks and streets. Each model offers unique engineering breakthroughs, from active aerodynamics to lightweight carbon fiber chassis. Luxury interiors provide comfort without compromising performance. Safety, tech, and prestige blend perfectly in these masterpieces. Hypercars push automotive boundaries further than ever.</p></div></div>
-<!-- Remaining 9 supercar articles follow same structure -->
-<div class="card"><img src="https://source.unsplash.com/400x200/?lamborghini"><div class="card-content"><h3>Lamborghini’s 2025 Lineup</h3><p>Lamborghini continues to impress with extreme performance and iconic design. V12 engines roar while hybrid models combine efficiency and speed. Innovative interiors feature premium leather, digital dashboards, and customizable tech. Handling and aerodynamics ensure thrilling rides. Each vehicle is a statement of style, luxury, and adrenaline. The 2025 lineup is breathtaking for collectors and enthusiasts alike.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?ferrari"><div class="card-content"><h3>Ferrari Innovations</h3><p>Ferrari blends heritage with cutting-edge innovation. The 2025 models introduce advanced hybrid systems, AI-assisted driving, and stunning aerodynamic designs. Interiors are crafted for comfort and control, blending luxury with racing DNA. Performance metrics like acceleration, braking, and cornering are world-class. Ferrari continues to dominate supercar discussions globally. Passion, power, and precision define every vehicle.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?porsche"><div class="card-content"><h3>Porsche’s 2025 Masterpieces</h3><p>Porsche’s latest 2025 models are engineering marvels. Combining hybrid tech with classic driving pleasure, these supercars deliver unmatched agility. Aerodynamics, lightweight materials, and tech integration enhance performance. Interiors merge driver-focused design with modern infotainment. Porsche balances daily usability with track-ready performance. Fans and collectors will admire every detail of these vehicles.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?mclaren"><div class="card-content"><h3>McLaren 2025 Review</h3><p>McLaren continues to dominate the supercar world with sleek designs and lightweight engineering. Hybrid engines boost performance and reduce emissions. Aerodynamic efficiency allows extreme speed while maintaining control. Interiors are minimalist yet luxurious, prioritizing driver experience. Advanced tech, from AI-assisted suspension to telemetry, is standard. McLaren sets new benchmarks for 2025 supercars.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?astonmartin"><div class="card-content"><h3>Aston Martin’s Future Models</h3><p>Aston Martin fuses elegance with power in 2025 models. Sleek exteriors, luxury interiors, and responsive engines provide an extraordinary experience. Advanced hybrid options enhance performance and sustainability. Each car represents timeless style combined with modern innovation. Safety and driver assistance features are seamlessly integrated. Aston Martin continues to appeal to enthusiasts who value both beauty and speed.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?bugatti"><div class="card-content"><h3>Bugatti Extreme Speed</h3><p>Bugatti redefines limits with 2025 hypercars that reach incredible top speeds. Quad-turbo engines, aerodynamic optimization, and cutting-edge materials ensure performance. Interior luxury complements the engineering prowess. Every car is a testament to craftsmanship and technology. Safety and control systems allow drivers to harness extreme power safely. Bugatti remains the ultimate in automotive excellence.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?koenigsegg"><div class="card-content"><h3>Koenigsegg Innovations</h3><p>Koenigsegg continues to push engineering boundaries with 2025 models featuring hybrid power, lightweight materials, and AI-assisted controls. Exceptional acceleration, handling, and braking define each car. Interiors are functional yet luxurious, optimized for driving experience. Advanced safety tech ensures control at extreme speeds. Koenigsegg remains a symbol of engineering excellence and innovation.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?pagani"><div class="card-content"><h3>Pagani Masterpieces</h3><p>Pagani blends art with automotive performance. 2025 models showcase handcrafted details, exquisite interiors, and extreme performance. Engineered for speed, precision, and style, these cars are collector’s items. Lightweight materials and hybrid tech enhance dynamics. Each vehicle is unique, with customization options available. Pagani continues to inspire awe in the supercar community worldwide.</p></div></div>
-<div class="card"><img src="https://source.unsplash.com/400x200/?supercar"><div class="card-content"><h3>Supercar Technology Advances</h3><p>The 2025 supercar landscape integrates advanced AI, hybrid systems, and active aerodynamics. Engineers balance extreme performance with safety and efficiency. Digital dashboards, driver assists, and smart materials improve experience. Cutting-edge design elevates aesthetics while improving speed and handling. The future of supercars combines adrenaline, luxury, and technological innovation in perfect harmony.</p></div></div>
-</div>
+<div class="article"><h3>Top Hypercars 2025</h3><p>2025 hypercars redefine speed and design. Aerodynamics, hybrid powertrains, and extreme acceleration dominate. Engineering breakthroughs like carbon fiber chassis enhance performance. Luxury interiors complement speed. Safety and tech integration are advanced. Hypercars push the limits of automotive innovation.</p></div>
+<div class="article"><h3>Lamborghini’s 2025 Lineup</h3><p>Lamborghini delivers extreme performance with iconic design. V12 engines and hybrid models provide speed and efficiency. Interiors combine luxury with advanced technology. Handling and aerodynamics are optimized. These cars are statements of style and adrenaline. The 2025 lineup is impressive for enthusiasts and collectors.</p></div>
+<div class="article"><h3>Ferrari Innovations</h3><p>Ferrari balances heritage and cutting-edge innovation. Hybrid systems, AI-assisted driving, and aerodynamic designs lead the 2025 lineup. Interiors blend comfort with racing DNA. Acceleration, braking, and handling remain world-class. Ferrari continues to dominate supercar discussions. Passion, precision, and power define every vehicle.</p></div>
+<div class="article"><h3>Porsche’s 2025 Masterpieces</h3><p>Porsche blends hybrid technology with classic driving pleasure. Aerodynamics and lightweight materials enhance performance. Interiors merge driver-focused design with modern technology. Daily usability combines with track-ready features. Fans admire precision engineering and attention to detail. Porsche maintains excellence in supercars.</p></div>
+<div class="article"><h3>McLaren 2025 Review</h3><p>McLaren showcases sleek designs and lightweight engineering. Hybrid engines boost performance. Aerodynamic efficiency enables extreme speed with control. Interiors are luxurious yet functional. Advanced tech, like AI-assisted suspension, is standard. McLaren sets benchmarks in supercar performance and innovation.</p></div>
+<div class="article"><h3>Aston Martin’s Future Models</h3><p>Aston Martin fuses elegance with power in 2025. Sleek exteriors and responsive engines provide excitement. Hybrid options improve efficiency. Each car represents modern style and timeless appeal. Safety and driver assistance features are included. Aston Martin delivers luxury and performance.</p></div>
+<div class="article"><h3>Bugatti Extreme Speed</h3><p>Bugatti hypercars reach incredible top speeds. Quad-turbo engines, aerodynamics, and high-tech materials dominate. Interiors combine luxury with performance. Craftsmanship meets cutting-edge technology. Safety systems maintain control at extreme speeds. Bugatti remains a pinnacle of automotive engineering.</p></div>
+<div class="article"><h3>Koenigsegg Innovations</h3><p>Koenigsegg pushes engineering boundaries with hybrid power and lightweight materials. Acceleration, handling, and braking are exceptional. Interiors are luxurious and driver-focused. Safety technology ensures control at high speeds. Koenigsegg is synonymous with innovation and precision. Each vehicle is a masterpiece.</p></div>
+<div class="article"><h3>Pagani Masterpieces</h3><p>Pagani combines art with automotive performance. Handcrafted details, exquisite interiors, and extreme performance define 2025 models. Lightweight materials and hybrid technology enhance dynamics. Customization options make each car unique. Pagani inspires awe in enthusiasts and collectors. The brand represents passion and exclusivity.</p></div>
+<div class="article"><h3>Supercar Technology Advances</h3><p>2025 supercars integrate AI, hybrid systems, and advanced aerodynamics. Performance, safety, and efficiency are optimized. Digital dashboards and driver assists enhance control. Design combines aesthetics and function. Luxury, speed, and technology merge perfectly. The supercar world evolves continuously with innovation.</p></div>
 </section>
 
-<!-- Next: Tech & Gadgets, Reviews & Comparisons, Top 10 & Facts -->
-<!-- Due to extreme length, remaining sections will follow the same card structure with 10 articles each -->
+<!-- Tech & Gadgets Section -->
+<section id="tech">
+<h2>Tech & Gadgets</h2>
+<div class="article"><h3>Top Smartphones of 2025</h3><p>The latest smartphones combine speed, display quality, and camera excellence. AI-driven features enhance user experience. Battery life and charging technology are improved. Build quality and design remain sleek and ergonomic. Software updates ensure longevity. 2025 smartphones set new industry standards.</p></div>
+<div class="article"><h3>Best Laptops for Students</h3><p>2025 laptops focus on portability, performance, and battery life. Lightweight designs with powerful processors suit students. Security features protect data and privacy. Displays and keyboards enhance productivity. Affordable options are available without sacrificing quality. Laptops support both study and entertainment needs.</p></div>
+<div class="article"><h3>Top Gaming Consoles</h3><p>Gaming consoles now offer immersive experiences with high-resolution graphics. 2025 models feature faster processors, expanded storage, and online services. Exclusive titles and multiplayer connectivity engage players. Controllers and VR accessories improve interaction. Consoles balance performance and entertainment. Gaming reaches new heights of realism and fun.</p></div>
+<div class="article"><h3>Smart Home Devices</h3><p>Smart home technology simplifies everyday life. AI-powered assistants control lights, temperature, and security. Integration with smartphones allows remote access. Energy efficiency and convenience are improved. 2025 devices are intuitive, user-friendly, and increasingly affordable. Homes become smarter and safer.</p></div>
+<div class="article"><h3>Wearable Tech Trends</h3><p>Smartwatches and fitness trackers monitor health, fitness, and sleep. Advanced sensors and AI provide personalized insights. 2025 models include contactless payments and notifications. Battery life and design are improved. Wearable tech enhances lifestyle and convenience. Health tracking and productivity tools are integrated seamlessly.</p></div>
+<div class="article"><h3>Tablets vs Laptops</h3><p>Tablets are becoming more versatile with powerful processors and stylus support. Laptops still dominate productivity tasks. 2025 models blur lines with hybrid designs. Portability, display quality, and app compatibility are key factors. Users choose devices based on work, study, or entertainment needs. Both tablets and laptops evolve for efficiency and usability.</p></div>
+<div class="article"><h3>Top Headphones 2025</h3><p>Noise-canceling headphones improve focus and immersion. 2025 models feature superior audio quality and wireless connectivity. Comfort, battery life, and durability are priorities. Integration with devices allows seamless control. Sound quality enhances music, gaming, and calls. Headphones combine performance with style.</p></div>
+<div class="article"><h3>Innovations in AI Gadgets</h3><p>AI-driven gadgets revolutionize daily life. Smart assistants, home devices, and wearables adapt to user behavior. 2025 devices predict needs and automate tasks. Security and privacy are integral. AI enhances efficiency, convenience, and lifestyle. Technological progress continues rapidly in personal gadgets.</p></div>
+<div class="article"><h3>Top Drones of 2025</h3><p>Drones now offer improved stability, camera quality, and AI-assisted flight. 2025 models are compact yet powerful. Applications range from photography to delivery services. Battery life and portability are enhanced. Safety features ensure responsible operation. Drones continue to expand possibilities in technology and entertainment.</p></div>
+<div class="article"><h3>Virtual Reality Gadgets</h3><p>VR devices provide immersive gaming and simulation experiences. 2025 models offer higher resolution, wider field of view, and ergonomic design. Wireless connectivity improves comfort and freedom. VR integrates with education, training, and entertainment. Accessibility and affordability are improving. Virtual reality transforms digital experiences for users worldwide.</p></div>
+</section>
 
+<!-- Reviews & Comparisons Section -->
+<section id="reviews">
+<h2>Reviews & Comparisons</h2>
+<div class="article"><h3>Smartphone Camera Comparison</h3><p>2025 flagship smartphones are compared based on camera quality, AI features, and low-light performance. Image stabilization, video capabilities, and software enhancements matter. Reviews highlight the best performers in photography and video. Comparison charts help users choose wisely. Innovation and quality define camera performance. User experience is central in evaluations.</p></div>
+<div class="article"><h3>Laptop Battery Life Test</h3><p>Laptops are evaluated for endurance, performance, and portability. 2025 models show improvements in battery technology. Efficiency in real-world usage is considered. Charging speed, display quality, and multitasking ability are tested. Comprehensive reviews guide consumers. Battery life remains a critical factor in purchase decisions.</p></div>
+<div class="article"><h3>Electric vs Gas Cars</h3><p>Electric vehicles are compared to gasoline cars in performance, cost, and environmental impact. 2025 EVs offer comparable acceleration and handling. Maintenance costs are lower for EVs. Charging infrastructure improves usability. Long-term benefits and drawbacks are analyzed. Consumers make informed decisions based on comparison.</p></div>
+<div class="article"><h3>Top 5 Smartwatches Reviewed</h3><p>Wearable technology is evaluated for design, features, and battery life. Fitness tracking, notifications, and AI capabilities are assessed. 2025 models excel in integration with smartphones. Reviews help buyers select devices that match lifestyle needs. Performance, comfort, and software stability are key factors. Smartwatch comparisons highlight innovation and value.</p></div>
+<div class="article"><h3>Gaming Console Battle</h3><p>2025 consoles are compared in graphics, gameplay, and exclusive content. Performance benchmarks and load times are measured. Multiplayer and online services are evaluated. Ergonomics and accessory support are considered. Reviews inform gaming enthusiasts about pros and cons. Choosing the right console depends on priorities and preferences.</p></div>
+<div class="article"><h3>Tablet Performance Test</h3><p>Tablets are assessed for speed, display quality, and battery life. 2025 models show improved multitasking and app compatibility. Stylus and accessory support enhance productivity. User interface and operating system stability are reviewed. Comparisons provide insight for students, professionals, and creators. Performance and value are key evaluation metrics.</p></div>
+<div class="article"><h3>Headphone Sound Test</h3><p>Audio devices are tested for clarity, bass, and noise cancellation. Comfort, battery life, and wireless stability are measured. 2025 models demonstrate improvements in soundstage and ergonomics. Comparisons guide consumers toward the best audio experience. Design and functionality are balanced. Headphones are selected based on performance and usability.</p></div>
+<div class="article"><h3>VR Device Review</h3><p>Virtual reality devices are assessed for immersion, comfort, and compatibility. 2025 models feature improved resolution, wireless performance, and tracking. Gaming, education, and professional applications are tested. Reviews evaluate usability and technology integration. Comparisons highlight the best devices in each category. VR continues to evolve rapidly.</p></div>
+<div class="article"><h3>Top Car Models Compared</h3><p>2025 cars are compared for performance, safety, and features. Family, sports, and electric cars are included. Reviews highlight value, efficiency, and reliability. Interior quality and technology integration are assessed. Consumers receive guidance for informed decisions. Comparison tables summarize key metrics and advantages.</p></div>
+<div class="article"><h3>Smart Home Gadgets Reviewed</h3><p>2025 smart devices are tested for usability, integration, and AI capabilities. Security, convenience, and energy efficiency are evaluated. Compatibility with smartphones and assistants is important. Reviews focus on practical performance and value. Users receive guidance for effective smart home setup. Comparisons highlight the best-performing gadgets.</p></div>
+</section>
+
+<!-- Top 10 & Facts Section -->
+<section id="top10">
+<h2>Top 10 & Facts</h2>
+<div class="article"><h3>Top 10 Cars of 2025</h3><p>The ultimate list of cars combines performance, safety, and design. 2025 selections include SUVs, sports, and luxury sedans. Criteria include value, reliability, and innovation. Experts analyze features and user reviews. Rankings help enthusiasts and buyers make decisions. These vehicles stand out for excellence in multiple categories.</p></div>
+<div class="article"><h3>Top 10 Supercars 2025</h3><p>Supercars are ranked by speed, engineering, and aesthetics. 2025 hypercars dominate with hybrid technology and aerodynamic design. Interior luxury and technology integration are considered. Rankings reflect performance benchmarks. Enthusiasts gain insights into the most exciting cars. Supercars inspire and captivate the automotive world.</p></div>
+<div class="article"><h3>Top 10 Tech Gadgets</h3><p>2025 tech gadgets include smartphones, wearables, and VR devices. Rankings consider innovation, usability, and value. AI integration and connectivity enhance functionality. Performance and design are key factors. Top gadgets set industry trends. Consumers can explore the best devices for lifestyle and work needs.</p></div>
+<div class="article"><h3>Top 10 Laptops 2025</h3><p>Laptops are ranked for performance, portability, and battery life. 2025 models cater to students, professionals, and gamers. Features include processors, displays, and storage. Rankings highlight the best balance of value and capability. Reviews help buyers make informed choices. Laptops continue to evolve with technology trends.</p></div>
+<div class="article"><h3>Top 10 Smartphones 2025</h3><p>Smartphones are ranked on performance, camera quality, and battery life. 2025 models show improvements in AI features and display technology. Value for money and ecosystem compatibility are considered. Rankings provide guidance for buyers. Devices reflect innovation and consumer needs. Smartphone evolution continues at a rapid pace.</p></div>
+<div class="article"><h3>Top 10 Cars Facts</h3><p>Interesting automotive facts highlight history, technology, and performance. 2025 advancements include hybrid and electric innovations. Industry milestones and engineering breakthroughs are discussed. Fun and informative content engages enthusiasts. Facts provide context for current trends. Knowledge enhances appreciation of the automotive world.</p></div>
+<div class="article"><h3>Top 10 Supercar Facts</h3><p>Supercars combine speed, design, and engineering marvels. 2025 innovations include hybrid systems and AI assistance. Historical milestones and records are highlighted. Facts provide insights into production, performance, and rarity. Enthusiasts learn about technology and heritage. Supercars remain symbols of excellence and aspiration.</p></div>
+<div class="article"><h3>Top 10 Gaming Facts</h3><p>Gaming technology evolves rapidly with VR, consoles, and AI. 2025 trends highlight performance, graphics, and innovation. Historical milestones and industry growth are discussed. Fun facts engage gamers and tech enthusiasts. Rankings provide insight into the most impactful games and devices. Gaming culture and technology continue to expand.</p></div>
+<div class="article"><h3>Top 10 Tech Facts</h3><p>Technology shapes daily life and industry. 2025 facts include AI, smart devices, and connectivity trends. Innovations impact work, education, and entertainment. Historical context shows progress over time. Facts provide insights into tech evolution. Understanding technology enhances lifestyle and opportunities.</p></div>
+<div class="article"><h3>Top 10 Automotive Innovations</h3><p>Automotive innovation drives performance, safety, and sustainability. 2025 breakthroughs include electric and autonomous vehicles. Materials, design, and technology evolve rapidly. Facts highlight milestones, challenges, and achievements. Industry leaders and models are discussed. Innovation ensures future mobility is exciting and safe.</p></div>
+</section>
+
+<!-- Subscription Section -->
 <section id="subscribe">
 <h2>Subscribe for Updates</h2>
-<p>Get the latest car & tech news directly to your inbox. Weekly updates with reviews, top 10 lists, and exclusive insights for enthusiasts and tech lovers alike. Stay ahead of trends and never miss important updates in the automotive and tech world.</p>
+<p>Get the latest car & tech news delivered to your inbox. Weekly updates include reviews, top 10 lists, and exclusive insights. Stay informed and ahead of trends in the automotive and tech world.</p>
 <form id="subscribeForm">
 <input type="email" id="email" placeholder="Enter your email" required>
 <button type="submit">Subscribe</button>
@@ -138,7 +195,6 @@ setInterval(() => {
 </section>
 
 <script>
-// Subscription JS
 const form = document.getElementById('subscribeForm');
 const message = document.getElementById('subMessage');
 form.addEventListener('submit', function(e){
