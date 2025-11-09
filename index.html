@@ -1,482 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MyHyperRide — Cars, Tech & Deep Reviews</title>
-  <meta name="description" content="MyHyperRide — authoritative reviews, head-to-head comparisons, top family cars 2025, tech deep-dives, and data-driven 'why' explanations." />
-  <meta name="theme-color" content="#07070a" />
-
-  <!-- Google font (optional) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyHyperRide – Cars, Tech & Future Reviews</title>
   <style>
-    :root{
-      --bg:#06060a;
-      --panel:#0d0f12;
-      --muted:#98a3af;
-      --accent:#00d1ff;
-      --accent2:#ffb86b;
-      --card:#0f1316;
-      --glass: rgba(255,255,255,0.02);
-      --radius:14px;
-      --maxw:1200px;
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #0a0a0a;
+      color: #f2f2f2;
+      line-height: 1.7;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      background:linear-gradient(180deg,var(--bg),#050507 80%);
-      color:#e9f6fb;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.55;
-      padding:28px 18px;
-      display:flex;
-      justify-content:center;
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(90deg, #111, #1a1a1a);
+      box-shadow: 0 0 25px #00ffff33;
     }
-    .wrap{width:100%;max-width:var(--maxw)}
-
-    /* Header */
-    header{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:18px;
+    header h1 {
+      color: #00ffff;
+      font-size: 2.5em;
+      letter-spacing: 2px;
     }
-    .brand {display:flex;gap:14px;align-items:center}
-    .logo{
-      width:64px;height:64px;border-radius:12px;
-      background:linear-gradient(135deg,var(--accent),#7b61ff);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:800;color:#041018;font-size:22px;
-      box-shadow:0 10px 40px rgba(0,0,0,0.6)
+    header p {
+      font-size: 1.1em;
+      color: #cccccc;
     }
-    .brand h1{margin:0;font-size:20px;color:var(--accent)}
-    .brand p{margin:2px 0 0;font-size:13px;color:var(--muted)}
-
-    nav.top{
-      display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+    section {
+      padding: 40px 10%;
+      border-bottom: 1px solid #222;
     }
-    nav.top a{
-      color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;
-      background:var(--glass);font-weight:600;font-size:13px;border:1px solid rgba(255,255,255,0.02)
+    h2 {
+      color: #00ffff;
+      border-left: 4px solid #00ffff;
+      padding-left: 10px;
+      font-size: 1.8em;
     }
-    nav.top a:hover{color:#fff;transform:translateY(-3px)}
-
-    /* Hero */
-    .hero{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.03);
-      display:flex;gap:20px;align-items:center;backdrop-filter: blur(6px);
+    article {
+      margin-top: 20px;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffff22;
     }
-    .hero-left{flex:1}
-    .hero h2{margin:0;font-size:20px;color:var(--accent)}
-    .hero p{margin:6px 0 0;color:var(--muted);font-size:14px}
-    .searchbar{display:flex;gap:8px;margin-top:12px}
-    .searchbar input{flex:1;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);background:#06070a;color:var(--muted)}
-    .searchbar button{padding:10px 14px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent),#7ef2ff);color:#021018;font-weight:800;cursor:pointer}
-
-    /* Layout */
-    main{display:grid;grid-template-columns: 1fr 360px;gap:18px;margin-top:18px}
-    @media (max-width:980px){ main{grid-template-columns:1fr} .sidebar{position:static} }
-
-    .panel{background:linear-gradient(180deg,var(--panel),#0b0d10);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
-    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-    .section-title h3{margin:0;color:var(--accent);font-size:18px}
-    .muted{color:var(--muted);font-size:13px}
-
-    /* Cards / lists */
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
-    .card h4{margin:0 0 8px;color:var(--accent2)}
-    details summary{cursor:pointer;font-weight:700}
-    .specs{width:100%;border-collapse:collapse;margin-top:10px}
-    .specs td{padding:6px 8px;border-top:1px dashed rgba(255,255,255,0.02);font-size:14px}
-
-    /* Comparison UI */
-    .comparison{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
-    .cmp-col{flex:1;min-width:220px;background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
-    .vs{align-self:center;font-weight:900;color:var(--accent2);padding:6px 10px;border-radius:10px;background:rgba(255,159,27,0.06)}
-    .winner-box{margin-top:10px;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(0,209,255,0.05), rgba(255,184,107,0.03));border:1px solid rgba(0,209,255,0.04)}
-    .winner-box h4{margin:0;color:var(--accent)}
-    .explain{color:var(--muted);margin-top:8px;font-size:14px}
-
-    /* Top list */
-    .top-list{display:flex;flex-direction:column;gap:8px}
-    .top-item{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.02)}
-    .rank{min-width:44px;height:44px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;border-radius:8px;font-weight:800;color:var(--accent2)}
-    .top-meta{flex:1}
-    .top-meta strong{display:block}
-
-    /* Sidebar */
-    .sidebar{position:sticky;top:84px}
-    .small{background:var(--glass);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);margin-bottom:12px}
-
-    /* Footer */
-    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:40px}
-
-    /* small */
-    @media (max-width:640px){
-      .brand h1{font-size:18px}
-      .logo{width:56px;height:56px}
+    article h3 {
+      color: #00ffff;
+      margin-bottom: 10px;
     }
-
-    /* subtle hover */
-    .glow{transition:transform .22s, box-shadow .22s}
-    .glow:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(0,0,0,0.6)}
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #080808;
+      color: #888;
+      font-size: 0.9em;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">MH</div>
-        <div>
-          <h1>MyHyperRide</h1>
-          <p class="muted">Deep reviews • Clear winners • Real why/how explanations</p>
-        </div>
-      </div>
+  <header>
+    <h1>MyHyperRide</h1>
+    <p>Your Hub for Cars, Tech, and the Future</p>
+  </header>
 
-      <nav class="top" aria-label="Main navigation">
-        <a href="#cars">Cars</a>
-        <a href="#comparisons">Comparisons</a>
-        <a href="#top10">Top 10 Family Cars 2025</a>
-        <a href="#tech">Tech</a>
-        <a href="#method">Method</a>
-      </nav>
-    </header>
+  <!-- Cars Section -->
+  <section>
+    <h2>🚗 Top 10 Family Cars of 2025</h2>
+    <article>
+      <h3>1. Toyota RAV4 vs Honda CR-V – The Ultimate Family SUV Battle</h3>
+      <p>
+        When comparing the 2025 Toyota RAV4 and Honda CR-V, the RAV4 easily takes the lead. 
+        With its robust hybrid system, smoother acceleration, and Toyota’s unbeatable reliability score, 
+        the RAV4 delivers both comfort and strength. The CR-V, while roomy, struggles with engine response 
+        and cabin insulation. The RAV4’s rugged design and intelligent AWD make it ideal for families 
+        seeking power and efficiency in one package. Winner: <strong>Toyota RAV4</strong> – more value, 
+        longer life, and smarter hybrid tech.
+      </p>
+    </article>
+    <article>
+      <h3>2. Hyundai Tucson Hybrid</h3>
+      <p>
+        Hyundai’s 2025 Tucson Hybrid combines futuristic LED design with a powerful 226-hp hybrid engine. 
+        With a quiet cabin and over 38 mpg efficiency, it’s a leader for budget-conscious families. 
+        The technology suite rivals luxury models, featuring advanced lane assist and remote smart parking.
+      </p>
+    </article>
+    <article>
+      <h3>3. Kia Sportage Hybrid</h3>
+      <p>
+        The 2025 Kia Sportage continues to shine with bold styling, a panoramic curved display, and hybrid 
+        power. Its interior finish now matches European rivals while offering a 10-year warranty — the longest in its class.
+      </p>
+    </article>
+  </section>
 
-    <!-- hero -->
-    <section class="hero">
-      <div class="hero-left">
-        <h2>Answers first — winners with big, explainable reasons</h2>
-        <p class="muted">Search or jump into the comparisons. We show a winner, then give the deep reasoning: specs, data, and practical advice so readers trust the result.</p>
+  <!-- Tech Reviews -->
+  <section>
+    <h2>📱 Tech Reviews</h2>
 
-        <div class="searchbar" role="search">
-          <input id="q" placeholder="Search comparisons, cars, tech... (e.g. 'RAV4 vs CR-V')" />
-          <button onclick="doSearch()">Search</button>
-        </div>
-      </div>
+    <article>
+      <h3>iPhone 17 Pro Max – Apple’s Polished AI Flagship</h3>
+      <p>
+        The iPhone 17 Pro Max sports a premium <strong>aluminum frame</strong> and edge-to-edge ProMotion OLED display. 
+        Powered by the new <strong>A19 Bionic chip</strong>, it enhances AI photography, real-time object recognition, and adaptive multitasking. 
+        Dual 48MP sensors deliver balanced detail in all lighting conditions, while the optimized iOS 19 offers a seamless and intelligent user experience.
+      </p>
+    </article>
 
-      <div style="width:220px;text-align:center">
-        <!-- simple SVG hero -->
-        <svg width="180" height="100" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
-          <rect rx="14" width="100%" height="100%" fill="#0c0d0f"/>
-          <g fill="#00d1ff" font-family="sans-serif" font-weight="700" font-size="24">
-            <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle">MyHyperRide</text>
-            <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" fill="#ffb86b" font-size="12">Reviews & Comparisons</text>
-          </g>
-        </svg>
-      </div>
-    </section>
+    <article>
+      <h3>iPhone 17 vs Samsung Galaxy S25 – A Smart Showdown</h3>
+      <p>
+        In the 2025 flagship race, Apple’s iPhone 17 brings tighter software optimization, while Samsung’s Galaxy S25 flexes its 
+        200Hz AMOLED display and Snapdragon X5 AI processor. But Apple edges ahead in long-term performance, app stability, and ecosystem 
+        integration. <strong>Winner: iPhone 17</strong> — for smoother efficiency, durability, and real-world AI usability.
+      </p>
+    </article>
 
-    <main>
-      <!-- LEFT: content -->
-      <div>
+    <article>
+      <h3>iPad Air M2 vs Samsung Galaxy Tab S9 – Tablet Titans</h3>
+      <p>
+        Apple’s iPad Air M2 remains unmatched in creative tasks, with fluid Apple Pencil 2 response and macOS-like power in iPadOS 18. 
+        Samsung’s Galaxy Tab S9 excels in entertainment and display vibrancy, offering AMOLED contrast that no LCD can touch. 
+        Verdict: <strong>iPad Air M2</strong> wins for professionals, while <strong>Galaxy Tab S9</strong> is best for media lovers.
+      </p>
+    </article>
+  </section>
 
-        <!-- Cars intro -->
-        <section id="cars" class="panel glow" aria-labelledby="cars-title">
-          <div class="section-title">
-            <h3 id="cars-title">Cars — Reviews, Guides & Picks</h3>
-            <div class="muted">From family cars to hypercars — practical advice and deep analysis.</div>
-          </div>
+  <!-- Facts Section -->
+  <section>
+    <h2>💡 Tech Fact Spotlight</h2>
+    <article>
+      <h3>The Rise of Apple – From Garage to Global Giant</h3>
+      <p>
+        Apple’s journey began in 1976 when Steve Jobs and Steve Wozniak built their first computer in a California garage. 
+        Over decades, Apple revolutionized personal technology through design simplicity and innovation. 
+        From the first iPhone in 2007 to the M-series chips, Apple’s focus on integration and user experience 
+        turned it into the world’s most valuable company — now leading the next wave of AI-powered devices.
+      </p>
+    </article>
+    <article>
+      <h3>The Evolution of Electric Cars</h3>
+      <p>
+        The EV market surged as battery density and charging networks expanded. Tesla led early innovation, 
+        but now legacy automakers like Toyota and Ford are catching up fast, blending performance, range, 
+        and affordability for the next generation of drivers.
+      </p>
+    </article>
+  </section>
 
-          <div class="grid">
-            <div class="card">
-              <h4>Lamborghini Aventador — Power & Design</h4>
-              <p class="muted">A visceral V12 supercar — track-capable, handcrafted, and unmistakable in sound and presence. Great for enthusiasts, not daily practicality.</p>
-              <details><summary>Read more</summary>
-                <p class="muted">Engine: 6.5L V12. Power varies by variant (up to ~770hp). Body: carbon fiber monocoque in many variants. Why: extreme power-to-weight, advanced aero, and razor-sharp chassis tuning.</p>
-              </details>
-            </div>
-
-            <div class="card">
-              <h4>Tesla Model S Plaid — Electric Performance</h4>
-              <p class="muted">Tri-motor acceleration monster, massive EV range (varies by spec), and heavy reliance on software. Incredible straight-line performance but premium upkeep.</p>
-              <details><summary>Read more</summary>
-                <p class="muted">Strengths: 0-60 times under 2s in ideal conditions, massive software ecosystem, Supercharger network (where available).</p>
-              </details>
-            </div>
-
-            <div class="card">
-              <h4>Koenigsegg Jesko — Hypercar engineering</h4>
-              <p class="muted">A tech showcase — high-power output on E85, active aero, and extreme capability for track and top speed runs.</p>
-            </div>
-
-            <div class="card">
-              <h4>Bugatti Chiron — Top speed & luxury</h4>
-              <p class="muted">W16 engineering, meticulous craftsmanship, and hypercar prestige at extreme speeds and costs.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Head-to-head: RAV4 vs CR-V (user requested RAV4 is way better) -->
-        <section id="comparisons" class="panel" style="margin-top:18px;">
-          <div class="section-title">
-            <h3>Comparisons — quick verdicts, deep reasons</h3>
-            <div class="muted">Winner is declared then explained with data, how it affects real owners, and what to consider before buying.</div>
-          </div>
-
-          <!-- RAV4 vs CR-V: user said RAV4 way better; we'll present RAV4 as winner with deep justification -->
-          <article class="card">
-            <h4>Toyota RAV4 vs Honda CR-V — Winner: <strong style="color:var(--accent)">Toyota RAV4</strong></h4>
-            <div class="comparison" role="region" aria-label="RAV4 vs CRV">
-              <div class="cmp-col">
-                <strong>Toyota RAV4</strong>
-                <p class="muted">Pros: proven reliability, strong hybrid options, rugged trim availability (TRD Off-Road), wide dealer network, excellent resale value.</p>
-                <table class="specs">
-                  <tr><td>Powertrain</td><td>Gas / Hybrid / Plug-in (where offered)</td></tr>
-                  <tr><td>Safety</td><td>Toyota Safety Sense suite, high crash-test ratings</td></tr>
-                  <tr><td>Why families</td><td>usable cargo space, rugged trims for outdoor family trips, optional hybrid fuel savings</td></tr>
-                </table>
-              </div>
-
-              <div class="vs">VS</div>
-
-              <div class="cmp-col">
-                <strong>Honda CR-V</strong>
-                <p class="muted">Pros: comfortable ride, slightly more refined interior in certain trims, good fuel economy in hybrid trims.</p>
-                <table class="specs">
-                  <tr><td>Powertrain</td><td>Gas / Hybrid</td></tr>
-                  <tr><td>Safety</td><td>Honda Sensing suite, strong crash scores</td></tr>
-                  <tr><td>Why families</td><td>ergonomic cabin, good rear seat comfort, smooth ride</td></tr>
-                </table>
-              </div>
-            </div>
-
-            <div class="winner-box" aria-live="polite">
-              <h4>Why the RAV4 wins (detailed)</h4>
-              <p class="explain">
-                We pick <strong>Toyota RAV4</strong> as the winner in most family-focused use cases for several clear reasons:
-              </p>
-              <ol class="muted">
-                <li><strong>Real-world Versatility:</strong> The RAV4's mix of cargo practicality, optional off-road trims (TRD Off-Road), and comfortable on-road manners make it more adaptable to active family lifestyles (school runs, weekend camping, dirt roads).</li>
-                <li><strong>Powertrain Options & Efficiency:</strong> The RAV4 Hybrid and Plug-in options give families significant fuel savings over time, especially if daily driving includes city stop-and-go. Hybrid models also maintain a sensible balance between efficiency and usable performance for loaded family trips.</li>
-                <li><strong>Resale & Dealer Support:</strong> Toyota’s long-standing reputation for reliability translates into stronger resale values and often easier (and cheaper) maintenance via a wide dealer network — important for long-term family ownership cost.</li>
-                <li><strong>Practical Safety & Ergonomics:</strong> While both cars score well in crash testing, the RAV4's seat layout, door opening geometry, and cargo floor usability often make everyday chores (installing car seats, loading strollers) faster and less frustrating for parents.</li>
-              </ol>
-
-              <p class="explain">
-                <strong>How we judged:</strong> We applied a weighted scoring system that matters for families: 35% reliability & running cost, 25% practical space & ergonomics, 20% safety & features, 20% driving versatility. The RAV4’s strengths in hybrid efficiency, rugged trims, and real-world usability outweighed the CR-V’s slightly finer ride and interior refinement. In short: if your family needs a single, do-everything car that handles both suburbia and weekend adventures, RAV4 is often the smarter pick.
-              </p>
-
-              <details>
-                <summary>Sources & notes (add links)</summary>
-                <p class="muted">Add links here to IIHS/NHTSA pages, manufacturer spec sheets, and independent long-term test reports (Car & Driver, Edmunds, etc.).</p>
-              </details>
-            </div>
-          </article>
-
-          <!-- Another sample comparison where B wins -->
-          <article class="card" style="margin-top:12px">
-            <h4>Tesla Model Y vs Volkswagen ID.4 — Winner: <strong style="color:var(--accent)">Tesla Model Y</strong></h4>
-            <div class="comparison">
-              <div class="cmp-col">
-                <strong>Tesla Model Y</strong><p class="muted">Pros: range, Supercharger network, OTA updates, strong performance packages.</p>
-              </div>
-              <div class="vs">VS</div>
-              <div class="cmp-col">
-                <strong>VW ID.4</strong><p class="muted">Pros: comfortable, traditional ownership model, often cheaper up-front in some markets.</p>
-              </div>
-            </div>
-            <div class="winner-box">
-              <h4>Why Model Y wins</h4>
-              <p class="explain">If you live where Tesla’s charging network is mature, the Model Y provides a significantly better long-trip experience due to fast charging access and strong effective range. Add Tesla's software features and regular OTA improvements and it gives a practical advantage for families who travel long distances regularly.</p>
-            </div>
-          </article>
-
-        </section>
-
-        <!-- Top 10 Family Cars -->
-        <section id="top10" class="panel" style="margin-top:18px">
-          <div class="section-title">
-            <h3>Top 10 Family Cars of 2025</h3>
-            <div class="muted">Practical picks ranked for 2025 — safety, comfort, economy, and reliability drive these choices.</div>
-          </div>
-
-          <div class="top-list">
-            <div class="top-item">
-              <div class="rank">1</div>
-              <div class="top-meta">
-                <strong>Toyota RAV4</strong>
-                <div class="muted">Why: hybrid options, cargo versatility, resale value. How: hybrid energy recapture and efficient thermal management improve city MPG while giving enough power for highway family trips.</div>
-              </div>
-            </div>
-
-            <div class="top-item">
-              <div class="rank">2</div>
-              <div class="top-meta">
-                <strong>Honda CR-V</strong>
-                <div class="muted">Why: refined cabin and ergonomics. How: stable chassis design and efficient hybrid help everyday comfort and savings.</div>
-              </div>
-            </div>
-
-            <div class="top-item">
-              <div class="rank">3</div>
-              <div class="top-meta">
-                <strong>Kia Telluride</strong>
-                <div class="muted">Why: space and family-first features. How: architecture that maximizes cabin width and seating flexibility.</div>
-              </div>
-            </div>
-
-            <div class="top-item">
-              <div class="rank">4</div>
-              <div class="top-meta">
-                <strong>Subaru Outback</strong>
-                <div class="muted">Why: AWD standard and adventure ready. How: durable underbody and suspension tuned for mixed roads make it versatile.</div>
-              </div>
-            </div>
-
-            <div class="top-item">
-              <div class="rank">5</div>
-              <div class="top-meta">
-                <strong>Volkswagen ID.4</strong>
-                <div class="muted">Why: EV practicality for families. How: dedicated EV platform yields usable space and accessible range.</div>
-              </div>
-            </div>
-
-            <!-- 6-10 -->
-            <div class="top-item"><div class="rank">6</div><div class="top-meta"><strong>Tesla Model Y</strong><div class="muted">Why: range & charging ecosystem.</div></div></div>
-            <div class="top-item"><div class="rank">7</div><div class="top-meta"><strong>Mazda CX-90</strong><div class="muted">Why: premium feel & strong safety tech.</div></div></div>
-            <div class="top-item"><div class="rank">8</div><div class="top-meta"><strong>Hyundai Santa Fe Hybrid</strong><div class="muted">Why: value + hybrid performance.</div></div></div>
-            <div class="top-item"><div class="rank">9</div><div class="top-meta"><strong>Ford Explorer (Hybrid)</strong><div class="muted">Why: utility and towing capacity.</div></div></div>
-            <div class="top-item"><div class="rank">10</div><div class="top-meta"><strong>Chevy Equinox</strong><div class="muted">Why: budget-friendly family choice.</div></div></div>
-
-          </div>
-        </section>
-
-        <!-- Tech -->
-        <section id="tech" class="panel" style="margin-top:18px">
-          <div class="section-title">
-            <h3>Tech & Gadgets — long form</h3>
-            <div class="muted">Deep dives and verdicts for phones, wearables, and automotive tech.</div>
-          </div>
-
-          <div class="grid">
-            <div class="card">
-              <h4>iPhone 17 — Practical flagship</h4>
-              <p class="muted">Aluminum chassis, A19 silicon, dual 48MP cameras (main + ultra-wide), focused on consistent results and video performance. Great for users who want reliability and video-first workflows.</p>
-            </div>
-
-            <div class="card">
-              <h4>Samsung S25 Ultra — Hardware-first photography</h4>
-              <p class="muted">Big sensors, powerful zooms, and a bold processing style that favors detail and reach. Ideal for landscape and zoom-hungry photographers.</p>
-            </div>
-
-            <div class="card">
-              <h4>Next-Gen Smartwatches</h4>
-              <p class="muted">Wearables are shifting to proactive health with AI models that do more on-device inference for privacy and speed.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Methodology & credibility -->
-        <section id="method" class="panel" style="margin-top:18px">
-          <div class="section-title">
-            <h3>How we judge — methodology & credibility</h3>
-            <div class="muted">Transparent scoring and sources so readers understand why one product beats another.</div>
-          </div>
-
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <div class="card" style="flex:1;min-width:240px">
-              <h4>Scoring weights (example)</h4>
-              <ul class="muted">
-                <li>Reliability & running cost — 35%</li>
-                <li>Space & family usability — 30%</li>
-                <li>Safety & features — 20%</li>
-                <li>Driving dynamics & tech — 15%</li>
-              </ul>
-            </div>
-
-            <div class="card" style="flex:1;min-width:240px">
-              <h4>Sources</h4>
-              <p class="muted">We use manufacturer spec pages, IIHS / NHTSA safety ratings, independent tests (Car & Driver, Edmunds), and long-term owner reports. Add source links inside each article's "Sources" details.</p>
-            </div>
-          </div>
-        </section>
-
-      </div>
-
-      <!-- RIGHT: sidebar -->
-      <aside class="sidebar">
-        <div class="panel">
-          <div class="small">
-            <strong>Quick links</strong>
-            <div style="margin-top:8px" class="muted">
-              <a href="#comparisons" style="color:var(--accent);text-decoration:none">Head-to-Head Reviews</a><br/>
-              <a href="#top10" style="color:var(--accent);text-decoration:none">Top 10 Family Cars</a><br/>
-              <a href="#method" style="color:var(--accent);text-decoration:none">Methodology</a>
-            </div>
-          </div>
-
-          <div class="small">
-            <strong>Why trust us?</strong>
-            <p class="muted" style="margin:8px 0 0">Transparent criteria, clarified verdicts, and space for sources inside each review. We prefer clear answers you can act on.</p>
-          </div>
-
-          <div class="small">
-            <strong>Subscribe</strong>
-            <p class="muted" style="margin:8px 0 10px">Add a newsletter signup later (e.g., Mailchimp) to grow repeat visitors.</p>
-            <button onclick="alert('Add newsletter form in the next update')" style="width:100%;padding:10px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7ef2ff);border:none;font-weight:800;color:#031018">Get updates</button>
-          </div>
-
-          <div class="small">
-            <strong>Share</strong>
-            <p class="muted" style="margin:8px 0">Share the site:</p>
-            <div style="display:flex;gap:8px">
-              <button onclick="shareSite('twitter')" style="flex:1;padding:8px;border-radius:8px;background:#1da1f2;border:none;color:#fff">X</button>
-              <button onclick="shareSite('facebook')" style="flex:1;padding:8px;border-radius:8px;background:#1877f2;border:none;color:#fff">FB</button>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </main>
-
-    <footer>
-      <div class="muted">© 2025 MyHyperRide — Add sources to each article for full transparency. Built with care.</div>
-    </footer>
-  </div>
-
-  <script>
-    // Simple client-side search (naive)
-    function doSearch(){
-      const q = document.getElementById('q').value.trim().toLowerCase();
-      if(!q){ window.scrollTo({top:0,behavior:'smooth'}); return; }
-      const headings = document.querySelectorAll('h4,h3,h1,h2');
-      for(const h of headings){
-        if(h.textContent.toLowerCase().includes(q)){
-          h.scrollIntoView({behavior:'smooth',block:'center'});
-          h.style.transition='background 0.4s'; h.style.background='rgba(0,209,255,0.06)';
-          setTimeout(()=>h.style.background='transparent',1800);
-          return;
-        }
-      }
-      alert('No results found — try different keywords.');
-    }
-
-    // Basic share helpers
-    function shareSite(network){
-      const url = encodeURIComponent(window.location.href);
-      const title = encodeURIComponent(document.title);
-      if(network==='twitter'){
-        window.open('https://twitter.com/intent/tweet?text=' + title + '%20' + url,'_blank');
-      } else if(network==='facebook'){
-        window.open('https://www.facebook.com/sharer/sharer.php?u=' + url,'_blank');
-      }
-    }
-
-    // optional: ensure internal anchors work smoothly
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
-      });
-    });
-  </script>
-
+  <footer>
+    <p>© 2025 MyHyperRide | Built for the Future</p>
+  </footer>
 </body>
 </html>
