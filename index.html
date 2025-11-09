@@ -5,259 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyHyperRide – Cars, Tech & AI</title>
 <style>
-/* Base dark theme */
-body {
-    background-color: #0d0d0d;
-    color: #f0f0f0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-a { color: #1e90ff; text-decoration: none; transition: 0.3s; }
-a:hover { color: #00ffff; }
+  /* Basic Reset */
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+  body { background-color: #0e0f14; color: #e0e0e0; line-height: 1.6; }
+  a { color: #1e90ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  
+  /* Header */
+  header { background-color: #111; padding: 20px; text-align: center; }
+  header h1 { color: #1e90ff; font-size: 2.5em; margin-bottom: 10px; }
+  nav { margin-top: 10px; }
+  nav a { margin: 0 15px; font-size: 1em; }
 
-header {
-    background: linear-gradient(90deg, #1e90ff, #ff8c00);
-    padding: 30px;
-    text-align: center;
-    font-size: 3em;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #fff;
-    text-shadow: 0 0 10px #1e90ff;
-}
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: #111;
-    padding: 12px 0;
-}
-nav a {
-    margin: 0 18px;
-    font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-nav a:hover { background-color: #1e90ff; color: #000; }
+  /* Section Titles */
+  h2 { color: #1e90ff; margin: 30px 0 15px 0; border-bottom: 2px solid #1e90ff; padding-bottom: 5px; }
 
-.container { max-width: 1200px; margin: auto; padding: 20px; }
+  /* Article */
+  article { background-color: #16181f; margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 0 15px #1e90ff40; }
+  article h3 { color: #ffffff; margin-bottom: 8px; }
+  article p { color: #ccc; }
 
-section {
-    padding: 30px 15px;
-    border-bottom: 1px solid #333;
-}
-h2 {
-    border-left: 6px solid #1e90ff;
-    padding-left: 12px;
-    margin-bottom: 25px;
-    font-size: 2em;
-    color: #1e90ff;
-    text-shadow: 0 0 6px #00ffff;
-}
+  /* Subscription Form */
+  .subscribe { background-color: #111; padding: 20px; text-align: center; border-radius: 10px; box-shadow: 0 0 20px #1e90ff30; margin: 40px 0; }
+  .subscribe input[type="email"] { padding: 10px; width: 250px; border-radius: 5px; border: none; margin-right: 10px; }
+  .subscribe button { padding: 10px 20px; border: none; border-radius: 5px; background-color: #1e90ff; color: white; cursor: pointer; }
+  .subscribe button:hover { background-color: #104e8b; }
 
-/* Card style articles */
-article {
-    background-color: #1a1a1a;
-    padding: 18px 22px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(30,144,255,0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-article:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 25px rgba(0,255,255,0.8);
-}
-article h3 {
-    color: #00ffff;
-    margin-bottom: 12px;
-}
-.winner { color: #32cd32; font-weight: bold; text-shadow: 0 0 6px #32cd32; }
-
-/* Subscription form */
-input, button {
-    padding: 12px;
-    margin: 8px 0;
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    font-size: 1em;
-}
-input { background-color: #222; color: #fff; }
-input:focus { outline: 2px solid #1e90ff; }
-button {
-    background-color: #1e90ff;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
-}
-button:hover { background-color: #00ffff; color: #000; }
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 25px;
-    background-color: #111;
-    color: #888;
-    font-size: 0.9em;
-}
-
-/* Smooth scroll */
-html { scroll-behavior: smooth; }
+  /* Back to Top */
+  .top { text-align: right; margin: 10px 0; }
 </style>
 </head>
 <body>
 
-<header>MyHyperRide</header>
-
-<nav>
+<header>
+  <h1>MyHyperRide</h1>
+  <nav>
     <a href="#cars">Cars</a>
     <a href="#tech">Tech & Gadgets</a>
     <a href="#gaming">Gaming</a>
     <a href="#science">Science & AI</a>
     <a href="#health">Health & Fitness</a>
     <a href="#reviews">Reviews & Comparisons</a>
-    <a href="#subscribe">Subscribe</a>
-</nav>
+    <a href="#toplists">Top Lists</a>
+  </nav>
+</header>
 
-<div class="container">
+<main>
 
-<!-- Cars Section -->
 <section id="cars">
-<h2>Cars & Supercars</h2>
+  <h2>Cars & Supercars</h2>
 
-<article>
-<h3>Lamborghini Aventador – Power and Design</h3>
-<p>The Aventador’s 6.5L V12 engine produces 770 hp, reaching 0–60 mph in under 3 seconds. Carbon fiber construction reduces weight and improves rigidity, enabling precise handling. Luxury interiors with digital dashboards and customizable driving modes complement extreme performance. Aerodynamic design ensures stability at high speeds while turning heads everywhere. This combination of engineering and style creates a visceral driving experience.</p>
-</article>
+  <article>
+    <h3>Lamborghini Aventador – Power and Design</h3>
+    <p>The Lamborghini Aventador is a V12-powered supercar designed for pure adrenaline. Its 6.5L V12 engine produces 770 hp, propelling it from 0 to 60 mph in under three seconds. Carbon fiber construction reduces weight while improving rigidity, allowing extreme handling precision. The Aventador blends extreme performance with luxury interiors, digital dashboards, and customizable driving modes. Its aerodynamic design ensures stability at high speeds while turning heads on every street.</p>
+    <div class="top"><a href="#cars">Back to Top ↑</a></div>
+  </article>
 
-<article>
-<h3>Ferrari SF90 vs McLaren Artura – Hybrid Battle</h3>
-<p><span class="winner">Winner: Ferrari SF90</span> – Ferrari’s V8 with three electric motors produces 986 hp, dominating straight-line acceleration. McLaren Artura’s V6 hybrid delivers 671 hp with agile cornering. Ferrari excels in raw power, hybrid sophistication, and track dominance. Both integrate advanced aerodynamics and digital systems, but Ferrari’s hybrid tech delivers a more thrilling, cutting-edge driving experience.</p>
-</article>
+  <article>
+    <h3>Ferrari SF90 vs McLaren Artura – Hybrid Supercar Battle</h3>
+    <p>The Ferrari SF90 Stradale combines a V8 engine with three electric motors to produce 986 hp, optimized for straight-line acceleration. McLaren Artura uses a V6 hybrid producing 671 hp, prioritizing lightweight agility and cornering dynamics. Ferrari emphasizes raw power and track dominance, while McLaren focuses on precise handling and balance. Both cars integrate advanced aerodynamics, suspension systems, and digital interfaces, offering an intelligent driving experience that merges traditional performance with modern hybrid technology.</p>
+    <div class="top"><a href="#cars">Back to Top ↑</a></div>
+  </article>
 
-<article>
-<h3>Tesla Model S Plaid – Electric Beast</h3>
-<p>Tesla’s tri-motor system outputs 1,020 hp, delivering 0–60 mph in under 2 seconds. AI-driven battery management optimizes range, while semi-autonomous Autopilot enhances safety. Minimalist interiors blend tech and comfort, proving electric vehicles can rival traditional supercars in performance and daily usability.</p>
-</article>
+  <article>
+    <h3>Tesla Model S Plaid – Electric Beast</h3>
+    <p>The Tesla Model S Plaid delivers mind-blowing performance with its tri-motor system producing 1,020 hp. Instant torque enables 0–60 mph in under 2 seconds. Tesla’s software-controlled battery management and aerodynamics maximize range and efficiency. The interior is minimalist yet intelligent, with AI-powered Autopilot offering semi-autonomous driving. Tesla demonstrates that electric vehicles can outperform traditional supercars in speed and handling while maintaining usability for everyday driving.</p>
+    <div class="top"><a href="#cars">Back to Top ↑</a></div>
+  </article>
 
+  <article>
+    <h3>Bugatti Chiron – Hypercar Excellence</h3>
+    <p>The Bugatti Chiron is a W16 quad-turbo hypercar producing 1,500 hp. Top speeds exceed 300 mph thanks to advanced aerodynamics, lightweight engineering, and meticulous stability control. Every component is optimized for precision: suspension, cooling, and transmission are designed for extreme performance. Despite its raw power, the Chiron’s handcrafted interiors provide luxury and comfort. It’s a car where cutting-edge engineering meets automotive art, pushing the boundaries of what a car can achieve.</p>
+    <div class="top"><a href="#cars">Back to Top ↑</a></div>
+  </article>
+
+  <article>
+    <h3>Koenigsegg Jesko – Swedish Engineering Marvel</h3>
+    <p>The Koenigsegg Jesko is a hypercar designed for extreme speed and stability. Its twin-turbo V8 delivers up to 1,600 hp with E85 fuel. Carbon fiber construction, active aerodynamics, and advanced transmission systems allow record-breaking acceleration and top speed. Innovative tech like active suspension, airflow optimization, and precise driver feedback create a harmonious high-performance experience. Koenigsegg shows how engineering, innovation, and design can merge into one of the fastest and most intelligent cars ever made.</p>
+    <div class="top"><a href="#cars">Back to Top ↑</a></div>
+  </article>
 </section>
 
-<!-- Tech Section -->
 <section id="tech">
-<h2>Tech & Gadgets</h2>
+  <h2>Tech & Gadgets</h2>
 
-<article>
-<h3>iPhone 17 vs Samsung Galaxy S25 Ultra – Camera Battle</h3>
-<p><span class="winner">Winner: iPhone 17 Pro Max</span> – iPhone 17 Pro Max features triple 48MP cameras with AI computational photography for perfect exposure and color. Samsung Galaxy S25 Ultra offers high-resolution zoom lenses and large sensors. iPhone excels in consistency and smart enhancements, Samsung in raw detail. AI integration redefines smartphone photography standards.</p>
-</article>
+  <article>
+    <h3>iPhone 17 – Base Model</h3>
+    <p>The iPhone 17 features an aluminum frame, providing a lightweight and durable design. Its dual rear cameras (main 48MP + ultra-wide 48MP) leverage AI for computational photography, merging multiple frames to optimize exposure, focus, and color. The A19 Bionic chip powers advanced AI features, gaming, and multitasking efficiently. Apple’s integration of software and hardware allows intuitive adaptation to user behavior. This device offers high performance and smart automation in a more affordable, everyday-friendly package.</p>
+    <div class="top"><a href="#tech">Back to Top ↑</a></div>
+  </article>
 
-<article>
-<h3>iPad Pro vs Samsung Galaxy Tab S10</h3>
-<p>iPad Pro’s M3 chip, ProMotion 120Hz display, and Apple Pencil support make it ideal for creatives. Galaxy Tab S10 provides AMOLED visuals and S Pen support. iPad excels in app ecosystem and creative software; Galaxy Tab offers multitasking versatility. The Apple ecosystem ensures seamless integration across devices.</p>
-</article>
+  <article>
+    <h3>iPhone 17 Pro Max – Futuristic AI Flagship</h3>
+    <p>The iPhone 17 Pro Max features a titanium frame with a thinner, lighter body, making it futuristic and durable. Its triple 48MP rear cameras (main + ultra-wide + telephoto) leverage AI for computational photography, optimizing exposure, focus, and color. The A19 Bionic chip powers advanced AI features, gaming, and multitasking efficiently. Apple’s integration of software and hardware allows intuitive adaptation to user behavior. This device represents a leap in smartphone technology, offering unmatched performance and intelligent automation.</p>
+    <div class="top"><a href="#tech">Back to Top ↑</a></div>
+  </article>
 
-<article>
-<h3>The Rise of Apple – Fact Section</h3>
-<p>Apple’s vertical integration allows smooth synergy between hardware and software. AI, AR, and advanced processors enable new photography, gaming, and productivity experiences. This approach explains Apple’s global dominance and how its innovations shape tech standards worldwide.</p>
-</article>
+  <article>
+    <h3>Samsung Galaxy S25 Ultra – Flagship Power</h3>
+    <p>The Galaxy S25 Ultra features high-resolution cameras, a massive AMOLED display, and AI-optimized battery management. Its zoom, low-light photography, and AI image processing make it competitive against the iPhone 17. The phone emphasizes raw hardware capabilities, while software optimizations ensure smooth usability. Both phones highlight the evolution of smartphones into AI-enhanced devices capable of performing tasks once reserved for professional equipment.</p>
+    <div class="top"><a href="#tech">Back to Top ↑</a></div>
+  </article>
 
+  <article>
+    <h3>iPad vs Samsung Tablets – Which Rules?</h3>
+    <p>The iPad offers seamless Apple ecosystem integration, M2 chip performance, and superior app optimization. Samsung tablets boast AMOLED screens, multi-window functionality, and expandable storage. iPad excels in creative workflows and long-term software support; Samsung shines in hardware versatility and display quality. Both cater to different needs, but for productivity and AI-assisted tasks, the iPad holds a slight edge.</p>
+    <div class="top"><a href="#tech">Back to Top ↑</a></div>
+  </article>
+
+  <article>
+    <h3>The Rise of Apple – A Tech Giant</h3>
+    <p>Apple’s innovation in AI, chip design, and ecosystem integration has transformed it into a global tech leader. From the iPhone to the iPad and Mac, Apple consistently delivers seamless experiences. Strategic design, attention to user experience, and software-hardware synergy create devices that are both powerful and intuitive. Their AI-driven software continues to redefine how consumers interact with technology, setting benchmarks for competitors worldwide.</p>
+    <div class="top"><a href="#tech">Back to Top ↑</a></div>
+  </article>
 </section>
 
-<!-- Gaming Section -->
-<section id="gaming">
-<h2>Gaming</h2>
-
-<article>
-<h3>Next-Gen Consoles 2025</h3>
-<p>Consoles feature ray tracing, AI-enhanced graphics, and ultra-fast SSDs. Backward compatibility and cloud gaming expand libraries. AI-driven NPCs and adaptive difficulty enhance immersion. Players experience cinematic-quality visuals with responsive gameplay, bringing console gaming to the next level.</p>
-</article>
-
-<article>
-<h3>VR Gaming Evolution</h3>
-<p>VR headsets now include motion tracking, haptic feedback, and AI-generated environments that adapt in real time. Multiplayer VR integrates spatial audio and social features. Players experience fully immersive, interactive worlds that redefine gaming possibilities.</p>
-</article>
-
+<section class="subscribe">
+  <h2>Subscribe to MyHyperRide</h2>
+  <form action="https://formspree.io/f/xkgkwywo" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
 </section>
 
-<!-- Science & AI Section -->
-<section id="science">
-<h2>Science & AI</h2>
+<!-- Additional sections like Gaming, Science & AI, Health, Reviews, Top Lists can follow similarly -->
 
-<article>
-<h3>AI Transforming Healthcare</h3>
-<p>AI analyzes patient data to detect early disease, recommend treatments, and predict outcomes. Neural networks find patterns invisible to humans, assisting doctors in diagnostics, robotic surgery, and personalized medicine. AI improves accuracy, efficiency, and patient safety across healthcare.</p>
-</article>
+</main>
 
-<article>
-<h3>Quantum Computing – Next-Gen Chips</h3>
-<p>Quantum computers use qubits and entanglement for calculations impossible on classical computers. Applications include AI optimization, cryptography, and complex simulations. Companies are developing quantum hardware to revolutionize computing speed and efficiency, reshaping industries from science to finance.</p>
-</article>
-
-<article>
-<h3>Space Exploration 2030</h3>
-<p>Next-gen rockets, autonomous spacecraft, and AI navigation make space exploration safer and faster. Mars colonization, asteroid mining, and deep-space telescopes benefit from autonomous AI control. Robotics handle hazardous tasks, while AI predicts hazards and optimizes mission success.</p>
-</article>
-
-</section>
-
-<!-- Health & Fitness Section -->
-<section id="health">
-<h2>Health & Fitness Tech</h2>
-
-<article>
-<h3>AI Fitness Trackers</h3>
-<p>Wearables monitor heart rate, sleep, oxygen, and activity. AI analyzes data, recommends workouts, recovery, and diet adjustments. Advanced sensors detect stress and hydration, helping users optimize performance and health with personalized insights.</p>
-</article>
-
-<article>
-<h3>Smart Home Gym Systems</h3>
-<p>AI coaches track form, adjust resistance, and provide real-time feedback. Integration with VR/AR allows immersive fitness sessions. Workouts adapt to goals and progress, making home training more efficient and engaging.</p>
-</article>
-
-</section>
-
-<!-- Reviews & Comparisons Section -->
-<section id="reviews">
-<h2>Reviews & Comparisons</h2>
-
-<article>
-<h3>Lamborghini vs Ferrari – Which Reigns Supreme?</h3>
-<p><span class="winner">Winner: Lamborghini Aventador</span> – Lamborghini focuses on raw power, aggressive styling, and visceral thrill. Ferrari emphasizes precision, hybrid performance, and track-tuned dynamics. For adrenaline seekers, Aventador’s experience is unmatched, while Ferrari offers controlled sophistication for balanced performance.</p>
-</article>
-
-<article>
-<h3>iPhone 17 vs Samsung S25 Camera Battle</h3>
-<p><span class="winner">Winner: iPhone 17 Pro Max</span> – iPhone’s AI computational photography consistently merges frames for perfect exposure, color, and focus. Samsung S25 Ultra excels in zoom and raw detail, but iPhone provides superior smart enhancements and overall photographic reliability.</p>
-</article>
-
-<article>
-<h3>Electric Cars: Tesla vs Lucid</h3>
-<p><span class="winner">Winner: Tesla Model S Plaid</span> – Tesla provides instant torque, Autopilot, and software ecosystem advantages. Lucid emphasizes luxury, aerodynamics, and range. Tesla wins for daily usability combined with intelligent driving tech, while Lucid is ideal for high-end enthusiasts.</p>
-</article>
-
-</section>
-
-<!-- Subscription Section -->
-<section id="subscribe">
-<h2>Subscribe to MyHyperRide</h2>
-<form action="https://formspree.io/f/xkgkwywo" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="_replyto" placeholder="Your Email" required>
-<button type="submit">Subscribe</button>
-</form>
-<p>Get premium reviews, tech insights, and car comparisons straight to your inbox!</p>
-</section>
-
-</div> <!-- container -->
-
-<footer>
-<p>&copy; 2025 MyHyperRide – Cars, Tech & AI | All Rights Reserved</p>
-</footer>
+<footer style="text-align:center; padding:20px; color:#666;">&copy; 2025 MyHyperRide | Built by Neil</footer>
 
 </body>
 </html>
