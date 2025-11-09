@@ -1,138 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyHyperRide – Cars, Tech & AI</title>
-<style>
-  /* Basic Reset */
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-  body { background-color: #0e0f14; color: #e0e0e0; line-height: 1.6; }
-  a { color: #1e90ff; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  
-  /* Header */
-  header { background-color: #111; padding: 20px; text-align: center; }
-  header h1 { color: #1e90ff; font-size: 2.5em; margin-bottom: 10px; }
-  nav { margin-top: 10px; }
-  nav a { margin: 0 15px; font-size: 1em; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hyper Ride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* Section Titles */
-  h2 { color: #1e90ff; margin: 30px 0 15px 0; border-bottom: 2px solid #1e90ff; padding-bottom: 5px; }
+        /* Body */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0b0b0b;
+            color: #fff;
+            line-height: 1.6;
+        }
 
-  /* Article */
-  article { background-color: #16181f; margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 0 15px #1e90ff40; }
-  article h3 { color: #ffffff; margin-bottom: 8px; }
-  article p { color: #ccc; }
+        /* Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #111;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 0 10px #00f;
+        }
 
-  /* Subscription Form */
-  .subscribe { background-color: #111; padding: 20px; text-align: center; border-radius: 10px; box-shadow: 0 0 20px #1e90ff30; margin: 40px 0; }
-  .subscribe input[type="email"] { padding: 10px; width: 250px; border-radius: 5px; border: none; margin-right: 10px; }
-  .subscribe button { padding: 10px 20px; border: none; border-radius: 5px; background-color: #1e90ff; color: white; cursor: pointer; }
-  .subscribe button:hover { background-color: #104e8b; }
+        header h1 {
+            font-size: 1.8rem;
+            color: #00f;
+            text-shadow: 0 0 10px #00f;
+        }
 
-  /* Back to Top */
-  .top { text-align: right; margin: 10px 0; }
-</style>
+        nav a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00f;
+        }
+
+        /* Hero */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1571607381456-4a514e1b08f6?auto=format&fit=crop&w=1500&q=80') no-repeat center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #00f;
+            text-shadow: 0 0 15px #00f;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 50px;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #00f;
+            text-shadow: 0 0 8px #00f;
+            border-bottom: 2px solid #00f;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #111;
+            border: 1px solid #00f;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 0 10px #00f;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px #00f;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            text-align: center;
+            padding: 30px;
+            border-top: 2px solid #00f;
+            margin-top: 50px;
+        }
+
+        footer p {
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+            nav {
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>MyHyperRide</h1>
-  <nav>
-    <a href="#cars">Cars</a>
-    <a href="#tech">Tech & Gadgets</a>
-    <a href="#gaming">Gaming</a>
-    <a href="#science">Science & AI</a>
-    <a href="#health">Health & Fitness</a>
-    <a href="#reviews">Reviews & Comparisons</a>
-    <a href="#toplists">Top Lists</a>
-  </nav>
-</header>
+    <!-- Navbar -->
+    <header>
+        <h1>My Hyper Ride</h1>
+        <nav>
+            <a href="#cars">Cars</a>
+            <a href="#tech">Tech</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#comparisons">Comparisons</a>
+            <a href="#top10">Top 10 & Facts</a>
+        </nav>
+    </header>
 
-<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Ultimate Car & Tech News Hub</h2>
+        <p>Reviews, Comparisons, Facts & Top 10 Lists</p>
+    </section>
 
-<section id="cars">
-  <h2>Cars & Supercars</h2>
+    <!-- Cars Section -->
+    <section id="cars">
+        <h2>Cars</h2>
+        <div class="articles">
+            <!-- 10 Article Cards -->
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,1"><div class="card-content"><h3>Top 10 Family Cars 2025</h3><p>Explore the best family-friendly cars of 2025.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,2"><div class="card-content"><h3>Electric Cars to Watch</h3><p>Upcoming electric vehicles changing the market.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,3"><div class="card-content"><h3>SUV vs Sedan</h3><p>Which is the better choice for you?</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,4"><div class="card-content"><h3>Affordable Sports Cars</h3><p>Top budget-friendly sports cars in 2025.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,5"><div class="card-content"><h3>Luxury Cars Review</h3><p>The finest luxury cars reviewed for enthusiasts.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,6"><div class="card-content"><h3>Concept Cars 2025</h3><p>Futuristic designs that may hit roads soon.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,7"><div class="card-content"><h3>Fastest Cars in the World</h3><p>Top speed machines on the planet.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,8"><div class="card-content"><h3>Car Maintenance Tips</h3><p>Keep your car in perfect condition.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,9"><div class="card-content"><h3>Future of Self-Driving Cars</h3><p>What lies ahead in autonomous driving.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,10"><div class="card-content"><h3>Best Off-Road Vehicles</h3><p>Top vehicles for off-road adventures.</p></div></div>
+        </div>
+    </section>
 
-  <article>
-    <h3>Lamborghini Aventador – Power and Design</h3>
-    <p>The Lamborghini Aventador is a V12-powered supercar designed for pure adrenaline. Its 6.5L V12 engine produces 770 hp, propelling it from 0 to 60 mph in under three seconds. Carbon fiber construction reduces weight while improving rigidity, allowing extreme handling precision. The Aventador blends extreme performance with luxury interiors, digital dashboards, and customizable driving modes. Its aerodynamic design ensures stability at high speeds while turning heads on every street.</p>
-    <div class="top"><a href="#cars">Back to Top ↑</a></div>
-  </article>
+    <!-- Tech Section -->
+    <section id="tech">
+        <h2>Tech</h2>
+        <div class="articles">
+            <!-- 10 Article Cards -->
+            <div class="card"><img src="https://source.unsplash.com/400x200/?iphone"><div class="card-content"><h3>iPhone 17 Review</h3><p>Deep dive into Apple’s latest flagship.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?tablet"><div class="card-content"><h3>iPad vs Samsung Tablet</h3><p>Which tablet reigns supreme?</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?laptop"><div class="card-content"><h3>Laptop Buying Guide</h3><p>Best laptops for work and play.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?smartwatch"><div class="card-content"><h3>Smartwatch Comparison</h3><p>Apple vs Samsung smartwatches reviewed.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?vr"><div class="card-content"><h3>VR Headsets of the Year</h3><p>Experience immersive virtual reality.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?gamingpc"><div class="card-content"><h3>Top Gaming PCs</h3><p>Best gaming rigs of 2025.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?headphones"><div class="card-content"><h3>Best Noise-Canceling Headphones</h3><p>Block out the world with these headphones.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?foldablephone"><div class="card-content"><h3>Foldable Phones Explained</h3><p>Do they really work? Full review.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?ai"><div class="card-content"><h3>AI Gadgets Changing Life</h3><p>How AI is shaping our daily routines.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?cartech"><div class="card-content"><h3>Future of Tech in Cars</h3><p>Top innovations driving the car industry.</p></div></div>
+        </div>
+    </section>
 
-  <article>
-    <h3>Ferrari SF90 vs McLaren Artura – Hybrid Supercar Battle</h3>
-    <p>The Ferrari SF90 Stradale combines a V8 engine with three electric motors to produce 986 hp, optimized for straight-line acceleration. McLaren Artura uses a V6 hybrid producing 671 hp, prioritizing lightweight agility and cornering dynamics. Ferrari emphasizes raw power and track dominance, while McLaren focuses on precise handling and balance. Both cars integrate advanced aerodynamics, suspension systems, and digital interfaces, offering an intelligent driving experience that merges traditional performance with modern hybrid technology.</p>
-    <div class="top"><a href="#cars">Back to Top ↑</a></div>
-  </article>
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <h2>Reviews</h2>
+        <div class="articles">
+            <!-- 10 Article Cards (Placeholders) -->
+            <div class="card"><img src="https://source.unsplash.com/400x200/?tesla"><div class="card-content"><h3>Tesla Model S Plaid Review</h3><p>Performance, tech, and comfort reviewed.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?bmw"><div class="card-content"><h3>BMW iX vs Mercedes EQS</h3><p>Luxury EV comparison.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?macbook"><div class="card-content"><h3>MacBook Air M3 vs Dell XPS 13</h3><p>Which laptop is better for you?</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?pixel"><div class="card-content"><h3>Google Pixel 12 vs iPhone 17</h3><p>Camera, software, and performance.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?ebike"><div class="card-content"><h3>Best Electric Bikes</h3><p>Top models for city and trail riding.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?autonomouscar"><div class="card-content"><h3>Tesla FSD Feature Review</h3><p>Is full self-driving safe yet?</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?camera"><div class="card-content"><h3>Top 5 Action Cameras</h3><p>Perfect for adventure filming.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?tire"><div class="card-content"><h3>Best Car Tires 2025</h3><p>Top choices for safety and performance.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?phone"><div class="card-content"><h3>Best Budget Smartphones</h3><p>Affordable phones that perform well.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?smarthome"><div class="card-content"><h3>Smart Home Devices</h3><p>Upgrade your home with tech.</p></div></div>
+        </div>
+    </section>
 
-  <article>
-    <h3>Tesla Model S Plaid – Electric Beast</h3>
-    <p>The Tesla Model S Plaid delivers mind-blowing performance with its tri-motor system producing 1,020 hp. Instant torque enables 0–60 mph in under 2 seconds. Tesla’s software-controlled battery management and aerodynamics maximize range and efficiency. The interior is minimalist yet intelligent, with AI-powered Autopilot offering semi-autonomous driving. Tesla demonstrates that electric vehicles can outperform traditional supercars in speed and handling while maintaining usability for everyday driving.</p>
-    <div class="top"><a href="#cars">Back to Top ↑</a></div>
-  </article>
+    <!-- Comparisons Section -->
+    <section id="comparisons">
+        <h2>Comparisons</h2>
+        <div class="articles">
+            <!-- 10 Article Cards -->
+            <div class="card"><img src="https://source.unsplash.com/400x200/?iphone,samsung"><div class="card-content"><h3>iPhone vs Samsung Flagship</h3><p>Battle of the smartphones.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?tesla,lucid"><div class="card-content"><h3>Tesla vs Lucid</h3><p>EV performance comparison.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?tablet"><div class="card-content"><h3>Android Tablets vs iPads</h3><p>Which tablet is better for you?</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?laptop"><div class="card-content"><h3>Windows Laptops vs MacBooks</h3><p>Operating system and performance compared.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?gamingconsole"><div class="card-content"><h3>Gaming Consoles Comparison</h3><p>PS5 vs Xbox Series X vs Switch.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car"><div class="card-content"><h3>EV vs Gas Cars</h3><p>Which makes more sense today?</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?smartwatch"><div class="card-content"><h3>Smartwatches Comparison</h3><p>Which smartwatch suits your needs?</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?drone"><div class="card-content"><h3>Drone Models Compared</h3><p>Top drones for photography and fun.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?headphones"><div class="card-content"><h3>Headphones: Wired vs Wireless</h3><p>Pros and cons explained.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?sports car"><div class="card-content"><h3>Sports Car Performance Comparison</h3><p>Which car dominates the track?</p></div></div>
+        </div>
+    </section>
 
-  <article>
-    <h3>Bugatti Chiron – Hypercar Excellence</h3>
-    <p>The Bugatti Chiron is a W16 quad-turbo hypercar producing 1,500 hp. Top speeds exceed 300 mph thanks to advanced aerodynamics, lightweight engineering, and meticulous stability control. Every component is optimized for precision: suspension, cooling, and transmission are designed for extreme performance. Despite its raw power, the Chiron’s handcrafted interiors provide luxury and comfort. It’s a car where cutting-edge engineering meets automotive art, pushing the boundaries of what a car can achieve.</p>
-    <div class="top"><a href="#cars">Back to Top ↑</a></div>
-  </article>
+    <!-- Top 10 & Facts Section -->
+    <section id="top10">
+        <h2>Top 10 & Facts</h2>
+        <div class="articles">
+            <!-- 10 Article Cards -->
+            <div class="card"><img src="https://source.unsplash.com/400x200/?apple"><div class="card-content"><h3>Rise of Apple</h3><p>How Apple became a tech giant.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car"><div class="card-content"><h3>Most Expensive Cars Ever</h3><p>Top luxury cars by price.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?ev"><div class="card-content"><h3>Top 10 EV Innovations</h3><p>Electric vehicles leading innovation.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?safety"><div class="card-content"><h3>Best Car Safety Features</h3><p>Cars that protect you best.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?technology"><div class="card-content"><h3>Tech Milestones Last Decade</h3><p>Important tech breakthroughs 2015-2025.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?speed"><div class="card-content"><h3>Cars That Broke Speed Records</h3><p>Fastest cars in history.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?ai"><div class="card-content"><h3>AI in Everyday Life</h3><p>How artificial intelligence impacts us.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?smartphone"><div class="card-content"><h3>Most Popular Smartphones</h3><p>Phones dominating the market.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?car,concept"><div class="card-content"><h3>Future Car Technologies</h3><p>What’s coming in automotive tech.</p></div></div>
+            <div class="card"><img src="https://source.unsplash.com/400x200/?weirdcar"><div class="card-content"><h3>Weirdest Car Concepts</h3><p>The strangest car designs ever made.</p></div></div>
+        </div>
+    </section>
 
-  <article>
-    <h3>Koenigsegg Jesko – Swedish Engineering Marvel</h3>
-    <p>The Koenigsegg Jesko is a hypercar designed for extreme speed and stability. Its twin-turbo V8 delivers up to 1,600 hp with E85 fuel. Carbon fiber construction, active aerodynamics, and advanced transmission systems allow record-breaking acceleration and top speed. Innovative tech like active suspension, airflow optimization, and precise driver feedback create a harmonious high-performance experience. Koenigsegg shows how engineering, innovation, and design can merge into one of the fastest and most intelligent cars ever made.</p>
-    <div class="top"><a href="#cars">Back to Top ↑</a></div>
-  </article>
-</section>
-
-<section id="tech">
-  <h2>Tech & Gadgets</h2>
-
-  <article>
-    <h3>iPhone 17 – Base Model</h3>
-    <p>The iPhone 17 features an aluminum frame, providing a lightweight and durable design. Its dual rear cameras (main 48MP + ultra-wide 48MP) leverage AI for computational photography, merging multiple frames to optimize exposure, focus, and color. The A19 Bionic chip powers advanced AI features, gaming, and multitasking efficiently. Apple’s integration of software and hardware allows intuitive adaptation to user behavior. This device offers high performance and smart automation in a more affordable, everyday-friendly package.</p>
-    <div class="top"><a href="#tech">Back to Top ↑</a></div>
-  </article>
-
-  <article>
-    <h3>iPhone 17 Pro Max – Futuristic AI Flagship</h3>
-    <p>The iPhone 17 Pro Max features a titanium frame with a thinner, lighter body, making it futuristic and durable. Its triple 48MP rear cameras (main + ultra-wide + telephoto) leverage AI for computational photography, optimizing exposure, focus, and color. The A19 Bionic chip powers advanced AI features, gaming, and multitasking efficiently. Apple’s integration of software and hardware allows intuitive adaptation to user behavior. This device represents a leap in smartphone technology, offering unmatched performance and intelligent automation.</p>
-    <div class="top"><a href="#tech">Back to Top ↑</a></div>
-  </article>
-
-  <article>
-    <h3>Samsung Galaxy S25 Ultra – Flagship Power</h3>
-    <p>The Galaxy S25 Ultra features high-resolution cameras, a massive AMOLED display, and AI-optimized battery management. Its zoom, low-light photography, and AI image processing make it competitive against the iPhone 17. The phone emphasizes raw hardware capabilities, while software optimizations ensure smooth usability. Both phones highlight the evolution of smartphones into AI-enhanced devices capable of performing tasks once reserved for professional equipment.</p>
-    <div class="top"><a href="#tech">Back to Top ↑</a></div>
-  </article>
-
-  <article>
-    <h3>iPad vs Samsung Tablets – Which Rules?</h3>
-    <p>The iPad offers seamless Apple ecosystem integration, M2 chip performance, and superior app optimization. Samsung tablets boast AMOLED screens, multi-window functionality, and expandable storage. iPad excels in creative workflows and long-term software support; Samsung shines in hardware versatility and display quality. Both cater to different needs, but for productivity and AI-assisted tasks, the iPad holds a slight edge.</p>
-    <div class="top"><a href="#tech">Back to Top ↑</a></div>
-  </article>
-
-  <article>
-    <h3>The Rise of Apple – A Tech Giant</h3>
-    <p>Apple’s innovation in AI, chip design, and ecosystem integration has transformed it into a global tech leader. From the iPhone to the iPad and Mac, Apple consistently delivers seamless experiences. Strategic design, attention to user experience, and software-hardware synergy create devices that are both powerful and intuitive. Their AI-driven software continues to redefine how consumers interact with technology, setting benchmarks for competitors worldwide.</p>
-    <div class="top"><a href="#tech">Back to Top ↑</a></div>
-  </article>
-</section>
-
-<section class="subscribe">
-  <h2>Subscribe to MyHyperRide</h2>
-  <form action="https://formspree.io/f/xkgkwywo" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <button type="submit">Subscribe</button>
-  </form>
-</section>
-
-<!-- Additional sections like Gaming, Science & AI, Health, Reviews, Top Lists can follow similarly -->
-
-</main>
-
-<footer style="text-align:center; padding:20px; color:#666;">&copy; 2025 MyHyperRide | Built by Neil</footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 My Hyper Ride. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
