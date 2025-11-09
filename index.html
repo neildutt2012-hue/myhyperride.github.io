@@ -1,351 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Hyper Ride — Cars, Tech & AI (Dark)</title>
-  <meta name="description" content="In-depth car reviews, A vs B verdicts, Top-10 lists, testing criteria and data-driven analysis. Built for GitHub Pages." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Hyper Ride | Futuristic Car & Tech Reviews</title>
   <style>
-    /* ---------- Base / Reset ---------- */
-    :root{
-      --bg:#07080a; --card:#0f1114; --muted:#9aa3ad; --text:#e6eef6; --accent:#00e0ff; --accent2:#00ff9d; --danger:#ff4d6d; --glass: rgba(255,255,255,0.03);
-      font-synthesis: none;
+    body {
+      background-color: #0b0b0f;
+      color: #e4e4e4;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,#05060a 0%,#0a0b10 60%);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-    a{color:var(--accent)}
-    .container{max-width:1100px;margin:28px auto;padding:24px}
 
-    /* ---------- Header ---------- */
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:54px;height:54px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;display:grid;place-items:center;box-shadow:0 6px 30px rgba(0,224,255,0.06)}
-    .logo svg{filter:drop-shadow(0 8px 24px rgba(0,224,255,0.08))}
-    h1{margin:0;font-size:18px;letter-spacing:0.4px}
-    header p{margin:0;color:var(--muted);font-size:13px}
+    header {
+      background: linear-gradient(90deg, #00e0ff, #00ff9d);
+      padding: 20px;
+      text-align: center;
+      color: #0b0b0f;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 1.5em;
+    }
 
-    /* ---------- Main Layout ---------- */
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:22px;margin-top:24px}
-    main{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:22px;box-shadow:0 8px 40px rgba(0,0,0,0.6)}
-    aside{background:var(--card);border-radius:12px;padding:18px;height:fit-content}
+    section {
+      padding: 40px 10%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-    /* ---------- Hero ---------- */
-    .hero{display:flex;gap:18px;align-items:center}
-    .hero .left{flex:1}
-    .hero h2{margin:0;font-size:22px}
-    .kicker{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent2));padding:6px 10px;border-radius:999px;color:#061017;font-weight:600;font-size:12px}
-    .hero p{color:var(--muted);margin-top:10px}
+    h2 {
+      color: #00e0ff;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
 
-    /* ---------- Cards / Lists ---------- */
-    .card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.02)}
-    .small{font-size:13px;color:var(--muted)}
+    .card {
+      background-color: #121218;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+      padding: 20px;
+      margin: 20px 0;
+    }
 
-    /* ---------- Top 10 Table ---------- */
-    table{width:100%;border-collapse:collapse;margin-top:10px}
-    thead th{text-align:left;padding:8px 12px;color:var(--muted);font-size:13px}
-    tbody td{padding:12px;border-top:1px dashed rgba(255,255,255,0.02)}
-    .rank{width:44px;font-weight:700}
-    .winner-badge{display:inline-block;padding:6px 8px;border-radius:8px;background:linear-gradient(90deg,var(--accent),rgba(0,224,255,0.12));color:#001016;font-weight:700}
+    .highlight {
+      color: #00ff9d;
+      font-weight: bold;
+    }
 
-    /* ---------- Comparison Block ---------- */
-    .comparison{display:flex;gap:14px;flex-wrap:wrap}
-    .compare-card{flex:1;min-width:260px;background:linear-gradient(180deg,transparent, rgba(0,0,0,0.02));padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
-    .compare-card h3{margin:0 0 6px 0}
-    .specs{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin-top:10px}
-    .spec{font-size:13px;color:var(--muted)}
-    .big-score{font-size:28px;font-weight:800;color:var(--accent)}
-    .winner{border-left:4px solid var(--accent2);padding-left:12px}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
 
-    /* ---------- Credibility / Sources ---------- */
-    .sources{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-    .chip{background:var(--glass);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted);display:inline-block}
+    th, td {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      text-align: left;
+    }
 
-    /* ---------- Filters / Controls ---------- */
-    .controls{display:flex;gap:8px;align-items:center}
-    .input, select{background:#081018;border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:8px 10px;border-radius:8px}
+    th {
+      color: #00ff9d;
+      text-transform: uppercase;
+    }
 
-    /* ---------- Footer ---------- */
-    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
+    footer {
+      background-color: #09090c;
+      text-align: center;
+      color: #666;
+      padding: 20px;
+      font-size: 0.9em;
+    }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width:980px){.grid{grid-template-columns:1fr}}
+    .winner {
+      background-color: rgba(0, 255, 157, 0.1);
+      border-left: 4px solid #00ff9d;
+      padding: 10px;
+      margin: 10px 0;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden>
-          <!-- minimal car + neural icon -->
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 13c1.2-3 2.2-4.2 6-5 3.2-.7 6 0 8 2" stroke="#021118" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="17" r="1" fill="#021118"/><circle cx="7" cy="17" r="1" fill="#021118"/></svg>
-        </div>
-        <div>
-          <h1>My Hyper Ride</h1>
-          <p>Cars • Tech • AI — In-depth tests, A vs B verdicts, and trustworthy data.</p>
-        </div>
+
+  <header>My Hyper Ride 🚗 | Futuristic Car & Tech Reviews</header>
+
+  <section>
+    <h2>🚘 Tesla Model S Plaid vs Lucid Air Sapphire</h2>
+    <div class="card">
+      <p><span class="highlight">Winner:</span> Lucid Air Sapphire</p>
+      <div class="winner">
+        <strong>Why:</strong> Lucid offers superior thermal control, sustained power, and better long-term reliability under high-speed conditions.  
+        <br><strong>How:</strong> Triple motor setup with optimized torque vectoring keeps traction at high speed, beating the Plaid in control and range efficiency.
       </div>
-      <div class="controls">
-        <span class="small">Theme</span>
-        <select id="theme" class="input">
-          <option>Dark (recommended)</option>
-          <option>High Contrast</option>
-        </select>
-      </div>
-    </header>
-
-    <div class="grid">
-      <main>
-        <section class="hero card">
-          <div class="kicker">Editor’s Pick</div>
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:12px;gap:14px">
-            <div class="left">
-              <h2>Top 10 Family Cars of 2025 — Data-Driven Picks & Full Tests</h2>
-              <p class="small">We test for safety, efficiency, interior ergonomics, real-world range (for EVs), and value. Below: full list + why each car made it.</p>
-            </div>
-            <div style="text-align:right">
-              <div class="small">Last updated: <strong id="updated">Nov 8, 2025</strong></div>
-              <div class="chip" style="margin-top:8px">NeuralRank v1.2 • Tested</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Top 10 family cars -->
-        <section class="card" id="top10">
-          <h3>Top 10 Family Cars — 2025</h3>
-          <table aria-label="Top 10 family cars">
-            <thead>
-              <tr><th></th><th>Model</th><th>Why it wins</th><th style="width:120px">How it excels</th></tr>
-            </thead>
-            <tbody id="top10body">
-              <!-- JS fills rows -->
-            </tbody>
-          </table>
-          <div class="small" style="margin-top:12px">Final verdict: Each recommendation lists why the car beats its rivals and how we validated the numbers (manufacturer specs + independent tests + owner-reported metrics).</div>
-        </section>
-
-        <!-- A vs B Comparison -->
-        <section class="card">
-          <h3>A vs B — Detailed Comparison</h3>
-          <div style="margin-top:8px;color:var(--muted);font-size:13px">Comparisons include: performance, economy, safety, tech, ownership costs, and real-world practicality. Winners are decided by the weighted NeuralRank algorithm — weights visible in the criteria card.</div>
-
-          <div class="comparison" style="margin-top:14px">
-            <div class="compare-card" id="carA">
-              <h3>Tesla Model S Plaid</h3>
-              <div class="big-score" id="scoreA">89</div>
-              <div class="specs">
-                <div class="spec"><strong>0–100 km/h:</strong><br>2.1 s</div>
-                <div class="spec"><strong>Range (WLTP):</strong><br>620 km</div>
-                <div class="spec"><strong>Battery:</strong><br>100 kWh</div>
-                <div class="spec"><strong>Reliability:</strong><br>7.8/10 (fleet data)</div>
-              </div>
-            </div>
-
-            <div class="compare-card winner" id="carB">
-              <h3>Lucid Air Sapphire</h3>
-              <div class="big-score" id="scoreB">92</div>
-              <div class="specs">
-                <div class="spec"><strong>0–100 km/h:</strong><br>2.3 s</div>
-                <div class="spec"><strong>Range (WLTP):</strong><br>720 km</div>
-                <div class="spec"><strong>Battery:</strong><br>118 kWh</div>
-                <div class="spec"><strong>Reliability:</strong><br>8.6/10 (prototype fleet)</div>
-              </div>
-            </div>
-          </div>
-
-          <div style="margin-top:14px" class="card small">
-            <strong>Winner: Lucid Air Sapphire</strong>
-            <p style="margin-top:8px;color:var(--muted)">Lucid's stronger sustained thermal management and higher usable capacity make it better for repeated high-load scenarios (track, long-distance highway). Tesla Plaid is faster in short bursts and remains an excellent choice for acceleration-focused buyers.</p>
-            <details style="margin-top:8px;color:var(--muted)"><summary style="cursor:pointer">How we arrived at this verdict (click to expand)</summary>
-              <ol style="margin-top:8px">
-                <li>Collected manufacturer specs and independent test runs for acceleration and range.</li>
-                <li>Used thermal model comparisons from third-party labs and owner-reported data over 6 months.</li>
-                <li>Applied NeuralRank weights: Safety 25%, Efficiency 20%, Performance 20%, Reliability 15%, Features 10%, Value 10%.</li>
-                <li>Cross-checked with owner forums and recent recall/repair bulletins.</li>
-              </ol>
-            </details>
-
-            <div class="sources">
-              <div><strong>Sources:</strong></div>
-              <div class="chip">Manufacturer technical sheets</div>
-              <div class="chip">Independent performance labs</div>
-              <div class="chip">Owner telematics (anonymized)</div>
-              <div class="chip">NHTSA / IIHS / Euro NCAP summaries</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Reviews grid -->
-        <section class="card">
-          <h3>Recent Reviews & Answers</h3>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px" id="reviews">
-            <!-- JS inserts review cards -->
-          </div>
-        </section>
-
-        <!-- Credibility and Methodology -->
-        <section class="card">
-          <h3>Credibility & Testing Methodology</h3>
-          <p class="small">We focus on transparency: every article lists the data sources, the NeuralRank computation, and an evidence table. Where third-party tests were used we link to the original report.</p>
-          <ul style="margin-top:8px;color:var(--muted)">
-            <li><strong>Data blend:</strong> Manufacturer specs + independent lab tests + anonymized owner telematics + insurance/recall datasets.</li>
-            <li><strong>AI audit:</strong> NeuralRank weights and example calculations are published under each article to avoid opaque ranking.</li>
-            <li><strong>Human review:</strong> Senior editor checks every A vs B before publishing.</li>
-          </ul>
-        </section>
-
-        <footer>
-          <div class="small">© My Hyper Ride — Built with data, AI, and human review. Want your car tested? Contact editor@myhyperride.example</div>
-        </footer>
-      </main>
-
-      <aside>
-        <div class="card">
-          <h4>Quick Filters</h4>
-          <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
-            <input id="search" class="input" placeholder="Search model or feature" />
-            <select id="category" class="input">
-              <option value="all">All categories</option>
-              <option value="family">Family</option>
-              <option value="ev">Electric</option>
-              <option value="performance">Performance</option>
-            </select>
-            <button id="apply" class="input" style="cursor:pointer">Apply</button>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4>Top Tools</h4>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-            <div class="small">NeuralRank — transparent scoring engine</div>
-            <div class="small">Cost-of-ownership calculator</div>
-            <div class="small">Thermal stress comparator (EVs)</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4>Credibility Badges</h4>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-            <div class="chip">Data-Backed</div>
-            <div class="chip">Independent Tests</div>
-            <div class="chip">AI-Audited</div>
-            <div class="chip">Editor-Verified</div>
-          </div>
-        </div>
-      </aside>
+      <p><strong>Credibility:</strong> Based on NeuralRank 2.0 data blend — performance (40%), comfort (25%), tech (20%), safety (15%).</p>
     </div>
-  </div>
+  </section>
 
-  <script>
-    /* ---------- Sample data and dynamic rendering ---------- */
-    const top10 = [
-      {rank:1, model:'Toyota Highlander Hybrid', why:'Best mix of reliability and efficiency for families.', how:'Hybrid powertrain tuned for mixed city/highway with advanced safety pack', category:'family'},
-      {rank:2, model:'Kia Telluride 2025', why:'Premium interior at mid-range price.', how:'Spacious cabin and smart AWD modes for diverse weather', category:'family'},
-      {rank:3, model:'Honda Pilot TrailSport', why:'Versatile for family trips and off-road.', how:'Adaptive AWD and reinforced chassis', category:'family'},
-      {rank:4, model:'Tesla Model Y Long Range', why:'EV option with great range & Supercharger network.', how:'Efficient motor control and roomy interior', category:'ev'},
-      {rank:5, model:'Subaru Outback Wilderness', why:'Adventure-ready family wagon.', how:'Raised ride height, X-MODE AWD', category:'family'},
-      {rank:6, model:'Hyundai Palisade', why:'Feature-rich with strong value.', how:'High-grade safety tech and long warranty', category:'family'},
-      {rank:7, model:'Volkswagen ID.7', why:'Comfortable EV cruiser.', how:'Aerodynamic efficiency and quiet cabin', category:'ev'},
-      {rank:8, model:'Ford Explorer Hybrid', why:'Balanced performance and economy.', how:'Smooth CVT and hybrid assist for towing', category:'family'},
-      {rank:9, model:'Mazda CX-90', why:'Driver-focused family SUV.', how:'Premium interior feel and handling', category:'family'},
-      {rank:10, model:'Kia EV9', why:'Spacious three-row EV with clear value.', how:'Modular interior and long-range battery', category:'ev'}
-    ];
+  <section>
+    <h2>🏆 Top 10 Family Cars of 2025</h2>
+    <div class="card">
+      <table>
+        <tr><th>Rank</th><th>Car</th><th>Why It Wins</th><th>How It Excels</th></tr>
+        <tr><td>1</td><td>Toyota Highlander Hybrid</td><td>Ultra-reliable, great mileage</td><td>Refined hybrid engine and advanced cruise assist</td></tr>
+        <tr><td>2</td><td>Kia Telluride 2025</td><td>Luxury feel, affordable price</td><td>Intelligent terrain modes and strong structure</td></tr>
+        <tr><td>3</td><td>Honda Pilot TrailSport</td><td>Built for adventure families</td><td>Adaptive AWD and rugged tuning</td></tr>
+      </table>
+      <p><strong>Verdict:</strong> Highlander Hybrid dominates for its mix of efficiency, safety, and low maintenance cost.</p>
+    </div>
+  </section>
 
-    const reviews = [
-      {title:'Tesla Model S Plaid — Real-world endurance test', model:'Tesla Model S Plaid', score:89, short:'Explosive acceleration but thermal limits on repeated track runs.', credibility:['Independent lab','Owner telematics','Manufacturer sheet']},
-      {title:'Lucid Air Sapphire — The sustainable super-sedan', model:'Lucid Air Sapphire', score:92, short:'Higher usable capacity and better thermal performance across long runs.', credibility:['Prototype lab','Owner telematics','Warranty data']},
-      {title:'Toyota Highlander Hybrid Review', model:'Toyota Highlander Hybrid', score:90, short:'Reliable, efficient, and extremely practical for families.', credibility:['NCAP','Long-term ownership study']}
-    ];
+  <section>
+    <h2>🔬 Credibility & Testing</h2>
+    <div class="card">
+      <p>All reviews are powered by <strong>NeuralRank™</strong>, My Hyper Ride’s data intelligence model.  
+      It scores vehicles using verified data sources including <em>Euro NCAP</em>, <em>IIHS</em>, and manufacturer telemetrics.</p>
+      <ul>
+        <li>Performance: 40%</li>
+        <li>Comfort & Space: 25%</li>
+        <li>Tech & Safety: 20%</li>
+        <li>Reliability: 15%</li>
+      </ul>
+      <p>Each review is double-checked for accuracy using technical spec sheets, AI-assisted simulations, and verified owner feedback.</p>
+    </div>
+  </section>
 
-    function renderTop10(){
-      const body = document.getElementById('top10body');
-      body.innerHTML = '';
-      top10.forEach(item=>{
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="rank">${item.rank}</td>
-          <td><strong>${item.model}</strong></td>
-          <td>${item.why}</td>
-          <td>${item.how}</td>
-        `;
-        body.appendChild(tr);
-      });
-    }
-
-    function renderReviews(){
-      const box = document.getElementById('reviews');
-      box.innerHTML = '';
-      reviews.forEach(r=>{
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <h4>${r.title}</h4>
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><div class="small">${r.model}</div><div class="big-score">${r.score}</div></div>
-          <p class="small" style="margin-top:8px">${r.short}</p>
-          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-            ${r.credibility.map(c => `<span class="chip">${c}</span>`).join('')}
-          </div>
-          <div style="margin-top:12px"><button onclick="openReview('${r.model}')" class="input" style="cursor:pointer">Read full review & answers</button></div>
-        `;
-        box.appendChild(card);
-      });
-    }
-
-    function openReview(model){
-      // For demo: show an alert. In production — route to full page.
-      alert('Open full review for: ' + model + '\n\nThis demo bundle includes: A vs B verdicts, testing logs, and source links.');
-    }
-
-    // Filter controls (basic demo)
-    document.getElementById('apply').addEventListener('click', ()=>{
-      const q = document.getElementById('search').value.toLowerCase();
-      const cat = document.getElementById('category').value;
-      // Filter top10 locally for demo
-      const filtered = top10.filter(t => (cat==='all' || t.category===cat) && (q==='' || t.model.toLowerCase().includes(q)) );
-      const body = document.getElementById('top10body');
-      body.innerHTML = '';
-      filtered.forEach(item=>{
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="rank">${item.rank}</td>
-          <td><strong>${item.model}</strong></td>
-          <td>${item.why}</td>
-          <td>${item.how}</td>
-        `;
-        body.appendChild(tr);
-      });
-    });
-
-    // theme toggles (simple placeholder)
-    document.getElementById('theme').addEventListener('change',(e)=>{
-      if(e.target.value.includes('Contrast')){
-        document.documentElement.style.setProperty('--bg','#000');
-        document.documentElement.style.setProperty('--accent','#ffcc00');
-      } else {
-        document.documentElement.style.setProperty('--bg','#07080a');
-        document.documentElement.style.setProperty('--accent','#00e0ff');
-      }
-    });
-
-    // initial render
-    renderTop10(); renderReviews();
-  </script>
-
-  <!-- ---------- Deployment notes (commented) ---------- -->
-  <!--
-    How to use:
-    1) Save this file as `index.html` at the root of a GitHub repository named `yourusername.github.io` (or a repo and enable Pages from main branch / gh-pages).
-    2) Push, wait a minute — your site will be live. Replace sample data with real reviews and link to article pages (e.g., /reviews/model-s-plaid.html).
-    3) Add analytics (privacy-focused), and a simple JSON feed for articles to enable dynamic lists.
-
-    Features included in this template:
-    - Dark, modern aesthetic with neon accents
-    - Top 10 list with reasons and "how it excels"
-    - A vs B comparison with methodology and sources
-    - Reviews grid with credibility chips and 'Read full review' hooks
-    - Quick filters and NeuralRank mention for transparency
-    - Deployment & editorial notes for trust
-  -->
+  <footer>
+    © 2025 My Hyper Ride | Data-driven reviews for the next generation of performance and technology.
+  </footer>
 </body>
 </html>
