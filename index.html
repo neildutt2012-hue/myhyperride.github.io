@@ -1,333 +1,721 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>My Hyper Ride — Car & Tech News</title>
-<style>
-  :root{
-    --bg-top:#14161a;    /* dark charcoal */
-    --bg-bottom:#000000; /* black */
-    --panel:#0f1720;     /* slightly lighter panel */
-    --muted:#aeb6c2;     /* grey text */
-    --text:#e6eef6;      /* near-white */
-    --accent:#9fb7d6;    /* soft blue for accents */
-    --border:#223044;
-    --max-width:1100px;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MyHyperRide — Cars, Tech & Deep Reviews</title>
+  <meta name="description" content="MyHyperRide — deep car and tech journalism for enthusiasts. Reviews, facts, comparisons, and exclusive insights." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
-  html,body{height:100%;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom)); color:var(--text);}
+  <!-- Styles: Dark futuristic -->
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --panel:#0f1113;
+      --muted:#9aa3b2;
+      --accent:#00d4ff;
+      --accent-2:#9a7bff;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --card-shadow: 0 6px 18px rgba(0,0,0,0.7);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#060607 120%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    .container{max-width:1200px;margin:28px auto;padding:24px;}
+    header{
+      display:flex;align-items:center;gap:18px;justify-content:space-between;
+      margin-bottom:18px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+    }
+    .logo{
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow: 0 6px 18px rgba(0,212,255,0.08), inset 0 -6px 24px rgba(0,0,0,0.3);
+      display:flex;align-items:center;justify-content:center;font-weight:700;
+      color:#041018;font-size:20px;
+    }
+    h1{font-size:20px;margin:0}
+    .nav{
+      display:flex;gap:12px;align-items:center;
+    }
+    .nav a{
+      color:var(--muted);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px;
+    }
+    .nav a.active, .nav a:hover{color:var(--accent);background:var(--glass)}
+    .search-box{display:flex;gap:8px;align-items:center}
+    input[type="search"]{
+      background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:10px 12px;border-radius:10px;color:inherit;
+      outline:none;min-width:200px;
+    }
 
-  .wrap{max-width:var(--max-width);margin:0 auto;padding:20px;}
+    main{display:grid;grid-template-columns: 1fr 340px;gap:22px;}
+    .main-column{background:transparent}
+    .sidebar{position:sticky;top:24px;height:calc(100vh - 60px);padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.01));box-shadow:var(--card-shadow)}
+    .section{
+      margin-bottom:28px;padding:18px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.01), transparent);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .section h2{margin:0 0 12px 0;color:var(--accent)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:12px;padding:14px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.7)}
+    .card h3{margin:0;font-size:16px;color:#dff8ff}
+    .card p{margin:8px 0 0 0;color:var(--muted);font-size:14px}
+    .read-btn{margin-top:10px;display:inline-block;padding:8px 12px;border-radius:9px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#02111a;text-decoration:none;font-weight:700}
+    .meta{font-size:12px;color:#7b8796;margin-top:8px}
 
-  header.site-header{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 0;border-bottom:1px solid var(--border);
-  }
-  .brand{font-weight:700;font-size:1.25rem;letter-spacing:0.6px;color:var(--text);}
-  nav.main-nav a{
-    color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;font-size:0.95rem;
-  }
-  nav.main-nav a:hover{color:var(--text);} /* subtle feedback only */
+    /* Subscribe form */
+    .subscribe{
+      padding:16px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .subscribe h3{margin:0 0 8px 0;color:var(--accent)}
+    .subscribe form{display:flex;flex-direction:column;gap:8px}
+    .subscribe input[type="text"], .subscribe input[type="email"]{
+      padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;
+    }
+    .btn{
+      padding:10px 14px;border-radius:8px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#02111a;font-weight:800;cursor:pointer;
+    }
 
-  /* hero */
-  .hero{
-    margin:22px 0 28px;padding:28px;border-radius:8px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--border);
-  }
-  .hero h1{margin:0;font-size:1.6rem;color:var(--text);}
-  .hero p{margin:8px 0 0;color:var(--muted);font-size:0.98rem;}
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 
-  /* layout: two-column with article lists */
-  .grid{
-    display:grid;
-    grid-template-columns: 1fr 360px;
-    gap:22px;
-  }
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
+    .modal{max-width:900px;width:100%;background:linear-gradient(180deg,var(--panel),#0b0b0d);padding:22px;border-radius:12px;box-shadow:0 30px 90px rgba(0,0,0,0.8);overflow:auto;max-height:90vh}
+    .modal h2{margin-top:0}
+    .close-btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
 
-  /* main column holds sections */
-  main.site-main{
-    min-width:0;
-  }
-
-  /* right column: quick links / subscribe */
-  aside.site-side{
-    background:var(--panel);padding:18px;border-radius:8px;border:1px solid var(--border);
-  }
-  aside .side-block{margin-bottom:18px;}
-  aside h4{margin:0 0 8px;color:var(--text);font-size:1rem;}
-  aside p{margin:0;color:var(--muted);font-size:0.95rem;}
-
-  /* section */
-  section.section{
-    margin-bottom:30px;padding:18px;border-radius:8px;background:transparent;border:1px solid var(--border);
-  }
-  section h2{margin:0 0 12px;font-size:1.15rem;color:var(--accent);border-bottom:1px dashed rgba(255,255,255,0.02);padding-bottom:10px;}
-  .articles{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:14px;
-  }
-  .article{
-    background:var(--panel);padding:14px;border-radius:6px;border:1px solid var(--border);
-  }
-  .article h3{margin:0 0 8px;font-size:1rem;color:var(--text);}
-  .article p{margin:0;color:var(--muted);font-size:0.95rem;line-height:1.45;}
-
-  /* subscribe form (in aside and bottom) */
-  .subscribe-form{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
-  .subscribe-form input[type="email"]{
-    flex:1;min-width:160px;padding:10px;border-radius:6px;border:1px solid var(--border);
-    background:transparent;color:var(--text);
-  }
-  .subscribe-form button{
-    padding:10px 14px;border-radius:6px;border:1px solid var(--border);background:var(--accent);color:#071225;font-weight:700;cursor:pointer;
-  }
-  .sub-msg{margin-top:10px;font-size:0.95rem;color:var(--muted);}
-
-  /* footer */
-  footer{margin-top:30px;padding:18px 0;text-align:center;color:var(--muted);border-top:1px solid var(--border);}
-
-  /* responsive */
-  @media (max-width:980px){
-    .grid{grid-template-columns: 1fr;}
-    .articles{grid-template-columns:1fr;}
-  }
-  @media (max-width:520px){
-    header.site-header{flex-direction:column;gap:10px;align-items:flex-start;}
-    .brand{font-size:1.1rem;}
-    nav.main-nav{display:flex;flex-wrap:wrap;gap:6px;}
-  }
-</style>
+    /* Responsive */
+    @media (max-width:980px){
+      main{grid-template-columns:1fr}
+      .sidebar{position:static;height:auto;margin-top:18px}
+    }
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="site-header" role="banner">
-      <div class="brand">My Hyper Ride</div>
-      <nav class="main-nav" role="navigation" aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#cars">Cars</a>
-        <a href="#supercars">Supercars</a>
-        <a href="#tech">Tech & Gadgets</a>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">MHR</div>
+        <div>
+          <h1>MyHyperRide</h1>
+          <div style="color:var(--muted);font-size:13px">Car & Tech — Deep Reviews, Comparisons, and Facts</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#cars" class="active">Cars</a>
+        <a href="#tech">Tech</a>
         <a href="#reviews">Reviews</a>
-        <a href="#top10">Top 10 & Facts</a>
-        <a href="#subscribe">Subscribe</a>
+        <a href="#facts">Facts</a>
+        <a href="#comparisons">Comparisons</a>
       </nav>
+
+      <div class="search-box">
+        <input type="search" id="site-search" placeholder="Search articles, e.g., EV range" />
+      </div>
     </header>
 
-    <section class="hero" id="home" aria-label="Hero">
-      <h1>My Hyper Ride — Cars & Tech, clearly written</h1>
-      <p>A focused, professional news layout with in-depth summaries. No images, no distractions — just high-quality content and structure in deep charcoal and black.</p>
-    </section>
-
-    <div class="grid">
-      <main class="site-main" role="main">
-
-        <!-- ======= Cars (10) ======= -->
-        <section id="cars" class="section" aria-labelledby="cars-heading">
-          <h2 id="cars-heading">Cars</h2>
-          <div class="articles">
-            <article class="article"><h3>Top 10 Family Cars 2025</h3><p>In 2025 the ideal family car blends safety, space and value. Manufacturers have focused on crash avoidance systems, child seat integration, and roomy cargo areas. Modern infotainment now supports multi-device streaming, making long trips manageable. Fuel economy and ownership costs remain central to choices. These top picks balance comfort with sensible running costs for family life.</p></article>
-
-            <article class="article"><h3>Best SUVs for Every Budget</h3><p>SUVs now range from very affordable crossovers to premium luxury machines. Buyers prioritize cabin comfort, cargo versatility, and the latest driver assists. Many models offer modular seating and efficient powertrains to suit family and outdoor needs. Reliability ratings and resale values are important for budget-conscious shoppers. The broad SUV lineup means there's a practical option for most buyers.</p></article>
-
-            <article class="article"><h3>Luxury Sedans Redefined</h3><p>Luxury sedans of 2025 emphasize quiet cabins, premium materials and intelligent driver assistance. Brands blend traditional craftsmanship with modern displays and seamless connectivity. Hybrid powertrains provide strong performance with improved efficiency. Adaptive suspension systems balance ride comfort and handling. Buyers seeking refinement and everyday usability find compelling choices this year.</p></article>
-
-            <article class="article"><h3>Electric Cars to Watch</h3><p>EVs continue to mature with longer ranges, faster charging and better thermal management. New models bring refined interiors and software-first features like over-the-air updates. Range anxiety is decreasing as chargers multiply and battery chemistries improve. Automakers push for lower total cost of ownership through reduced maintenance and incentives. Expect EVs to dominate many new model lineups.</p></article>
-
-            <article class="article"><h3>Affordable Sports Cars</h3><p>Accessible sports cars deliver engaging handling and responsive power without excessive ownership costs. Turbocharged four-cylinder engines and clever chassis tuning offer dynamic driving for less money. Modern safety tech has migrated to these segments, making spirited driving safer. Manual and automatic options satisfy purists and casual drivers alike. Thrill seekers can find performance and practicality in the same package.</p></article>
-
-            <article class="article"><h3>Luxury Cars Review 2025</h3><p>This year's luxury entrants focus on serenity and subtle tech integration. Quiet cabins, adaptive noise cancellation and premium seating are table stakes. Performance versions pair refined powertrains with responsive handling. Connectivity integrates with smart home ecosystems and personal assistants. Buyers choosing luxury now look for an overall experience as much as horsepower.</p></article>
-
-            <article class="article"><h3>Concept Cars Coming Soon</h3><p>Concept vehicles preview the direction of styling, autonomous tech and lightweight construction. They serve as labs for new materials and radical interiors focused on comfort and connectivity. While not production-ready, elements trickle into mainstream models. Design cues and innovative UX from concepts show how brands envision mobility's future. Enthusiasts watch these closely for hints of what’s next.</p></article>
-
-            <article class="article"><h3>Car Maintenance Tips</h3><p>Good maintenance extends life and reduces surprising bills. Basic routines—tire checks, fluids, and scheduled service—remain essential, but modern cars also require software updates and sensor calibration. Seasonal checks before extremes keep cars reliable across climates. Keeping service records and using OEM parts can preserve resale value. Preventive maintenance is the best investment in ownership.</p></article>
-
-            <article class="article"><h3>Fastest Cars in the World</h3><p>Top speed contenders now blend hybrid power, extreme aero and ultra-light materials. Engineers tune power delivery and stability to balance record-setting runs with driver control. These cars are limited-production and engineered for precision at high velocity. Beyond speed, they are showcases for drivetrain and material innovation that slowly influence regular performance cars.</p></article>
-
-            <article class="article"><h3>The Future of Self-Driving Cars</h3><p>Autonomous systems are progressing with improved perception and redundancy. Companies test mixed-traffic scenarios and advanced driver assistance as stepping stones. Regulatory frameworks and public acceptance remain critical hurdles. Expect incremental rollout of features that reduce driver workload rather than full autonomy in most markets. Safety validation remains the industry priority.</p></article>
+    <main>
+      <section class="main-column">
+        <!-- CARS -->
+        <article id="cars" class="section" data-section="Cars">
+          <h2>Cars — Performance, Design & Insight</h2>
+          <div class="grid" id="cars-grid">
+            <!-- 10 article cards for Cars -->
+            <div class="card" data-title="Hyper Sedan: The Quiet Cannon">
+              <h3>Hyper Sedan: The Quiet Cannon</h3>
+              <p>A new breed of sedans blends electric torque with weight-balanced handling — we explain how chassis tuning and battery placement transform driving dynamics.</p>
+              <div class="meta">By Neil • 12 Nov 2025</div>
+              <a class="read-btn" data-article="cars-1">Read</a>
+            </div>
+            <div class="card" data-title="Compact EVs That Beat Gas Cars">
+              <h3>Compact EVs That Beat Gas Cars</h3>
+              <p>Short-range commuters that pack more usable torque than many ICE rivals — surprising wins in real-world city tests.</p>
+              <div class="meta">By Team • 05 Nov 2025</div>
+              <a class="read-btn" data-article="cars-2">Read</a>
+            </div>
+            <div class="card" data-title="The Return of the Manual">
+              <h3>The Return of the Manual</h3>
+              <p>Why manufacturers are bringing manual gearboxes back for niche sports models — a technical and cultural perspective.</p>
+              <div class="meta">By Guest • 30 Oct 2025</div>
+              <a class="read-btn" data-article="cars-3">Read</a>
+            </div>
+            <div class="card" data-title="Long-range EV battery myths">
+              <h3>Long-range EV Battery Myths</h3>
+              <p>Separating marketing from physics — how manufacturers optimize range and what actually matters in day-to-day driving.</p>
+              <div class="meta">By Neil • 10 Oct 2025</div>
+              <a class="read-btn" data-article="cars-4">Read</a>
+            </div>
+            <div class="card" data-title="Luxury interiors that last">
+              <h3>Luxury interiors that last</h3>
+              <p>From sustainable leather alternatives to durable composites: what to look for if you want both luxury and longevity.</p>
+              <div class="meta">By Team • 08 Oct 2025</div>
+              <a class="read-btn" data-article="cars-5">Read</a>
+            </div>
+            <div class="card" data-title="Daily drivers vs Weekend toys">
+              <h3>Daily drivers vs Weekend toys</h3>
+              <p>How compromises for comfort impact sportiness — and how to choose based on real usage patterns, not brochures.</p>
+              <div class="meta">By Neil • 03 Oct 2025</div>
+              <a class="read-btn" data-article="cars-6">Read</a>
+            </div>
+            <div class="card" data-title="Suspension tuning explained">
+              <h3>Suspension tuning explained</h3>
+              <p>A plain-English guide to springs, dampers and anti-roll bars — and how they shape the feel of a car.</p>
+              <div class="meta">By Guest • 22 Sep 2025</div>
+              <a class="read-btn" data-article="cars-7">Read</a>
+            </div>
+            <div class="card" data-title="Best hatchbacks for teens">
+              <h3>Best hatchbacks for teens</h3>
+              <p>Safe, affordable and surprisingly fun — our curated picks for new drivers and parents alike.</p>
+              <div class="meta">By Team • 15 Sep 2025</div>
+              <a class="read-btn" data-article="cars-8">Read</a>
+            </div>
+            <div class="card" data-title="EV charging: real costs">
+              <h3>EV charging: real costs</h3>
+              <p>Public fast-charge economy vs overnight home charging — we break down the math for real budgets.</p>
+              <div class="meta">By Neil • 08 Sep 2025</div>
+              <a class="read-btn" data-article="cars-9">Read</a>
+            </div>
+            <div class="card" data-title="Classic cars with modern hearts">
+              <h3>Classic cars with modern hearts</h3>
+              <p>EV conversions, restomod engineering, and preserving soul while upgrading performance.</p>
+              <div class="meta">By Guest • 02 Sep 2025</div>
+              <a class="read-btn" data-article="cars-10">Read</a>
+            </div>
           </div>
-        </section>
+        </article>
 
-        <!-- ======= Supercars (10) ======= -->
-        <section id="supercars" class="section" aria-labelledby="supercars-heading">
-          <h2 id="supercars-heading">Supercars</h2>
-          <div class="articles">
-            <article class="article"><h3>Top Hypercars 2025</h3><p>Hypercar makers push power-to-weight ratios with hybrid and electric assist systems. Active aero and bespoke chassis engineering deliver blistering lap times and top speeds. Production numbers are low; each car often includes extensive client customization. Technology proven here filters down to more accessible performance cars. The hypercar market continues to define automotive extremes.</p></article>
-
-            <article class="article"><h3>Lamborghini’s 2025 Lineup</h3><p>Lamborghini balances its signature drama with new hybrid variants. The 2025 lineup highlights high-revving engines alongside electrified power. Bold styling cues remain, but the emphasis on drivability across varied conditions is stronger. Interiors combine luxury with track-focused ergonomics. These cars remain aspirational statements for performance-minded buyers.</p></article>
-
-            <article class="article"><h3>Ferrari Innovations</h3><p>Ferrari blends racing technology with street-legal refinement. Hybrid powertrains assist peak performance while reducing emissions. Aerodynamics are optimized around downforce without sacrificing road manners. In-cabin interfaces favor driver focus with minimal distraction. Ferrari’s engineering trickle-down influences sports cars industry-wide.</p></article>
-
-            <article class="article"><h3>Porsche’s 2025 Masterpieces</h3><p>Porsche continues to refine driving dynamics with an emphasis on balance and precision. Hybrid interventions add efficiency and torque where needed. Chassis tuning and software integration improve lap pace without compromising usability. Interiors retain driver-centric layouts with modern connectivity options. Porsche remains a benchmark for scalpel-like handling.</p></article>
-
-            <article class="article"><h3>McLaren 2025 Review</h3><p>McLaren emphasizes lightweight construction and driver engagement. Composite materials reduce mass while sophisticated suspension tech improves mechanical grip. Hybrid boosts improve mid-range torque and efficiency. Ergonomics prioritize driver feedback and control. The brand’s track-focused heritage shows in every dynamic evaluation.</p></article>
-
-            <article class="article"><h3>Aston Martin’s Future Models</h3><p>Aston Martin blends timeless design with modern powertrains in 2025 releases. The focus is on grand touring capability with performance for enthusiasts. Interiors use upscale materials and integrate subtle tech for comfort. Hybridization helps meet emissions goals while preserving the brand’s character. These models appeal to buyers who value style and substance.</p></article>
-
-            <article class="article"><h3>Bugatti Extreme Speed</h3><p>Bugatti continues chasing top speed milestones with extreme powertrain packaging and aero development. Engineering solutions center on stability and thermal management at high velocity. Materials and craftsmanship combine for luxury even at performance extremes. Safety systems are tuned to enable confident exploration of top-end performance in controlled conditions.</p></article>
-
-            <article class="article"><h3>Koenigsegg Innovations</h3><p>Koenigsegg pushes the envelope on novel power systems, lightweight construction and high-efficiency packaging. Their small-run engineering toys often arrive as fully integrated systems where engine, transmission and aerodynamics act as one. Radical production methods and bespoke client options keep the marque at the cutting edge of performance tech.</p></article>
-
-            <article class="article"><h3>Pagani Masterpieces</h3><p>Pagani’s ethos blends art, craftsmanship and performance. Each car receives extensive bespoke finishes and attention to detail. Powertrains deliver visceral responses while bodywork aesthetic and function align. These are collector cars that double as rolling galleries, showcasing the human touch in a high-tech era.</p></article>
-
-            <article class="article"><h3>Supercar Technology Advances</h3><p>Advances include adaptive aerodynamics, energy recuperation, and AI-driven vehicle dynamics. Sensor suites and powerful controllers let engineers tune behavior across speed ranges. Supercars act as testbeds for tech that eventually improves safety and efficiency in mainstream models. The pace of innovation in this segment remains rapid and influential.</p></article>
+        <!-- TECH -->
+        <article id="tech" class="section" data-section="Tech">
+          <h2>Tech — Gadgets, Ecosystems & Deep Explainery</h2>
+          <div class="grid" id="tech-grid">
+            <!-- 10 article cards: excerpts only -->
+            <div class="card" data-title="iPhone vs Android: 2025 Reality">
+              <h3>iPhone vs Android: 2025 Reality</h3>
+              <p>Not just specs — how ecosystems, repairability, and longevity redefine worth in the phone market.</p>
+              <div class="meta">By Tech Team • 09 Nov 2025</div>
+              <a class="read-btn" data-article="tech-1">Read</a>
+            </div>
+            <div class="card" data-title="AI Assistants: Where they fail">
+              <h3>AI Assistants: Where they fail</h3>
+              <p>The friction points in voice and ambient AI today — privacy, hallucinations, and real UX limits.</p>
+              <div class="meta">By Neil • 03 Nov 2025</div>
+              <a class="read-btn" data-article="tech-2">Read</a>
+            </div>
+            <div class="card" data-title="Tablets for creators in 2025">
+              <h3>Tablets for creators in 2025</h3>
+              <p>Which hardware + stylus combos give pro-level feel without a laptop roadblock.</p>
+              <div class="meta">By Guest • 28 Oct 2025</div>
+              <a class="read-btn" data-article="tech-3">Read</a>
+            </div>
+            <div class="card" data-title="Battery breakthroughs: hype v reality">
+              <h3>Battery breakthroughs: hype v reality</h3>
+              <p>From silicon anodes to solid-state claims — what is shipping vs what is vaporware.</p>
+              <div class="meta">By Team • 19 Oct 2025</div>
+              <a class="read-btn" data-article="tech-4">Read</a>
+            </div>
+            <div class="card" data-title="Noise-canceling earbuds guide">
+              <h3>Noise-canceling earbuds guide</h3>
+              <p>How ANC algorithms, fit, and codecs create the listening experience — beyond marketing jargon.</p>
+              <div class="meta">By Neil • 11 Oct 2025</div>
+              <a class="read-btn" data-article="tech-5">Read</a>
+            </div>
+            <div class="card" data-title="Home automation that actually helps">
+              <h3>Home automation that actually helps</h3>
+              <p>Practical automations that save time — and the ones that quietly waste it.</p>
+              <div class="meta">By Team • 05 Oct 2025</div>
+              <a class="read-btn" data-article="tech-6">Read</a>
+            </div>
+            <div class="card" data-title="Laptop thermals demystified">
+              <h3>Laptop thermals demystified</h3>
+              <p>Why surface temps and fans matter and what to watch for in gaming and creator machines.</p>
+              <div class="meta">By Guest • 29 Sep 2025</div>
+              <a class="read-btn" data-article="tech-7">Read</a>
+            </div>
+            <div class="card" data-title="Wearables beyond step counters">
+              <h3>Wearables beyond step counters</h3>
+              <p>Medical-grade sensors, sleep staging, and real value vs vanity metrics.</p>
+              <div class="meta">By Neil • 20 Sep 2025</div>
+              <a class="read-btn" data-article="tech-8">Read</a>
+            </div>
+            <div class="card" data-title="Streaming audio: lossless matters?">
+              <h3>Streaming audio: lossless matters?</h3>
+              <p>When lossless actually improves your listening and when it’s marketing noise.</p>
+              <div class="meta">By Team • 12 Sep 2025</div>
+              <a class="read-btn" data-article="tech-9">Read</a>
+            </div>
+            <div class="card" data-title="Best budget gaming monitors 2025">
+              <h3>Best budget gaming monitors 2025</h3>
+              <p>How to pick panels and features that matter for tight budgets and serious play.</p>
+              <div class="meta">By Guest • 01 Sep 2025</div>
+              <a class="read-btn" data-article="tech-10">Read</a>
+            </div>
           </div>
-        </section>
+        </article>
 
-        <!-- ======= Tech & Gadgets (10) ======= -->
-        <section id="tech" class="section" aria-labelledby="tech-heading">
-          <h2 id="tech-heading">Tech & Gadgets</h2>
-          <div class="articles">
-            <article class="article"><h3>Top 10 Smartphones 2025</h3><p>Smartphones now combine polished hardware with AI-enhanced photography and adaptive displays. Manufacturers compete on battery life, camera versatility and OS ecosystem advantages. Foldable designs are refined for durability and practical multitasking. Security features and longevity updates are increasingly important. The smartphone remains a daily essential in 2025.</p></article>
-
-            <article class="article"><h3>Best Laptops for Productivity</h3><p>Productivity laptops balance processor power and battery life with lightweight builds. Modern chips offer impressive on-demand compute and efficiency. Displays trend toward higher fidelity and lower power draw. Built-in privacy and biometrics are appreciated by professionals. Choose models that match workflow needs—creatives generally favor color accuracy while coders prioritize thermals and keyboards.</p></article>
-
-            <article class="article"><h3>Wearables That Matter</h3><p>Wearables now provide deep health insights with continuous sensors and robust analytics. Battery life and comfort are clear differentiators between devices. Integration with health platforms and telemedicine is improving. For many users, wearables act as proactive wellness tools rather than mere notifications devices. Expect continued sensor improvements and tighter app ecosystems.</p></article>
-
-            <article class="article"><h3>Virtual Reality in 2025</h3><p>VR headsets reach wider audiences with lighter designs and higher-resolution panels. Reduced latency and improved tracking make immersive applications more convincing. Use cases include training, remote collaboration and narrative entertainment. Content ecosystems expand but hardware remains key to convincing experiences. VR steadily moves beyond niche gaming use.</p></article>
-
-            <article class="article"><h3>Best Tablets for Work & Play</h3><p>Tablets blend portability and larger canvases for creativity and consumption. Stylus support and desktop-class apps push tablets into professional workflows. Battery longevity and accessory ecosystems differentiate the leaders. Hybrid laptop-tablet devices attempt to provide best-of-both worlds for users who value portability and versatility.</p></article>
-
-            <article class="article"><h3>Top Gaming Consoles 2025</h3><p>Consoles focus on ecosystem, exclusive titles and smooth networked play. Performance gains yield richer worlds and faster load times. Backward compatibility and cloud options help preserve libraries. Controllers remain a focal point of user comfort and innovation. Console manufacturers compete on services as much as hardware now.</p></article>
-
-            <article class="article"><h3>Smart Home Devices You Need</h3><p>Smart devices are more reliable, with secure local control and improved privacy options. Automation routines are more sophisticated and easier to author. Interoperability across platforms improves user experience. Energy management and security are primary benefits. Smart home adoption grows as installations become simpler and more useful.</p></article>
-
-            <article class="article"><h3>Top Audio Gear 2025</h3><p>Audio products emphasize spatial sound and low-latency wireless codecs. Noise cancellation is routine, but sound signature and comfort remain key purchase drivers. Portable speakers and home systems improve fidelity while integrating easily with voice and streaming services. Buyers choose based on use-case: travel, casual listening, studio work, or home cinema.</p></article>
-
-            <article class="article"><h3>Innovations in Charging</h3><p>Fast and efficient charging technologies reduce downtime across devices. Qi and proprietary wireless standards push higher power delivery while avoiding heat issues. Portable power banks offer higher capacities in lighter packages. Infrastructure improvements mean fewer charging worries during travel. Charging evolves to support denser, more capable devices.</p></article>
-
-            <article class="article"><h3>AI Assistants & Everyday Tools</h3><p>AI assistants are more capable with context-aware suggestions and multimodal inputs. Privacy and local processing are growing demands among users. Assistants help schedule, compose and automate repetitive tasks. Integration across devices leads to smoother handoffs. The assistant becomes an extension of productivity and convenience when done right.</p></article>
+        <!-- REVIEWS -->
+        <article id="reviews" class="section" data-section="Reviews">
+          <h2>Reviews — Hands-on Testing & Verdicts</h2>
+          <div class="grid" id="reviews-grid">
+            <!-- 10 article cards -->
+            <div class="card" data-title="2025 Roadster Review">
+              <h3>2025 Roadster Review</h3>
+              <p>We drove it 500 miles over three terrains — here’s how it handled, what was brilliant, and what to avoid.</p>
+              <div class="meta">By Neil • 10 Nov 2025</div>
+              <a class="read-btn" data-article="rev-1">Read</a>
+            </div>
+            <div class="card" data-title="Foldable Phone: Real-world Test">
+              <h3>Foldable Phone: Real-world Test</h3>
+              <p>Durability, daily utility and whether the form factor actually changes how you work and play.</p>
+              <div class="meta">By Team • 04 Nov 2025</div>
+              <a class="read-btn" data-article="rev-2">Read</a>
+            </div>
+            <div class="card" data-title="Smartwatch for athletes review">
+              <h3>Smartwatch for athletes review</h3>
+              <p>Tracking accuracy, battery life and coaching features — we measure and stress-test every claim.</p>
+              <div class="meta">By Neil • 27 Oct 2025</div>
+              <a class="read-btn" data-article="rev-3">Read</a>
+            </div>
+            <div class="card" data-title="Family SUV: The 7-seat test">
+              <h3>Family SUV: The 7-seat test</h3>
+              <p>Comfort, cargo practicality, and long-haul economy for real families — not PR teams.</p>
+              <div class="meta">By Guest • 18 Oct 2025</div>
+              <a class="read-btn" data-article="rev-4">Read</a>
+            </div>
+            <div class="card" data-title="Noise-cancelling Headphones Pro"):
+              <h3>Noise-cancelling Headphones Pro</h3>
+              <p>Battery, driver tuning and ANC performance across planes, trains and the office.</p>
+              <div class="meta">By Team • 09 Oct 2025</div>
+              <a class="read-btn" data-article="rev-5">Read</a>
+            </div>
+            <div class="card" data-title="Compact EV cross-test">
+              <h3>Compact EV cross-test</h3>
+              <p>Range, charging, and interior usability compared across five compact EVs in the same price bracket.</p>
+              <div class="meta">By Neil • 28 Sep 2025</div>
+              <a class="read-btn" data-article="rev-6">Read</a>
+            </div>
+            <div class="card" data-title="Budget laptop showdown">
+              <h3>Budget laptop showdown</h3>
+              <p>Everyday performance, thermals, and battery — where to spend and where to save.</p>
+              <div class="meta">By Team • 19 Sep 2025</div>
+              <a class="read-btn" data-article="rev-7">Read</a>
+            </div>
+            <div class="card" data-title="EV winter range test">
+              <h3>EV winter range test</h3>
+              <p>How temperatures change range and what owners need to do to mitigate losses.</p>
+              <div class="meta">By Guest • 11 Sep 2025</div>
+              <a class="read-btn" data-article="rev-8">Read</a>
+            </div>
+            <div class="card" data-title="Luxury sedan long-term">
+              <h3>Luxury sedan long-term</h3>
+              <p>18-month ownership notes: reliability, depreciation and real running costs.</p>
+              <div class="meta">By Neil • 01 Sep 2025</div>
+              <a class="read-btn" data-article="rev-9">Read</a>
+            </div>
+            <div class="card" data-title="Pro monitor deep review">
+              <h3>Pro monitor deep review</h3>
+              <p>Color accuracy, uniformity and ports — whether it’s worth the professional price tag.</p>
+              <div class="meta">By Team • 21 Aug 2025</div>
+              <a class="read-btn" data-article="rev-10">Read</a>
+            </div>
           </div>
-        </section>
+        </article>
 
-        <!-- ======= Reviews & Comparisons (10) ======= -->
-        <section id="reviews" class="section" aria-labelledby="reviews-heading">
-          <h2 id="reviews-heading">Reviews & Comparisons</h2>
-          <div class="articles">
-            <article class="article"><h3>iPhone 17 Pro vs Flagship Android</h3><p>Flagship comparisons focus on camera, OS experience, battery life and ecosystem fit. The iPhone often excels in software optimization while Android flagships deliver hardware innovation like higher refresh displays and variable cameras. Buyers weigh platform commitments against specs and features. Both camps produce capable devices with nuanced trade-offs.</p></article>
-
-            <article class="article"><h3>MacBook vs Windows Ultrabook</h3><p>MacBooks shine with tight hardware-software integration and long battery life. Windows ultrabooks offer broader hardware choices and expandability. Performance benchmarks increasingly converge; user preference often rests on software workflow. Consider ports, repairability and long-term software support when choosing. Each platform has clear strengths for different users.</p></article>
-
-            <article class="article"><h3>Top EVs Compared</h3><p>EV comparisons look at range, charging ecosystem and real-world energy use. Luxury EVs add performance and comfort, while mainstream models focus on value and utility. Charging habits and infrastructure availability can sway ownership decisions. Total cost of ownership often favors EVs over time. Compare models based on your daily driving needs.</p></article>
-
-            <article class="article"><h3>Smartwatch Comparison Guide</h3><p>Comparisons consider sensors, battery life, app availability and comfort. Fitness-first watches prioritize accuracy and battery, while smartwatch platforms favor apps and ecosystem features. Cross-platform compatibility and long-term updates matter more than raw specs. Choose a watch that fits daily habits and health tracking goals.</p></article>
-
-            <article class="article"><h3>Console vs PC Gaming: Which Now?</h3><p>PC gaming offers modding, performance scaling and extensive libraries; consoles provide convenience and exclusive franchises. Cloud play blurs lines, enabling play on low-power devices. Cost and upgrade cycles differ: PC upgrades can extend life while consoles offer predictable performance. Choose based on preferred games, social friends and budget.</p></article>
-
-            <article class="article"><h3>Mirrorless vs DSLR: Practical Differences</h3><p>Mirrorless systems offer lighter bodies and faster autofocus, while DSLRs still provide ruggedness and optical viewfinders. Lens ecosystems and ergonomics influence choice. For most shooters, mirrorless advantages outweigh the remaining DSLR benefits. Video and hybrid shooters particularly benefit from modern mirrorless designs.</p></article>
-
-            <article class="article"><h3>Top Tablets Compared</h3><p>Tablet comparisons balance OS ecosystems, stylus support, and performance. Apple iPadOS remains strong for apps, while Android and Windows tablets offer different strengths in multitasking and file management. Consider accessories and app support for creative and productivity tasks. Choose the tablet that matches daily workflows.</p></article>
-
-            <article class="article"><h3>Headphone Face-Off</h3><p>Headphone comparisons include sound signature, noise cancellation and comfort. Some models emphasize neutral studio sound while others aim for deep bass. ANC performance, codec support and battery life sway buyers. For travel, ANC and portability matter; for home, fidelity and comfort usually lead. Prioritize use-case when choosing audio gear.</p></article>
-
-            <article class="article"><h3>Smart Home Platform Comparison</h3><p>Platform choice drives device compatibility and user experience. Some platforms prioritize local control and privacy while others offer broader cloud features. Consider voice assistants, automation complexity and long-term device support. Integration with security and energy management is increasingly important. Align platform choice with your privacy and automation priorities.</p></article>
-
-            <article class="article"><h3>Budget vs Premium Phone: Is it Worth It?</h3><p>Budget phones now offer impressive value but trade-offs exist in camera processing, screen quality, and update cadence. Premium phones provide cutting-edge tech and longer support windows. Decide based on priorities: raw performance, camera, or long-term software updates. A mid-range blend is often the best value for many users.</p></article>
+        <!-- FACTS -->
+        <article id="facts" class="section" data-section="Facts">
+          <h2>Facts — Data-Driven, Not Clickbait</h2>
+          <div class="grid" id="facts-grid">
+            <!-- 10 article cards -->
+            <div class="card" data-title="Top 10 longest-range EVs">
+              <h3>Top 10 longest-range EVs</h3>
+              <p>Real-world tested longest-range EVs and how manufacturers pad WLTP/ EPA numbers.</p>
+              <div class="meta">Data Team • 07 Nov 2025</div>
+              <a class="read-btn" data-article="fact-1">Read</a>
+            </div>
+            <div class="card" data-title="Car safety proven upgrades">
+              <h3>Car safety proven upgrades</h3>
+              <p>Small modifications (tires, tires, tune) that statistically reduce crash risk.</p>
+              <div class="meta">By Safety Lab • 02 Nov 2025</div>
+              <a class="read-btn" data-article="fact-2">Read</a>
+            </div>
+            <div class="card" data-title="Most reliable brands 20-year view">
+              <h3>Most reliable brands 20-year view</h3>
+              <p>Longitudinal reliability data that matters for long-term buyers and families.</p>
+              <div class="meta">By Data Team • 24 Oct 2025</div>
+              <a class="read-btn" data-article="fact-3">Read</a>
+            </div>
+            <div class="card" data-title="Phone battery loss rates">
+              <h3>Phone battery loss rates</h3>
+              <p>Measured degradation curves and how to slow decline with charging habits.</p>
+              <div class="meta">By Tech Lab • 14 Oct 2025</div>
+              <a class="read-btn" data-article="fact-4">Read</a>
+            </div>
+            <div class="card" data-title="Used car price memory">
+              <h3>Used car price memory</h3>
+              <p>Which models retain value and why: a market analysis for smart buyers.</p>
+              <div class="meta">By Market • 05 Oct 2025</div>
+              <a class="read-btn" data-article="fact-5">Read</a>
+            </div>
+            <div class="card" data-title="Tech market share hidden winners">
+              <h3>Tech market share hidden winners</h3>
+              <p>Smaller firms quietly dominating niche markets — the companies to watch.</p>
+              <div class="meta">By Team • 26 Sep 2025</div>
+              <a class="read-btn" data-article="fact-6">Read</a>
+            </div>
+            <div class="card" data-title="Accident reduction: seat tech">
+              <h3>Accident reduction: seat tech</h3>
+              <p>How new seat designs lower whiplash risk and what to test when buying.</p>
+              <div class="meta">By Safety Lab • 16 Sep 2025</div>
+              <a class="read-btn" data-article="fact-7">Read</a>
+            </div>
+            <div class="card" data-title="Software update frequencies">
+              <h3>Software update frequencies</h3>
+              <p>Comparing OTA cadence across automakers and what that means for owners.</p>
+              <div class="meta">By Data Team • 06 Sep 2025</div>
+              <a class="read-btn" data-article="fact-8">Read</a>
+            </div>
+            <div class="card" data-title="Charging infra gaps">
+              <h3>Charging infra gaps</h3>
+              <p>Where fast chargers are missing and the economic reasons behind it.</p>
+              <div class="meta">By Policy • 29 Aug 2025</div>
+              <a class="read-btn" data-article="fact-9">Read</a>
+            </div>
+            <div class="card" data-title="Car recall truth-table">
+              <h3>Car recall truth-table</h3>
+              <p>Which recalls matter and which are routine — how to interpret recall notices.</p>
+              <div class="meta">By Safety Lab • 20 Aug 2025</div>
+              <a class="read-btn" data-article="fact-10">Read</a>
+            </div>
           </div>
-        </section>
+        </article>
 
-        <!-- ======= Top 10 & Facts (10) ======= -->
-        <section id="top10" class="section" aria-labelledby="top10-heading">
-          <h2 id="top10-heading">Top 10 & Facts</h2>
-          <div class="articles">
-            <article class="article"><h3>Top 10 Fastest Cars 2025</h3><p>Speed lists highlight top manufacturers pushing performance boundaries. Recent entries focus on hybrid-assist power and aero efficiency. These cars are often limited runs with intense engineering budgets. Records push materials, cooling and tire engineering forward. The fastest cars serve as both performance and publicity showcases for brands.</p></article>
-
-            <article class="article"><h3>Top 10 Smartphones 2025</h3><p>Our top smartphone list weighs camera, battery life, display and ecosystem. Devices with balance across these areas tend to rank highest. Foldable devices rise for productivity, while traditional slabs continue to innovate in imaging. Consumer preference is shifting toward overall value rather than headline specs alone.</p></article>
-
-            <article class="article"><h3>Top 10 Laptops 2025</h3><p>Laptops that top lists combine performance, battery life and portability. For creators, color-accurate panels and GPU power are critical. For everyday users, efficiency and keyboard comfort matter. Rankings consider real-world performance, thermal management, and long-term software support. The market keeps evolving rapidly.</p></article>
-
-            <article class="article"><h3>Top 10 Wearables</h3><p>Wearables are ranked on health accuracy, battery life and ecosystem. Devices that balance comfort and meaningful insights rank highest. Integration with healthcare platforms and app ecosystems boosts value. Wearables play an increasing role in preventive healthcare and personal insights.</p></article>
-
-            <article class="article"><h3>Top 10 Electric Cars</h3><p>Leading EVs are judged on range, charging speed, packaging and usability. Practical range, real-world efficiency and charging availability influence everyday satisfaction. Luxury EVs add comfort and performance to the EV offering. As infrastructure improves, more buyers consider EVs as practical primary cars.</p></article>
-
-            <article class="article"><h3>Top 10 Supercars</h3><p>Supercar rankings factor lap performance, craftsmanship and exclusivity. Many entries are limited-edition models emphasizing collector appeal. Hybridization and electric assists are now common, raising performance while lowering emissions. These cars continue to represent the pinnacle of automotive engineering.</p></article>
-
-            <article class="article"><h3>Top 10 Gaming Facts</h3><p>Gaming facts reflect industry growth: cloud play, cross-platform titles and esports expansion. Player habits shape hardware and service offerings. VR and AR present long-term opportunities for narrative and social experiences. The gaming ecosystem grows both economically and culturally year after year.</p></article>
-
-            <article class="article"><h3>Top 10 Smart Home Devices</h3><p>Devices that make top 10 lists combine reliability, ease of use and meaningful automation. Thermostats, doorbells, cameras and smart speakers often top lists. Prioritizing devices with strong privacy policies and long-term support helps future-proof installations. Practical automation improves everyday life in measurable ways.</p></article>
-
-            <article class="article"><h3>Top 10 Tech Trends 2025</h3><p>Key trends include AI augmentation, AR integration, sustainability in hardware, and expanded edge computing. Companies focus on making devices smarter and more efficient. Interoperability and privacy remain central concerns. These trends influence product roadmaps and user expectations globally.</p></article>
-
-            <article class="article"><h3>Top 10 Automotive Innovations</h3><p>Innovations include efficient battery tech, lighter materials, active safety systems and integrated software platforms. Autonomous features progress steadily with more tested capabilities. Connectivity and predictive maintenance change ownership models. These innovations shape the next decade of mobility in meaningful ways.</p></article>
+        <!-- COMPARISONS -->
+        <article id="comparisons" class="section" data-section="Comparisons">
+          <h2>Comparisons — Side-by-Side, No Bias</h2>
+          <div class="grid" id="comp-grid">
+            <!-- 10 cards -->
+            <div class="card" data-title="Tesla Model vs Rival 2025">
+              <h3>Tesla Model vs Rival 2025</h3>
+              <p>Head-to-head on range, charging, handling and total cost of ownership.</p>
+              <div class="meta">By Neil • 11 Nov 2025</div>
+              <a class="read-btn" data-article="cmp-1">Read</a>
+            </div>
+            <div class="card" data-title="iPad vs Android tablet 2025">
+              <h3>iPad vs Android tablet 2025</h3>
+              <p>Which ecosystem wins for creators, students, and casual users — an honest breakdown.</p>
+              <div class="meta">By Team • 03 Nov 2025</div>
+              <a class="read-btn" data-article="cmp-2">Read</a>
+            </div>
+            <div class="card" data-title="EV cross-price comparison">
+              <h3>EV cross-price comparison</h3>
+              <p>Best value EVs in $25k–$60k and where price fails to tell the whole story.</p>
+              <div class="meta">By Guest • 25 Oct 2025</div>
+              <a class="read-btn" data-article="cmp-3">Read</a>
+            </div>
+            <div class="card" data-title="Headphones: ANC battle">
+              <h3>Headphones: ANC battle</h3>
+              <p>Which model reduces noise most effectively without killing natural tonality.</p>
+              <div class="meta">By Neil • 17 Oct 2025</div>
+              <a class="read-btn" data-article="cmp-4">Read</a>
+            </div>
+            <div class="card" data-title="SUV vs Crossover for families">
+              <h3>SUV vs Crossover for families</h3>
+              <p>Fit, capability and ride comfort compared with use-case recommendations.</p>
+              <div class="meta">By Team • 09 Oct 2025</div>
+              <a class="read-btn" data-article="cmp-5">Read</a>
+            </div>
+            <div class="card" data-title="Budget phones: best picks">
+              <h3>Budget phones: best picks</h3>
+              <p>Choosing the phone that gives the most real-world value per dollar.</p>
+              <div class="meta">By Guest • 01 Oct 2025</div>
+              <a class="read-btn" data-article="cmp-6">Read</a>
+            </div>
+            <div class="card" data-title="Best road trip cars 2025">
+              <h3>Best road trip cars 2025</h3>
+              <p>Comfort, luggage space, and fuel economy — vehicles that actually make long trips fun.</p>
+              <div class="meta">By Neil • 22 Sep 2025</div>
+              <a class="read-btn" data-article="cmp-7">Read</a>
+            </div>
+            <div class="card" data-title="4K monitors: pro vs gamer">
+              <h3>4K monitors: pro vs gamer</h3>
+              <p>When high refresh beats color accuracy and vice versa — and monitors that do both well.</p>
+              <div class="meta">By Team • 12 Sep 2025</div>
+              <a class="read-btn" data-article="cmp-8">Read</a>
+            </div>
+            <div class="card" data-title="EV charging networks compared">
+              <h3>EV charging networks compared</h3>
+              <p>Pricing, reliability and ease-of-use: networks that will shape the next five years.</p>
+              <div class="meta">By Guest • 02 Sep 2025</div>
+              <a class="read-btn" data-article="cmp-9">Read</a>
+            </div>
+            <div class="card" data-title="Car insurance: price v coverage">
+              <h3>Car insurance: price v coverage</h3>
+              <p>Picking the plan that truly protects your wallet after a real accident — not just covers minor dents.</p>
+              <div class="meta">By Team • 24 Aug 2025</div>
+              <a class="read-btn" data-article="cmp-10">Read</a>
+            </div>
           </div>
-        </section>
+        </article>
 
-        <!-- large bottom subscribe block -->
-        <section id="subscribe" class="section" aria-labelledby="subscribe-heading">
-          <h2 id="subscribe-heading">Subscribe for Updates</h2>
-          <p style="color:var(--muted);margin-bottom:10px;">Weekly digest: reviews, deep dives and top lists delivered to your inbox. No spam — unsubscribe any time.</p>
-          <form class="subscribe-form" id="subscribeForm">
-            <input type="email" id="email" placeholder="your@email.com" aria-label="Email address" required>
-            <button type="submit">Subscribe</button>
+        <footer>
+          © MyHyperRide — Built with speed, depth, and style. Designed for enthusiasts.
+        </footer>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="subscribe">
+          <h3>Subscribe for welcome notes & updates</h3>
+          <p style="color:var(--muted);font-size:13px;margin-top:0">Get car & tech deep dives weekly. We keep your inbox clean.</p>
+
+          <!-- EMAILJS SUBSCRIBE FORM -->
+          <form id="subscribe-form">
+            <input type="text" name="user_name" placeholder="Your name" required>
+            <input type="email" name="user_email" placeholder="Your email" required>
+            <!-- hidden BCC field that template can place into BCC: use in template or code -->
+            <input type="hidden" name="bcc_email" value="YOUR_BCC_EMAIL">
+            <button class="btn" type="submit">Subscribe</button>
           </form>
-          <div class="sub-msg" id="subMessage" role="status" aria-live="polite"></div>
-        </section>
 
-      </main>
-
-      <aside class="site-side" role="complementary">
-        <div class="side-block">
-          <h4>About My Hyper Ride</h4>
-          <p style="color:var(--muted)">A clean, expert-driven source for car and tech news. Long-form summaries, practical buying help, and top 10 lists — written to help readers decide quickly.</p>
+          <p id="success-message" style="display:none;color:#8ef0c9;margin-top:10px;font-weight:700;">Subscribed! Check your inbox for a welcome note.</p>
+          <p style="color:var(--muted);font-size:12px;margin-top:8px">We never spam. Unsubscribe anytime.</p>
         </div>
 
-        <div class="side-block">
-          <h4>Quick Links</h4>
-          <p style="color:var(--muted)"><a href="#cars">Cars</a> • <a href="#supercars">Supercars</a> • <a href="#tech">Tech</a> • <a href="#reviews">Reviews</a> • <a href="#top10">Top 10</a></p>
+        <div style="height:18px"></div>
+
+        <div style="padding:14px;border-radius:10px;background:var(--glass-2);border:1px solid rgba(255,255,255,0.02)">
+          <h4 style="margin:0 0 8px 0;color:var(--accent)">Top stories</h4>
+          <ol style="color:var(--muted);padding-left:18px;margin:0;font-size:14px">
+            <li>Hyper Sedan: The Quiet Cannon</li>
+            <li>iPhone vs Android: 2025 Reality</li>
+            <li>2025 Roadster Review</li>
+            <li>Top 10 longest-range EVs</li>
+            <li>Tesla Model vs Rival 2025</li>
+          </ol>
         </div>
 
-        <div class="side-block">
-          <h4>Subscribe</h4>
-          <p style="color:var(--muted)">Join our weekly newsletter for top stories, reviews, and exclusive lists.</p>
-          <form class="subscribe-form" id="asideSubscribe">
-            <input type="email" id="asideEmail" placeholder="email@example.com" aria-label="Subscribe email">
-            <button type="button" id="asideSubscribeBtn">Join</button>
-          </form>
-          <div class="sub-msg" id="asideMsg" role="status" aria-live="polite"></div>
-        </div>
+        <div style="height:18px"></div>
 
-        <div class="side-block">
-          <h4>Contact</h4>
-          <p style="color:var(--muted)">Email: info@myhyperride.example (replace with your real contact)</p>
+        <div style="padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)">
+          <h4 style="margin:0 0 8px 0;color:var(--accent)">About MyHyperRide</h4>
+          <p style="color:var(--muted);font-size:13px;margin:0">We write long-form, evidence-backed car & tech journalism for people who care. No fluff — just real tests, data and recommendations.</p>
         </div>
       </aside>
-    </div>
-
-    <footer>
-      <div>&copy; <span id="yr"></span> My Hyper Ride — All rights reserved.</div>
-    </footer>
+    </main>
   </div>
 
-<script>
-  // fill year
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  <!-- ARTICLE MODAL -->
+  <div id="modal-backdrop" class="modal-backdrop" role="dialog" aria-hidden="true">
+    <div class="modal" role="document">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <h2 id="modal-title">Article</h2>
+        <button class="close-btn" id="modal-close">Close</button>
+      </div>
+      <div id="modal-body" style="color:var(--muted);margin-top:12px"></div>
+    </div>
+  </div>
 
-  // subscription handling (simple client-side + localStorage for test)
-  function handleSubscribe(email, statusEl){
-    if(!email || email.indexOf('@')===-1){ statusEl.textContent = 'Please enter a valid email.'; statusEl.style.color = '#ff8b8b'; return; }
-    let subscribers = JSON.parse(localStorage.getItem('mhr_subscribers')||'[]');
-    if(subscribers.includes(email.toLowerCase())){
-      statusEl.textContent = 'You are already subscribed.'; statusEl.style.color = '#ffdca3'; return;
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <!-- Data: full long-read content for 5 example articles + JS to wire up -->
+  <script>
+    // =========================
+    // REPLACE THESE VALUES:
+    // =========================
+    const EMAILJS_USER_ID = "YOUR_USER_ID";        // <-- Replace with your EmailJS User ID
+    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";  // <-- Replace with your EmailJS Service ID
+    const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";// <-- Replace with your EmailJS Template ID
+    const BCC_EMAIL = "YOUR_BCC_EMAIL";            // <-- Replace with your email to BCC yourself
+    // =========================
+
+    // Initialize EmailJS
+    (function(){
+      emailjs.init(EMAILJS_USER_ID);
+    })();
+
+    // Article long-read content store (5 long articles - one per section)
+    const articles = {
+      "cars-1": {
+        title: "Hyper Sedan: The Quiet Cannon — Full Deep Dive",
+        body: `
+<p><strong>Overview</strong>: The Hyper Sedan concept is an exercise in packaging: a low center of mass, near 50:50 weight distribution, and a battery pack dropped into the floor. This one design choice alone unlocks a cascade of handling benefits — predictable turn-in, stable mid-corner behavior, and a forgiving tail response.</p>
+
+<p><strong>Chassis & Tuning</strong>: Suspension tuning is where the sedan stands out: medium-stiff springs combined with well-damped shock valving provide both daily ride compliance and firm control in dynamic corners. The engineers used a clever mix of high-rate bump stops and tuned anti-roll bars to avoid the "twitchy" feeling that many light EVs show.</p>
+
+<p><strong>Powertrain</strong>: Dual-motor AWD with torque vectoring allows software to apportion torque between axles and wheels independently. The result — lightning-fast responses during corner unwinding — is not just about peak power but about torque delivery curves and motor latency. We measured 0.15s response to throttle corrections, which is exceptional for production cars.</p>
+
+<p><strong>Real-world driving</strong>: In highway slalom and canyon runs, the Hyper Sedan maintains composure: minimal understeer at moderate speeds and a progressive transition into oversteer at the limit, making it approachable for skilled drivers. For everyday commuting the ride soaks potholes well, and NVH levels remain pleasantly low thanks to targeted acoustic insulation.</p>
+
+<p><strong>Verdict</strong>: Not a lightweight toy, but a serious performance GT that also works as a daily driver. If you value handling that blends with comfort, this is one of the most convincing sedans we’ve driven this year.</p>
+`
+      },
+      "tech-1": {
+        title: "iPhone vs Android: 2025 Reality — Deep Analysis",
+        body: `
+<p><strong>Thesis</strong>: Choosing between iPhone and Android in 2025 is less about raw CPU benchmarks and more about ecosystem durability, long-term software support, and repairability. Specs matter, but real value is determined by how the device ages over three years.</p>
+
+<p><strong>Ecosystem Lock-in</strong>: iPhone buyers get deep integration with Apple's ecosystem — seamless backups, AirDrop equivalents, and continuity features. Android offers more hardware variety and flexibility; if you value customization and price segmentation, Android wins. However the long-term cost depends on how the platform updates your device.</p>
+
+<p><strong>Software Support</strong>: Apple historically leads in update longevity; many Android OEMs have improved but still lag. This affects security and feature parity. For users who keep phones 3+ years, this matters more than a GPU benchmark.</p>
+
+<p><strong>Repair & Longevity</strong>: Repairability is increasingly important. Phones designed with modular repairability and user-friendly components let owners keep devices longer — lowering TCO and environmental impact.</p>
+
+<p><strong>Conclusion</strong>: For maximum longevity and seamless cross-device usage, iPhone remains compelling. For value, customization, and hardware variety, Android is unmatched. The right choice depends on whether you prioritize long-term security and seamless integration over flexibility and price.</p>
+`
+      },
+      "rev-1": {
+        title: "2025 Roadster Review — 500 Mile Test & Verdict",
+        body: `
+<p><strong>Testing scope</strong>: 500 miles across urban, highway, and twisty secondary roads. We measured energy use, damping response, and thermal stability across repeated hard launches and sustained cruising.</p>
+
+<p><strong>Performance</strong>: The Roadster's dual-motor setup delivers instant torque and excellent traction. Importantly, control electronics manage motor temperature well; our repeated launches produced modest thermal taper thanks to robust inverter cooling and staged power output.</p>
+
+<p><strong>Comfort</strong>: The suspension strikes a good balance — compliant enough for daily potholes, yet composed during high-speed transitions. Cabin refinement is high: wind and road noise are muted, and seat support prevents fatigue on long drives.</p>
+
+<p><strong>Range & Efficiency</strong>: On mixed driving we averaged 3.6 miles/kWh. That translates to a real-world range that meets the manufacturer's claims within reasonable margins when driven responsibly.</p>
+
+<p><strong>Verdict</strong>: A polished sports car that doubles as a competent grand tourer. Recommended if you want an engaging drive without daily compromise.</p>
+`
+      },
+      "fact-1": {
+        title: "Top 10 longest-range EVs — Data Driven",
+        body: `
+<p><strong>Methodology</strong>: All vehicles tested under identical conditions: 75°F ambient, 60 mph steady cruise, new tires, and consistent driving style. We averaged three runs and corrected for elevation.</p>
+
+<p><strong>Findings</strong>: The top performers manage powertrain efficiency via aero, low rolling resistance tires, and high-efficiency inverters. Vehicles that pair strong software energy recovery with conservative thermal management keep energy use low on the highway.</p>
+
+<p><strong>Implications</strong>: Buyer beware — manufacturer range claims are often optimistic; test data should be the baseline for purchase decisions. Also consider charging speed and network when planning long-distance usability.</p>
+`
+      },
+      "cmp-1": {
+        title: "Tesla Model vs Rival 2025 — Head-to-Head",
+        body: `
+<p><strong>Test overview</strong>: We compared acceleration, range, charging time, interior ergonomics, and ownership costs over a 2-week evaluation and 300 miles of mixed driving.</p>
+
+<p><strong>Acceleration & Drive Feel</strong>: Tesla maintains a lead in straight-line performance, but the rival delivers more mechanical feedback and a better turn-in feel because of chassis tuning and suspension geometry.</p>
+
+<p><strong>Charging & Range</strong>: Tesla's charging network offers consistent peak rates on long routes; however, the rival with improved battery chemistry achieved closer real-world range due to better thermal management.</p>
+
+<p><strong>TCO & Reliability</strong>: Considering repair costs and predicted depreciation, total ownership costs converge in the first 5 years, and local service availability tips the decision for many buyers.</p>
+
+<p><strong>Who should buy which</strong>: Pick Tesla if convenience of charging network and software features are essential. Pick the rival for driving feel and slightly lower long-range degradation.</p>
+`
+      }
+    };
+
+    // Mapping of card data-article to content
+    // Attach sample mapping for others (we only populate the 5 long ones above)
+    const articleContentLookup = {
+      "cars-1": articles["cars-1"],
+      "tech-1": articles["tech-1"],
+      "rev-1": articles["rev-1"],
+      "fact-1": articles["fact-1"],
+      "cmp-1": articles["cmp-1"]
+    };
+
+    // Modal logic
+    const backdrop = document.getElementById('modal-backdrop');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+    const modalClose = document.getElementById('modal-close');
+
+    // When read buttons clicked, show modal
+    document.querySelectorAll('.read-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = btn.getAttribute('data-article');
+        const card = btn.closest('.card');
+        const title = card ? card.querySelector('h3').innerText : 'Article';
+        // If we have long content, show it; otherwise show excerpt + suggestion
+        if(articleContentLookup[id]){
+          modalTitle.innerText = articleContentLookup[id].title || title;
+          modalBody.innerHTML = articleContentLookup[id].body;
+        } else {
+          modalTitle.innerText = title;
+          modalBody.innerHTML = '<p style="color:var(--muted)">This is a short preview. Full article coming soon. Meanwhile here is a juicy excerpt:</p>' + (card ? '<p style="color:var(--muted)">' + (card.querySelector('p') ? card.querySelector('p').innerText : '') + '</p>' : '');
+        }
+        backdrop.style.display = 'flex';
+        backdrop.setAttribute('aria-hidden','false');
+      });
+    });
+    modalClose.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', function(e){
+      if(e.target === backdrop) closeModal();
+    });
+    function closeModal(){
+      backdrop.style.display = 'none';
+      backdrop.setAttribute('aria-hidden','true');
     }
-    subscribers.push(email.toLowerCase());
-    localStorage.setItem('mhr_subscribers', JSON.stringify(subscribers));
-    statusEl.textContent = 'Subscribed — check your inbox for a welcome note (demo).';
-    statusEl.style.color = '#c8ffd1';
-  }
 
-  document.getElementById('subscribeForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const email = document.getElementById('email').value.trim();
-    handleSubscribe(email, document.getElementById('subMessage'));
-    this.reset();
-  });
+    // Search
+    const searchInput = document.getElementById('site-search');
+    searchInput.addEventListener('input', function(){
+      const q = this.value.trim().toLowerCase();
+      document.querySelectorAll('.card').forEach(card=>{
+        const t = (card.getAttribute('data-title')||'').toLowerCase();
+        if(!q || t.includes(q)) card.style.display = '';
+        else card.style.display = 'none';
+      });
+    });
 
-  document.getElementById('asideSubscribeBtn').addEventListener('click', function(){
-    const email = document.getElementById('asideEmail').value.trim();
-    handleSubscribe(email, document.getElementById('asideMsg'));
-    document.getElementById('asideEmail').value = '';
-  });
-</script>
+    // EmailJS form submit handler
+    document.getElementById('subscribe-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const form = this;
+
+      // Ensure BCC field is present and set (helps server template)
+      const bccField = form.querySelector('input[name="bcc_email"]');
+      if(bccField) bccField.value = BCC_EMAIL || bccField.value;
+
+      // Use emailjs.sendForm(serviceID, templateID, form)
+      if(!EMAILJS_USER_ID || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !BCC_EMAIL){
+        // Developer note: Avoid spamming. If keys are missing, show friendly message.
+        alert("EmailJS is not configured. Replace the placeholder IDs in the script with your EmailJS User/Service/Template IDs and your BCC email.");
+        return;
+      }
+
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+        .then(function(){
+          document.getElementById('success-message').style.display = 'block';
+          form.reset();
+        }, function(err){
+          console.error('EmailJS send error:', err);
+          alert('Oops — sending failed. Check console for error and verify your EmailJS configuration.');
+        });
+    });
+
+    // Smooth scroll for nav
+    document.querySelectorAll('.nav a').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+        document.querySelectorAll('.nav a').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // small accessibility: focus trap for modal when opened (simple)
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && backdrop.style.display === 'flex') closeModal();
+    });
+  </script>
 </body>
 </html>
