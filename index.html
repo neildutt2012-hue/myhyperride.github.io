@@ -1,269 +1,333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Hyper Ride</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>My Hyper Ride — Car & Tech News</title>
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #0b0c17; /* Dark blue/black */
-    color: #e0e0e0;
-    line-height: 1.6;
-}
-header {
-    background-color: #1a1f36; /* Dark blue */
-    padding: 20px;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffffff;
-}
-nav {
-    background-color: #111426;
-    padding: 10px;
-    text-align: center;
-}
-nav a {
-    color: #ffffff;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-section {
-    padding: 40px 20px;
-}
-section h2 {
-    font-size: 1.8rem;
-    color: #a8b0c0; /* Greyish-white */
-    border-bottom: 2px solid #ffffff;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-.article {
-    margin-bottom: 20px;
-}
-.article h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    color: #ffffff;
-}
-.article p {
-    font-size: 1rem;
-    color: #c0c0c0; /* Grey */
-}
-#subscribe {
-    padding: 40px 20px;
-    background-color: #111426;
-    text-align: center;
-    border-top: 2px solid #444c5c;
-}
-#subscribe input[type="email"] {
-    padding: 10px;
-    width: 250px;
-    border-radius: 5px;
-    border: 1px solid #444c5c;
-    background-color: #0b0c17;
-    color: #ffffff;
-}
-#subscribe button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #1a1f36;
-    color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
-}
-#subscribe button:hover {
-    background-color: #2b3350;
-}
-footer {
-    background-color: #111426;
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid #444c5c;
-    color: #c0c0c0;
-}
-@media(max-width:768px){
-    nav a {display: block; margin: 5px 0;}
-}
+  :root{
+    --bg-top:#14161a;    /* dark charcoal */
+    --bg-bottom:#000000; /* black */
+    --panel:#0f1720;     /* slightly lighter panel */
+    --muted:#aeb6c2;     /* grey text */
+    --text:#e6eef6;      /* near-white */
+    --accent:#9fb7d6;    /* soft blue for accents */
+    --border:#223044;
+    --max-width:1100px;
+  }
+
+  html,body{height:100%;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom)); color:var(--text);}
+
+  .wrap{max-width:var(--max-width);margin:0 auto;padding:20px;}
+
+  header.site-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 0;border-bottom:1px solid var(--border);
+  }
+  .brand{font-weight:700;font-size:1.25rem;letter-spacing:0.6px;color:var(--text);}
+  nav.main-nav a{
+    color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;font-size:0.95rem;
+  }
+  nav.main-nav a:hover{color:var(--text);} /* subtle feedback only */
+
+  /* hero */
+  .hero{
+    margin:22px 0 28px;padding:28px;border-radius:8px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--border);
+  }
+  .hero h1{margin:0;font-size:1.6rem;color:var(--text);}
+  .hero p{margin:8px 0 0;color:var(--muted);font-size:0.98rem;}
+
+  /* layout: two-column with article lists */
+  .grid{
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:22px;
+  }
+
+  /* main column holds sections */
+  main.site-main{
+    min-width:0;
+  }
+
+  /* right column: quick links / subscribe */
+  aside.site-side{
+    background:var(--panel);padding:18px;border-radius:8px;border:1px solid var(--border);
+  }
+  aside .side-block{margin-bottom:18px;}
+  aside h4{margin:0 0 8px;color:var(--text);font-size:1rem;}
+  aside p{margin:0;color:var(--muted);font-size:0.95rem;}
+
+  /* section */
+  section.section{
+    margin-bottom:30px;padding:18px;border-radius:8px;background:transparent;border:1px solid var(--border);
+  }
+  section h2{margin:0 0 12px;font-size:1.15rem;color:var(--accent);border-bottom:1px dashed rgba(255,255,255,0.02);padding-bottom:10px;}
+  .articles{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:14px;
+  }
+  .article{
+    background:var(--panel);padding:14px;border-radius:6px;border:1px solid var(--border);
+  }
+  .article h3{margin:0 0 8px;font-size:1rem;color:var(--text);}
+  .article p{margin:0;color:var(--muted);font-size:0.95rem;line-height:1.45;}
+
+  /* subscribe form (in aside and bottom) */
+  .subscribe-form{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+  .subscribe-form input[type="email"]{
+    flex:1;min-width:160px;padding:10px;border-radius:6px;border:1px solid var(--border);
+    background:transparent;color:var(--text);
+  }
+  .subscribe-form button{
+    padding:10px 14px;border-radius:6px;border:1px solid var(--border);background:var(--accent);color:#071225;font-weight:700;cursor:pointer;
+  }
+  .sub-msg{margin-top:10px;font-size:0.95rem;color:var(--muted);}
+
+  /* footer */
+  footer{margin-top:30px;padding:18px 0;text-align:center;color:var(--muted);border-top:1px solid var(--border);}
+
+  /* responsive */
+  @media (max-width:980px){
+    .grid{grid-template-columns: 1fr;}
+    .articles{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    header.site-header{flex-direction:column;gap:10px;align-items:flex-start;}
+    .brand{font-size:1.1rem;}
+    nav.main-nav{display:flex;flex-wrap:wrap;gap:6px;}
+  }
 </style>
 </head>
 <body>
+  <div class="wrap">
+    <header class="site-header" role="banner">
+      <div class="brand">My Hyper Ride</div>
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#cars">Cars</a>
+        <a href="#supercars">Supercars</a>
+        <a href="#tech">Tech & Gadgets</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#top10">Top 10 & Facts</a>
+        <a href="#subscribe">Subscribe</a>
+      </nav>
+    </header>
 
-<header>My Hyper Ride</header>
-<nav>
-<a href="#cars">Cars</a>
-<a href="#supercars">Supercars</a>
-<a href="#tech">Tech & Gadgets</a>
-<a href="#reviews">Reviews & Comparisons</a>
-<a href="#top10">Top 10 & Facts</a>
-<a href="#subscribe">Subscribe</a>
-</nav>
+    <section class="hero" id="home" aria-label="Hero">
+      <h1>My Hyper Ride — Cars & Tech, clearly written</h1>
+      <p>A focused, professional news layout with in-depth summaries. No images, no distractions — just high-quality content and structure in deep charcoal and black.</p>
+    </section>
 
-<!-- Cars Section -->
-<section id="cars">
-<h2>Cars</h2>
+    <div class="grid">
+      <main class="site-main" role="main">
 
-<div class="article"><h3>Top 10 Family Cars 2025</h3><p>Looking for the perfect family car? In 2025, several models combine safety, comfort, and efficiency. SUVs and crossovers provide spacious interiors and modern infotainment. Fuel efficiency and low maintenance are important factors. Safety ratings make these cars reliable for all passengers. Family-friendly vehicles have never been better.</p></div>
+        <!-- ======= Cars (10) ======= -->
+        <section id="cars" class="section" aria-labelledby="cars-heading">
+          <h2 id="cars-heading">Cars</h2>
+          <div class="articles">
+            <article class="article"><h3>Top 10 Family Cars 2025</h3><p>In 2025 the ideal family car blends safety, space and value. Manufacturers have focused on crash avoidance systems, child seat integration, and roomy cargo areas. Modern infotainment now supports multi-device streaming, making long trips manageable. Fuel economy and ownership costs remain central to choices. These top picks balance comfort with sensible running costs for family life.</p></article>
 
-<div class="article"><h3>Best SUVs for Every Budget</h3><p>SUVs dominate the market with versatility and style. From affordable to luxury, there are options for all budgets. Advanced safety features protect your family and passengers. Storage capacity and driving comfort are prioritized. Modern tech enhances convenience and driving pleasure. Every SUV offers a unique combination of performance and utility.</p></div>
+            <article class="article"><h3>Best SUVs for Every Budget</h3><p>SUVs now range from very affordable crossovers to premium luxury machines. Buyers prioritize cabin comfort, cargo versatility, and the latest driver assists. Many models offer modular seating and efficient powertrains to suit family and outdoor needs. Reliability ratings and resale values are important for budget-conscious shoppers. The broad SUV lineup means there's a practical option for most buyers.</p></article>
 
-<div class="article"><h3>Luxury Sedans Redefined</h3><p>Luxury sedans offer refined comfort, technology, and elegant design. In 2025, top models feature advanced infotainment and driver assistance. Interior materials are premium and ergonomically designed. Performance and fuel efficiency are balanced for everyday use. Safety systems provide peace of mind. Sedans combine prestige with practical usability.</p></div>
+            <article class="article"><h3>Luxury Sedans Redefined</h3><p>Luxury sedans of 2025 emphasize quiet cabins, premium materials and intelligent driver assistance. Brands blend traditional craftsmanship with modern displays and seamless connectivity. Hybrid powertrains provide strong performance with improved efficiency. Adaptive suspension systems balance ride comfort and handling. Buyers seeking refinement and everyday usability find compelling choices this year.</p></article>
 
-<div class="article"><h3>Electric Cars to Watch</h3><p>Electric vehicles are rapidly changing the automotive industry. New battery technology provides longer range and faster charging. 2025 introduces several innovative EV models. Performance now rivals traditional gasoline cars. Sustainability and low maintenance make EVs highly desirable. They represent the future of personal transportation.</p></div>
+            <article class="article"><h3>Electric Cars to Watch</h3><p>EVs continue to mature with longer ranges, faster charging and better thermal management. New models bring refined interiors and software-first features like over-the-air updates. Range anxiety is decreasing as chargers multiply and battery chemistries improve. Automakers push for lower total cost of ownership through reduced maintenance and incentives. Expect EVs to dominate many new model lineups.</p></article>
 
-<div class="article"><h3>Affordable Sports Cars</h3><p>Exciting sports cars are now accessible to more drivers. Sleek design, responsive handling, and turbocharged engines offer fun without overspending. Safety features are modern and reliable. Interior technology enhances driver experience. Perfect for enthusiasts who crave thrill and performance. Affordable options make sports cars attainable for everyone.</p></div>
+            <article class="article"><h3>Affordable Sports Cars</h3><p>Accessible sports cars deliver engaging handling and responsive power without excessive ownership costs. Turbocharged four-cylinder engines and clever chassis tuning offer dynamic driving for less money. Modern safety tech has migrated to these segments, making spirited driving safer. Manual and automatic options satisfy purists and casual drivers alike. Thrill seekers can find performance and practicality in the same package.</p></article>
 
-<div class="article"><h3>Luxury Cars Review 2025</h3><p>Luxury vehicles offer premium interiors and advanced technology. Ride quality, comfort, and design are carefully crafted. 2025 models include hybrid and electric options. Performance metrics like acceleration and handling are impressive. Safety and innovation are prioritized. Luxury cars provide unmatched driving experiences for owners.</p></div>
+            <article class="article"><h3>Luxury Cars Review 2025</h3><p>This year's luxury entrants focus on serenity and subtle tech integration. Quiet cabins, adaptive noise cancellation and premium seating are table stakes. Performance versions pair refined powertrains with responsive handling. Connectivity integrates with smart home ecosystems and personal assistants. Buyers choosing luxury now look for an overall experience as much as horsepower.</p></article>
 
-<div class="article"><h3>Concept Cars Coming Soon</h3><p>Concept cars give a glimpse of the automotive future. Manufacturers showcase autonomous and AI-assisted designs. Innovative interiors and futuristic exteriors inspire next-generation vehicles. Performance and sustainability are tested in prototypes. Concepts influence production models and trends. They excite enthusiasts with cutting-edge ideas.</p></div>
+            <article class="article"><h3>Concept Cars Coming Soon</h3><p>Concept vehicles preview the direction of styling, autonomous tech and lightweight construction. They serve as labs for new materials and radical interiors focused on comfort and connectivity. While not production-ready, elements trickle into mainstream models. Design cues and innovative UX from concepts show how brands envision mobility's future. Enthusiasts watch these closely for hints of what’s next.</p></article>
 
-<div class="article"><h3>Car Maintenance Tips</h3><p>Regular maintenance ensures long vehicle life and safety. Essential tips include tire care, oil changes, and seasonal checks. 2025 cars include advanced electronic diagnostics. Preventive care reduces costly repairs. Safety and performance improve with proper maintenance. Following guidelines protects your investment.</p></div>
+            <article class="article"><h3>Car Maintenance Tips</h3><p>Good maintenance extends life and reduces surprising bills. Basic routines—tire checks, fluids, and scheduled service—remain essential, but modern cars also require software updates and sensor calibration. Seasonal checks before extremes keep cars reliable across climates. Keeping service records and using OEM parts can preserve resale value. Preventive maintenance is the best investment in ownership.</p></article>
 
-<div class="article"><h3>Fastest Cars in the World</h3><p>High-performance cars reach extreme speeds with precision handling. 2025 models feature aerodynamics, lightweight materials, and powerful engines. Acceleration and braking performance are optimized. Luxury and comfort are balanced with speed. These cars represent the pinnacle of automotive engineering. Enthusiasts admire their design and capabilities.</p></div>
+            <article class="article"><h3>Fastest Cars in the World</h3><p>Top speed contenders now blend hybrid power, extreme aero and ultra-light materials. Engineers tune power delivery and stability to balance record-setting runs with driver control. These cars are limited-production and engineered for precision at high velocity. Beyond speed, they are showcases for drivetrain and material innovation that slowly influence regular performance cars.</p></article>
 
-<div class="article"><h3>The Future of Self-Driving Cars</h3><p>Autonomous vehicles are becoming closer to reality. Advanced sensors, AI algorithms, and safety redundancies define 2025 models. Companies test cars in urban and highway scenarios. Legal and ethical frameworks evolve with technology. Reduced accidents and convenience are promised. Self-driving vehicles are reshaping transportation.</p></div>
+            <article class="article"><h3>The Future of Self-Driving Cars</h3><p>Autonomous systems are progressing with improved perception and redundancy. Companies test mixed-traffic scenarios and advanced driver assistance as stepping stones. Regulatory frameworks and public acceptance remain critical hurdles. Expect incremental rollout of features that reduce driver workload rather than full autonomy in most markets. Safety validation remains the industry priority.</p></article>
+          </div>
+        </section>
 
-</section>
+        <!-- ======= Supercars (10) ======= -->
+        <section id="supercars" class="section" aria-labelledby="supercars-heading">
+          <h2 id="supercars-heading">Supercars</h2>
+          <div class="articles">
+            <article class="article"><h3>Top Hypercars 2025</h3><p>Hypercar makers push power-to-weight ratios with hybrid and electric assist systems. Active aero and bespoke chassis engineering deliver blistering lap times and top speeds. Production numbers are low; each car often includes extensive client customization. Technology proven here filters down to more accessible performance cars. The hypercar market continues to define automotive extremes.</p></article>
 
-<!-- Supercars Section -->
-<section id="supercars">
-<h2>Supercars</h2>
+            <article class="article"><h3>Lamborghini’s 2025 Lineup</h3><p>Lamborghini balances its signature drama with new hybrid variants. The 2025 lineup highlights high-revving engines alongside electrified power. Bold styling cues remain, but the emphasis on drivability across varied conditions is stronger. Interiors combine luxury with track-focused ergonomics. These cars remain aspirational statements for performance-minded buyers.</p></article>
 
-<div class="article"><h3>Top Hypercars 2025</h3><p>2025 hypercars redefine speed and design. Aerodynamics, hybrid powertrains, and extreme acceleration dominate. Engineering breakthroughs like carbon fiber chassis enhance performance. Luxury interiors complement speed. Safety and tech integration are advanced. Hypercars push the limits of automotive innovation.</p></div>
+            <article class="article"><h3>Ferrari Innovations</h3><p>Ferrari blends racing technology with street-legal refinement. Hybrid powertrains assist peak performance while reducing emissions. Aerodynamics are optimized around downforce without sacrificing road manners. In-cabin interfaces favor driver focus with minimal distraction. Ferrari’s engineering trickle-down influences sports cars industry-wide.</p></article>
 
-<div class="article"><h3>Lamborghini’s 2025 Lineup</h3><p>Lamborghini delivers extreme performance with iconic design. V12 engines and hybrid models provide speed and efficiency. Interiors combine luxury with advanced technology. Handling and aerodynamics are optimized. These cars are statements of style and adrenaline. The 2025 lineup is impressive for enthusiasts and collectors.</p></div>
+            <article class="article"><h3>Porsche’s 2025 Masterpieces</h3><p>Porsche continues to refine driving dynamics with an emphasis on balance and precision. Hybrid interventions add efficiency and torque where needed. Chassis tuning and software integration improve lap pace without compromising usability. Interiors retain driver-centric layouts with modern connectivity options. Porsche remains a benchmark for scalpel-like handling.</p></article>
 
-<div class="article"><h3>Ferrari Innovations</h3><p>Ferrari balances heritage and cutting-edge innovation. Hybrid systems, AI-assisted driving, and aerodynamic designs lead the 2025 lineup. Interiors blend comfort with racing DNA. Acceleration, braking, and handling remain world-class. Ferrari continues to dominate supercar discussions. Passion, precision, and power define every vehicle.</p></div>
+            <article class="article"><h3>McLaren 2025 Review</h3><p>McLaren emphasizes lightweight construction and driver engagement. Composite materials reduce mass while sophisticated suspension tech improves mechanical grip. Hybrid boosts improve mid-range torque and efficiency. Ergonomics prioritize driver feedback and control. The brand’s track-focused heritage shows in every dynamic evaluation.</p></article>
 
-<div class="article"><h3>Porsche’s 2025 Masterpieces</h3><p>Porsche blends hybrid technology with classic driving pleasure. Aerodynamics and lightweight materials enhance performance. Interiors merge driver-focused design with modern technology. Daily usability combines with track-ready features. Fans admire precision engineering and attention to detail. Porsche maintains excellence in supercars.</p></div>
+            <article class="article"><h3>Aston Martin’s Future Models</h3><p>Aston Martin blends timeless design with modern powertrains in 2025 releases. The focus is on grand touring capability with performance for enthusiasts. Interiors use upscale materials and integrate subtle tech for comfort. Hybridization helps meet emissions goals while preserving the brand’s character. These models appeal to buyers who value style and substance.</p></article>
 
-<div class="article"><h3>McLaren 2025 Review</h3><p>McLaren showcases sleek designs and lightweight engineering. Hybrid engines boost performance. Aerodynamic efficiency enables extreme speed with control. Interiors are luxurious yet functional. Advanced tech, like AI-assisted suspension, is standard. McLaren sets benchmarks in supercar performance and innovation.</p></div>
+            <article class="article"><h3>Bugatti Extreme Speed</h3><p>Bugatti continues chasing top speed milestones with extreme powertrain packaging and aero development. Engineering solutions center on stability and thermal management at high velocity. Materials and craftsmanship combine for luxury even at performance extremes. Safety systems are tuned to enable confident exploration of top-end performance in controlled conditions.</p></article>
 
-<div class="article"><h3>Aston Martin’s Future Models</h3><p>Aston Martin fuses elegance with power in 2025. Sleek exteriors and responsive engines provide excitement. Hybrid options improve efficiency. Each car represents modern style and timeless appeal. Safety and driver assistance features are included. Aston Martin delivers luxury and performance.</p></div>
+            <article class="article"><h3>Koenigsegg Innovations</h3><p>Koenigsegg pushes the envelope on novel power systems, lightweight construction and high-efficiency packaging. Their small-run engineering toys often arrive as fully integrated systems where engine, transmission and aerodynamics act as one. Radical production methods and bespoke client options keep the marque at the cutting edge of performance tech.</p></article>
 
-<div class="article"><h3>Bugatti Extreme Speed</h3><p>Bugatti hypercars reach incredible top speeds. Quad-turbo engines, aerodynamics, and high-tech materials dominate. Interiors combine luxury with performance. Craftsmanship meets cutting-edge technology. Safety systems maintain control at extreme speeds. Bugatti remains a pinnacle of automotive engineering.</p></div>
+            <article class="article"><h3>Pagani Masterpieces</h3><p>Pagani’s ethos blends art, craftsmanship and performance. Each car receives extensive bespoke finishes and attention to detail. Powertrains deliver visceral responses while bodywork aesthetic and function align. These are collector cars that double as rolling galleries, showcasing the human touch in a high-tech era.</p></article>
 
-<div class="article"><h3>Koenigsegg Innovations</h3><p>Koenigsegg pushes engineering boundaries with hybrid power and lightweight materials. Acceleration, handling, and braking are exceptional. Interiors are luxurious and driver-focused. Safety technology ensures control at high speeds. Koenigsegg is synonymous with innovation and precision. Each vehicle is a masterpiece.</p></div>
+            <article class="article"><h3>Supercar Technology Advances</h3><p>Advances include adaptive aerodynamics, energy recuperation, and AI-driven vehicle dynamics. Sensor suites and powerful controllers let engineers tune behavior across speed ranges. Supercars act as testbeds for tech that eventually improves safety and efficiency in mainstream models. The pace of innovation in this segment remains rapid and influential.</p></article>
+          </div>
+        </section>
 
-<div class="article"><h3>Pagani Masterpieces</h3><p>Pagani combines art with automotive performance. Handcrafted details, exquisite interiors, and extreme performance define 2025 models. Lightweight materials and hybrid technology enhance dynamics. Customization options make each car unique. Pagani inspires awe in enthusiasts and collectors. The brand represents passion and exclusivity.</p></div>
+        <!-- ======= Tech & Gadgets (10) ======= -->
+        <section id="tech" class="section" aria-labelledby="tech-heading">
+          <h2 id="tech-heading">Tech & Gadgets</h2>
+          <div class="articles">
+            <article class="article"><h3>Top 10 Smartphones 2025</h3><p>Smartphones now combine polished hardware with AI-enhanced photography and adaptive displays. Manufacturers compete on battery life, camera versatility and OS ecosystem advantages. Foldable designs are refined for durability and practical multitasking. Security features and longevity updates are increasingly important. The smartphone remains a daily essential in 2025.</p></article>
 
-<div class="article"><h3>Supercar Technology Advances</h3><p>2025 supercars integrate AI, hybrid systems, and advanced aerodynamics. Performance, safety, and efficiency are optimized. Digital dashboards and driver assists enhance control. Design combines aesthetics and function. Luxury, speed, and technology merge perfectly. The supercar world evolves continuously with innovation.</p></div>
+            <article class="article"><h3>Best Laptops for Productivity</h3><p>Productivity laptops balance processor power and battery life with lightweight builds. Modern chips offer impressive on-demand compute and efficiency. Displays trend toward higher fidelity and lower power draw. Built-in privacy and biometrics are appreciated by professionals. Choose models that match workflow needs—creatives generally favor color accuracy while coders prioritize thermals and keyboards.</p></article>
 
-</section>
+            <article class="article"><h3>Wearables That Matter</h3><p>Wearables now provide deep health insights with continuous sensors and robust analytics. Battery life and comfort are clear differentiators between devices. Integration with health platforms and telemedicine is improving. For many users, wearables act as proactive wellness tools rather than mere notifications devices. Expect continued sensor improvements and tighter app ecosystems.</p></article>
 
-<!-- Tech & Gadgets Section -->
-<section id="tech">
-<h2>Tech & Gadgets</h2>
+            <article class="article"><h3>Virtual Reality in 2025</h3><p>VR headsets reach wider audiences with lighter designs and higher-resolution panels. Reduced latency and improved tracking make immersive applications more convincing. Use cases include training, remote collaboration and narrative entertainment. Content ecosystems expand but hardware remains key to convincing experiences. VR steadily moves beyond niche gaming use.</p></article>
 
-<div class="article"><h3>Top 10 Smartphones 2025</h3><p>Smartphones in 2025 feature AI-powered cameras, foldable screens, and long-lasting batteries. 5G and Wi-Fi 7 connectivity ensure seamless communication. Devices focus on durability, design, and speed. Software ecosystems improve multitasking. Tech enthusiasts can choose based on performance and style. Smartphones continue to evolve rapidly.</p></div>
+            <article class="article"><h3>Best Tablets for Work & Play</h3><p>Tablets blend portability and larger canvases for creativity and consumption. Stylus support and desktop-class apps push tablets into professional workflows. Battery longevity and accessory ecosystems differentiate the leaders. Hybrid laptop-tablet devices attempt to provide best-of-both worlds for users who value portability and versatility.</p></article>
 
-<div class="article"><h3>Best Laptops for Productivity</h3><p>Laptops combine portability with power. 2025 models include advanced processors, high-resolution displays, and extended battery life. Lightweight and durable builds help on the go. Features like AI-assisted productivity tools and enhanced security improve efficiency. Designers, students, and professionals benefit. Laptops continue to redefine work and creativity.</p></div>
+            <article class="article"><h3>Top Gaming Consoles 2025</h3><p>Consoles focus on ecosystem, exclusive titles and smooth networked play. Performance gains yield richer worlds and faster load times. Backward compatibility and cloud options help preserve libraries. Controllers remain a focal point of user comfort and innovation. Console manufacturers compete on services as much as hardware now.</p></article>
 
-<div class="article"><h3>Wearables That Matter</h3><p>Wearable tech tracks health, fitness, and lifestyle. Smartwatches monitor heart rate, sleep, and activity. Advanced sensors integrate with smartphones for notifications and alerts. 2025 wearables offer improved battery life and AI features. Design is sleek and comfortable. Wearables are essential for modern wellness and productivity.</p></div>
+            <article class="article"><h3>Smart Home Devices You Need</h3><p>Smart devices are more reliable, with secure local control and improved privacy options. Automation routines are more sophisticated and easier to author. Interoperability across platforms improves user experience. Energy management and security are primary benefits. Smart home adoption grows as installations become simpler and more useful.</p></article>
 
-<div class="article"><h3>Virtual Reality in 2025</h3><p>VR headsets deliver immersive experiences for gaming and professional use. Lightweight, high-resolution displays and low latency improve realism. 2025 models integrate wireless functionality and hand tracking. VR expands education, design, and entertainment. Performance improvements make virtual worlds more convincing. VR technology continues to advance rapidly.</p></div>
+            <article class="article"><h3>Top Audio Gear 2025</h3><p>Audio products emphasize spatial sound and low-latency wireless codecs. Noise cancellation is routine, but sound signature and comfort remain key purchase drivers. Portable speakers and home systems improve fidelity while integrating easily with voice and streaming services. Buyers choose based on use-case: travel, casual listening, studio work, or home cinema.</p></article>
 
-<div class="article"><h3>Best Tablets for Work & Play</h3><p>Tablets combine portability with computing power. 2025 devices feature large OLED displays, stylus support, and multi-window multitasking. Lightweight designs and long battery life make them practical. Performance meets creativity for drawing, editing, and entertainment. Tablets are versatile tools for productivity and fun. Top models balance performance and usability.</p></div>
+            <article class="article"><h3>Innovations in Charging</h3><p>Fast and efficient charging technologies reduce downtime across devices. Qi and proprietary wireless standards push higher power delivery while avoiding heat issues. Portable power banks offer higher capacities in lighter packages. Infrastructure improvements mean fewer charging worries during travel. Charging evolves to support denser, more capable devices.</p></article>
 
-<div class="article"><h3>Top Gaming Consoles 2025</h3><p>Gaming consoles offer cutting-edge graphics, faster loading, and immersive gameplay. Cloud gaming integration allows play anywhere. 2025 consoles feature AI-assisted graphics and adaptive controls. Multiplayer platforms connect communities globally. Performance and design cater to casual and hardcore gamers. Consoles continue to dominate entertainment.</p></div>
+            <article class="article"><h3>AI Assistants & Everyday Tools</h3><p>AI assistants are more capable with context-aware suggestions and multimodal inputs. Privacy and local processing are growing demands among users. Assistants help schedule, compose and automate repetitive tasks. Integration across devices leads to smoother handoffs. The assistant becomes an extension of productivity and convenience when done right.</p></article>
+          </div>
+        </section>
 
-<div class="article"><h3>Smart Home Devices</h3><p>Smart home tech simplifies life with automation and AI. Devices control lighting, climate, and security. Voice assistants and AI routines integrate devices seamlessly. 2025 smart homes enhance convenience and safety. Compatibility with multiple ecosystems is essential. Smart home gadgets improve comfort, efficiency, and lifestyle.</p></div>
+        <!-- ======= Reviews & Comparisons (10) ======= -->
+        <section id="reviews" class="section" aria-labelledby="reviews-heading">
+          <h2 id="reviews-heading">Reviews & Comparisons</h2>
+          <div class="articles">
+            <article class="article"><h3>iPhone 17 Pro vs Flagship Android</h3><p>Flagship comparisons focus on camera, OS experience, battery life and ecosystem fit. The iPhone often excels in software optimization while Android flagships deliver hardware innovation like higher refresh displays and variable cameras. Buyers weigh platform commitments against specs and features. Both camps produce capable devices with nuanced trade-offs.</p></article>
 
-<div class="article"><h3>Top Audio Devices</h3><p>2025 audio devices include headphones, speakers, and soundbars. Wireless technology, high-resolution audio, and AI noise cancellation improve listening. Devices focus on comfort, durability, and performance. Audio experiences are immersive for gaming, music, and movies. Top devices balance quality and price. Audio technology evolves with entertainment demands.</p></div>
+            <article class="article"><h3>MacBook vs Windows Ultrabook</h3><p>MacBooks shine with tight hardware-software integration and long battery life. Windows ultrabooks offer broader hardware choices and expandability. Performance benchmarks increasingly converge; user preference often rests on software workflow. Consider ports, repairability and long-term software support when choosing. Each platform has clear strengths for different users.</p></article>
 
-<div class="article"><h3>Innovative Charging Tech</h3><p>Charging technology evolves with wireless, fast, and solar solutions. Devices charge efficiently without overheating. Portable power solutions improve convenience for travelers. 2025 tech reduces charging time and energy loss. Sustainability is considered in design. Charging tech complements modern mobile lifestyles and gadgets.</p></div>
+            <article class="article"><h3>Top EVs Compared</h3><p>EV comparisons look at range, charging ecosystem and real-world energy use. Luxury EVs add performance and comfort, while mainstream models focus on value and utility. Charging habits and infrastructure availability can sway ownership decisions. Total cost of ownership often favors EVs over time. Compare models based on your daily driving needs.</p></article>
 
-<div class="article"><h3>Top Tech Trends 2025</h3><p>Technology continues to advance with AI, automation, and wearable integration. Smart cities, electric mobility, and AR/VR reshape life. Consumer electronics evolve with innovation and design. 2025 trends focus on sustainability, connectivity, and performance. Tech improves productivity, entertainment, and daily life. Understanding trends helps users adapt quickly.</p></div>
+            <article class="article"><h3>Smartwatch Comparison Guide</h3><p>Comparisons consider sensors, battery life, app availability and comfort. Fitness-first watches prioritize accuracy and battery, while smartwatch platforms favor apps and ecosystem features. Cross-platform compatibility and long-term updates matter more than raw specs. Choose a watch that fits daily habits and health tracking goals.</p></article>
 
-</section>
+            <article class="article"><h3>Console vs PC Gaming: Which Now?</h3><p>PC gaming offers modding, performance scaling and extensive libraries; consoles provide convenience and exclusive franchises. Cloud play blurs lines, enabling play on low-power devices. Cost and upgrade cycles differ: PC upgrades can extend life while consoles offer predictable performance. Choose based on preferred games, social friends and budget.</p></article>
 
-<!-- Reviews & Comparisons Section -->
-<section id="reviews">
-<h2>Reviews & Comparisons</h2>
+            <article class="article"><h3>Mirrorless vs DSLR: Practical Differences</h3><p>Mirrorless systems offer lighter bodies and faster autofocus, while DSLRs still provide ruggedness and optical viewfinders. Lens ecosystems and ergonomics influence choice. For most shooters, mirrorless advantages outweigh the remaining DSLR benefits. Video and hybrid shooters particularly benefit from modern mirrorless designs.</p></article>
 
-<div class="article"><h3>iPhone 17 Pro vs Samsung Galaxy Z 2025</h3><p>The iPhone 17 Pro features advanced AI, powerful cameras, and smooth iOS. Samsung Galaxy Z offers foldable displays and multitasking. Battery, performance, and ecosystem compatibility are key factors. Design, software, and durability impact choice. Reviews compare speed, camera quality, and display. Consumers can choose based on preference and need.</p></div>
+            <article class="article"><h3>Top Tablets Compared</h3><p>Tablet comparisons balance OS ecosystems, stylus support, and performance. Apple iPadOS remains strong for apps, while Android and Windows tablets offer different strengths in multitasking and file management. Consider accessories and app support for creative and productivity tasks. Choose the tablet that matches daily workflows.</p></article>
 
-<div class="article"><h3>Laptop Comparison: MacBook Pro vs Dell XPS</h3><p>MacBook Pro offers macOS optimization, long battery life, and premium display. Dell XPS runs Windows with high performance and customization. Portability, build quality, and connectivity differ. Both excel in productivity and creative tasks. Reviews focus on speed, display, and user experience. Choice depends on OS preference and work requirements.</p></div>
+            <article class="article"><h3>Headphone Face-Off</h3><p>Headphone comparisons include sound signature, noise cancellation and comfort. Some models emphasize neutral studio sound while others aim for deep bass. ANC performance, codec support and battery life sway buyers. For travel, ANC and portability matter; for home, fidelity and comfort usually lead. Prioritize use-case when choosing audio gear.</p></article>
 
-<div class="article"><h3>Top Electric Car Comparisons</h3><p>Electric cars are evaluated on range, charging speed, and performance. Tesla, BMW, and Hyundai are top contenders. Interior comfort and technology are important. Safety and cost influence decisions. Reviews compare efficiency, design, and innovation. Electric vehicles are increasingly practical and desirable.</p></div>
+            <article class="article"><h3>Smart Home Platform Comparison</h3><p>Platform choice drives device compatibility and user experience. Some platforms prioritize local control and privacy while others offer broader cloud features. Consider voice assistants, automation complexity and long-term device support. Integration with security and energy management is increasingly important. Align platform choice with your privacy and automation priorities.</p></article>
 
-<div class="article"><h3>Smartwatch Face-Off</h3><p>Apple Watch vs Samsung Galaxy Watch offers health tracking, notifications, and app ecosystems. Battery life, design, and compatibility are compared. 2025 models include advanced sensors and AI. Both provide fitness and lifestyle monitoring. User experience and price influence choice. Reviews provide detailed performance insights.</p></div>
+            <article class="article"><h3>Budget vs Premium Phone: Is it Worth It?</h3><p>Budget phones now offer impressive value but trade-offs exist in camera processing, screen quality, and update cadence. Premium phones provide cutting-edge tech and longer support windows. Decide based on priorities: raw performance, camera, or long-term software updates. A mid-range blend is often the best value for many users.</p></article>
+          </div>
+        </section>
 
-<div class="article"><h3>Gaming Console Comparisons</h3><p>PlayStation 6 vs Xbox Series X 2025 features high graphics, speed, and exclusive titles. Cloud gaming and backward compatibility are evaluated. Controller design, online services, and storage differ. Performance and community platforms impact choice. Reviews analyze gameplay experience, graphics, and performance. Gamers select based on preference and ecosystem.</p></div>
+        <!-- ======= Top 10 & Facts (10) ======= -->
+        <section id="top10" class="section" aria-labelledby="top10-heading">
+          <h2 id="top10-heading">Top 10 & Facts</h2>
+          <div class="articles">
+            <article class="article"><h3>Top 10 Fastest Cars 2025</h3><p>Speed lists highlight top manufacturers pushing performance boundaries. Recent entries focus on hybrid-assist power and aero efficiency. These cars are often limited runs with intense engineering budgets. Records push materials, cooling and tire engineering forward. The fastest cars serve as both performance and publicity showcases for brands.</p></article>
 
-<div class="article"><h3>Camera Shootout: Mirrorless vs DSLR</h3><p>Mirrorless cameras offer compact designs and fast autofocus. DSLRs provide optical viewfinders and battery longevity. Lenses, image quality, and video capabilities differ. Reviews evaluate ease of use, versatility, and professional performance. 2025 camera technology improves shooting experience. Choice depends on photography style and needs.</p></div>
+            <article class="article"><h3>Top 10 Smartphones 2025</h3><p>Our top smartphone list weighs camera, battery life, display and ecosystem. Devices with balance across these areas tend to rank highest. Foldable devices rise for productivity, while traditional slabs continue to innovate in imaging. Consumer preference is shifting toward overall value rather than headline specs alone.</p></article>
 
-<div class="article"><h3>Top Tablets Compared</h3><p>iPad Air 6 vs Samsung Tab S features screen quality, stylus support, and OS capabilities. Battery life and app ecosystem differ. Performance is important for work and play. 2025 models focus on portability and multitasking. Reviews highlight design, speed, and features. Consumers can make informed decisions for lifestyle and productivity.</p></div>
+            <article class="article"><h3>Top 10 Laptops 2025</h3><p>Laptops that top lists combine performance, battery life and portability. For creators, color-accurate panels and GPU power are critical. For everyday users, efficiency and keyboard comfort matter. Rankings consider real-world performance, thermal management, and long-term software support. The market keeps evolving rapidly.</p></article>
 
-<div class="article"><h3>Headphone Reviews</h3><p>Wireless headphones are tested for audio quality, comfort, and battery life. Noise cancellation and durability are compared. 2025 models integrate AI for enhanced sound. Reviews focus on sound accuracy, comfort, and value. Choice depends on listening preference and daily use. Top brands provide reliability and innovation.</p></div>
+            <article class="article"><h3>Top 10 Wearables</h3><p>Wearables are ranked on health accuracy, battery life and ecosystem. Devices that balance comfort and meaningful insights rank highest. Integration with healthcare platforms and app ecosystems boosts value. Wearables play an increasing role in preventive healthcare and personal insights.</p></article>
 
-<div class="article"><h3>Smart Home Device Reviews</h3><p>Amazon Echo vs Google Nest compares AI assistants, compatibility, and automation. Device setup, performance, and ecosystem integration differ. 2025 models focus on voice recognition and smart routines. Reviews highlight convenience, safety, and connectivity. Consumers can choose devices that fit their smart home ecosystem. Technology enhances lifestyle and efficiency.</p></div>
+            <article class="article"><h3>Top 10 Electric Cars</h3><p>Leading EVs are judged on range, charging speed, packaging and usability. Practical range, real-world efficiency and charging availability influence everyday satisfaction. Luxury EVs add comfort and performance to the EV offering. As infrastructure improves, more buyers consider EVs as practical primary cars.</p></article>
 
-<div class="article"><h3>Electric Bike Comparison</h3><p>E-bikes provide commuting and fitness benefits. Range, speed, battery life, and weight are compared. 2025 models include smart displays and integrated tech. Safety and durability are evaluated. Reviews focus on performance, comfort, and value. Electric bikes become practical alternatives for urban transportation.</p></div>
+            <article class="article"><h3>Top 10 Supercars</h3><p>Supercar rankings factor lap performance, craftsmanship and exclusivity. Many entries are limited-edition models emphasizing collector appeal. Hybridization and electric assists are now common, raising performance while lowering emissions. These cars continue to represent the pinnacle of automotive engineering.</p></article>
 
-</section>
+            <article class="article"><h3>Top 10 Gaming Facts</h3><p>Gaming facts reflect industry growth: cloud play, cross-platform titles and esports expansion. Player habits shape hardware and service offerings. VR and AR present long-term opportunities for narrative and social experiences. The gaming ecosystem grows both economically and culturally year after year.</p></article>
 
-<!-- Top 10 & Facts Section -->
-<section id="top10">
-<h2>Top 10 & Facts</h2>
+            <article class="article"><h3>Top 10 Smart Home Devices</h3><p>Devices that make top 10 lists combine reliability, ease of use and meaningful automation. Thermostats, doorbells, cameras and smart speakers often top lists. Prioritizing devices with strong privacy policies and long-term support helps future-proof installations. Practical automation improves everyday life in measurable ways.</p></article>
 
-<div class="article"><h3>Top 10 Fastest Cars 2025</h3><p>Supercars dominate with speed, aerodynamics, and hybrid engines. Acceleration, handling, and design are key factors. Safety, performance, and luxury merge seamlessly. 2025 models redefine speed limits. Enthusiasts admire engineering innovation and aesthetics. Top 10 lists highlight the best in automotive technology.</p></div>
+            <article class="article"><h3>Top 10 Tech Trends 2025</h3><p>Key trends include AI augmentation, AR integration, sustainability in hardware, and expanded edge computing. Companies focus on making devices smarter and more efficient. Interoperability and privacy remain central concerns. These trends influence product roadmaps and user expectations globally.</p></article>
 
-<div class="article"><h3>Top 10 Smartphones 2025</h3><p>Devices are evaluated for cameras, performance, and battery. Foldable screens, AI features, and design lead innovation. Reviews compare durability, ecosystem, and user experience. 2025 smartphones combine style, power, and technology. Top devices dominate mobile markets. Consumer choice is influenced by functionality and brand loyalty.</p></div>
+            <article class="article"><h3>Top 10 Automotive Innovations</h3><p>Innovations include efficient battery tech, lighter materials, active safety systems and integrated software platforms. Autonomous features progress steadily with more tested capabilities. Connectivity and predictive maintenance change ownership models. These innovations shape the next decade of mobility in meaningful ways.</p></article>
+          </div>
+        </section>
 
-<div class="article"><h3>Top 10 Laptops 2025</h3><p>Performance, display, battery life, and portability define top laptops. Gaming, productivity, and creative work influence rankings. 2025 models feature AI-assisted tools and advanced processors. Brands compete on design and usability. Reviews guide consumers for tech and performance. Laptops shape modern work and entertainment.</p></div>
+        <!-- large bottom subscribe block -->
+        <section id="subscribe" class="section" aria-labelledby="subscribe-heading">
+          <h2 id="subscribe-heading">Subscribe for Updates</h2>
+          <p style="color:var(--muted);margin-bottom:10px;">Weekly digest: reviews, deep dives and top lists delivered to your inbox. No spam — unsubscribe any time.</p>
+          <form class="subscribe-form" id="subscribeForm">
+            <input type="email" id="email" placeholder="your@email.com" aria-label="Email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="sub-msg" id="subMessage" role="status" aria-live="polite"></div>
+        </section>
 
-<div class="article"><h3>Top 10 Wearables</h3><p>Smartwatches, fitness trackers, and hybrid devices lead innovation. Health monitoring, notifications, and design are key. 2025 wearables include AI-powered insights and long battery life. Comfort and functionality are compared. Reviews highlight performance, features, and value. Wearables integrate lifestyle and technology seamlessly.</p></div>
+      </main>
 
-<div class="article"><h3>Top 10 Electric Cars</h3><p>EVs dominate with range, performance, and charging speed. Tesla, BMW, and Hyundai compete with efficiency and tech. Interior comfort, safety, and innovation are evaluated. 2025 models balance performance and sustainability. Reviews guide buyers on cost and convenience. Electric cars shape automotive future.</p></div>
+      <aside class="site-side" role="complementary">
+        <div class="side-block">
+          <h4>About My Hyper Ride</h4>
+          <p style="color:var(--muted)">A clean, expert-driven source for car and tech news. Long-form summaries, practical buying help, and top 10 lists — written to help readers decide quickly.</p>
+        </div>
 
-<div class="article"><h3>Top 10 Supercars</h3><p>Ferrari, Lamborghini, Bugatti, and McLaren lead performance and design. Acceleration, aerodynamics, and hybrid systems define rankings. Interiors combine luxury and technology. 2025 supercars push speed limits while ensuring safety. Reviews highlight exclusivity and engineering excellence. Enthusiasts follow trends and innovations closely.</p></div>
+        <div class="side-block">
+          <h4>Quick Links</h4>
+          <p style="color:var(--muted)"><a href="#cars">Cars</a> • <a href="#supercars">Supercars</a> • <a href="#tech">Tech</a> • <a href="#reviews">Reviews</a> • <a href="#top10">Top 10</a></p>
+        </div>
 
-<div class="article"><h3>Top 10 Gaming Consoles</h3><p>PlayStation, Xbox, and Nintendo dominate gaming. Performance, graphics, storage, and exclusives are evaluated. 2025 consoles offer cloud gaming and advanced controllers. Reviews compare design, ecosystem, and gameplay experience. Top consoles deliver entertainment, innovation, and immersive experiences. Gamers select based on preference and needs.</p></div>
+        <div class="side-block">
+          <h4>Subscribe</h4>
+          <p style="color:var(--muted)">Join our weekly newsletter for top stories, reviews, and exclusive lists.</p>
+          <form class="subscribe-form" id="asideSubscribe">
+            <input type="email" id="asideEmail" placeholder="email@example.com" aria-label="Subscribe email">
+            <button type="button" id="asideSubscribeBtn">Join</button>
+          </form>
+          <div class="sub-msg" id="asideMsg" role="status" aria-live="polite"></div>
+        </div>
 
-<div class="article"><h3>Top 10 Tablets 2025</h3><p>iPad, Samsung, and Lenovo tablets feature display quality, battery, and performance. Stylus support and multitasking are essential. 2025 models balance portability and computing power. Reviews compare design, apps, and usability. Tablets enhance productivity, entertainment, and creativity. Top tablets dominate mobile computing.</p></div>
+        <div class="side-block">
+          <h4>Contact</h4>
+          <p style="color:var(--muted)">Email: info@myhyperride.example (replace with your real contact)</p>
+        </div>
+      </aside>
+    </div>
 
-<div class="article"><h3>Top 10 Smart Home Devices</h3><p>Devices focus on automation, convenience, and AI integration. Smart speakers, lights, and thermostats lead the market. 2025 models improve compatibility, safety, and connectivity. Reviews compare performance, ease of use, and ecosystem integration. Top smart devices simplify daily life and enhance comfort. Consumers rely on tech for efficiency.</p></div>
-
-<div class="article"><h3>Top 10 Tech Trends 2025</h3><p>AI, AR/VR, wearables, and smart cities dominate innovation. Sustainability, connectivity, and automation influence design. 2025 trends focus on consumer convenience and efficiency. Reviews highlight the impact on daily life, entertainment, and work. Technology continues to evolve rapidly. Top trends shape the future of gadgets and lifestyle.</p></div>
-
-</section>
-
-<!-- Subscription Section -->
-<section id="subscribe">
-<h2>Subscribe for Updates</h2>
-<p>Get the latest car & tech news delivered to your inbox. Weekly updates include reviews, top 10 lists, and exclusive insights. Stay informed and ahead of trends in the automotive and tech world.</p>
-<form id="subscribeForm">
-<input type="email" id="email" placeholder="Enter your email" required>
-<button type="submit">Subscribe</button>
-</form>
-<p id="subMessage"></p>
-</section>
+    <footer>
+      <div>&copy; <span id="yr"></span> My Hyper Ride — All rights reserved.</div>
+    </footer>
+  </div>
 
 <script>
-const form = document.getElementById('subscribeForm');
-const message = document.getElementById('subMessage');
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    if(email.includes('@')) {
-        message.textContent = "Subscribed successfully!";
-        message.style.color="#0f0";
-    } else {
-        message.textContent = "Please enter a valid email.";
-        message.style.color="#f00";
+  // fill year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // subscription handling (simple client-side + localStorage for test)
+  function handleSubscribe(email, statusEl){
+    if(!email || email.indexOf('@')===-1){ statusEl.textContent = 'Please enter a valid email.'; statusEl.style.color = '#ff8b8b'; return; }
+    let subscribers = JSON.parse(localStorage.getItem('mhr_subscribers')||'[]');
+    if(subscribers.includes(email.toLowerCase())){
+      statusEl.textContent = 'You are already subscribed.'; statusEl.style.color = '#ffdca3'; return;
     }
-    form.reset();
-});
+    subscribers.push(email.toLowerCase());
+    localStorage.setItem('mhr_subscribers', JSON.stringify(subscribers));
+    statusEl.textContent = 'Subscribed — check your inbox for a welcome note (demo).';
+    statusEl.style.color = '#c8ffd1';
+  }
+
+  document.getElementById('subscribeForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    handleSubscribe(email, document.getElementById('subMessage'));
+    this.reset();
+  });
+
+  document.getElementById('asideSubscribeBtn').addEventListener('click', function(){
+    const email = document.getElementById('asideEmail').value.trim();
+    handleSubscribe(email, document.getElementById('asideMsg'));
+    document.getElementById('asideEmail').value = '';
+  });
 </script>
-
-<footer>
-<p>&copy; 2025 My Hyper Ride. All rights reserved.</p>
-</footer>
-
 </body>
 </html>
