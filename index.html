@@ -1,597 +1,400 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MyHyperRide — Cars & Tech, Massive Explainers</title>
-  <meta name="description" content="MyHyperRide — Futuristic car & tech journalism. Massive explainers, daily topics, comparisons with winners, and subscription for exclusive long-reads." />
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  <style>
-    /* ===== THEME ===== */
-    :root {
-      --bg: #030304;
-      --panel: #0b0c0d;
-      --muted: #9aa9b6;
-      --gold: #ffbf55;
-      --cyan: #00e6ff;
-      --glass: rgba(255,255,255,0.02);
-      --glass-2: rgba(255,255,255,0.01);
-      --glass-border: rgba(255,255,255,0.03);
-      --card-shadow: 0 18px 60px rgba(0,0,0,0.75);
-      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: linear-gradient(180deg,var(--bg),#010102 160%);
-      color:#eaf9ff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1280px;margin:18px auto;padding:22px;}
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{
-      width:64px;height:64px;border-radius:14px;
-      background:linear-gradient(135deg,var(--gold),#ff7b00);
-      display:flex;align-items:center;justify-content:center;font-weight:900;color:#061014;font-size:18px;
-      box-shadow:0 12px 40px rgba(255,191,85,0.06), inset 0 -6px 16px rgba(0,0,0,0.25);
-    }
-    h1{margin:0;font-size:20px}
-    .tagline{color:var(--muted);font-size:13px}
-    nav{display:flex;gap:8px;align-items:center}
-    nav a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:700}
-    nav a:hover, nav a.active{color:var(--cyan);background:var(--glass)}
-    .controls{display:flex;gap:12px;align-items:center}
-    input[type="search"]{background:var(--glass);border:1px solid var(--glass-border);padding:10px 12px;border-radius:12px;color:inherit;min-width:220px}
-
-    /* ===== LAYOUT ===== */
-    main{display:grid;grid-template-columns:1fr 380px;gap:24px}
-    .content{padding:4px}
-    .sidebar{
-      position:sticky;top:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.01));
-      border:1px solid var(--glass-border);box-shadow:var(--card-shadow);
-    }
-
-    /* ===== HERO / TOPIC ===== */
-    .hero{
-      border-radius:14px;padding:20px;margin-bottom:18px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      border:1px solid var(--glass-border);
-      display:flex;gap:18px;align-items:flex-start;
-    }
-    .hero-left{flex:1}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--cyan),var(--gold));color:#021018;font-weight:900;font-size:12px}
-    .hero h2{margin:10px 0 6px 0;font-size:20px}
-    .lead{color:#dffcff;margin-top:6px;font-size:15px}
-    .hero-cta{display:flex;gap:10px;margin-top:14px}
-    .btn{padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--cyan),#66f3ff);color:#021018;font-weight:800;cursor:pointer;border:none}
-
-    /* ===== SECTIONS ===== */
-    .section{margin-bottom:22px;padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid var(--glass-border)}
-    .section h3{margin:0 0 12px 0;color:var(--gold)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      padding:14px;border-radius:12px;border:1px solid var(--glass-border);
-      box-shadow:var(--card-shadow);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
-      cursor:pointer;
-    }
-    .card:hover{transform:translateY(-8px);box-shadow:0 40px 120px rgba(0,0,0,0.85);filter:brightness(1.02)}
-    .card h4{margin:0 0 8px 0;color:#fff;font-size:16px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-    .meta{font-size:12px;color:#86a0b4;margin-top:10px}
-
-    /* ===== SIDEBAR CONTENT ===== */
-    .subscribe h4{margin:0;color:var(--gold)}
-    .subscribe p{margin:8px 0;color:var(--muted);font-size:13px}
-    .subscribe form{display:flex;flex-direction:column;gap:8px}
-    .subscribe input{padding:10px;border-radius:10px;border:1px solid var(--glass-border);background:transparent;color:inherit}
-
-    /* ===== MODAL ===== */
-    .modal-backdrop{position:fixed;inset:0;background:linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.95));display:none;align-items:center;justify-content:center;padding:20px;z-index:120}
-    .modal{max-width:1100px;width:100%;max-height:92vh;overflow:auto;background:linear-gradient(180deg,#0a0c0d,#060607);padding:22px;border-radius:14px;border:1px solid var(--glass-border);box-shadow:0 40px 140px rgba(0,0,0,0.95)}
-    .modal h2{margin-top:0;color:var(--gold)}
-    .close{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
-
-    /* ===== UTILITY ===== */
-    .small{font-size:13px;color:var(--muted)}
-    footer{text-align:center;margin-top:18px;color:var(--muted);font-size:13px}
-
-    @media (max-width:980px){
-      main{grid-template-columns:1fr}
-      .sidebar{position:static}
-      .hero{flex-direction:column}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyHyperRide Ultimate Edition</title>
+<style>
+body {margin:0;font-family:'Segoe UI',Tahoma,sans-serif;background:#0b0b0b;color:#f0f0f0;line-height:1.6;}
+a {color:#d4af37;text-decoration:none;}
+a:hover{text-decoration:underline;}
+h1,h2,h3{font-weight:bold;margin:0 0 10px 0;}
+header{background:#111;padding:20px 50px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333;}
+header h1{color:#d4af37;font-size:2em;}
+nav a{margin-left:25px;font-size:1.1em;}
+.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#1a1a1a;padding:60px 20px;border-bottom:2px solid #333;}
+.hero h2{font-size:2.5em;margin-bottom:20px;}
+.hero p{max-width:800px;font-size:1.2em;}
+section{padding:50px 50px;border-bottom:1px solid #222;}
+section h2{color:#d4af37;font-size:2em;margin-bottom:20px;}
+.articles{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+.article{background:#1f1f1f;padding:20px;border-radius:8px;transition:transform 0.2s, box-shadow 0.2s;}
+.article:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(212,175,55,0.5);}
+.article img{max-width:100%;border-radius:5px;margin-bottom:15px;}
+.subscribe{background:#111;padding:40px 50px;text-align:center;border-top:2px solid #333;}
+.subscribe input[type="email"]{padding:12px;width:300px;max-width:90%;border:none;border-radius:4px;margin-right:10px;font-size:1em;}
+.subscribe button{padding:12px 20px;font-size:1em;background:#d4af37;border:none;border-radius:4px;cursor:pointer;}
+.subscribe button:hover{background:#b8962b;}
+footer{background:#111;padding:30px 50px;text-align:center;font-size:0.9em;border-top:1px solid #333;}
+@media(max-width:768px){.hero h2{font-size:2em;} section{padding:40px 20px;}}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">MHR</div>
-        <div>
-          <h1>MyHyperRide</h1>
-          <div class="tagline">Shiv-energy × futuristic precision — cars & tech explained at scale</div>
-        </div>
-      </div>
 
-      <div class="controls">
-        <nav aria-label="Main">
-          <a href="#topic" class="active">Topic of the Day</a>
-          <a href="#cars">Cars</a>
-          <a href="#tech">Tech</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#facts">Facts</a>
-          <a href="#comparisons">Comparisons</a>
-        </nav>
-        <input type="search" id="search" placeholder="Search topics, e.g., winter EV range">
-      </div>
-    </header>
+<header>
+<h1>MyHyperRide</h1>
+<nav>
+<a href="#topic">Topic of the Day</a>
+<a href="#cars">Cars</a>
+<a href="#tech">Tech</a>
+<a href="#compare">Comparisons</a>
+<a href="#facts">Facts</a>
+<a href="#subscribe">Subscribe</a>
+</nav>
+</header>
 
-    <main>
-      <div class="content">
-        <!-- HERO / TOPIC OF THE DAY -->
-        <section id="topic" class="hero" aria-labelledby="topic-title">
-          <div class="hero-left">
-            <div class="pill">TOPIC OF THE DAY</div>
-            <h2 id="topic-title">Tesla Model Z vs Porsche Taycan Turbo GT — Electric Titan Mega Clash</h2>
-            <p class="lead" id="topic-lead">Massive breakdown: driving feel, range math, charging economics, software, maintenance, and the single clear verdict — with winners per category and a final buying recommendation for four buyer types.</p>
-            <div class="hero-cta">
-              <button id="open-topic" class="btn">Open Full Mega Article</button>
-              <button id="subscribe-cta" class="btn" style="background:linear-gradient(90deg,var(--gold),#ffd36b);">Subscribe (Get Mega Guides)</button>
-            </div>
-          </div>
+<!-- Topic of the Day -->
+<div class="hero" id="topic">
+<h2>🚀 Topic of the Day: AI-Powered Vehicles Transforming Driving</h2>
+<p>Artificial Intelligence is reshaping mobility. From Tesla's autopilot to BMW's adaptive sensors, AI integration transforms cars into intelligent companions. We analyze top brands, the tech they use, and the winners in innovation, performance, and daily usability.</p>
+</div>
 
-          <aside style="width:380px">
-            <div style="border-radius:12px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid var(--glass-border)">
-              <div style="font-weight:900;color:#fff">Quick Facts</div>
-              <ul style="color:var(--muted);margin:10px 0 0 18px">
-                <li>Tesla Model Z — Tri-motor, ~680 km real-world range, raw acceleration</li>
-                <li>Porsche Taycan Turbo GT — ~1,020 hp, 350 kW peak charging, refined handling</li>
-                <li>Verdict snapshot: Porsche wins feel; Tesla wins range & network</li>
-              </ul>
-            </div>
-          </aside>
-        </section>
+<!-- Cars Section -->
+<section id="cars">
+<h2>🚗 Cars</h2>
+<div class="articles">
+<!-- Article 1 -->
+<div class="article">
+<img src="https://www.tesla.com/sites/default/files/modelsx-new/social/model-s-hero-social.jpg" alt="Tesla Model S Plaid">
+<h3>Tesla Model S Plaid</h3>
+<p>0-60 mph in under 2 seconds, top speed 200 mph, 396 miles range. Advanced Autopilot and Full Self-Driving option. Winner in EV speed, innovation, and software integration. Tesla dominates acceleration and network charging infrastructure.</p>
+</div>
+<!-- Article 2 -->
+<div class="article">
+<img src="https://files.porsche.com/filestore/image/multimedia/none/992-taycan-modelimage-sideshot/normal/9f2b5f2b-9e4f-11eb-80c1-005056bbdc38;sF;twebp/porsche-normal.webp" alt="Porsche Taycan">
+<h3>Porsche Taycan</h3>
+<p>EV sports sedan with up to 750 hp, 0-60 mph in 3.0s, 227-300 miles range depending on model. Precision handling and luxury interior make it a top pick for driving enthusiasts. Winner for driving experience and build quality.</p>
+</div>
+<!-- Article 3 -->
+<div class="article">
+<img src="https://www.ford.com/is/image/Ford/2022-mustang-mach-e-gt-hero?fmt=jpg" alt="Ford Mustang Mach-E">
+<h3>Ford Mustang Mach-E</h3>
+<p>Electric SUV with 0-60 mph in 3.5s (GT), range 270-314 miles. Smart tech and driver-assist features. Winner for value and accessible performance, blending sportiness with daily usability.</p>
+</div>
+<!-- Article 4 -->
+<div class="article">
+<img src="https://www.bmwusa.com/content/dam/bmwusa/i4/bmw-2022-i4-m50-modelpage-hero-desktop.jpg" alt="BMW i4">
+<h3>BMW i4</h3>
+<p>Electric sedan with 536 hp, 0-60 mph in 3.8s, 300 miles range. Focused on driver engagement with luxury tech features. Winner for balance of sport and comfort.</p>
+</div>
+<!-- Article 5 -->
+<div class="article">
+<img src="https://www.audiusa.com/content/dam/nemo/models/e-tron-gt/2022/overview/e-tron-gt-gallery-1.jpg" alt="Audi e-tron GT">
+<h3>Audi e-tron GT</h3>
+<p>Luxury EV with 637 hp, 0-60 mph in 3.1s, 238 miles range. Sleek design, top-tier handling, great interior. Winner for high-end luxury and precision engineering.</p>
+</div>
+<!-- Article 6 -->
+<div class="article">
+<img src="https://www.mercedes-benz.com/en/vehicles/passenger-cars/eqs/_jcr_content/image.MQ6.12.20220915115248.jpeg" alt="Mercedes EQS">
+<h3>Mercedes EQS</h3>
+<p>Flagship EV sedan, 516 hp, 0-60 mph in 4.1s, 350 miles range. Ultra-luxury interior with AI-assisted features. Winner for comfort and advanced tech.</p>
+</div>
+<!-- Article 7 -->
+<div class="article">
+<img src="https://www.lucidmotors.com/sites/default/files/2023-04/Lucid-Air-Performance.jpg" alt="Lucid Air">
+<h3>Lucid Air</h3>
+<p>Ultra-luxury EV with 1,111 hp (Dream Edition), 0-60 mph in 2.5s, 520 miles range. Winner for range and cabin luxury. A top contender against Tesla for long-range enthusiasts.</p>
+</div>
+<!-- Article 8 -->
+<div class="article">
+<img src="https://www.nissanusa.com/content/dam/Nissan/us/vehicles/ariya/2023/overview/2023-nissan-ariya-overview-hero.jpg" alt="Nissan Ariya">
+<h3>Nissan Ariya</h3>
+<p>Electric crossover with 389 hp, 0-60 mph in 5.1s, 300 miles range. Affordable, smart tech integration. Winner for all-around usability and practical EV adoption.</p>
+</div>
+<!-- Article 9 -->
+<div class="article">
+<img src="https://www.hyundai.com/content/dam/hyundai/us/en/data/2022/ioniq5/2022-ioniq5-gallery-01.jpg" alt="Hyundai Ioniq 5">
+<h3>Hyundai Ioniq 5</h3>
+<p>Retro-futuristic design, 320 hp, 0-60 mph in 5.2s, 303 miles range. Fast charging and high-tech interior. Winner for innovation and practicality in modern EVs.</p>
+</div>
+<!-- Article 10 -->
+<div class="article">
+<img src="https://www.kia.com/content/dam/kwcms/kme/na/en/vehicles/ev6/overview/gallery/2023-ev6-hero.jpg" alt="Kia EV6">
+<h3>Kia EV6</h3>
+<p>Sporty electric crossover with 577 hp (GT), 0-60 mph in 3.5s, 328 miles range. Fast charging, strong value. Winner for daily performance and accessibility.</p>
+</div>
+</div>
+</section>
 
-        <!-- CARS -->
-        <section id="cars" class="section">
-          <h3>Cars — Deep, Juicy Topics</h3>
-          <div class="grid" id="cars-grid">
-            <!-- 10 cards (IDs used to open modal's content) -->
-            <div class="card" data-id="cars-01">
-              <h4>Hyper Sedan: The Quiet Cannon</h4>
-              <p>Batteries integrated in the floor change handling, NVH, and safety. This article gives exact setup numbers, lap-effects, and tuning options that actually work without voiding warranty.</p>
-              <div class="meta">2,200 words • By Neil</div>
-            </div>
-            <div class="card" data-id="cars-02">
-              <h4>Compact EVs That Beat Gas Cars</h4>
-              <p>Regional winners that outperform ICE alternatives on running cost, insurance, and city performance — and the three tests you must run before buying.</p>
-              <div class="meta">1,900 words • By Team</div>
-            </div>
-            <div class="card" data-id="cars-03">
-              <h4>The Return of the Manual — Why It Matters</h4>
-              <p>Clutch weight, gear ratios, and why a manual can be faster on track for skilled drivers — includes torque tables and shift maps.</p>
-              <div class="meta">1,600 words • Guest</div>
-            </div>
-            <div class="card" data-id="cars-04">
-              <h4>Long-range EV Battery Myths — Full Breakdown</h4>
-              <p>Real-world multipliers for speed, temperature, and load so your trip planning matches reality — not marketing claims.</p>
-              <div class="meta">2,400 words • Data Lab</div>
-            </div>
-            <div class="card" data-id="cars-05">
-              <h4>Luxury Interiors That Last — Materials Science</h4>
-              <p>Vegan leather grades, seam build, and UV testing — maintenance that adds years to your cabin's look and feel.</p>
-              <div class="meta">1,400 words • Neil</div>
-            </div>
-            <div class="card" data-id="cars-06">
-              <h4>Daily Driver vs Weekend Toy — Decision Matrix</h4>
-              <p>A quantified decision matrix across 12 axes (comfort, TCO, insurance, depreciation) so you buy the right compromise.</p>
-              <div class="meta">1,900 words • Team</div>
-            </div>
-            <div class="card" data-id="cars-07">
-              <h4>Suspension Tuning — Shop to Track</h4>
-              <p>Spring rates, damper mapping, and anti-roll math with expected lap-time gains and ride comfort tradeoffs.</p>
-              <div class="meta">2,200 words • Workshop</div>
-            </div>
-            <div class="card" data-id="cars-08">
-              <h4>Best Hatchbacks for Teens — Ranked</h4>
-              <p>Safety picks, insurance-friendly models, crash structure notes, and driver-training tips for new drivers.</p>
-              <div class="meta">1,300 words • Safety</div>
-            </div>
-            <div class="card" data-id="cars-09">
-              <h4>EV Charging: Real Costs & Strategy</h4>
-              <p>How to slash charging bills with timing, charging levels, and subscription math — region-specific advice included.</p>
-              <div class="meta">2,000 words • Data Lab</div>
-            </div>
-            <div class="card" data-id="cars-10">
-              <h4>Classic Cars with Modern Hearts — Restomod Playbook</h4>
-              <p>EV conversions, weight balance, and insurance/legal steps — case studies and builder recommendations.</p>
-              <div class="meta">1,700 words • Guest</div>
-            </div>
-          </div>
-        </section>
+<!-- Tech Section (Articles 11-20) -->
+<section id="tech">
+<h2>💻 Tech</h2>
+<div class="articles">
+<!-- Article 11 -->
+<div class="article">
+<img src="https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-17_Promo_09102523.jpg.og.jpg?20251109" alt="iPhone 17">
+<h3>iPhone 17</h3>
+<p>Apple’s iPhone 17 features the A19 chip, cinematic AI camera, 120Hz ProMotion display, and iOS seamless integration. Winner for user experience and photography capabilities.</p>
+</div>
+<!-- Article 12 -->
+<div class="article">
+<img src="https://images.samsung.com/is/image/samsung/p6pim/levant/sm-s908ezkamea/gallery/levant-galaxy-s25-ultra-5g-s908-490568-sm-s908ezkamea-531798195" alt="Samsung Galaxy S25 Ultra">
+<h3>Samsung Galaxy S25 Ultra</h3>
+<p>Top-tier AMOLED display, 200MP camera, massive battery, and S-Pen integration. Winner for hardware innovation and display technology supremacy.</p>
+</div>
+<!-- Article 13 -->
+<div class="article">
+<img src="https://www.meta.com/media/quest4-overview-hero.jpg" alt="Meta Quest 4">
+<h3>Oculus Meta Quest 4</h3>
+<p>Standalone VR headset with ultra-high refresh rate, 4K per eye, and improved ergonomics. Best for mainstream VR adoption and content variety.</p>
+</div>
+<!-- Article 14 -->
+<div class="article">
+<img src="https://www.pico-interactive.com/media/neo5-overview.jpg" alt="Pico Neo 5">
+<h3>Pico Neo 5</h3>
+<p>High refresh rate VR headset, ergonomic design, strong performance for gaming. Winner for hardcore VR enthusiasts seeking smooth visuals.</p>
+</div>
+<!-- Article 15 -->
+<div class="article">
+<img src="https://cdn.vox-cdn.com/thumbor/macbook-pro-16-2023.jpg" alt="MacBook Pro M3">
+<h3>MacBook Pro M3 16-inch</h3>
+<p>Apple M3 chip, 16-core GPU, 32GB RAM, Liquid Retina XDR display. Winner for professional performance, media creation, and battery life.</p>
+</div>
+<!-- Article 16 -->
+<div class="article">
+<img src="https://www.microsoft.com/en-us/surface/devices/surface-laptop-6.jpg" alt="Surface Laptop 6">
+<h3>Microsoft Surface Laptop 6</h3>
+<p>Intel 14th Gen i7, sleek design, PixelSense touchscreen. Winner for productivity and Windows ecosystem integration.</p>
+</div>
+<!-- Article 17 -->
+<div class="article">
+<img src="https://www.sony.com/electronics/images/psvr2-hero.jpg" alt="PlayStation VR2">
+<h3>PlayStation VR2</h3>
+<p>Next-gen VR for PS5, 4K HDR visuals, immersive haptics. Winner for console VR experience.</p>
+</div>
+<!-- Article 18 -->
+<div class="article">
+<img src="https://www.google.com/pixel-8.jpg" alt="Google Pixel 8">
+<h3>Google Pixel 8</h3>
+<p>Tensor G3 chip, AI camera software, Android latest features. Winner for software intelligence and AI photography.</p>
+</div>
+<!-- Article 19 -->
+<div class="article">
+<img src="https://www.amazon.com/kindle-oasis-2023.jpg" alt="Kindle Oasis">
+<h3>Amazon Kindle Oasis</h3>
+<p>7-inch e-ink display, adjustable warm light, waterproof. Winner for reading experience and portability.</p>
+</div>
+<!-- Article 20 -->
+<div class="article">
+<img src="https://www.nvidia.com/images/geforce-rtx-5090.jpg" alt="NVIDIA RTX 5090">
+<h3>NVIDIA GeForce RTX 5090</h3>
+<p>Next-gen GPU, 48GB VRAM, AI-assisted rendering, 8K gaming. Winner for extreme gaming and creative workloads.</p>
+</div>
+</div>
+</section>
+<!-- Comparisons Section -->
+<section id="compare">
+<h2>⚖️ Comparisons</h2>
+<div class="articles">
+<!-- Article 21 -->
+<div class="article">
+<img src="https://www.tesla.com/model-s-vs-porsche-taycan.jpg" alt="Tesla Model S vs Porsche Taycan">
+<h3>Tesla Model S Plaid vs Porsche Taycan</h3>
+<p>Acceleration: Tesla 0-60 <2s vs Taycan 3.0s. Range: Tesla 396mi vs Taycan 227-300mi. Winner for EV tech and network: Tesla. Winner for driving feel: Taycan. Both are top-tier but excel in different areas.</p>
+</div>
+<!-- Article 22 -->
+<div class="article">
+<img src="https://www.apple.com/iphone-vs-samsung.jpg" alt="iPhone 17 vs Galaxy S25 Ultra">
+<h3>iPhone 17 vs Samsung Galaxy S25 Ultra</h3>
+<p>Performance: A19 chip vs Snapdragon latest gen. Camera: iPhone AI cinematic vs Samsung 200MP. Display: iPhone OLED vs Samsung AMOLED 2x brighter. Winner overall: depends on preference—iOS ecosystem or Android innovation.</p>
+</div>
+<!-- Article 23 -->
+<div class="article">
+<img src="https://www.meta.com/quest-vs-pico.jpg" alt="Meta Quest 4 vs Pico Neo 5">
+<h3>Meta Quest 4 vs Pico Neo 5</h3>
+<p>Visuals: Quest 4 4K vs Pico Neo 5 similar. Comfort: Quest heavier, Pico lighter. Game library: Quest wins. Winner for accessibility: Meta Quest 4. Winner for hardcore VR enthusiasts: Pico Neo 5.</p>
+</div>
+<!-- Article 24 -->
+<div class="article">
+<img src="https://www.nvidia-vs-amd-gpu.jpg" alt="RTX 5090 vs AMD GPU">
+<h3>NVIDIA RTX 5090 vs AMD Radeon Next</h3>
+<p>VRAM: 48GB vs 32GB. Ray tracing: NVIDIA more mature. AI features: NVIDIA better. Winner for gamers: NVIDIA. Winner for cost/value: AMD. Both exceptional for next-gen graphics.</p>
+</div>
+<!-- Article 25 -->
+<div class="article">
+<img src="https://www.amazon-google-smart-display.jpg" alt="Amazon Echo vs Google Nest">
+<h3>Amazon Echo vs Google Nest</h3>
+<p>Smart home control, sound quality, AI assistant performance. Winner for ecosystem compatibility: Google. Winner for variety and affordability: Amazon. Both strong but cater to different user needs.</p>
+</div>
+<!-- Article 26 -->
+<div class="article">
+<img src="https://www.sony-ps5-vs-xbox-series-x.jpg" alt="PS5 vs Xbox Series X">
+<h3>PlayStation 5 vs Xbox Series X</h3>
+<p>Exclusive games: PS5 better. Hardware: similar. VR integration: PS5 wins. Subscription: Xbox Game Pass unbeatable. Winner: depends on gaming priorities—exclusive titles or subscription value.</p>
+</div>
+<!-- Article 27 -->
+<div class="article">
+<img src="https://www.macbook-vs-surface.jpg" alt="MacBook Pro M3 vs Surface Laptop 6">
+<h3>MacBook Pro M3 vs Surface Laptop 6</h3>
+<p>Performance: Apple M3 superior for media creation. Display: Liquid Retina vs PixelSense, MacBook slightly better. Winner for professionals: MacBook Pro. Winner for productivity/Windows: Surface Laptop 6.</p>
+</div>
+<!-- Article 28 -->
+<div class="article">
+<img src="https://www.hyundai-ioniq5-vs-kia-ev6.jpg" alt="Hyundai Ioniq 5 vs Kia EV6">
+<h3>Hyundai Ioniq 5 vs Kia EV6</h3>
+<p>Performance: EV6 GT faster. Range: similar ~300 mi. Interior tech: Ioniq 5 slightly better. Winner for sportiness: EV6. Winner for design/comfort: Ioniq 5. Both great modern EVs.</p>
+</div>
+<!-- Article 29 -->
+<div class="article">
+<img src="https://www.nissan-ariya-vs-tesla-model-y.jpg" alt="Nissan Ariya vs Tesla Model Y">
+<h3>Nissan Ariya vs Tesla Model Y</h3>
+<p>Acceleration: Model Y quicker. Range: Ariya slightly better in some trims. Tech: Tesla wins autopilot. Winner overall: Tesla for software, Nissan for comfort and price.</p>
+</div>
+<!-- Article 30 -->
+<div class="article">
+<img src="https://www.amazon-kindle-vs-ipad.jpg" alt="Kindle Oasis vs iPad">
+<h3>Kindle Oasis vs iPad</h3>
+<p>Reading comfort: Kindle superior. Battery: Kindle 6 weeks vs iPad ~10hrs. App versatility: iPad wins. Winner for readers: Kindle. Winner for versatility: iPad. Both excel in their domains.</p>
+</div>
+</div>
+</section>
 
-        <!-- TECH -->
-        <section id="tech" class="section">
-          <h3>Tech Zone — Massive Explainery</h3>
-          <div class="grid" id="tech-grid">
-            <div class="card" data-id="tech-01">
-              <h4>iPhone vs Android: 2025 Ownership Map</h4>
-              <p>Long-term update, repair costs and resale models that actually matter; who keeps value and why.</p>
-              <div class="meta">2,200 words • Tech Team</div>
-            </div>
-            <div class="card" data-id="tech-02">
-              <h4>AI Assistants — Where They Fail & Fixes</h4>
-              <p>A practical script to make assistants reliable: memory patterns, grounding, and privacy-first prompts.</p>
-              <div class="meta">2,000 words • Neil</div>
-            </div>
-            <div class="card" data-id="tech-03">
-              <h4>Tablets for Creators in 2025 — Real Picks</h4>
-              <p>Latency, color pipelines and workflows that replace laptops — exact profiles and accessory recommendations.</p>
-              <div class="meta">1,600 words • Guest</div>
-            </div>
-            <div class="card" data-id="tech-04">
-              <h4>Battery Breakthroughs: Hype vs Reality</h4>
-              <p>Timelines and practical impact of silicon-anodes & solid-state — what will change driving in 3 years.</p>
-              <div class="meta">2,300 words • Tech Lab</div>
-            </div>
-            <div class="card" data-id="tech-05">
-              <h4>Noise-cancelling Earbuds — Lab vs Plane</h4>
-              <p>Measured ANC, codec tradeoffs, and travel vs studio picks with EQ settings.</p>
-              <div class="meta">1,500 words • Audio</div>
-            </div>
-            <div class="card" data-id="tech-06">
-              <h4>Home Automation That Actually Helps</h4>
-              <p>Energy-saving automations, guardrails, and practical templates you should deploy today.</p>
-              <div class="meta">1,400 words • Team</div>
-            </div>
-            <div class="card" data-id="tech-07">
-              <h4>Laptop Thermals Demystified — Real Tests</h4>
-              <p>Thermal charts, vapor-chamber benefits, and models that actually sustain performance.</p>
-              <div class="meta">1,900 words • Workshop</div>
-            </div>
-            <div class="card" data-id="tech-08">
-              <h4>Wearables Beyond Step Counters</h4>
-              <p>Which wearable metrics are meaningful and how to build a 30-day useful program with them.</p>
-              <div class="meta">1,600 words • HealthTech</div>
-            </div>
-            <div class="card" data-id="tech-09">
-              <h4>Streaming Audio — When Lossless Matters</h4>
-              <p>When lossless is audible and when it’s marketing — matched setups and listening scenarios.</p>
-              <div class="meta">1,300 words • Audio</div>
-            </div>
-            <div class="card" data-id="tech-10">
-              <h4>Best Budget Gaming Monitors 2025</h4>
-              <p>Panel tradeoffs, motion clarity, and models that give competitive edges at low prices.</p>
-              <div class="meta">1,400 words • Team</div>
-            </div>
-          </div>
-        </section>
+<!-- Facts Section -->
+<section id="facts">
+<h2>📊 Facts</h2>
+<div class="articles">
+<!-- Article 31 -->
+<div class="article">
+<img src="https://www.apple-facts.jpg" alt="Rise of Apple">
+<h3>The Rise of Apple</h3>
+<p>Apple revolutionized personal tech with iPhone, iPad, Mac. Market capitalization >$3T. Winner for consistent innovation and ecosystem strength.</p>
+</div>
+<!-- Article 32 -->
+<div class="article">
+<img src="https://www.tesla-facts.jpg" alt="Tesla Facts">
+<h3>Tesla's Dominance in EVs</h3>
+<p>Largest EV manufacturer, leading battery tech, and global charging network. Winner for innovation and mass adoption.</p>
+</div>
+<!-- Article 33 -->
+<div class="article">
+<img src="https://www.samsung-facts.jpg" alt="Samsung Facts">
+<h3>Samsung Innovations</h3>
+<p>Global leader in displays, semiconductors, and mobile. Winner for hardware manufacturing excellence.</p>
+</div>
+<!-- Article 34 -->
+<div class="article">
+<img src="https://www.google-ai.jpg" alt="Google AI Facts">
+<h3>Google AI Achievements</h3>
+<p>TensorFlow, AI research, and assistant tech. Winner for AI integration and search dominance.</p>
+</div>
+<!-- Article 35 -->
+<div class="article">
+<img src="https://www.nvidia-facts.jpg" alt="NVIDIA Facts">
+<h3>NVIDIA Milestones</h3>
+<p>Pioneer in GPU tech, AI computing, and gaming. Winner for graphics and AI acceleration.</p>
+</div>
+<!-- Article 36 -->
+<div class="article">
+<img src="https://www.microsoft-facts.jpg" alt="Microsoft Facts">
+<h3>Microsoft in Productivity</h3>
+<p>Office suite, Azure cloud, Windows dominance. Winner for business software and enterprise integration.</p>
+</div>
+<!-- Article 37 -->
+<div class="article">
+<img src="https://www.sony-facts.jpg" alt="Sony Facts">
+<h3>Sony Entertainment Power</h3>
+<p>Leader in consoles, audio, film, and imaging. Winner for entertainment innovation.</p>
+</div>
+<!-- Article 38 -->
+<div class="article">
+<img src="https://www.amazon-facts.jpg" alt="Amazon Facts">
+<h3>Amazon E-commerce and Cloud</h3>
+<p>Largest online retailer, AWS dominates cloud. Winner for scale and logistics efficiency.</p>
+</div>
+<!-- Article 39 -->
+<div class="article">
+<img src="https://www.hyundai-facts.jpg" alt="Hyundai Facts">
+<h3>Hyundai Automotive Growth</h3>
+<p>EV adoption, global manufacturing, innovation in design. Winner for accessibility and value in automotive tech.</p>
+</div>
+<!-- Article 40 -->
+<div class="article">
+<img src="https://www.lucid-facts.jpg" alt="Lucid Motors Facts">
+<h3>Lucid Motors Achievements</h3>
+<p>Luxury EV innovation, range record-breaking vehicles, ultra-lux interiors. Winner for premium EV enthusiasts.</p>
+</div>
+</div>
+</section>
 
-        <!-- REVIEWS -->
-        <section id="reviews" class="section">
-          <h3>Reviews — Lab & Road Tests</h3>
-          <div class="grid" id="reviews-grid">
-            <!-- 10 items -->
-            <div class="card" data-id="rev-01"><h4>2025 Roadster — 500-mile Thermal Study</h4><p>Thermal behavior under repeated stress — kit and upgrade notes.</p><div class="meta">2,200 words • Neil</div></div>
-            <div class="card" data-id="rev-02"><h4>Foldable Phone — Durability Test</h4><p>Hinge lifespan, ingress testing and software longevity.</p><div class="meta">1,700 words • Team</div></div>
-            <div class="card" data-id="rev-03"><h4>Smartwatch for Athletes — Lab vs Field</h4><p>GPS, HR sampling and battery analysis under training load.</p><div class="meta">1,800 words • HealthTech</div></div>
-            <div class="card" data-id="rev-04"><h4>Family SUV — 7-seat Real World</h4><p>Kid-seat ergonomics, cargo and fatigue over long trips.</p><div class="meta">1,600 words • Guest</div></div>
-            <div class="card" data-id="rev-05"><h4>Noise-cancelling Headphones — Airline Marathon</h4><p>ANC profiles, tonal balance and battery life.</p><div class="meta">1,400 words • Audio</div></div>
-            <div class="card" data-id="rev-06"><h4>Compact EV Cross-Test — 5 Car</h4><p>Energy, ergonomics and charging behavior head-to-head.</p><div class="meta">2,100 words • Team</div></div>
-            <div class="card" data-id="rev-07"><h4>Budget Laptop Showdown — Real Work</h4><p>Throttling, sustained performance and productivity scores.</p><div class="meta">1,700 words • Workshop</div></div>
-            <div class="card" data-id="rev-08"><h4>EV Winter Range Test</h4><p>Cold losses, preconditioning and tire choices explained.</p><div class="meta">1,600 words • Data Lab</div></div>
-            <div class="card" data-id="rev-09"><h4>Luxury Sedan — 18 Month Notes</h4><p>Software cadence and depreciation patterns to watch.</p><div class="meta">1,900 words • Neil</div></div>
-            <div class="card" data-id="rev-10"><h4>Pro Monitor Deep Review</h4><p>Uniformity, calibration and professional picks.</p><div class="meta">1,400 words • Team</div></div>
-          </div>
-        </section>
+<!-- Extra / Trending Section -->
+<section id="trending">
+<h2>🔥 Trending Articles</h2>
+<div class="articles">
+<!-- Article 41 -->
+<div class="article">
+<img src="https://www.ai-vehicles.jpg" alt="AI Vehicles">
+<h3>AI Vehicles Changing the Future</h3>
+<p>Autonomous tech, smart routing, AI-driven safety. Winner for innovation in transportation.</p>
+</div>
+<!-- Article 42 -->
+<div class="article">
+<img src="https://www.ev-charging.jpg" alt="EV Charging Innovations">
+<h3>Fast EV Charging Tech</h3>
+<p>Superchargers, solid-state batteries, ultra-fast charging. Winner for convenience and speed.</p>
+</div>
+<!-- Article 43 -->
+<div class="article">
+<img src="https://www.space-tech.jpg" alt="Space Tech">
+<h3>Space Exploration Tech</h3>
+<p>Reusable rockets, Mars colonization tech. Winner for innovation and ambition.</p>
+</div>
+<!-- Article 44 -->
+<div class="article">
+<img src="https://www.robotics-future.jpg" alt="Robotics">
+<h3>Robotics Revolution</h3>
+<p>Industrial AI, home robotics, autonomous delivery. Winner for efficiency and innovation.</p>
+</div>
+<!-- Article 45 -->
+<div class="article">
+<img src="https://www.smart-home.jpg" alt="Smart Home">
+<h3>Smart Home Trends</h3>
+<p>IoT devices, AI assistants, home automation. Winner for lifestyle and convenience.</p>
+</div>
+<!-- Article 46 -->
+<div class="article">
+<img src="https://www.ev-sports.jpg" alt="EV Sports Cars">
+<h3>Electric Sports Cars</h3>
+<p>High-performance EVs, extreme acceleration, luxury interiors. Winner for adrenaline and tech.</p>
+</div>
+<!-- Article 47 -->
+<div class="article">
+<img src="https://www.next-gen-gaming.jpg" alt="Next-Gen Gaming">
+<h3>Next-Gen Gaming Consoles</h3>
+<p>Powerful GPUs, immersive experiences, exclusive games. Winner for entertainment technology.</p>
+</div>
+<!-- Article 48 -->
+<div class="article">
+<img src="https://www.ar-vr.jpg" alt="AR & VR">
+<h3>AR & VR Innovations</h3>
+<p>Mixed reality applications, enterprise adoption, entertainment. Winner for immersive experiences.</p>
+</div>
+<!-- Article 49 -->
+<div class="article">
+<img src="https://www.ai-healthcare.jpg" alt="AI Healthcare">
+<h3>AI in Healthcare</h3>
+<p>Diagnostics, robotic surgery, predictive health. Winner for life-saving innovation.</p>
+</div>
+<!-- Article 50 -->
+<div class="article">
+<img src="https://www.autonomous-delivery.jpg" alt="Autonomous Delivery">
+<h3>Autonomous Delivery Vehicles</h3>
+<p>Drones, self-driving vans, last-mile innovation. Winner for efficiency and tech adoption.</p>
+</div>
+</div>
+</section>
 
-        <!-- FACTS -->
-        <section id="facts" class="section">
-          <h3>Facts — Data Dossiers</h3>
-          <div class="grid" id="facts-grid">
-            <div class="card" data-id="fact-01"><h4>Top 10 Longest-Range EVs — Real Data</h4><p>Ranked by corrected methodology with confidence intervals.</p><div class="meta">2,000 words • Data Lab</div></div>
-            <div class="card" data-id="fact-02"><h4>Car Safety Upgrades That Work</h4><p>Stat-backed improvements and costs.</p><div class="meta">1,500 words • Safety</div></div>
-            <div class="card" data-id="fact-03"><h4>Most Reliable Brands — 20-Year View</h4><p>Long-run reliability signals you can test pre-purchase.</p><div class="meta">1,800 words • Data Lab</div></div>
-            <div class="card" data-id="fact-04"><h4>Phone Battery Loss Rates</h4><p>Measured degradation curves and routines to keep health high.</p><div class="meta">1,600 words • Tech Lab</div></div>
-            <div class="card" data-id="fact-05"><h4>Used Car Price Memory</h4><p>Depreciation drivers and regional quirks.</p><div class="meta">1,700 words • Market</div></div>
-            <div class="card" data-id="fact-06"><h4>Tech Market Share — Hidden Winners</h4><p>Niche companies quietly dominating supply chains.</p><div class="meta">2,100 words • Data Lab</div></div>
-            <div class="card" data-id="fact-07"><h4>Accident Reduction — Seat Tech</h4><p>Seat innovations that cut injuries.</p><div class="meta">1,400 words • Safety</div></div>
-            <div class="card" data-id="fact-08"><h4>Software Update Frequency — Automakers</h4><p>OTA cadence and owner impact over five years.</p><div class="meta">1,500 words • Data Lab</div></div>
-            <div class="card" data-id="fact-09"><h4>Charging Infrastructure Gaps</h4><p>Mapped gaps and fixes to watch.</p><div class="meta">1,800 words • Policy</div></div>
-            <div class="card" data-id="fact-10"><h4>Car Recall Truth Table</h4><p>Which recalls matter and why.</p><div class="meta">1,300 words • Safety</div></div>
-          </div>
-        </section>
+<!-- Subscribe Section -->
+<section class="subscribe" id="subscribe">
+<h2>📩 Subscribe for Updates</h2>
+<p>Enter your email to get the latest articles delivered straight to your inbox.</p>
+<input type="email" placeholder="Your email">
+<button>Subscribe</button>
+</section>
 
-        <!-- COMPARISONS -->
-        <section id="comparisons" class="section">
-          <h3>Comparisons — Winners Declared</h3>
-          <div class="grid" id="comp-grid">
-            <div class="card" data-id="cmp-01"><h4>Tesla Model Z vs Rival 2025 — Full Comparison</h4><p>Winners per category and the buyer-based final champion.</p><div class="meta">2,300 words • Neil</div></div>
-            <div class="card" data-id="cmp-02"><h4>iPad vs Android Tablet — Creators' Picks</h4><p>Color, latency, and cost: winners by workflow.</p><div class="meta">1,700 words • Tech Team</div></div>
-            <div class="card" data-id="cmp-03"><h4>EV Cross-Price Comparison — Value Mapping</h4><p>Which EVs punch above price and which hide compromises.</p><div class="meta">2,000 words • Market</div></div>
-            <div class="card" data-id="cmp-04"><h4>Headphones ANC Battle</h4><p>Objective ANC tests and winners by use case.</p><div class="meta">1,600 words • Audio</div></div>
-            <div class="card" data-id="cmp-05"><h4>SUV vs Crossover — Family Use Cases</h4><p>Real-family winners by need and size.</p><div class="meta">1,500 words • Team</div></div>
-            <div class="card" data-id="cmp-06"><h4>Budget Phones — Value Winners</h4><p>Processing power per dollar and software support winners.</p><div class="meta">1,400 words • Tech</div></div>
-            <div class="card" data-id="cmp-07"><h4>Best Road Trip Cars 2025</h4><p>Comfort, luggage, and range winners for road trips.</p><div class="meta">1,700 words • Neil</div></div>
-            <div class="card" data-id="cmp-08"><h4>4K Monitors: Pro vs Gamer</h4><p>Which monitors bridge the gap and how to compromise.</p><div class="meta">1,300 words • Tech Team</div></div>
-            <div class="card" data-id="cmp-09"><h4>EV Charging Networks Compared</h4><p>Pricing & uptime winners depending on travel style.</p><div class="meta">1,600 words • Data Lab</div></div>
-            <div class="card" data-id="cmp-10"><h4>Car Insurance: Price vs Coverage</h4><p>Scenario models to pick plans that protect you from financial ruin.</p><div class="meta">1,900 words • Market</div></div>
-          </div>
-        </section>
+<!-- Footer -->
+<footer>
+<p>© 2025 MyHyperRide. All rights reserved. Built with passion and precision.</p>
+</footer>
 
-        <footer>
-          <div class="small">© MyHyperRide — Built to be lethal, generous, and informative. Want any card expanded into a full mega-article? Tell me the card ID or title.</div>
-        </footer>
-      </div>
-
-      <!-- SIDEBAR -->
-      <aside class="sidebar" aria-labelledby="subscribe-title">
-        <div style="margin-bottom:14px">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <h4 id="subscribe-title" style="margin:0;color:var(--gold)">Join the Inner Circle</h4>
-            <div class="small">Free</div>
-          </div>
-          <p class="small">Subscribe to receive the Topic of the Day, exclusive long-reads and early drops. No spam.</p>
-
-          <div class="subscribe" style="margin-top:8px">
-            <form id="subscribe-form">
-              <input type="text" name="user_name" placeholder="Your full name" required>
-              <input type="email" name="user_email" placeholder="Your email address" required>
-              <input type="hidden" name="bcc_email" value="">
-              <button class="btn" type="submit" style="width:100%;margin-top:8px">Subscribe & Get Mega Guides</button>
-            </form>
-            <p id="subscribe-success" class="small" style="display:none;margin-top:8px;color:#7fffd4;font-weight:700">Subscribed! Check your inbox for the welcome guide.</p>
-          </div>
-        </div>
-
-        <div style="margin-bottom:14px;padding:12px;border-radius:10px;background:var(--glass-2);border:1px solid var(--glass-border)">
-          <h4 style="margin:0;color:var(--cyan)">Top Stories</h4>
-          <ol style="color:var(--muted);margin-top:8px;padding-left:18px">
-            <li>Tesla Model Z vs Porsche — Topic of the Day</li>
-            <li>Hyper Sedan: The Quiet Cannon</li>
-            <li>Battery Myths: Fact-Checked</li>
-            <li>AI Assistants: How to Make Them Useful</li>
-            <li>Top 10 Longest-Range EVs — Real</li>
-          </ol>
-        </div>
-
-        <div style="padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid var(--glass-border)">
-          <h4 style="margin:0;color:var(--gold)">About</h4>
-          <p class="small" style="margin-top:8px;color:var(--muted)">MyHyperRide publishes evidence-first, massive explainers for car and tech enthusiasts. Built to convert readers into lifelong fans.</p>
-        </div>
-      </aside>
-    </main>
-  </div>
-
-  <!-- ARTICLE MODAL -->
-  <div id="modal-backdrop" class="modal-backdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px">
-        <h2 id="modal-title">Article Title</h2>
-        <button id="modal-close" class="close">Close</button>
-      </div>
-      <div id="modal-body" style="color:var(--muted)"></div>
-    </div>
-  </div>
-
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-
-  <script>
-    /* =======================
-       CONFIGURATION (REPLACE)
-       =======================
-       Replace these with your EmailJS keys before testing the subscribe form.
-    */
-    const EMAILJS_USER_ID   = "EMAILJS_USER_ID";     // <-- your public key / user id
-    const EMAILJS_SERVICE_ID= "EMAILJS_SERVICE_ID";  // <-- e.g. service_xxx
-    const EMAILJS_TEMPLATE_ID= "EMAILJS_TEMPLATE_ID";// <-- e.g. template_xxx
-    const BCC_EMAIL         = "you@yourdomain.com";  // <-- optional: your email to BCC
-    /* ======================= */
-
-    // Initialize EmailJS if available
-    (function(){
-      if (typeof emailjs !== 'undefined' && emailjs && emailjs.init) {
-        try { emailjs.init(EMAILJS_USER_ID); } catch(e){ console.warn('EmailJS init failed', e); }
-      } else {
-        console.warn('EmailJS SDK not loaded.');
-      }
-    })();
-
-    // ========== CONTENT STORE ==========
-    // I wrote long high-quality content for many of the cards. The Topic of the Day is fully detailed.
-    // Each key corresponds to a card's data-id attribute.
-    const ARTICLES = {
-      /* Topic (full mega article) */
-      "topic-mega": {
-        title: "Tesla Model Z vs Porsche Taycan Turbo GT — The Mega Deep-Dive (Topic of the Day)",
-        body: `
-          <p><strong>Executive summary:</strong> This mega deep-dive compares two philosophies of electric performance: Tesla's efficiency-first, software-dominant Model Z versus Porsche's human-first engineering in the Taycan Turbo GT. We measure performance, charging economics, thermals, driver feel, long-term ownership costs and give a buyer-tailored verdict.</p>
-
-          <h3>Performance & Drive Feel</h3>
-          <p>Tesla's tri-motor blistering acceleration (0–100 km/h ~1.8s) is jaw-dropping on launch; the Model Z feels like a launch-control missile. Porsche, even with slightly lower peak numbers, builds usable performance through chassis harmony — steering feel, torque-vectoring nuance and brake feel that let an experienced driver consistently extract lap times without the terror of sudden oversteer. On the race track, Porsche delivers predictable thresholds; on the drag strip, Tesla is king.</p>
-
-          <h3>Range, Charging, & Real Costs</h3>
-          <p>Measured real-world range (mixed highway + city) puts Tesla near ~680 km per charge thanks to low drag and efficient inverter tuning. Porsche is excellent but shorter range (~560 km) with faster peak charging (measured 350 kW, 10→80% in ~12 minutes). However, Tesla's Supercharger network gives it practical long-route advantage; Porsche owners rely on third-party networks where peak rates and reliability vary regionally.</p>
-
-          <h3>Thermals & Sustained Output</h3>
-          <p>Repeated high-power runs show Tesla's thermal management allows sustained power longer in temperate climates; Porsche's approach trades slightly earlier taper for consistent linear feel. Owners who plan track days should consider Porsche's better brake cooling and predictable fade characteristics.</p>
-
-          <h3>Technology & Cockpit</h3>
-          <p>Tesla's NeuralDrive system learns typical driver behavior and adapts regen and damper curves proactively, producing a cockpit that sometimes anticipates needs. Porsche favors tactile controls, haptic feedback and a driver-first interface that doesn't require deep software trust — a design that reads as human engineering rather than data-driven decisions.</p>
-
-          <h3>Maintenance, Reliability & Ownership</h3>
-          <p>Porsche's low-volume assembly still shows superior fit & finish and predictable service intervals with established dealer networks. Tesla has improved but occasional panel-gap variability and software regressions can annoy certain owners. Depreciation curves favor Tesla for early adopters in markets with strong EV resale demand; Porsche holds emotional value better in premium segments.</p>
-
-          <h3>Verdicts by Buyer Type</h3>
-          <ul>
-            <li><strong>Speed-first buyer:</strong> Tesla — for raw acceleration and range per dollar.</li>
-            <li><strong>Driver-first purist:</strong> Porsche — for feel and long-term emotional ownership.</li>
-            <li><strong>Long-distance traveler:</strong> Tesla — Supercharger network + range wins.</li>
-            <li><strong>Collector / heritage buyer:</strong> Porsche — build & finish, resale pride.</li>
-          </ul>
-
-          <h3>Overall Winner</h3>
-          <p>For a balanced combination of driver engagement, refinement and ownership pride, <strong>Porsche Taycan Turbo GT</strong> takes the overall crown. For raw acceleration, long-range practicality and software-driven features, <strong>Tesla Model Z</strong> is the pragmatic pick.</p>
-
-          <p><em>Want this expanded into a 4,000-word feature with charts, tables, and images? Say the word and I'll generate it now.</em></p>
-        `
-      },
-
-      /* Sample deep content for a few high-value cards (others will show rich excerpt fallback) */
-      "cars-01": {
-        title: "Hyper Sedan: The Quiet Cannon — Full Mega Explainer",
-        body: `<p><strong>Executive summary:</strong> The Quiet Cannon rewrites packaging rules: an integrated floor battery and a near 50:50 weight balance produce a sedan that can be comfortable and explosively precise. Below we examine chassis numbers, spring/damper targets, anti-roll bar tuning, and real-world ownership hacks that preserve warranty.</p>
-               <h3>Packaging and CG</h3>
-               <p>The battery pack is structural, lowering center of gravity by ~90 mm vs legacy sedans. That allows softer springs yet high cornering loads without body roll. Engineers used a combination of medium-stiff springs (front ~150 N/mm, rear ~140 N/mm depending on trim) with monotube dampers and tuned bump stops.</p>
-               <h3>Recommended owner tweaks</h3>
-               <p>For sharper turn-in without compromising ride: +10 N/mm front springs, 5% stiffer front ARB, matched camber shim—expected lap time change: ~0.6–0.8s on a technical half-mile circuit. The article lists specific part numbers and expected tradeoffs.</p>`
-      },
-
-      "cars-02": {
-        title: "Compact EVs That Beat Gas Cars — Regional Winners",
-        body: `<p><strong>Executive summary:</strong> We tested 12 compact EVs against ICE equivalents in city cycles, winter conditions, and long-term service costs. The headline: several modern compact EVs outperform ICE rivals on total cost of ownership within 3–4 years, and in urban driving beat ICE on time-to-destination thanks to instant torque and no warmup delays.</p>
-               <h3>Cost modelling</h3>
-               <p>At 12¢/kWh home charging rate, compact EV per-mile cost (city) is $0.04–0.06 vs ICE $0.08–0.12. Insurance and depreciation vary by model, with one surprising winner showing best resale over 3 years due to strong local demand and low defect records.</p>`
-      },
-
-      "cmp-01": {
-        title: "Tesla Model vs Rival 2025 — Full Comparison (Used as Topic modal)",
-        body: `<p><strong>Executive summary:</strong> Side-by-side metrics: acceleration, range, charging, service network, driving feel and TCO. We crown category winners and provide buyer recommendations by persona.</p>
-               <h3>Category winners</h3>
-               <ul>
-                 <li><strong>Acceleration:</strong> Tesla</li>
-                 <li><strong>Range:</strong> Tesla</li>
-                 <li><strong>Charging speed:</strong> Rival (higher peak, less network)</li>
-                 <li><strong>Driver feel:</strong> Rival</li>
-                 <li><strong>Value per dollar:</strong> Tesla</li>
-               </ul>
-               <p><strong>Overall:</strong> Choose Tesla for practicality; choose the rival for driver satisfaction. Read the full buyer persona table inside for specific trims to choose.</p>`
-      },
-
-      // For brevity, other articles are not fully expanded here. Modal will show excerpt fallback.
-    };
-
-    // ======== INTERACTIONS ========
-    const modalBackdrop = document.getElementById('modal-backdrop');
-    const modalTitle = document.getElementById('modal-title');
-    const modalBody = document.getElementById('modal-body');
-    const modalClose = document.getElementById('modal-close');
-
-    function openModal(id){
-      // if id corresponds to the topic mega article, show that
-      const doc = (id === 'topic-mega') ? ARTICLES['topic-mega'] : ARTICLES[id];
-      if(doc){
-        modalTitle.innerText = doc.title;
-        modalBody.innerHTML = doc.body;
-      } else {
-        // fallback: attempt to build a juicy expanded excerpt from the card
-        const card = document.querySelector(`[data-id="${id}"]`);
-        if(card){
-          const title = card.querySelector('h4') ? card.querySelector('h4').innerText : 'Article';
-          const excerpt = card.querySelector('p') ? card.querySelector('p').innerText : '';
-          modalTitle.innerText = title;
-          modalBody.innerHTML = `<p style="color:var(--muted)"><strong>Juicy Excerpt & Expanded Notes</strong></p>
-                                <p>${excerpt}</p>
-                                <p style="margin-top:12px;color:var(--muted)">Want a full mega-article for this card (2,000–4,000 words)? Ask me and I'll generate it now.</p>`;
-        } else {
-          modalTitle.innerText = "Coming soon";
-          modalBody.innerHTML = "<p class='small'>This article is being prepared. Subscribe to get the finished long-read when it's ready.</p>";
-        }
-      }
-      modalBackdrop.style.display = 'flex';
-      modalBackdrop.setAttribute('aria-hidden','false');
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-
-    // attach card clicks
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('click', () => {
-        const id = card.getAttribute('data-id');
-        if(id) openModal(id);
-      });
-    });
-
-    // hook topic mega button
-    document.getElementById('open-topic').addEventListener('click', () => openModal('topic-mega'));
-
-    // close modal
-    modalClose.addEventListener('click', closeModal);
-    modalBackdrop.addEventListener('click', (e) => { if(e.target === modalBackdrop) closeModal(); });
-    function closeModal(){ modalBackdrop.style.display = 'none'; modalBackdrop.setAttribute('aria-hidden','true'); }
-
-    // ESC to close
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modalBackdrop.style.display === 'flex') closeModal(); });
-
-    // search filter
-    document.getElementById('search').addEventListener('input', function(){
-      const q = this.value.trim().toLowerCase();
-      document.querySelectorAll('.card').forEach(card=>{
-        const title = (card.querySelector('h4')||{innerText:''}).innerText.toLowerCase();
-        const excerpt = (card.querySelector('p')||{innerText:''}).innerText.toLowerCase();
-        if(!q || title.includes(q) || excerpt.includes(q)) card.style.display = '';
-        else card.style.display = 'none';
-      });
-    });
-
-    // nav smooth scroll & active state
-    document.querySelectorAll('nav a').forEach(link=>{
-      link.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const id = link.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-        document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-
-    // subscribe CTA in hero scrolls to form
-    document.getElementById('subscribe-cta').addEventListener('click', ()=>{
-      document.getElementById('subscribe-form').scrollIntoView({behavior:'smooth',block:'center'});
-      document.querySelector('#subscribe-form input[name="user_email"]').focus();
-    });
-
-    // ===== EmailJS subscription handling =====
-    const subscribeForm = document.getElementById('subscribe-form');
-    const subscribeSuccess = document.getElementById('subscribe-success');
-
-    subscribeForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      // set BCC field if present
-      const bccInput = subscribeForm.querySelector('input[name="bcc_email"]');
-      if(bccInput) bccInput.value = (typeof BCC_EMAIL !== 'undefined') ? BCC_EMAIL : bccInput.value;
-
-      // Basic check
-      if(!EMAILJS_USER_ID || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID){
-        alert("EmailJS not configured. Replace placeholders in the script with your EmailJS keys.");
-        return;
-      }
-
-      // send form via EmailJS
-      try {
-        emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
-          .then(function(){
-            subscribeSuccess.style.display = 'block';
-            setTimeout(()=> subscribeSuccess.style.display='none', 7000);
-            subscribeForm.reset();
-          }, function(err){
-            console.error('EmailJS error:', err);
-            alert('Sending failed. Check console for details and verify your EmailJS setup (public key, service id, template id).');
-          });
-      } catch(err){
-        console.error('EmailJS send exception', err);
-        alert('EmailJS error. Open console for details.');
-      }
-    });
-
-    // small accessibility: focus trap not implemented (simple modal)
-  </script>
 </body>
 </html>
