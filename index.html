@@ -1,216 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyHyperRide | The Ultimate Cars & Tech Magazine</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MyHyperRide — Ultimate Cars & Tech Magazine</title>
 <style>
-body {margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#0b0b0b; color:#f5f5f5; line-height:1.8;}
-a {color:#d4af37; text-decoration:none;}
-a:hover {text-decoration:underline;}
-header {background:#111; padding:20px 50px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #333;}
-header h1 {color:#d4af37; font-size:2em;}
-nav a {margin-left:25px; font-size:1.1em;}
-.hero {display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:#1a1a1a; padding:60px 20px; border-bottom:2px solid #333;}
-.hero h2 {font-size:2.5em; margin-bottom:20px;}
-.hero p {max-width:800px; font-size:1.2em;}
-section {padding:50px 50px; border-bottom:1px solid #222;}
-section h2 {color:#d4af37; font-size:2em; margin-bottom:30px; text-align:center;}
-article {margin-bottom:60px; padding:20px; background:#1f1f1f; border-radius:8px;}
-article img {width:100%; border-radius:8px; margin-bottom:20px;}
-article h3 {font-size:1.8em; margin-bottom:15px; color:#d4af37;}
-.subscribe {background:#111; padding:40px 50px; text-align:center; border-top:2px solid #333;}
-.subscribe input[type="email"] {padding:12px; width:300px; max-width:90%; border:none; border-radius:4px; margin-right:10px; font-size:1em;}
-.subscribe button {padding:12px 20px; font-size:1em; background:#d4af37; border:none; border-radius:4px; cursor:pointer;}
-.subscribe button:hover {background:#b8962b;}
-footer {background:#111; padding:30px 50px; text-align:center; font-size:0.9em; border-top:1px solid #333;}
-@media(max-width:768px){.hero h2{font-size:2em;} section{padding:40px 20px;}}
+  :root{
+    --bg:#070708;
+    --panel:#121214;
+    --muted:#b8c6cd;
+    --gold:#d4af37;
+    --card:#1b1b1d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:#eef6f8;font-family:Inter,Segoe UI,system-ui, -apple-system, Roboto, Arial;line-height:1.7}
+  header{background:linear-gradient(180deg,#0f0f10,#0b0b0c);padding:20px 40px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center}
+  .brand{display:flex;gap:14px;align-items:center}
+  .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#b98e20);display:flex;align-items:center;justify-content:center;font-weight:800;color:#071014}
+  header h1{margin:0;font-size:22px;color:var(--gold)}
+  nav a{color:var(--muted);margin-left:18px;text-decoration:none;font-weight:600}
+  nav a:hover{color:#fff}
+  .hero{padding:56px 36px;text-align:center;background:linear-gradient(180deg,#0e0e0f,#0b0b0c);border-bottom:1px solid rgba(255,255,255,0.03)}
+  .hero h2{margin:0;font-size:34px;color:#fff}
+  .hero p{color:var(--muted);max-width:900px;margin:16px auto 0;font-size:16px}
+  main{max-width:1150px;margin:28px auto;padding:0 20px}
+  section{margin:42px 0}
+  section h2{text-align:center;color:var(--gold);font-size:26px;margin-bottom:22px}
+  article{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.03);padding:22px;border-radius:12px;margin-bottom:28px}
+  article img{width:100%;height:auto;border-radius:10px;display:block;margin-bottom:16px;object-fit:cover}
+  article h3{margin:0 0 10px 0;color:var(--gold);font-size:20px}
+  article p{color:#d9eef2;margin:10px 0}
+  .specs{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;color:var(--muted);font-size:14px;margin-top:10px}
+  .small{font-size:13px;color:var(--muted)}
+  .two-col{display:grid;grid-template-columns:1fr 320px;gap:24px}
+  aside.card{background:var(--card);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+  footer{padding:28px;text-align:center;color:var(--muted);font-size:14px}
+  @media(max-width:980px){.two-col{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+  <header>
+    <div class="brand">
+      <div class="logo">MHR</div>
+      <div>
+        <h1>MyHyperRide</h1>
+        <div class="small">Cars × Tech — Big juicy explainers</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#topic">Topic</a>
+      <a href="#cars">Cars</a>
+      <a href="#tech">Tech</a>
+      <a href="#compare">Compare</a>
+      <a href="#facts">Facts</a>
+      <a href="#trending">Trending</a>
+      <a href="#subscribe">Subscribe</a>
+    </nav>
+  </header>
 
-<header>
-<h1>MyHyperRide</h1>
-<nav>
-<a href="#topic">Topic of the Day</a>
-<a href="#cars">Cars</a>
-<a href="#tech">Tech</a>
-<a href="#compare">Comparisons</a>
-<a href="#facts">Facts</a>
-<a href="#trending">Trending</a>
-<a href="#subscribe">Subscribe</a>
-</nav>
-</header>
+  <div class="hero" id="topic">
+    <h2>Topic of the Day — AI-Powered Vehicles: The Practical & Dangerous Truth</h2>
+    <p>From adaptive vision stacks to predictive maintenance, AI is reprogramming cars from the ground up. Today’s analysis unpacks what’s real, what’s marketing, and who wins — drivers, fleets, or regulators.</p>
+  </div>
 
-<div class="hero" id="topic">
-<h2>🚀 Topic of the Day: AI-Powered Cars Revolutionizing the Future</h2>
-<p>From Tesla’s autonomous driving to BMW’s adaptive AI systems — artificial intelligence is transforming how we drive, think, and experience mobility. Today, cars are more than machines; they’re intelligent companions learning from every mile.</p>
-</div>
+  <main>
 
-<section id="cars">
-<h2>🚗 Cars</h2>
+    <!-- ===== CARS 1–10 (full-width, long articles) ===== -->
+    <section id="cars">
+      <h2>Cars — Deep Dives</h2>
 
-<article>
-<img src="https://picsum.photos/seed/tesla/800/400" alt="Tesla Model S Plaid">
-<h3>Tesla Model S Plaid: The Pinnacle of Electric Performance</h3>
-<p>The Tesla Model S Plaid stands as the undisputed king of electric performance. 0-60 mph in under two seconds, 1,020 horsepower, and software that continuously improves through over-the-air updates. It’s not just speed — it’s intelligence on wheels.</p>
-</article>
+      <article id="a1">
+        <img src="https://source.unsplash.com/1150x600/?tesla,model-s,car" alt="Tesla Model S Plaid">
+        <h3>Tesla Model S Plaid — Performance, Software, & Real-World Tradeoffs</h3>
+        <p>The Model S Plaid is the visceral expression of EV capability: three electric motors, sub-2 second 0–60 acceleration in ideal conditions, and an integrated software-first ownership model that evolves over time. But raw speed hides complexities: thermal management under repeated high-power launches, battery chemistry tradeoffs for peak power, and the real-world gap between manufacturer range and highway use at high speeds.</p>
+        <p>Where Tesla wins: instant torque, Supercharger network, and a living platform that adds features via OTA updates. Where it lags: fit-and-finish variability and occasional software regressions that affect user trust. For buyers wanting straight-line dominance and constant updates — Plaid is unmatched. For those who want consistent mechanical polish and predictable track feel — take note of alternatives like the Taycan.</p>
+        <div class="specs"><strong>Key specs:</strong> ~1,020 hp | ~396 mi WLTP estimate (real-world varies) | 0–60 mph &lt;2s | Supercharging network advantage.</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/porsche/800/400" alt="Porsche Taycan">
-<h3>Porsche Taycan Turbo S: Pure Driving Emotion</h3>
-<p>The Taycan isn’t about specs — it’s about feel. Its low center of gravity and lightning-fast two-speed transmission make it the driver’s EV. While Tesla wins in range, Porsche dominates with soul.</p>
-</article>
+      <article id="a2">
+        <img src="https://source.unsplash.com/1150x600/?porsche,taycan,car" alt="Porsche Taycan">
+        <h3>Porsche Taycan Turbo S — Engineering That Respects the Driver</h3>
+        <p>Porsche’s Taycan is less about headline numbers and more about human-scale control. The Taycan Turbo S balances electrical packaging with Porsche’s signature chassis calibration — result: aggressive lap times with reassuring thresholds. The two-speed setup on the rear axle and aggressive regenerative braking mapping provide unique track-friendly behavior.</p>
+        <p>Compared to Tesla, Porsche’s approach is conservative: shorter peak range but a much more communicative steering feel and stronger braking fade resistance at track use. If you drive for engagement and feel, the Taycan delivers a repeatable, confidence-inspiring experience. If you drive long-distance regularly and want charging ubiquity, Tesla still leads.</p>
+        <div class="specs"><strong>Key specs:</strong> up to ~750 hp (depending on spec) | 0–60 mph ~3.0s | Range varies by config (approx 220–300 mi).</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/mache/800/400" alt="Mustang Mach-E">
-<h3>Ford Mustang Mach-E: The People’s EV</h3>
-<p>With muscular design and up to 314 miles of range, the Mach-E proves electric cars can be exciting and affordable. Ford blends heritage with innovation perfectly here.</p>
-</article>
+      <article id="a3">
+        <img src="https://source.unsplash.com/1150x600/?ford,mustang,mach-e" alt="Ford Mustang Mach-E">
+        <h3>Ford Mustang Mach-E GT — Bringing Muscle to EVs without the Drama</h3>
+        <p>Ford’s Mach-E blends a familiar brand personality with modern EV packaging. The GT trims deliver near-sports-car acceleration, while lower trims focus on daily refinement and range efficiency. Ford balances consumer-friendly software with third-party charging compatibility, which is crucial in regions where manufacturer networks are patchy.</p>
+        <p>As a family-friendly EV with a sporty badge, Mach-E hits a sweet spot. Owners praise ergonomics and software stability more than pure performance benchmarks — making it a pragmatic alternative to high-hype performance EVs.</p>
+        <div class="specs"><strong>Key specs:</strong> ~0–60 mph from ~3.5s (GT) | range 270–314 mi depending on battery/trim.</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/lucid/800/400" alt="Lucid Air">
-<h3>Lucid Air Sapphire: When Luxury Meets Lightning</h3>
-<p>Lucid Air is America’s luxury EV response to the world. Plush interiors, futuristic screens, and record-setting 427-mile range. It feels like a spaceship built for Earth.</p>
-</article>
+      <article id="a4">
+        <img src="https://source.unsplash.com/1150x600/?bmw,i4,car" alt="BMW i4">
+        <h3>BMW i4 — Driving Dynamics Reimagined Electrically</h3>
+        <p>BMW’s i4 focuses on keeping the soul of the brand: steering feedback, chassis balance, and driver engagement. The electric platform allows weight distribution advantages, and BMW tunes suspension and damping to deliver responsive cornering without a severe ride penalty.</p>
+        <p>The i4 competes with premium EV sedans by offering a driver-first cockpit and solid materials. If your priority is an interactive drive rather than straight-line supremacy, the i4 is built with you in mind.</p>
+        <div class="specs"><strong>Key specs:</strong> ~300–536 hp depending on variant | 0–60 mph ~3.8s (M Performance) | practical range ~250–300 mi.</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/rivian/800/400" alt="Rivian R1T">
-<h3>Rivian R1T: The Adventure Electric Truck</h3>
-<p>Rugged yet refined, the R1T is an off-roading electric beast. Its ‘Tank Turn’ and camp kitchen options redefine what trucks can be in 2025.</p>
-</article>
+      <article id="a5">
+        <img src="https://source.unsplash.com/1150x600/?audi,e-tron-gt,car" alt="Audi e-tron GT">
+        <h3>Audi e-tron GT — A Grand Tourer Reborn for the Electric Age</h3>
+        <p>Audi’s e-tron GT merges elegant styling with a chassis tuned for stability at speed; it’s an EV built for cross-country comfort and occasional spirited runs. The interior craftsmanship is near-luxury sedan level and the power delivery is both refined and potent.</p>
+        <p>For drivers seeking a premium long-distance GT with electric hardware, the e-tron GT is a persuasive argument.</p>
+        <div class="specs"><strong>Key specs:</strong> ~469–637 hp | 0–60 mph ~3.1s (top trims) | range ~200–260 mi depending on configuration.</div>
+      </article>
 
-</section>
+      <article id="a6">
+        <img src="https://source.unsplash.com/1150x600/?mercedes,eqs,car" alt="Mercedes EQS">
+        <h3>Mercedes-Benz EQS — Quiet Luxury, Electric Grace</h3>
+        <p>EQS is Mercedes’s showcase: whisper-quiet cabin, luscious materials, and advanced interior tech. The Hyperscreen and air suspension emphasize comfort more than sportiness, and many buyers pick EQS for its serene, pampering ride.</p>
+        <p>This is an EV for owners prioritizing comfort, elegance and a tech-oriented cabin over raw track performance.</p>
+        <div class="specs"><strong>Key specs:</strong> ~329–516 hp | 0–60 mph ~4.1s (depending on spec) | WLTP range varies.</div>
+      </article>
 
-<section id="tech">
-<h2>💻 Tech</h2>
+      <article id="a7">
+        <img src="https://source.unsplash.com/1150x600/?lucid,air,car" alt="Lucid Air">
+        <h3>Lucid Air — The Long-Range Luxury Contender</h3>
+        <p>Lucid’s early promise centers on range and refinement. With flagship trims advertising industry-leading range figures and extremely plush cabins, Lucid targets buyers who want Mercedes-level luxury with Tesla-level electric range.</p>
+        <p>If maximizing single-charge distance with a premium interior is your goal, Lucid is an obvious pick — though its charging network and dealer coverage are still growing.</p>
+        <div class="specs"><strong>Key specs:</strong> up to ~500+ mi range (claimed in some trims) | high-output variants exceed 1,000 hp equivalent in dual/multi-motor setups.</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/iphone17/800/400" alt="iPhone 17 Pro">
-<h3>iPhone 17 Pro: Power of A19 Bionic</h3>
-<p>The A19 chip changes everything. Built on 3nm architecture, it’s faster, cooler, and smarter. Combine that with Apple’s AI-powered camera and titanium design — it’s tech perfection.</p>
-</article>
+      <article id="a8">
+        <img src="https://source.unsplash.com/1150x600/?nissan,ariya,car" alt="Nissan Ariya">
+        <h3>Nissan Ariya — EV Practicality with Comfort and Style</h3>
+        <p>Ariya fits the modern crossover bill: decent range, a comfortable interior, predictable software updates, and an approachable price. It’s an easy recommendation for buyers transitioning from ICE crossovers to electric alternatives.</p>
+        <div class="specs"><strong>Key specs:</strong> ~160–389 hp depending on motor layout | 0–60 mph in ~5.1s (top trims) | range up to ~300 mi depending on battery.</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/galaxy/800/400" alt="Galaxy S25 Ultra">
-<h3>Samsung Galaxy S25 Ultra: The AI Photographer</h3>
-<p>With a 200MP adaptive AI camera and 240Hz AMOLED display, Samsung pushes boundaries in visuals and precision. The S Pen is smarter than ever.</p>
-</article>
+      <article id="a9">
+        <img src="https://source.unsplash.com/1150x600/?hyundai,ioniq5,car" alt="Hyundai Ioniq 5">
+        <h3>Hyundai Ioniq 5 — Bold Design, Smart Packaging</h3>
+        <p>Ioniq 5 is a standout for design and flexible interior packaging. Its 800V architecture enables faster charging top-ups and the cabin is very spacious relative to footprint. The car nails the daily-driver utility plus an appealing visual identity.</p>
+        <div class="specs"><strong>Key specs:</strong> ~217–320 hp | 0–60 mph ~5.2s (performance trims) | range up to ~303 mi.</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/visionpro/800/400" alt="Apple Vision Pro 2">
-<h3>Apple Vision Pro 2: Merging Worlds</h3>
-<p>The Vision Pro 2 brings AR to life with crisp dual 4K lenses and intuitive hand tracking. Work, play, or create — it’s all one gesture away.</p>
-</article>
+      <article id="a10">
+        <img src="https://source.unsplash.com/1150x600/?kia,ev6,car" alt="Kia EV6">
+        <h3>Kia EV6 — Sporty Handling Meets Practical EV Life</h3>
+        <p>EV6 balances dynamic driving, fast charging and reasonable range. The GT versions provide genuine performance while base trims focus on efficiency and daily comfort — creating a flexible family of EVs for multiple buyer types.</p>
+        <div class="specs"><strong>Key specs:</strong> ~167–577 hp depending on trim | 0–60 mph in ~3.5s (GT) | range up to ~328 mi.</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/macbook/800/400" alt="MacBook M4">
-<h3>MacBook Pro M4: Redefining Performance</h3>
-<p>The M4 chip delivers laptop power efficiency we’ve never seen. 3D rendering, coding, and AI modeling are smooth even unplugged. The line between desktop and laptop is gone.</p>
-</article>
+    </section>
 
-<article>
-<img src="https://picsum.photos/seed/surface/800/400" alt="Surface Pro 10">
-<h3>Microsoft Surface Pro 10: The Hybrid King</h3>
-<p>Combining tablet flexibility with laptop power, the Surface Pro 10 integrates Copilot AI deeply into Windows, predicting your next move and streamlining workflows.</p>
-</article>
+    <!-- ===== TECH 11–18 (first chunk of Tech articles) ===== -->
+    <section id="tech">
+      <h2>Tech — Tools, Chips & Consumer Gear</h2>
 
-</section>
+      <article id="a11">
+        <img src="https://source.unsplash.com/1150x600/?iphone,phone" alt="iPhone 17">
+        <h3>iPhone 17 Pro — A19 Bionic, AI Photography, and System Fluency</h3>
+        <p>Apple’s A19 Bionic pushes mobile compute forward with improved neural engines that enable instantaneous AI photo processing, live transcription, and on-device personalization. The iPhone 17 Pro’s camera pipeline makes low-light  computational photography feel like studio lighting.</p>
+        <p>Apple’s advantage remains software-hardware cohesion: third-party apps immediately benefit from raw chip performance and the OS prioritizes smoothness and long-term updates.</p>
+        <div class="specs"><strong>Key specs:</strong> A19 Bionic | 120Hz ProMotion LTPO display | iOS 19 optimizations.</div>
+      </article>
 
-<section id="compare">
-<h2>⚔️ Comparisons</h2>
+      <article id="a12">
+        <img src="https://source.unsplash.com/1150x600/?samsung,phone" alt="Samsung Galaxy S25 Ultra">
+        <h3>Samsung Galaxy S25 Ultra — Camera Hardware & Creative Tools</h3>
+        <p>Samsung emphasizes hardware-first innovation: massive sensor sizes, per-pixel optimization, and high refresh displays. For creators, the device’s editing suite and S Pen workflow remain compelling reasons to prefer Samsung.</p>
+        <div class="specs"><strong>Key specs:</strong> Advanced multi-lens system | High-refresh AMOLED | S Pen integration.</div>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/teslavslucid/800/400" alt="Tesla vs Lucid">
-<h3>Tesla Model S vs Lucid Air: Speed vs Sophistication</h3>
-<p>Tesla wins on acceleration and software, but Lucid offers a more elegant ride and design. The Plaid is for racers; Lucid is for dreamers.</p>
-</article>
+      <article id="a13">
+        <img src="https://source.unsplash.com/1150x600/?vr,headset" alt="Vision Pro">
+        <h3>Apple Vision Pro 2 — Spatial Computing Comes of Age</h3>
+        <p>Apple’s Vision Pro 2 brings practical mixed reality to prosumers. Improved optics and hand-tracking make productivity and immersive entertainment feel natural. The device is expensive, but its ecosystem integration is unmatched.</p>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/iphonevssamsung/800/400" alt="iPhone vs Samsung">
-<h3>iPhone 17 Pro vs Galaxy S25 Ultra</h3>
-<p>Apple offers smoother performance, Samsung leads in customization. But when it comes to long-term reliability and privacy — iPhone takes the crown.</p>
-</article>
+      <article id="a14">
+        <img src="https://source.unsplash.com/1150x600/?macbook,laptop" alt="MacBook Pro M4">
+        <h3>MacBook Pro (M4) — Desktop Power in a Laptop Form</h3>
+        <p>M4 era MacBooks push performance-per-watt beyond prior generations. These machines enable video editing, software compilation, and AI model inference on portable hardware. Battery life and thermals prove Apple’s advantage in silicon-software co-design.</p>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/bmwvseqs/800/400" alt="BMW vs Mercedes">
-<h3>BMW i7 vs Mercedes EQS</h3>
-<p>BMW’s handling mastery meets Mercedes’ silent opulence. EQS wins comfort; i7 wins thrill. True luxury depends on what you value more — calm or connection.</p>
-</article>
+      <article id="a15">
+        <img src="https://source.unsplash.com/1150x600/?surface,pc" alt="Surface Laptop">
+        <h3>Microsoft Surface — Windows, Pen, and Productivity</h3>
+        <p>Surface devices are the best Windows answer to Apple’s integrated approach: great pen input, solid displays, and improved battery life. Deep Windows Copilot integration adds contextual suggestions that speed workflows for professionals.</p>
+      </article>
 
-</section>
+      <article id="a16">
+        <img src="https://source.unsplash.com/1150x600/?nvidia,gpu" alt="NVIDIA GPU">
+        <h3>NVIDIA — GPUs Driving the AI Boom</h3>
+        <p>NVIDIA’s GPUs and software stack power modern AI training and inference. New architecture advances focus on mixed-precision compute and memory efficiency — essential for both gaming and data centers.</p>
+      </article>
 
-<section id="facts">
-<h2>📊 Facts</h2>
+      <article id="a17">
+        <img src="https://source.unsplash.com/1150x600/?oculus,vr" alt="Meta Quest">
+        <h3>Meta Quest 4 — VR’s Best Mass-Market Shot</h3>
+        <p>Meta continues to push VR affordability and content breadth. Quest offers more accessible VR experiences, which in turn grows the developer ecosystem and content libraries.</p>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/evfacts/800/400" alt="EV Facts">
-<h3>Electric Vehicles: The Clean Speed Revolution</h3>
-<p>EVs today convert 90% of battery power to motion. Compare that to gas engines, which waste over 70% as heat. The math is clear — electrons beat explosions.</p>
-</article>
+      <article id="a18">
+        <img src="https://source.unsplash.com/1150x600/?smartwatch,watch" alt="Smartwatch">
+        <h3>Wearables — Health Data That Actually Helps</h3>
+        <p>Modern wearables combine PPG, ECG, and sensor fusion to provide actionable trends — not just step counts. When combined with good UX and coaching features, wearables move from novelty to health companions.</p>
+      </article>
 
-<article>
-<img src="https://picsum.photos/seed/aifacts/800/400" alt="AI Facts">
-<h3>AI in Cars Saves Millions of Lives</h3>
-<p>Real-time object detection has reduced highway accidents by 37%. AI doesn’t blink, get tired, or text while driving — the future is safer than ever.</p>
-</article>
+      <!-- We'll continue Tech articles 19–25 in the second half to keep halves even -->
+    </section>
 
-<article>
-<img src="https://picsum.photos/seed/phonepower/800/400" alt="Smartphone Facts">
-<h3>Your Phone is Smarter Than a 1960s NASA Computer</h3>
-<p>The chip inside your smartphone performs more calculations per second than all Apollo missions combined. Think about that — your pocket is a supercomputer.</p>
-</article>
+    <!-- small aside for MSN-like right column (keeps page balanced) -->
+    <div style="margin-top:10px" aria-hidden="true"></div>
 
-</section>
-
-<section id="trending">
-<h2>🔥 Trending Now</h2>
-
-<article>
-<img src="https://picsum.photos/seed/cybertruck/800/400" alt="Cybertruck">
-<h3>Cybertruck Is Finally Here</h3>
-<p>Love it or hate it, the Cybertruck defines disruption. Stainless steel, bulletproof glass, and wild torque — Tesla turned a meme into a revolution.</p>
-</article>
-
-<article>
-<img src="https://picsum.photos/seed/aiPhones/800/400" alt="AI Smartphones">
-<h3>AI Smartphones: The Brain in Your Pocket</h3>
-<p>Devices now predict your habits, optimize energy, and even write your emails. Artificial intelligence has gone handheld.</p>
-</article>
-
-<article>
-<img src="https://picsum.photos/seed/spacex/800/400" alt="SpaceX Starship">
-<h3>SpaceX Starship: Humanity’s Next Giant Leap</h3>
-<p>The Starship’s successful orbit test is proof that interplanetary travel isn’t science fiction anymore — it’s the next chapter.</p>
-</article>
-
-</section>
-
-<section class="subscribe" id="subscribe">
-<h2>Subscribe to MyHyperRide</h2>
-<p>Get the latest tech and car news directly in your inbox.</p>
-<form id="subscribeForm">
-<input type="email" id="userEmail" placeholder="Enter your email" required>
-<button type="submit">Subscribe</button>
-</form>
-<p id="responseMsg" style="margin-top:10px;"></p>
-</section>
-
-<footer>
-<p>© 2025 MyHyperRide by Neil Dutt | The Ultimate Destination for Cars & Tech</p>
-</footer>
-
-<script>
-document.getElementById('subscribeForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const email = document.getElementById('userEmail').value;
-  if(!email.includes('@')) {
-    document.getElementById('responseMsg').textContent = 'Please enter a valid email.';
-    return;
-  }
-  document.getElementById('responseMsg').textContent = 'Subscribed successfully! (EmailJS setup coming soon)';
-});
-</script>
-
+  </main>
 </body>
 </html>
+<!-- ===== SECOND HALF: Tech 19–25, Comparisons 26–35, Facts 36–45, Trending 46–50, Subscribe, Footer ===== -->
+
+<main> <!-- if main already exists, this will be okay because you're appending; keep it consistent in your file -->
+
+  <!-- Continue TECH 19–25 -->
+  <section id="tech-continued">
+    <h2>Tech — Deep Coverage (continued)</h2>
+
+    <article id="a19">
+      <img src="https://source.unsplash.com/1150x600/?pixel,phone,google" alt="Google Pixel 9">
+      <h3>Google Pixel — AI Photography & Assistant Intelligence</h3>
+      <p>Google’s Pixel line turns computational photography into a daily superpower: night modes, multi-frame fusion, and real-time scene detection are second nature. Combined with on-device AI and Assistant improvements, Pixels prioritize software smarts over brute hardware numbers.</p>
+      <p>For users who want the best computational photo results and direct Google feature access, Pixel remains a compact powerhouse.</p>
+      <div class="specs"><strong>Key specs:</strong> Tensor-series SoC | Advanced photo pipeline | Stock Android advantage.</div>
+    </article>
+
+    <article id="a20">
+      <img src="https://source.unsplash.com/1150x600/?ipad,tablet" alt="iPad Pro">
+      <h3>iPad Pro — The Creator’s Portable Studio</h3>
+      <p>Apple’s iPad Pro continues to blur lines between laptop and tablet for creators. With ProMotion displays, precise stylus input, and app-optimized workflows, the iPad Pro serves artists and editors who need tactile, color-accurate tools.</p>
+      <p>It’s not a laptop replacement for everyone, but for media-first workflows, it is often the superior choice.</p>
+    </article>
+
+    <article id="a21">
+      <img src="https://source.unsplash.com/1150x600/?dji,drone,air" alt="Drone Tech">
+      <h3>Drone Tech — Delivery, Mapping, and Creative Filmmaking</h3>
+      <p>Drones have matured from novelty toys to professional platforms for delivery, surveying, and cinematic footage. Improved sensors, obstacle avoidance, and regulatory frameworks are turning drones into reliable tools across industries.</p>
+      <p>Expect more autonomy on flight paths and sense-and-avoid sophistication in the next generation.</p>
+    </article>
+
+    <article id="a22">
+      <img src="https://source.unsplash.com/1150x600/?home,automation,smart" alt="Smart Home">
+      <h3>Smart Home — Automation That Actually Saves Time</h3>
+      <p>Beyond voice commands, modern smart-home systems predict routines: thermostats that preheat before you wake, lights that adapt to circadian rhythms, and appliances that run when energy is cheapest. Integration and privacy are the two big battlegrounds.</p>
+      <p>Choose an ecosystem and make privacy-informed choices about cloud features vs. local control.</p>
+    </article>
+
+    <article id="a23">
+      <img src="https://source.unsplash.com/1150x600/?wearable,health" alt="Wearables Health">
+      <h3>Wearables — From Steps to Clinical-Grade Insights</h3>
+      <p>Wearables are now offering ECG snapshots, sleep architecture analysis, and trend-based health nudges. The smart shift is from raw numbers to meaningful guidance — coaching, not just data.</p>
+      <p>For long-term health improvements, the software that translates data into behavior change is the real product.</p>
+    </article>
+
+    <article id="a24">
+      <img src="https://source.unsplash.com/1150x600/?gaming,pc,setup" alt="Gaming PC">
+      <h3>Gaming Hardware — Ray Tracing, AI, and 4K Ambitions</h3>
+      <p>Gaming PCs and consoles now use hybrid rendering techniques that combine rasterization, ray tracing, and AI upscaling. The result: cinematic visuals with playable frame rates. GPU memory and bandwidth remain limiting resources; developers are adapting with smarter streaming and on-the-fly LOD systems.</p>
+    </article>
+
+    <article id="a25">
+      <img src="https://source.unsplash.com/1150x600/?aerospace,space,rocket" alt="Space Tech">
+      <h3>Space Tech — Commercial Launches and Satellite Mega-Constellations</h3>
+      <p>Commercial rockets and satellite deployments have accelerated. Small-sat launches, improved reusable cores, and distributed Earth observation are unlocking new applications — from better maps to global broadband. The challenge is sustainable orbital management and debris mitigation.</p>
+    </article>
+
+  </section>
+
+  <!-- COMPARISONS 26–35 -->
+  <section id="compare">
+    <h2>Comparisons — Head-to-Head</h2>
+
+    <article id="a26">
+      <img src="https://source.unsplash.com/1150x600/?tesla,model3,car" alt="Tesla Model 3 vs BMW 3 Series">
+      <h3>Tesla Model 3 vs BMW 3 Series (Electric Alternatives)</h3>
+      <p>Model 3 offers a software-forward experience and efficient electric drivetrain; BMW focuses on chassis balance and premium feel. Model 3 is simpler, more connected; BMW offers tactile precision and longer-established dealer support.</p>
+      <p><strong>Verdict:</strong> Model 3 for tech-first buyers; BMW for driving purists who want a traditional luxury relationship with their carmaker.</p>
+    </article>
+
+    <article id="a27">
+      <img src="https://source.unsplash.com/1150x600/?iphone,android,phone" alt="iPhone vs Android">
+      <h3>iPhone 17 Pro vs Top Android Flagship — Ecosystem vs Customization</h3>
+      <p>iPhone’s strength is ecosystem polish, long OS updates, and hardware-software synergy. Android flagships often provide more experimental hardware and customization. Your choice reflects whether you value stability or flexibility.</p>
+      <p><strong>Verdict:</strong> iPhone for longevity and smoothness; Android for choice and bleeding-edge hardware.</p>
+    </article>
+
+    <article id="a28">
+      <img src="https://source.unsplash.com/1150x600/?playstation,xbox,console" alt="PS5 vs Xbox Series X">
+      <h3>PlayStation 5 vs Xbox Series X — Exclusives and Services</h3>
+      <p>PS5 leans on exclusive single-player experiences and haptics; Xbox pushes Game Pass and backward-compat. Hardware parity is close; ecosystem and content strategy diverge.</p>
+      <p><strong>Verdict:</strong> PS5 if you value exclusive narratives; Xbox if you value subscription breadth and value.</p>
+    </article>
+
+    <article id="a29">
+      <img src="https://source.unsplash.com/1150x600/?nvidia,amd,gpu" alt="NVIDIA vs AMD">
+      <h3>NVIDIA vs AMD — GPUs, Pricing, and AI</h3>
+      <p>NVIDIA remains ahead in AI tooling and ray-tracing performance; AMD pushes aggressive pricing and competitive raster performance. For professional AI work, NVIDIA’s ecosystem is still a major draw; for gamers on a budget, AMD often offers better value per dollar.</p>
+    </article>
+
+    <article id="a30">
+      <img src="https://source.unsplash.com/1150x600/?audi,porsche,car" alt="Porsche vs Audi">
+      <h3>Porsche Taycan vs Audi e-tron GT — Sport vs Grand Touring</h3>
+      <p>Taycan is pure sport; e-tron GT is grand touring with a sport edge. Both share platform DNA but are tuned for different experiences. Test-drive both before deciding — the steering and brake feel can change your heart fast.</p>
+    </article>
+
+    <article id="a31">
+      <img src="https://source.unsplash.com/1150x600/?kindle,ipad,reading" alt="Kindle vs iPad">
+      <h3>Kindle vs iPad — Reading vs Multipurpose</h3>
+      <p>Kindle provides an unmatched reading experience with e-ink and weeks-long battery life. iPad is versatile but tiring for long-form reading in certain lights. Choose by intent: focused reading vs full media consumption.</p>
+    </article>
+
+    <article id="a32">
+      <img src="https://source.unsplash.com/1150x600/?vacuum,robot,home" alt="Roborock vs Roomba">
+      <h3>Roborock vs Roomba — Smart Cleaning Smackdown</h3>
+      <p>Roborock prioritizes navigation and suction; Roomba focuses on robust ecosystem and reliability. Pricing and mapping tools are major differentiators. For complex floorplans, Roborock’s mapping wins; for simplicity and support, Roomba keeps its edge.</p>
+    </article>
+
+    <article id="a33">
+      <img src="https://source.unsplash.com/1150x600/?macbook,windows,laptop" alt="Mac vs Windows Laptop">
+      <h3>MacBook Pro vs High-End Windows Laptop</h3>
+      <p>MacBooks excel at battery life, app optimization, and media workflows; Windows laptops offer more configurations and expandability. Choose macOS for content creation pipelines; Windows for gaming and modular workstation builds.</p>
+    </article>
+
+    <article id="a34">
+      <img src="https://source.unsplash.com/1150x600/?ev,charger,station" alt="EV Charging Networks">
+      <h3>CCS vs Tesla Supercharger vs Fast-Charging Networks — Which to Trust?</h3>
+      <p>Tesla’s Supercharger network provides a seamless experience for Tesla owners, while CCS and third-party networks are rapidly expanding. Factors: reliability, peak speeds, and roaming compatibility. For cross-country peace of mind, network density matters more than raw peak kW.</p>
+    </article>
+
+    <article id="a35">
+      <img src="https://source.unsplash.com/1150x600/?audio,headphones,sony" alt="Headphones Comparison">
+      <h3>AirPods Pro vs Sony WH-1000XM5 — Portability vs Full-Size Experience</h3>
+      <p>AirPods Pro provide convenience, spatial audio and seamless iOS integration. Sony’s WH-1000XM5 offers better noise canceling, richer soundstage and longer battery. For travel, comfort, and audio fidelity, Sony often wins; for daily convenience and pocketability, AirPods Pro win.</p>
+    </article>
+
+  </section>
+
+  <!-- FACTS 36–45 -->
+  <section id="facts">
+    <h2>Facts & Figures — Bite-Size Intelligence</h2>
+
+    <article id="a36">
+      <img src="https://source.unsplash.com/1150x600/?battery,battery-technology" alt="Battery Tech">
+      <h3>Fact: Battery Energy Density Keeps Improving — Slowly but Steadily</h3>
+      <p>Battery chemistry innovations (silicon anodes, solid-state research) increase usable energy density year-over-year. The trick is balancing longevity, cost, and safety — incremental advances create big improvements over product lifetimes.</p>
+    </article>
+
+    <article id="a37">
+      <img src="https://source.unsplash.com/1150x600/?autonomous,car,sensor" alt="Autonomous Sensors">
+      <h3>Fact: Modern Cars Use 200+ Sensors to Model the World</h3>
+      <p>Cameras, lidars, radars, ultrasonic sensors and IMUs combine to produce a vehicle’s real-time world model. Fusion algorithms weight reliability differently based on conditions — redundancy is the key to safety.</p>
+    </article>
+
+    <article id="a38">
+      <img src="https://source.unsplash.com/1150x600/?satellite,earth,space" alt="Satellite">
+      <h3>Fact: Satellite Internet Is Real but Not Universal</h3>
+      <p>Low-Earth orbit constellations provide impressive coverage in many areas, but latency, bandwidth caps, and terrain constraints mean they complement rather than replace terrestrial networks.</p>
+    </article>
+
+    <article id="a39">
+      <img src="https://source.unsplash.com/1150x600/?factory,automation,robots" alt="Robotics">
+      <h3>Fact: Robotics Increase Throughput — Humans Still Teach the Best Moves</h3>
+      <p>Automation accelerates repetitive tasks, but humans still design, supervise, and tune. Collaborative robots (cobots) amplify human capabilities more often than replace them entirely.</p>
+    </article>
+
+    <article id="a40">
+      <img src="https://source.unsplash.com/1150x600/?charging,station,ev" alt="EV Charging Fact">
+      <h3>Fact: Charging Speed Is About Power and Battery Chemistry</h3>
+      <p>Peak kW matters, but how a battery accepts peak power depends on chemistry and temperature. Smart stations adapt power curves to balance speed with battery health.</p>
+    </article>
+
+    <article id="a41">
+      <img src="https://source.unsplash.com/1150x600/?ai,neural-network" alt="AI Fact">
+      <h3>Fact: On-Device AI Reduces Latency and Protects Privacy</h3>
+      <p>Processing models locally reduces data transfer and improves responsiveness. Manufacturers increasingly move inference on-device where possible, preserving privacy for sensitive tasks.</p>
+    </article>
+
+    <article id="a42">
+      <img src="https://source.unsplash.com/1150x600/?recycling,environment" alt="Recycling">
+      <h3>Fact: EV Recycling Is an Emerging Industry</h3>
+      <p>End-of-life battery recycling develops rapidly, with new processes extracting valuable metals and repurposing cells for stationary storage. Recycling will be a major part of sustainable EV growth.</p>
+    </article>
+
+    <article id="a43">
+      <img src="https://source.unsplash.com/1150x600/?traffic,city,transport" alt="Urban Mobility">
+      <h3>Fact: Micro-Mobility Is Shaping City Planning</h3>
+      <p>Scooters, e-bikes, and compact EVs change last-mile dynamics. Cities that adapt infrastructure see measurable reductions in congestion and improved commuter satisfaction.</p>
+    </article>
+
+    <article id="a44">
+      <img src="https://source.unsplash.com/1150x600/?data,cloud,servers" alt="Cloud Computing">
+      <h3>Fact: Cloud Providers Fund Massive AI R&D</h3>
+      <p>Hyperscalers invest heavily in chips and tooling, which pushes the entire ecosystem forward. This tends to concentrate AI capacity but also funds open research and tooling support.</p>
+    </article>
+
+    <article id="a45">
+      <img src="https://source.unsplash.com/1150x600/?safety,car,seatbelt" alt="Safety Fact">
+      <h3>Fact: Active Safety Systems Save Lives — But So Does Education</h3>
+      <p>ADAS can reduce accident severity, but driver education, infrastructure, and enforcement continue to be critical components of road safety strategies.</p>
+    </article>
+
+  </section>
+
+  <!-- TRENDING 46–50 -->
+  <section id="trending">
+    <h2>Trending — What’s Buzzing Right Now</h2>
+
+    <article id="a46">
+      <img src="https://source.unsplash.com/1150x600/?cybertruck,truck" alt="Cybertruck">
+      <h3>Cybertruck Debut — Steel, Showmanship, and Real-World Utility</h3>
+      <p>Tesla’s Cybertruck polarizes opinions but advances EV pickup thinking: ultra-durable exoskeleton, air suspension, and large battery capacity. If the truck matches promised performance in production trims, it will reframe heavy-duty EV expectations.</p>
+    </article>
+
+    <article id="a47">
+      <img src="https://source.unsplash.com/1150x600/?autonomous,delivery,drone" alt="Autonomous Delivery">
+      <h3>Autonomous Delivery — Robots on Your Doorstep</h3>
+      <p>From sidewalk bots to autonomous vans, last-mile delivery experiments accelerate. The biggest obstacles are regulation and public acceptance, not technology.</p>
+    </article>
+
+    <article id="a48">
+      <img src="https://source.unsplash.com/1150x600/?ev,subscription,service" alt="EV Subscription">
+      <h3>EV Subscriptions & Ownership Models — Flexibility Over Permanence</h3>
+      <p>New ownership patterns let drivers swap vehicles or pay for features monthly. As software defines value more than hardware in modern cars, subscription models help monetize features continuously.</p>
+    </article>
+
+    <article id="a49">
+      <img src="https://source.unsplash.com/1150x600/?ai,assistant,voice" alt="AI Assistants">
+      <h3>Voice & AI Assistants — From Commands to Conversation</h3>
+      <p>Voice interactions improve as context, memory, and on-device reasoning reduce friction. Assistants that remember user context and adapt preferences offer real convenience — the next leap is emotional intelligence for better UX.</p>
+    </article>
+
+    <article id="a50">
+      <img src="https://source.unsplash.com/1150x600/?battery,solid-state" alt="Solid State Battery">
+      <h3>Solid-State Batteries — Promise vs Reality</h3>
+      <p>Solid-state tech promises energy density and safety improvements, but scaling, materials, and manufacturing challenges remain. The race is on; incremental wins are likely before any full transition.</p>
+    </article>
+
+  </section>
+
+  <!-- Subscribe + Footer -->
+  <section class="subscribe" id="subscribe">
+    <h2>Subscribe to MyHyperRide</h2>
+    <p>Get weekly deep dives, comparisons, and exclusive editor picks — delivered to your inbox.</p>
+    <form id="subscribeForm2">
+      <input type="email" id="email2" placeholder="you@example.com" required style="padding:12px;border-radius:6px;border:none;max-width:320px">
+      <button type="submit" style="padding:12px 18px;border-radius:6px;border:none;background:var(--gold);color:#071014;cursor:pointer;margin-left:10px">Subscribe</button>
+    </form>
+    <p id="subResp" class="small" style="margin-top:10px;color:var(--muted)"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 MyHyperRide — Built for curious drivers and tech lovers. Designed by Neil Dutt.</p>
+  </footer>
+
+</main>
+
+<script>
+  // Basic subscribe handler (placeholder). Integrate EmailJS or server later for real emails.
+  document.getElementById('subscribeForm2').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email2').value;
+    const resp = document.getElementById('subResp');
+    if (!email || !email.includes('@')) {
+      resp.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    resp.textContent = 'Thanks — you\'re subscribed (demo). Real email delivery can be added with EmailJS or a backend.';
+  });
+</script>
