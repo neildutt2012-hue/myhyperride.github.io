@@ -1,233 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Hyper Ride</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>My Hyper Ride — Cars & Tech</title>
 <style>
-body {margin:0; font-family: Arial, sans-serif; background:#121212; color:#eee;}
-header {position:relative; width:100%; height:450px; background:#1c1c1c; display:flex; align-items:center; justify-content:center; text-align:center; color:white;}
-header h1 {font-size:3rem; margin:0;}
-header p {font-size:1.5rem; margin:10px 0 0 0;}
-nav {display:flex; justify-content:center; background:#1c1c1c; padding:10px 0;}
-nav a {color:#eee; text-decoration:none; margin:0 20px; font-weight:bold;}
-nav a:hover {color:#1e90ff;}
-section {max-width:1200px; margin:50px auto; padding:0 20px;}
-section h2 {font-size:2rem; margin-bottom:20px; border-bottom:2px solid #1e90ff; display:inline-block; padding-bottom:5px;}
-.articles {display:grid; grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); gap:30px;}
-.article {background:#1e1e1e; border-radius:10px; overflow:hidden; transition:transform 0.3s;}
-.article:hover {transform:scale(1.02);}
-.article img {width:100%; height:220px; object-fit:cover; border-radius:8px;}
-.article-content {padding:20px;}
-.article-content h3 {margin-top:0; font-size:1.5rem; color:#1e90ff;}
-.article-content p {font-size:1rem; line-height:1.6;}
-.read-more {display:inline-block; margin-top:10px; padding:10px 15px; background:#1e90ff; color:#fff; text-decoration:none; border-radius:5px;}
-.read-more:hover {background:#105cbf;}
-footer {text-align:center; padding:20px; background:#1c1c1c; margin-top:50px;}
+  :root{
+    --bg:#07080a;
+    --panel:#0f1113;
+    --card:#151719;
+    --muted:#b7c0c6;
+    --accent:#9aa6ad; /* subtle silver-blue */
+    --accent-strong:#5f86a8;
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:#eef2f5;font-family:Inter,Segoe UI,system-ui,-apple-system,Roboto,Arial,sans-serif;line-height:1.6}
+  header{background:linear-gradient(180deg,#0d0f11,#08090a);padding:28px 20px;border-bottom:1px solid rgba(255,255,255,0.03);position:relative}
+  .wrap{max-width:1240px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(180deg,var(--accent),var(--accent-strong));display:flex;align-items:center;justify-content:center;font-weight:800;color:#071014}
+  header h1{font-size:28px;margin:0}
+  header p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+  nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:18px 0}
+  nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+  nav a:hover{background:rgba(255,255,255,0.02);color:#fff}
+
+  main{max-width:1240px;margin:28px auto;padding:0 18px}
+  section{margin-bottom:46px}
+  section h2{font-size:22px;margin:0 0 14px 0;color:#fff;padding-bottom:8px;border-bottom:2px solid rgba(150,170,190,0.06)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+  .card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;min-height:340px;transition:transform .22s, box-shadow .22s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+  .card .media{background:#0b0c0e;height:220px;display:flex;align-items:center;justify-content:center}
+  .card .media img{width:100%;height:100%;object-fit:cover;display:block}
+  .card .content{padding:18px;flex:1;display:flex;flex-direction:column}
+  .card h3{margin:0 0 8px 0;font-size:18px;color:var(--accent-strong)}
+  .card p{margin:0 0 14px;color:var(--muted);flex:1}
+  .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);text-decoration:none;font-weight:700}
+  .btn:hover{background:var(--accent-strong);color:#fff;border-color:transparent}
+
+  /* comparison layout inside card */
+  .compare{display:flex;gap:10px;flex-wrap:wrap}
+  .compare img{width:48%;border-radius:10px;height:180px;object-fit:cover}
+  @media (max-width:640px){.compare img{width:100%;height:200px}}
+
+  footer{max-width:1240px;margin:40px auto;padding:26px 18px;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.02)}
+  .hint{font-size:13px;color:var(--muted);margin-top:6px}
 </style>
 </head>
 <body>
 
 <header>
-<div>
-<h1>My Hyper Ride</h1>
-<p>Power Meets Precision</p>
-</div>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">MHR</div>
+      <div>
+        <h1>My Hyper Ride</h1>
+        <p>Power Meets Precision — Cars, EVs & Tech deep dives</p>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#topic">Topic</a>
+      <a href="#cars">Cars</a>
+      <a href="#ev">EV Battles</a>
+      <a href="#tech">Tech</a>
+      <a href="#news">News</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+  </div>
 </header>
 
-<nav>
-<a href="#topic">Topic of the Day</a>
-<a href="#ev">EV Battles</a>
-<a href="#tech">Tech Comparisons</a>
-<a href="#news">Auto News & Facts</a>
-<a href="#reviews">Reviews & Trends</a>
-</nav>
+<main class="wrap">
 
-<!-- ===== Topic of the Day ===== -->
-<section id="topic">
-<h2>Topic of the Day</h2>
-<div class="articles">
+  <!-- TOPIC OF THE DAY (Articles 1–5) -->
+  <section id="topic">
+    <h2>Topic of the Day</h2>
+    <div class="grid">
 
-<!-- Article 1 -->
-<div class="article">
-<img src=https://images.unsplash.com/photo-1716558964038-%2079542bf366af?ixlib=rb-%204.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8%20fA%3D%3D&auto=format&fit=crop&q=80&w=687alt="Tesla Model S Plaid">
-<div class="article-content">
-<h3>Tesla Model S Plaid Dominates</h3>
-<p>The Tesla Model S Plaid is the ultimate high-performance EV, achieving 0-60 mph in under 2 seconds. With a tri-motor setup, 390-mile range, and futuristic interior, it beats most competitors in raw acceleration, technology, and overall performance. A true road-dominating machine.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+      <article class="card">
+        <div class="media"><img src=https://images.unsplash.com/photo-1716558964038-%2079542bf366af?ixlib=rb-%204.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8%20fA%3D%3D&auto=format&fit=crop&q=80&w=687 alt="Tesla Model S Plaid"><!-- IMAGE_URL_1 = Tesla Model S Plaid --></div>
+        <div class="content">
+          <h3>Tesla Model S Plaid — Dominates the Roads</h3>
+          <p>Tri-motor power, sub-2s 0–60, and software-first updates. We analyze thermal management, real-world range, charging strategy, and why Plaid still holds records against boutique EVs. Winner: performance crown but practical trade-offs discussed.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Article 2 -->
-<div class="article">
-<img src=https://images.unsplash.com/photo-1701311521752-9f85d68d55ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332 alt="Lucid Air Grand Touring">
-<div class="article-content">
-<h3>Lucid Air Grand Touring Excellence</h3>
-<p>The Lucid Air Grand Touring combines luxury, efficiency, and performance. Its 516 hp motor and 500+ mile range make it a tech-forward alternative to Tesla. Spacious interiors, semi-autonomous driving, and advanced infotainment make it perfect for long-range cruising with style.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+      <article class="card">
+        <div class="media"><img src=https://images.unsplash.com/photo-1701311521752-9f85d68d55ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332 alt="Lucid Air Grand Touring"><!-- IMAGE_URL_2 = Lucid Air Grand Touring --></div>
+        <div class="content">
+          <h3>Lucid Air Grand Touring — Range & Luxury</h3>
+          <p>Lucid’s long-range focus meets premium finish. Deep dive into battery chemistry, charging behavior, cabin ergonomics and where Lucid beats the incumbents. Winner analysis included for long-distance buyers.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Article 3 -->
-<div class="article">
-<img src=https://images.unsplash.com/photo-1600872254796-9ee1791c2b87?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=749 alt="Porsche Taycan 4S">
-<div class="article-content">
-<h3>Porsche Taycan 4S Precision Driving</h3>
-<p>Porsche Taycan 4S delivers sports-car dynamics with EV efficiency. Sharp handling, adaptive suspension, and precise steering make it a joy to drive. While Tesla focuses on speed, Taycan focuses on driving pleasure, offering a more connected road experience for enthusiasts.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+      <article class="card">
+        <div class="media"><img src=https://images.unsplash.com/photo-1600872254796-9ee1791c2b87?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=749 alt="Porsche Taycan 4S"><!-- IMAGE_URL_3 = Porsche Taycan 4S --></div>
+        <div class="content">
+          <h3>Porsche Taycan 4S — The Driver's EV</h3>
+          <p>Precision handling and track-focused chassis tuning make the Taycan feel like a sports car reinvented. We compare braking regen strategy and charge curves vs competitors to see who owns the twisties.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Continue similarly for Articles 4-10 (Topic of the Day) -->
+      <article class="card">
+        <div class="media"><img src=https://images.unsplash.com/photo-1630165356623-266076eaceb6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D alt="BMW EV lineup"><!-- IMAGE_URL_4 = BMW EV lineup (i4/iX) --></div>
+        <div class="content">
+          <h3>BMW EVs — Driving Dynamics vs Electronics</h3>
+          <p>How BMW balances steering feel with battery management: a look across i4, iX and M variants and where enthusiasts still prefer analog responses over pure software control.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-</div>
-</section>
+      <article class="card">
+        <div class="media"><img src=https://cdn.pixabay.com/photo/2024/03/02/07/09/car-8607713_1280.jpg alt="Tesla Model 3 Performance"><!-- IMAGE_URL_5 = Tesla Model 3 Performance --></div>
+        <div class="content">
+          <h3>Model 3 Performance — Everyday Speed</h3>
+          <p>Small, light, quick — the Model 3 Performance continues to set benchmarks for acceleration-to-cost. We discuss ownership costs, charging options, and the do-it-all daily driver case.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- ===== EV Battles ===== -->
-<section id="ev">
-<h2>EV Battles</h2>
-<div class="articles">
+    </div>
+  </section>
 
-<!-- Article 11 -->
-<div class="article">
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-<img src=https://pixabay.com/photos/bmw-i4-m50-m635csi-norway-7473086/ alt="BMW i4 M50" style="width:48%; border-radius:8px;">
-<img src=https://cdn.pixabay.com/photo/2024/03/02/07/09/car-8607713_1280.jpg alt="Tesla Model 3" style="width:48%; border-radius:8px;">
-</div>
-<div class="article-content">
-<h3>BMW i4 M50 vs Tesla Model 3</h3>
-<p>BMW i4 M50 offers sporty handling and luxury interiors, with 536 hp and smooth acceleration. Tesla Model 3 focuses on tech integration, autopilot, and raw acceleration. BMW is perfect for enthusiasts valuing driving feel; Tesla is perfect for tech lovers prioritizing speed and ecosystem.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+  <!-- CARS (Articles 6–15 single-image & comparisons included) -->
+  <section id="cars">
+    <h2>Cars — Beyond EVs</h2>
+    <div class="grid">
 
-<!-- Article 12 -->
-<div class="article">
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-<img src=https://images.pexels.com/photos/29779238/pexels-photo-29779238.jpeg alt="Mercedes EQS 580" style="width:48%; border-radius:8px;">
-<img src=https://images.unsplash.com/photo-1701311521752-9f85d68d55ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332 alt="Lucid Air Dream Edition" style="width:48%; border-radius:8px;">
-</div>
-<div class="article-content">
-<h3>Mercedes EQS 580 vs Lucid Air Dream Edition</h3>
-<p>Mercedes EQS 580 emphasizes luxury and ride comfort, while Lucid Air Dream Edition excels in range and acceleration. Both have advanced tech and semi-autonomous features. EQS shines in cabin refinement; Lucid dominates in speed and efficiency.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+      <article class="card">
+        <div class="media"><img src=https://images.unsplash.com/photo-1611651338412-8403fa6e3599?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D alt="Porsche 911"><!-- IMAGE_URL_6 = Porsche 911 --></div>
+        <div class="content">
+          <h3>Classic Sports — Porsche 911 Evolution</h3>
+          <p>A concise history and modern reinterpretation — chassis updates, hybrid rumors, and why the 911’s handling remains a benchmark across powertrains.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Articles 13-25 similarly, all with detailed content and comparison images -->
+      <article class="card">
+        <div class="media"><img src=https://unsplash.com/photos/a-blue-sports-car-parked-on-the-side-of-a-road-2OftiFtCwgs alt="Ford Mustang Mach-E GT"><!-- IMAGE_URL_7 = Ford Mustang Mach-E GT --></div>
+        <div class="content">
+          <h3>Mustang Mach-E GT — Muscle, Remixed</h3>
+          <p>Muscle car character translated to electric form. Torque delivery, heat management, and the fun vs efficiency trade-off compared to performance sedans.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-</div>
-</section>
-<!-- ===== Tech Comparisons & EV Battles Continued ===== -->
-<section id="tech">
-<h2>Tech & EV Battles Continued</h2>
-<div class="articles">
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_8" alt="Cadillac Lyriq"><!-- IMAGE_URL_8 = Cadillac Lyriq --></div>
+        <div class="content">
+          <h3>Cadillac Lyriq — Quiet Luxury</h3>
+          <p>How American luxury is migrating to EVs — materials, sound design, and whether US luxury brands can match European craft in the electric era.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Article 26 -->
-<div class="article">
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-<img src=https://images.unsplash.com/photo-1600872254796-9ee1791c2b87?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=749 alt="Porsche Taycan 4S" style="width:48%; border-radius:8px;">
-<img src=https://images.pexels.com/photos/9452202/pexels-photo-9452202.jpeg alt="Audi e-tron GT" style="width:48%; border-radius:8px;">
-</div>
-<div class="article-content">
-<h3>Porsche Taycan 4S vs Audi e-tron GT</h3>
-<p>The Taycan 4S is all about sporty precision with sharp handling and instant throttle response. Audi e-tron GT balances high performance with luxury comfort. Taycan delivers driving excitement; e-tron GT delivers smooth elegance. Both are standout EV sedans, catering to different driving styles.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_9" alt="Kia EV6 GT vs Hyundai Ioniq 5"><!-- IMAGE_URL_9 = combined placeholder for Kia EV6/IONIQ5 --></div>
+        <div class="content">
+          <h3>Kia EV6 GT vs Hyundai Ioniq 5 — Sibling Rivalry</h3>
+          <p>Same family, different personalities: EV6 GT pushes sportiness while Ioniq 5 brings retro-modern comfort. We compare chassis, battery, and daily usability to pick the winner for each buyer type.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Article 27 -->
-<div class="article">
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-<img src=https://unsplash.com/photos/a-blue-sports-car-parked-on-the-side-of-a-road-2OftiFtCwgs alt="Ford Mustang Mach-E GT" style="width:48%; border-radius:8px;">
-<img src=https://images.unsplash.com/photo-1740170629571-e8ad315ae1a0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169 alt="Tesla Model Y Performance" style="width:48%; border-radius:8px;">
-</div>
-<div class="article-content">
-<h3>Ford Mustang Mach-E GT vs Tesla Model Y Performance</h3>
-<p>The Mustang Mach-E GT combines classic Mustang styling cues with EV acceleration and fun driving dynamics. Tesla Model Y Performance focuses on speed, autopilot, and tech-driven features. Mustang GT is the driver’s choice for fun; Model Y is the tech-lover’s EV pick.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_10" alt="Tough pickups"><!-- IMAGE_URL_10 = Ford F-150 Lightning --></div>
+        <div class="content">
+          <h3>Pickup Electrification — Capabilities & Workflows</h3>
+          <p>From towing limits to payload math, how electric pickups change fleet economics and owner workflows. Real-life tests with F-150 Lightning and Rivian R1T included.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Article 28 -->
-<div class="article">
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-<img src=https://images.unsplash.com/photo-1626075195920-5df44dc27674?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171 alt="Audi Q4 e-tron" style="width:48%; border-radius:8px;">
-<img src=https://images.unsplash.com/photo-1628753495700-603e492d16e4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170 alt="Volkswagen ID.4" style="width:48%; border-radius:8px;">
-</div>
-<div class="article-content">
-<h3>Audi Q4 e-tron vs Volkswagen ID.4</h3>
-<p>Audi Q4 e-tron offers refined interiors, advanced infotainment, and smooth driving. Volkswagen ID.4 focuses on affordability and practicality with respectable range and comfort. Q4 e-tron is the premium EV; ID.4 is a versatile everyday EV.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+    </div>
+  </section>
 
-<!-- Article 29 -->
-<div class="article">
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-<img src=https://images.unsplash.com/photo-1683743408642-868e5a595487?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687 alt="Tesla Model X Plaid" style="width:48%; border-radius:8px;">
-<img src=https://images.unsplash.com/photo-1696890508799-3129eb821a5a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=627 alt="Rivian R1S" style="width:48%; border-radius:8px;">
-</div>
-<div class="article-content">
-<h3>Tesla Model X Plaid vs Rivian R1S</h3>
-<p>Tesla Model X Plaid dominates with insane acceleration and tri-motor tech, while Rivian R1S excels in off-road capability and rugged design. Model X is perfect for speed and tech enthusiasts; R1S is built for adventure and utility with EV power.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+  <!-- EV BATTLES (Articles 16–30) -->
+  <section id="ev">
+    <h2>EV Battles — Head to Head</h2>
+    <div class="grid">
 
-<!-- Article 30 -->
-<div class="article">
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-<img src=https://images.unsplash.com/photo-1701311521752-9f85d68d55ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332 alt="Lucid Air Grand Touring" style="width:48%; border-radius:8px;">
-<img src=https://images.pexels.com/photos/29593173/pexels-photo-29593173.jpeg alt="Mercedes EQE" style="width:48%; border-radius:8px;">
-</div>
-<div class="article-content">
-<h3>Lucid Air Grand Touring vs Mercedes EQE</h3>
-<p>Lucid Air delivers ultra-long range and luxury tech-driven interiors, while Mercedes EQE emphasizes cabin elegance, comfort, and advanced semi-autonomous features. Lucid is for tech and performance enthusiasts; EQE is for luxury comfort seekers.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+      <!-- 11. BMW i4 M50 vs Tesla Model 3 -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_11_LEFT" alt="BMW i4 M50"><!-- IMAGE_URL_11_LEFT = BMW i4 M50 -->
+            <img src="IMAGE_URL_11_RIGHT" alt="Tesla Model 3"><!-- IMAGE_URL_11_RIGHT = Tesla Model 3 -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>BMW i4 M50 vs Tesla Model 3</h3>
+          <p>Handling finesse vs tech dominance. BMW offers steering feedback and ride quality; Tesla gives blistering acceleration and superior charging. We score handling, range, tech, and ownership costs.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Article 31 -->
-<div class="article">
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-<img src=https://images.unsplash.com/photo-1697989716693-092a7ed5a21a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170 alt="Chevrolet Bolt EUV" style="width:48%; border-radius:8px;">
-<img src=https://images.unsplash.com/photo-1557775209-f28ede453ae3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170 alt="Nissan Ariya" style="width:48%; border-radius:8px;">
-</div>
-<div class="article-content">
-<h3>Chevrolet Bolt EUV vs Nissan Ariya</h3>
-<p>Chevrolet Bolt EUV offers compact efficiency and affordability, while Nissan Ariya delivers better range and comfort with sleek design. Bolt is ideal for city driving; Ariya is perfect for tech-forward daily commuting with style.</p>
-<a href="#" class="read-more">Read More</a>
-</div>
-</div>
+      <!-- 12. Audi Q4 e-tron vs Volkswagen ID.4 -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_12_LEFT" alt="Audi Q4 e-tron"><!-- IMAGE_URL_12_LEFT = Audi Q4 e-tron -->
+            <img src="IMAGE_URL_12_RIGHT" alt="VW ID.4"><!-- IMAGE_URL_12_RIGHT = Volkswagen ID.4 -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Audi Q4 e-tron vs Volkswagen ID.4</h3>
+          <p>Premium finish vs everyday practicality. Audi’s cabin and finish edge the Q4 ahead while ID.4’s value and real-world usability keep it relevant for many families.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- Articles 32-50 -->
-<!-- Repeat same pattern: two images for comparisons, single image for singles, full juicy text -->
-<!-- Use IMAGE_URL_#LEFT / IMAGE_URL_#RIGHT for two-image comparisons -->
-<!-- Use IMAGE_URL_# for single-image articles -->
-<!-- Make sure each article has <h3>Title</h3>, <p>Juicy description</p>, <a>Read More</a> -->
+      <!-- 13. Porsche Taycan 4S vs Audi e-tron GT -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_13_LEFT" alt="Porsche Taycan 4S"><!-- IMAGE_URL_13_LEFT = Porsche Taycan 4S -->
+            <img src="IMAGE_URL_13_RIGHT" alt="Audi e-tron GT"><!-- IMAGE_URL_13_RIGHT = Audi e-tron GT -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Porsche Taycan 4S vs Audi e-tron GT</h3>
+          <p>Track-focused dynamics from Porsche meet Audi’s grand touring comfort. We breakdown braking regen, battery pack temps, and driver modes to determine a situation-based winner.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-</div>
-</section>
+      <!-- 14. Ford Mustang Mach-E GT vs Tesla Model Y Performance -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_14_LEFT" alt="Mustang Mach-E GT"><!-- IMAGE_URL_14_LEFT = Ford Mustang Mach-E GT -->
+            <img src="IMAGE_URL_14_RIGHT" alt="Tesla Model Y Performance"><!-- IMAGE_URL_14_RIGHT = Tesla Model Y Performance -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Mustang Mach-E GT vs Model Y Performance</h3>
+          <p>American muscle meets Silicon Valley polish. Which gives more thrill per dollar? We test acceleration, handling, and everyday comfort to crown the crossover champ.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
 
-<!-- ===== Auto News & Facts ===== -->
-<section id="news">
-<h2>Auto News & Facts</h2>
-<div class="articles">
-<!-- Articles 51-60 or remaining single-image news/facts -->
-</div>
-</section>
+      <!-- 15. Audi Q4 e-tron vs Volkswagen ID.4 already included; include Kia vs Hyundai & Bolt vs Ariya etc. -->
 
-<!-- ===== Reviews & Trends ===== -->
-<section id="reviews">
-<h2>Reviews & Trends</h2>
-<div class="articles">
-<!-- Articles 61-70 or remaining single-image reviews -->
-</div>
-</section>
+      <!-- 16. Kia EV6 GT vs Hyundai Ioniq 5 -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_16_LEFT" alt="Kia EV6 GT"><!-- IMAGE_URL_16_LEFT = Kia EV6 GT -->
+            <img src="IMAGE_URL_16_RIGHT" alt="Hyundai Ioniq 5"><!-- IMAGE_URL_16_RIGHT = Hyundai Ioniq 5 -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Kia EV6 GT vs Hyundai Ioniq 5</h3>
+          <p>Sibling platforms, different souls: EV6 GT is sportier; Ioniq 5 prioritizes comfort and interior space. We compare charging curves, cabin ergonomics, and which model wins family vs enthusiast hearts.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 17. Chevrolet Bolt EUV vs Nissan Ariya -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_17_LEFT" alt="Chevrolet Bolt EUV"><!-- IMAGE_URL_17_LEFT = Chevrolet Bolt EUV -->
+            <img src="IMAGE_URL_17_RIGHT" alt="Nissan Ariya"><!-- IMAGE_URL_17_RIGHT = Nissan Ariya -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Chevrolet Bolt EUV vs Nissan Ariya</h3>
+          <p>Budget-friendly vs mid-range crossover comfort. Bolt excels in city runs and price, Ariya offers more cabin space and safety tech. We rank value, range, and ownership experience.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 18. Lucid Air Grand Touring vs Mercedes EQE -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_18_LEFT" alt="Lucid Air Grand Touring"><!-- IMAGE_URL_18_LEFT = Lucid Air Grand Touring -->
+            <img src="IMAGE_URL_18_RIGHT" alt="Mercedes EQE"><!-- IMAGE_URL_18_RIGHT = Mercedes EQE -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Lucid Air Grand Touring vs Mercedes EQE</h3>
+          <p>Lucid pushes range and performance, Mercedes refines comfort and tech. Which defines the modern luxury EV? We compare build quality, range, and cabin tech to decide.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 19. Tesla Model X Plaid vs Rivian R1S -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_19_LEFT" alt="Tesla Model X Plaid"><!-- IMAGE_URL_19_LEFT = Tesla Model X Plaid -->
+            <img src="IMAGE_URL_19_RIGHT" alt="Rivian R1S"><!-- IMAGE_URL_19_RIGHT = Rivian R1S -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Tesla Model X Plaid vs Rivian R1S</h3>
+          <p>Acceleration monster vs adventure SUV. Model X Plaid is blistering fast; R1S is built for off-grid capability. Which one matches your lifestyle? We examine towing, range, and off-road tech.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 20. Porsche Taycan 4S vs Audi e-tron GT already included earlier but we may add extra matchups -->
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_20" alt="Porsche Mission E concept / Taycan family"><!-- IMAGE_URL_20 = Porsche Taycan family / concept --></div>
+        <div class="content">
+          <h3>Porsche Family — Taycan Variants Compared</h3>
+          <p>Breakdown of 4S, Turbo, and Turbo S variants: power, battery, and recommended buyer profiles. Practicality vs track spec explained.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- TECH (Articles 31–40) -->
+  <section id="tech">
+    <h2>Tech — Phones, Consoles, Laptops & AR</h2>
+    <div class="grid">
+
+      <!-- 21. iPhone 17 with A19 Chip -->
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_21" alt="iPhone 17 A19"><!-- IMAGE_URL_21 = iPhone 17 (A19 chip) --></div>
+        <div class="content">
+          <h3>iPhone 17 with A19 Chip: What’s New?</h3>
+          <p>A19 brings more on-device AI, smarter photo processing, and improved battery efficiency. We test real-world benefits: gaming, photo editing, and battery life under heavy loads.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 22. Samsung Galaxy Z Fold 6 vs Fold 5 -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_22_LEFT" alt="Z Fold 6"><!-- IMAGE_URL_22_LEFT = Samsung Galaxy Z Fold 6 -->
+            <img src="IMAGE_URL_22_RIGHT" alt="Z Fold 5"><!-- IMAGE_URL_22_RIGHT = Samsung Galaxy Z Fold 5 -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Galaxy Z Fold 6 vs Fold 5 — Is It Worth Upgrading?</h3>
+          <p>Durability upgrades, hinge improvements, and software tweaks make the Fold 6 a meaningful update for heavy multitaskers. We list upgrade reasons and the rare cases where Fold 5 still wins.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 23. Apple Vision Pro vs Meta Quest 3 -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_23_LEFT" alt="Apple Vision Pro"><!-- IMAGE_URL_23_LEFT = Apple Vision Pro -->
+            <img src="IMAGE_URL_23_RIGHT" alt="Meta Quest 3"><!-- IMAGE_URL_23_RIGHT = Meta Quest 3 -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Apple Vision Pro vs Meta Quest 3</h3>
+          <p>Pro-level AR/VR meets consumer-friendly VR. Vision Pro targets spatial productivity; Quest 3 targets accessible immersive gaming. We outline real-world uses and price-to-value analysis.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 24. PlayStation 5 vs Xbox Series X -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_24_LEFT" alt="PlayStation 5"><!-- IMAGE_URL_24_LEFT = PlayStation 5 -->
+            <img src="IMAGE_URL_24_RIGHT" alt="Xbox Series X"><!-- IMAGE_URL_24_RIGHT = Xbox Series X -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>PS5 vs Xbox Series X — Exclusives, Services & Performance</h3>
+          <p>Exclusive titles vs subscription value. Render targets, frame pacing, and ecosystem choices — which console wins depending on your library and budget?</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 25. MacBook Pro M5 vs Dell XPS 15 Gen 13 -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_25_LEFT" alt="MacBook Pro M5"><!-- IMAGE_URL_25_LEFT = MacBook Pro M5 -->
+            <img src="IMAGE_URL_25_RIGHT" alt="Dell XPS 15 Gen 13"><!-- IMAGE_URL_25_RIGHT = Dell XPS 15 Gen 13 -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>MacBook Pro M5 vs Dell XPS 15 Gen 13</h3>
+          <p>Processing power, thermal envelopes, and pro app performance form the battleground. MacBook M5 yields excellent battery-per-watt; XPS 15 gives Windows flexibility and modularity.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 26. Samsung Galaxy S25 Ultra vs iPhone 17 Pro Max -->
+      <article class="card">
+        <div class="media">
+          <div class="compare flex-img">
+            <img src="IMAGE_URL_26_LEFT" alt="Samsung S25 Ultra"><!-- IMAGE_URL_26_LEFT = Samsung Galaxy S25 Ultra -->
+            <img src="IMAGE_URL_26_RIGHT" alt="iPhone 17 Pro Max"><!-- IMAGE_URL_26_RIGHT = iPhone 17 Pro Max -->
+          </div>
+        </div>
+        <div class="content">
+          <h3>Galaxy S25 Ultra vs iPhone 17 Pro Max — Camera & Performance</h3>
+          <p>Samsung’s sensor hardware vs Apple’s computational photography — we compare real photos, low-light, and video stabilization to pick category winners.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 27. Sony WH-1000XM5 vs Bose 700 / Headphones -->
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_27" alt="Sony WH-1000XM5 vs Bose 700"><!-- IMAGE_URL_27 = Sony WH-1000XM5 vs Bose 700 --></div>
+        <div class="content">
+          <h3>Sony WH-1000XM5 vs Bose 700 — ANC & Call Quality</h3>
+          <p>Noise cancellation nitty-gritty, comfort, and mic performance for calls. Which headset reduces airplane noise best and still sounds musical on streaming services?</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 28. Google Pixel 8 Pro vs Samsung Galaxy S25+ -->
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_28" alt="Google Pixel 8 Pro vs Samsung S25+"><!-- IMAGE_URL_28 = Google Pixel 8 Pro vs Samsung S25+ --></div>
+        <div class="content">
+          <h3>Pixel 8 Pro vs Galaxy S25+ — Software vs Hardware</h3>
+          <p>Computational photography and Assistant integration against raw hardware and display mastery. Which phone gives the better everyday photo output and platform experience?</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 29. Apple Vision Pro accessories (single) -->
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_29" alt="Vision Pro accessories"><!-- IMAGE_URL_29 = Apple Vision Pro accessories --></div>
+        <div class="content">
+          <h3>Apple Vision Pro — Accessories & Ecosystem</h3>
+          <p>Controllers, audio add-ons and software suites expand Vision Pro’s use cases beyond media into productivity. We map accessories worth buying first.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <!-- 30. Gaming laptops / handhelds (single) -->
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_30" alt="Gaming laptops and handhelds"><!-- IMAGE_URL_30 = Gaming laptops / handhelds --></div>
+        <div class="content">
+          <h3>Gaming Laptops & Handhelds — Portability vs Power</h3>
+          <p>CPU/GPU tradeoffs, thermals, and battery life. Which compromises give you the best portable gaming experience in 2025?</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- NEWS (Articles 41–45) -->
+  <section id="news">
+    <h2>Auto News & Industry</h2>
+    <div class="grid">
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_31" alt="Global EV adoption"><!-- IMAGE_URL_31 = Global EV adoption image --></div>
+        <div class="content">
+          <h3>Global EV Adoption — 2025 Snapshot</h3>
+          <p>Markets heating up: policy shifts, infrastructure rollouts and sales data. What the numbers mean for buyers and manufacturers.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_32" alt="Battery recycling plant"><!-- IMAGE_URL_32 = Battery recycling plant --></div>
+        <div class="content">
+          <h3>Battery Recycling — Building a Circular Supply Chain</h3>
+          <p>Reclaiming lithium and critical minerals is crucial for scale — we evaluate current tech, economics, and timelines for mass adoption.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_33" alt="Charging networks"><!-- IMAGE_URL_33 = Charging networks / station --></div>
+        <div class="content">
+          <h3>Fast-Charging Networks Compared</h3>
+          <p>Uptime, coverage, and peak power — practical advice for planning road trips and reducing range anxiety.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_34" alt="Autonomous trials"><!-- IMAGE_URL_34 = Autonomous vehicle trials --></div>
+        <div class="content">
+          <h3>Autonomy Trials — What the Data Says</h3>
+          <p>Robotaxi pilots, safety metrics, and regulation — are trials ready to scale? We digest the data and show realistic timelines.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_35" alt="Industry consolidation"><!-- IMAGE_URL_35 = Industry consolidation / mergers --></div>
+        <div class="content">
+          <h3>Industry Moves — Mergers, Partnerships & Startups</h3>
+          <p>Top deals and partnerships shaping EV supply chains and software ecosystems. Who to watch this year.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- REVIEWS & TRENDS (Articles 46–50) -->
+  <section id="reviews">
+    <h2>Reviews & Trends</h2>
+    <div class="grid">
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_36" alt="MacBook Pro M5 vs Dell XPS"><!-- IMAGE_URL_36 = MacBook Pro M5 vs Dell XPS --></div>
+        <div class="content">
+          <h3>MacBook Pro M5 vs Dell XPS 15 Gen 13 — Creator Picks</h3>
+          <p>Real benchmarks in video encoding, color grading and battery runtime. Which machine matches different creator workflows and budgets?</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_37" alt="Car subscriptions"><!-- IMAGE_URL_37 = Car subscription services --></div>
+        <div class="content">
+          <h3>Car Subscriptions — Renting the Future</h3>
+          <p>Flexible ownership models, costs, and who benefits. Can subscriptions replace leases for mainstream buyers?</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_38" alt="Micro-mobility"><!-- IMAGE_URL_38 = Micro-mobility e-bikes/scooters --></div>
+        <div class="content">
+          <h3>Micro-Mobility Trends — E-Bikes & City Design</h3>
+          <p>Last-mile solutions, safety, and the infrastructure cities need to adopt to get more people out of cars for short trips.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_39" alt="OTA updates"><!-- IMAGE_URL_39 = Over-the-air updates / car software --></div>
+        <div class="content">
+          <h3>OTA Updates — Cars As Living Software</h3>
+          <p>Software-first improvements that add features post-purchase. How OTA affects resale value and ownership expectations.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="IMAGE_URL_40" alt="Future mobility concept"><!-- IMAGE_URL_40 = Futuristic mobility concept --></div>
+        <div class="content">
+          <h3>Future Mobility — Electric Aviation & Urban Air Mobility</h3>
+          <p>Short-haul electric aircraft and urban air mobility concepts: timeline, feasibility, and the first markets ready for adoption.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
 
 <footer>
-<p>&copy; 2025 My Hyper Ride. All rights reserved.</p>
+  <div class="wrap">
+    <p>© 2025 My Hyper Ride — All Rights Reserved.</p>
+    <p class="hint">IMAGE placeholders are labeled inside comments and alt attributes. Replace each IMAGE_URL_xxx with your direct image URL (Unsplash / Pexels / Pixabay or your own host).</p>
+  </div>
 </footer>
 
 </body>
