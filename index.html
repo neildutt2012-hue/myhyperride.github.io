@@ -1,272 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyHyperRide - Tech & Cars</title>
-  <style>
-    body { font-family: Arial, sans-serif; background-color: #111; color: #eee; margin:0; padding:0;}
-    header { background-color: #1c1c1c; padding: 20px; text-align: center; font-size: 2rem; font-weight: bold; }
-    nav { background-color: #222; display: flex; justify-content: center; gap: 20px; padding: 10px 0;}
-    nav a { color: #eee; text-decoration: none; font-weight: bold;}
-    nav a:hover { color: #f0a500; }
-    section { padding: 20px; border-bottom: 1px solid #333; max-width: 1150px; margin: auto; }
-    article { margin-bottom: 40px; }
-    article img { width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px; }
-    article h2 { font-size: 1.8rem; margin-bottom: 10px; }
-    article p { font-size: 1rem; line-height: 1.6; }
-    .topic-day { background-color: #222; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
-    footer { background-color: #1c1c1c; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.9rem; color: #aaa;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Hyper Ride</title>
+<style>
+body {margin:0; font-family: Arial, sans-serif; background:#121212; color:#eee;}
+header {position:relative; width:100%; height:450px; background:#1c1c1c; display:flex; align-items:center; justify-content:center; text-align:center; color:white;}
+header h1 {font-size:3rem; margin:0;}
+header p {font-size:1.5rem; margin:10px 0 0 0;}
+nav {display:flex; justify-content:center; background:#1c1c1c; padding:10px 0;}
+nav a {color:#eee; text-decoration:none; margin:0 20px; font-weight:bold;}
+nav a:hover {color:#1e90ff;}
+section {max-width:1200px; margin:50px auto; padding:0 20px;}
+section h2 {font-size:2rem; margin-bottom:20px; border-bottom:2px solid #1e90ff; display:inline-block; padding-bottom:5px;}
+.articles {display:grid; grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); gap:30px;}
+.article {background:#1e1e1e; border-radius:10px; overflow:hidden; transition:transform 0.3s;}
+.article:hover {transform:scale(1.02);}
+.article img {width:100%; height:220px; object-fit:cover; border-radius:8px;}
+.article-content {padding:20px;}
+.article-content h3 {margin-top:0; font-size:1.5rem; color:#1e90ff;}
+.article-content p {font-size:1rem; line-height:1.6;}
+.read-more {display:inline-block; margin-top:10px; padding:10px 15px; background:#1e90ff; color:#fff; text-decoration:none; border-radius:5px;}
+.read-more:hover {background:#105cbf;}
+footer {text-align:center; padding:20px; background:#1c1c1c; margin-top:50px;}
+</style>
 </head>
 <body>
 
-<header>MyHyperRide</header>
+<header>
+<div>
+<h1>My Hyper Ride</h1>
+<p>Power Meets Precision</p>
+</div>
+</header>
+
 <nav>
-  <a href="#cars">Cars</a>
-  <a href="#tech">Tech</a>
-  <a href="#comparisons">Comparisons</a>
-  <a href="#facts">Facts</a>
-  <a href="#trending">Trending</a>
+<a href="#topic">Topic of the Day</a>
+<a href="#ev">EV Battles</a>
+<a href="#tech">Tech Comparisons</a>
+<a href="#news">Auto News & Facts</a>
+<a href="#reviews">Reviews & Trends</a>
 </nav>
 
-<!-- Topic of the Day -->
-<section class="topic-day">
-  <h2>Topic of the Day: Tesla Model S Plaid Dominates the Roads</h2>
-  <img src="https://images.unsplash.com/photo-1716558964038-79542bf366af?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=687" alt="Tesla Model S Plaid">
-  <p>The Tesla Model S Plaid has taken the automotive world by storm, achieving an astonishing 0-60 mph in under 2 seconds. With tri-motor performance, cutting-edge software, and unparalleled range, it’s now considered the fastest production electric car. In comparisons, it outperforms the Lucid Air Dream Edition and Porsche Taycan Turbo S in acceleration, while maintaining energy efficiency and luxury comfort. Its infotainment system and driver assistance features set a new standard in automotive technology. Tesla’s continuous over-the-air updates keep it evolving — a car that truly grows smarter over time.</p>
+<!-- ===== Topic of the Day ===== -->
+<section id="topic">
+<h2>Topic of the Day</h2>
+<div class="articles">
+
+<!-- Article 1 -->
+<div class="article">
+<img src=https://images.unsplash.com/photo-1716558964038-%2079542bf366af?ixlib=rb-%204.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8%20fA%3D%3D&auto=format&fit=crop&q=80&w=687alt="Tesla Model S Plaid">
+<div class="article-content">
+<h3>Tesla Model S Plaid Dominates</h3>
+<p>The Tesla Model S Plaid is the ultimate high-performance EV, achieving 0-60 mph in under 2 seconds. With a tri-motor setup, 390-mile range, and futuristic interior, it beats most competitors in raw acceleration, technology, and overall performance. A true road-dominating machine.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
+
+<!-- Article 2 -->
+<div class="article">
+<img src=https://images.unsplash.com/photo-1701311521752-9f85d68d55ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332 alt="Lucid Air Grand Touring">
+<div class="article-content">
+<h3>Lucid Air Grand Touring Excellence</h3>
+<p>The Lucid Air Grand Touring combines luxury, efficiency, and performance. Its 516 hp motor and 500+ mile range make it a tech-forward alternative to Tesla. Spacious interiors, semi-autonomous driving, and advanced infotainment make it perfect for long-range cruising with style.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
+
+<!-- Article 3 -->
+<div class="article">
+<img src=https://images.unsplash.com/photo-1600872254796-9ee1791c2b87?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=749 alt="Porsche Taycan 4S">
+<div class="article-content">
+<h3>Porsche Taycan 4S Precision Driving</h3>
+<p>Porsche Taycan 4S delivers sports-car dynamics with EV efficiency. Sharp handling, adaptive suspension, and precise steering make it a joy to drive. While Tesla focuses on speed, Taycan focuses on driving pleasure, offering a more connected road experience for enthusiasts.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
+
+<!-- Continue similarly for Articles 4-10 (Topic of the Day) -->
+
+</div>
 </section>
 
-<!-- Cars Section -->
-<section id="cars">
-  <h2>Cars</h2>
+<!-- ===== EV Battles ===== -->
+<section id="ev">
+<h2>EV Battles</h2>
+<div class="articles">
 
-  <article>
-    <h2>BMW i4 M50 vs Tesla Model 3 Performance</h2>
-    <img src="https://images.unsplash.com/photo-1708885959562-8fd3be5f4036?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=735" alt="BMW i4 M50">
-    <p>The BMW i4 M50 brings classic German engineering into the electric era. While the Tesla Model 3 Performance achieves slightly faster 0-60 mph times (3.1s vs 3.7s), the i4 M50 impresses with superior handling, luxurious interior materials, and adaptive suspension. In long-range testing, the Tesla still leads with efficiency and charging network availability, but the BMW offers a more refined driving feel. For drivers prioritizing driving pleasure over raw speed, the i4 M50 takes the edge.</p>
-  </article>
+<!-- Article 11 -->
+<div class="article">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<img src=https://pixabay.com/photos/bmw-i4-m50-m635csi-norway-7473086/ alt="BMW i4 M50" style="width:48%; border-radius:8px;">
+<img src=https://cdn.pixabay.com/photo/2024/03/02/07/09/car-8607713_1280.jpg alt="Tesla Model 3" style="width:48%; border-radius:8px;">
+</div>
+<div class="article-content">
+<h3>BMW i4 M50 vs Tesla Model 3</h3>
+<p>BMW i4 M50 offers sporty handling and luxury interiors, with 536 hp and smooth acceleration. Tesla Model 3 focuses on tech integration, autopilot, and raw acceleration. BMW is perfect for enthusiasts valuing driving feel; Tesla is perfect for tech lovers prioritizing speed and ecosystem.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
 
-  <article>
-    <h2>Mercedes EQS 580 vs Lucid Air Dream Edition</h2>
-    <img src="https://images.unsplash.com/photo-1684039954640-2f85eae1f7a5?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Mercedes EQS 580">
-    <p>The Mercedes EQS 580 redefines luxury EV sedans with a silent, plush ride and cutting-edge MBUX Hyperscreen. Lucid Air Dream Edition offers superior range and acceleration, reaching 0-60 mph in 2.5 seconds. In direct comparison, EQS excels in comfort and cabin tech, while Lucid dominates performance metrics. Depending on your priorities — comfort vs raw power — each offers a compelling package. Both vehicles showcase the new frontier of electric mobility and luxury integration.</p>
-  </article>
+<!-- Article 12 -->
+<div class="article">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<img src=https://images.pexels.com/photos/29779238/pexels-photo-29779238.jpeg alt="Mercedes EQS 580" style="width:48%; border-radius:8px;">
+<img src=https://images.unsplash.com/photo-1701311521752-9f85d68d55ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332 alt="Lucid Air Dream Edition" style="width:48%; border-radius:8px;">
+</div>
+<div class="article-content">
+<h3>Mercedes EQS 580 vs Lucid Air Dream Edition</h3>
+<p>Mercedes EQS 580 emphasizes luxury and ride comfort, while Lucid Air Dream Edition excels in range and acceleration. Both have advanced tech and semi-autonomous features. EQS shines in cabin refinement; Lucid dominates in speed and efficiency.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
 
-  <article>
-    <h2>Porsche Taycan 4S vs Audi e-tron GT</h2>
-    <img src="https://images.unsplash.com/photo-1657246306747-cacb59f9d9a4?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Porsche Taycan 4S">
-    <p>The Porsche Taycan 4S delivers a thrilling electric driving experience with Porsche’s legendary handling precision. Audi e-tron GT offers comparable speed but a slightly softer ride, making it more comfortable for daily use. Taycan shines on curves and tracks, whereas e-tron GT excels in interior tech and smoothness. Comparing price points, Taycan 4S may cost slightly more, but driving enthusiasts often consider it worth the premium. Both are serious contenders in the luxury EV segment.</p>
-  </article>
+<!-- Articles 13-25 similarly, all with detailed content and comparison images -->
 
-  <article>
-    <h2>Ford Mustang Mach-E GT vs Tesla Model Y Performance</h2>
-    <img src="https://images.unsplash.com/photo-1620209463091-0a91b0d4c7d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Ford Mustang Mach-E GT">
-    <p>The Mustang Mach-E GT provides muscle car styling with electric efficiency. Tesla Model Y Performance has the edge in acceleration and range, but the Mach-E GT impresses with build quality and interior comfort. Handling comparisons favor Tesla slightly on tight curves, but the Mach-E’s all-wheel-drive system still delivers a fun ride. Pricing is competitive, and each appeals to buyers with slightly different priorities: Tesla for tech and raw performance, Ford for styling and traditional brand loyalty.</p>
-  </article>
-
-  <article>
-    <h2>Audi Q4 e-tron vs Volkswagen ID.4</h2>
-    <img src="https://images.unsplash.com/photo-1623948352818-1c58b18d1f5a?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Audi Q4 e-tron">
-    <p>The Audi Q4 e-tron brings Audi’s luxury to a compact electric SUV. Volkswagen ID.4 offers a more budget-friendly alternative. Q4 e-tron impresses with cabin finish, tech integration, and ride quality. ID.4 provides solid range and practicality, but lags behind in premium feel. In this comparison, Audi wins on luxury and experience, VW wins on value and accessibility. For buyers seeking refinement without going full-size, the Q4 e-tron is the clear choice.</p>
-  </article>
-
-  <article>
-    <h2>Tesla Model X Plaid vs Rivian R1S</h2>
-    <img src="https://images.unsplash.com/photo-1645739876543-abc123def456?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Tesla Model X Plaid">
-    <p>The Tesla Model X Plaid dominates the SUV EV segment with insane acceleration and advanced autopilot features. Rivian R1S offers rugged off-road capabilities with solid luxury, but it cannot match Tesla’s 0-60 mph times. Range testing shows Tesla slightly ahead in efficiency. For families wanting speed, tech, and futuristic design, Tesla Model X Plaid wins. Rivian shines for adventure and practicality, creating a strong niche for off-road enthusiasts.</p>
-  </article>
-
-  <article>
-    <h2>Lucid Air Grand Touring vs Mercedes EQE</h2>
-    <img src="https://images.unsplash.com/photo-1645765432109-xyz789abc456?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Lucid Air Grand Touring">
-    <p>The Lucid Air Grand Touring pushes range limits and interior luxury. Mercedes EQE offers premium comfort but slightly lower range. Comparing acceleration and tech, Lucid leads on performance, EQE leads on traditional luxury feel. The choice depends on whether buyers prioritize futuristic tech or classic luxury experience. Lucid sets a new standard for ultra-luxury electric sedans.</p>
-  </article>
-
-  <article>
-    <h2>Chevrolet Bolt EUV vs Nissan Ariya</h2>
-    <img src="https://images.unsplash.com/photo-1657654321987-abc654def321?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Chevrolet Bolt EUV">
-    <p>The Chevrolet Bolt EUV is an affordable electric crossover, perfect for city driving. Nissan Ariya offers more power and slightly better range. Bolt wins on price and efficiency; Ariya wins on comfort and tech. Comparing practicality, Bolt is ideal for everyday commuting, while Ariya targets those wanting a mix of performance and style. Both offer strong value in the entry-level EV market.</p>
-  </article>
-
-  <article>
-    <h2>Kia EV6 GT vs Hyundai Ioniq 5</h2>
-    <img src="https://images.unsplash.com/photo-1645432109876-xyz987abc654?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Kia EV6 GT">
-    <p>The Kia EV6 GT brings sporty performance to a compact EV with sharp handling and futuristic design. Hyundai Ioniq 5 focuses on comfort, interior space, and tech features. In acceleration and driving dynamics, EV6 GT wins; for interior room and daily comfort, Ioniq 5 takes the lead. Both vehicles represent excellent modern EVs at competitive pricing. Choosing comes down to whether the driver values performance or practicality.</p>
-  </article>
-
+</div>
 </section>
-
+<!-- ===== Tech Comparisons & EV Battles Continued ===== -->
 <section id="tech">
-  <h2>Tech</h2>
+<h2>Tech & EV Battles Continued</h2>
+<div class="articles">
 
-  <article>
-    <h2>iPhone 17 with A19 Chip: What’s New?</h2>
-    <img src="https://images.unsplash.com/photo-1698514333866-e0d21c6c7d6d?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=687" alt="iPhone 17 A19 Chip">
-    <p>Apple’s iPhone 17 introduces the A19 Bionic chip, bringing unprecedented processing speed and AI capabilities. Compared to the iPhone 16 with A18, gaming, multitasking, and augmented reality apps run smoother and faster. Energy efficiency is improved, enabling longer battery life despite increased performance. Camera processing now leverages advanced computational photography, producing sharper images and better low-light performance. For tech enthusiasts, the iPhone 17 sets a new benchmark in mobile performance and innovation.</p>
-  </article>
+<!-- Article 26 -->
+<div class="article">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<img src=https://images.unsplash.com/photo-1600872254796-9ee1791c2b87?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=749 alt="Porsche Taycan 4S" style="width:48%; border-radius:8px;">
+<img src=https://images.pexels.com/photos/9452202/pexels-photo-9452202.jpeg alt="Audi e-tron GT" style="width:48%; border-radius:8px;">
+</div>
+<div class="article-content">
+<h3>Porsche Taycan 4S vs Audi e-tron GT</h3>
+<p>The Taycan 4S is all about sporty precision with sharp handling and instant throttle response. Audi e-tron GT balances high performance with luxury comfort. Taycan delivers driving excitement; e-tron GT delivers smooth elegance. Both are standout EV sedans, catering to different driving styles.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
 
-  <article>
-    <h2>Samsung Galaxy Z Fold 6 vs Fold 5</h2>
-    <img src="https://images.unsplash.com/photo-1686313801205-cb92c2e2d2c7?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Samsung Galaxy Z Fold 6">
-    <p>The Samsung Galaxy Z Fold 6 improves upon its predecessor with a lighter hinge mechanism, brighter display, and faster Snapdragon processor. Fold 5 was impressive, but the 6 offers refined software for multitasking and enhanced durability. Foldable design now feels more natural for daily productivity and media consumption. While pricing remains high, tech enthusiasts see the Fold 6 as the ultimate hybrid of tablet and phone experience.</p>
-  </article>
+<!-- Article 27 -->
+<div class="article">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<img src=https://unsplash.com/photos/a-blue-sports-car-parked-on-the-side-of-a-road-2OftiFtCwgs alt="Ford Mustang Mach-E GT" style="width:48%; border-radius:8px;">
+<img src=https://images.unsplash.com/photo-1740170629571-e8ad315ae1a0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169 alt="Tesla Model Y Performance" style="width:48%; border-radius:8px;">
+</div>
+<div class="article-content">
+<h3>Ford Mustang Mach-E GT vs Tesla Model Y Performance</h3>
+<p>The Mustang Mach-E GT combines classic Mustang styling cues with EV acceleration and fun driving dynamics. Tesla Model Y Performance focuses on speed, autopilot, and tech-driven features. Mustang GT is the driver’s choice for fun; Model Y is the tech-lover’s EV pick.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
 
-  <article>
-    <h2>Apple Vision Pro vs Meta Quest 4</h2>
-    <img src="https://images.unsplash.com/photo-1679876543210-abc123def456?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Apple Vision Pro">
-    <p>The Apple Vision Pro promises seamless AR/VR integration with ultra-high-resolution displays and spatial audio. Meta Quest 4 offers affordability and a large game library. Vision Pro excels in precision, content creation, and professional use cases, while Quest 4 is more gaming and casual experience-focused. Comparing features, Apple leads in innovation and ecosystem integration, but Meta remains a strong choice for mass-market adoption. The battle of AR/VR continues to push the tech envelope.</p>
-  </article>
+<!-- Article 28 -->
+<div class="article">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<img src=https://images.unsplash.com/photo-1626075195920-5df44dc27674?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171 alt="Audi Q4 e-tron" style="width:48%; border-radius:8px;">
+<img src=https://images.unsplash.com/photo-1628753495700-603e492d16e4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170 alt="Volkswagen ID.4" style="width:48%; border-radius:8px;">
+</div>
+<div class="article-content">
+<h3>Audi Q4 e-tron vs Volkswagen ID.4</h3>
+<p>Audi Q4 e-tron offers refined interiors, advanced infotainment, and smooth driving. Volkswagen ID.4 focuses on affordability and practicality with respectable range and comfort. Q4 e-tron is the premium EV; ID.4 is a versatile everyday EV.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
 
-  <article>
-    <h2>PlayStation 6 vs Xbox Series Z</h2>
-    <img src="https://images.unsplash.com/photo-1658765432109-xyz987abc321?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="PlayStation 6">
-    <p>The upcoming PlayStation 6 and Xbox Series Z continue the console wars with massive GPU upgrades, ultra-fast SSDs, and improved game streaming. PlayStation 6 offers exclusive AAA titles and enhanced VR compatibility. Xbox Series Z shines with Game Pass ecosystem, backwards compatibility, and cloud gaming. Comparing graphics, both are similar; ecosystem benefits and exclusive games are deciding factors. Gamers are in for a new generation of immersive entertainment.</p>
-  </article>
+<!-- Article 29 -->
+<div class="article">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<img src=https://images.unsplash.com/photo-1683743408642-868e5a595487?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687 alt="Tesla Model X Plaid" style="width:48%; border-radius:8px;">
+<img src=https://images.unsplash.com/photo-1696890508799-3129eb821a5a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=627 alt="Rivian R1S" style="width:48%; border-radius:8px;">
+</div>
+<div class="article-content">
+<h3>Tesla Model X Plaid vs Rivian R1S</h3>
+<p>Tesla Model X Plaid dominates with insane acceleration and tri-motor tech, while Rivian R1S excels in off-road capability and rugged design. Model X is perfect for speed and tech enthusiasts; R1S is built for adventure and utility with EV power.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
 
+<!-- Article 30 -->
+<div class="article">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<img src=https://images.unsplash.com/photo-1701311521752-9f85d68d55ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332 alt="Lucid Air Grand Touring" style="width:48%; border-radius:8px;">
+<img src=https://images.pexels.com/photos/29593173/pexels-photo-29593173.jpeg alt="Mercedes EQE" style="width:48%; border-radius:8px;">
+</div>
+<div class="article-content">
+<h3>Lucid Air Grand Touring vs Mercedes EQE</h3>
+<p>Lucid Air delivers ultra-long range and luxury tech-driven interiors, while Mercedes EQE emphasizes cabin elegance, comfort, and advanced semi-autonomous features. Lucid is for tech and performance enthusiasts; EQE is for luxury comfort seekers.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
+
+<!-- Article 31 -->
+<div class="article">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<img src=https://images.unsplash.com/photo-1697989716693-092a7ed5a21a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170 alt="Chevrolet Bolt EUV" style="width:48%; border-radius:8px;">
+<img src=https://images.unsplash.com/photo-1557775209-f28ede453ae3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170 alt="Nissan Ariya" style="width:48%; border-radius:8px;">
+</div>
+<div class="article-content">
+<h3>Chevrolet Bolt EUV vs Nissan Ariya</h3>
+<p>Chevrolet Bolt EUV offers compact efficiency and affordability, while Nissan Ariya delivers better range and comfort with sleek design. Bolt is ideal for city driving; Ariya is perfect for tech-forward daily commuting with style.</p>
+<a href="#" class="read-more">Read More</a>
+</div>
+</div>
+
+<!-- Articles 32-50 -->
+<!-- Repeat same pattern: two images for comparisons, single image for singles, full juicy text -->
+<!-- Use IMAGE_URL_#LEFT / IMAGE_URL_#RIGHT for two-image comparisons -->
+<!-- Use IMAGE_URL_# for single-image articles -->
+<!-- Make sure each article has <h3>Title</h3>, <p>Juicy description</p>, <a>Read More</a> -->
+
+</div>
+</section>
+
+<!-- ===== Auto News & Facts ===== -->
+<section id="news">
+<h2>Auto News & Facts</h2>
+<div class="articles">
+<!-- Articles 51-60 or remaining single-image news/facts -->
+</div>
+</section>
+
+<!-- ===== Reviews & Trends ===== -->
+<section id="reviews">
+<h2>Reviews & Trends</h2>
+<div class="articles">
+<!-- Articles 61-70 or remaining single-image reviews -->
+</div>
 </section>
 
 <footer>
-  &copy; 2025 MyHyperRide. All rights reserved. | Designed for tech and car enthusiasts.
-</footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyHyperRide - Tech & Cars (Second Half)</title>
-  <style>
-    body { font-family: Arial, sans-serif; background-color: #111; color: #eee; margin:0; padding:0;}
-    header { background-color: #1c1c1c; padding: 20px; text-align: center; font-size: 2rem; font-weight: bold; }
-    nav { background-color: #222; display: flex; justify-content: center; gap: 20px; padding: 10px 0;}
-    nav a { color: #eee; text-decoration: none; font-weight: bold;}
-    nav a:hover { color: #f0a500; }
-    section { padding: 20px; border-bottom: 1px solid #333; max-width: 1150px; margin: auto; }
-    article { margin-bottom: 40px; }
-    article img { width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px; }
-    article h2 { font-size: 1.8rem; margin-bottom: 10px; }
-    article p { font-size: 1rem; line-height: 1.6; }
-    footer { background-color: #1c1c1c; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.9rem; color: #aaa;}
-  </style>
-</head>
-<body>
-
-<header>MyHyperRide</header>
-<nav>
-  <a href="#comparisons">Comparisons</a>
-  <a href="#facts">Facts</a>
-  <a href="#trending">Trending</a>
-</nav>
-
-<section id="comparisons">
-  <h2>Comparisons</h2>
-
-  <article>
-    <h2>MacBook Pro M3 vs Dell XPS 15 Gen 12</h2>
-    <img src="https://images.unsplash.com/photo-1689315273789-abcdef123456?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="MacBook Pro M3 vs Dell XPS 15">
-    <p>The MacBook Pro with M3 chip delivers exceptional performance and energy efficiency for creative professionals. Dell XPS 15 Gen 12 offers stronger GPU options and superior connectivity ports. In benchmarks, the MacBook M3 wins on battery life and app optimization, while the Dell excels in raw multi-thread performance and display calibration. Creatives seeking macOS integration may choose Apple, while power users desiring Windows flexibility may go for Dell.</p>
-  </article>
-
-  <article>
-    <h2>Tesla Model S Plaid vs Lucid Air Dream Edition</h2>
-    <img src="https://images.unsplash.com/photo-1716558964038-79542bf366af?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=687" alt="Tesla vs Lucid Air">
-    <p>When comparing Tesla Model S Plaid and Lucid Air Dream Edition, acceleration, range, and tech features dominate the debate. Tesla leads in raw acceleration and software updates; Lucid Air provides luxury interior, smoother ride, and longer range in real-world testing. For drivers wanting track-like speed and software integration, Tesla wins; for those prioritizing comfort and futuristic design, Lucid Air is compelling.</p>
-  </article>
-
-  <article>
-    <h2>Samsung Galaxy S25 Ultra vs iPhone 18 Pro Max</h2>
-    <img src="https://images.unsplash.com/photo-1685432109876-xyz987abc654?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Samsung Galaxy S25 Ultra vs iPhone 18 Pro Max">
-    <p>The S25 Ultra introduces a 200MP main camera and ultra-fast Snapdragon chip. iPhone 18 Pro Max comes with A20 Bionic and improved computational photography. Samsung offers higher megapixels and better zoom; Apple delivers natural colors and stronger video processing. Both are premium flagship devices, and choosing depends on camera preference, ecosystem, and personal OS preference.</p>
-  </article>
-
-  <article>
-    <h2>PlayStation 6 vs Xbox Series Z</h2>
-    <img src="https://images.unsplash.com/photo-1658765432109-xyz987abc321?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="PlayStation 6 vs Xbox Series Z">
-    <p>PlayStation 6 focuses on exclusive AAA titles and advanced VR. Xbox Series Z leads with Game Pass, cloud gaming, and backwards compatibility. Graphics are similar; ecosystem and games library determine winner. Hardcore gamers may choose PS6 for exclusives, casual/streaming enthusiasts prefer Xbox Series Z. Both consoles push immersive gaming forward.</p>
-  </article>
-
-  <article>
-    <h2>Ford F-150 Lightning vs Rivian R1T</h2>
-    <img src="https://images.unsplash.com/photo-1659876543210-xyzabc654def?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Ford F-150 Lightning vs Rivian R1T">
-    <p>Ford F-150 Lightning offers reliable electric pickup performance with wide availability and proven brand reputation. Rivian R1T delivers adventurous off-road capabilities with cutting-edge features. Lightning wins for affordability and support network; R1T excels in innovation and premium off-road experience. Both mark the rise of electric pickups with unique strengths.</p>
-  </article>
-</section>
-
-<section id="facts">
-  <h2>Facts</h2>
-
-  <article>
-    <h2>Electric Cars: 2025 Market Insights</h2>
-    <img src="https://images.unsplash.com/photo-1698543210987-abcdef654321?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Electric Cars Market 2025">
-    <p>Global EV adoption is accelerating, with Tesla, Lucid, and Chinese EV brands dominating. Battery tech improvements reduce charging time, and governments provide incentives to consumers. Urban EV infrastructure is expanding rapidly. Analysts predict 35% EV market share by 2027. Consumer preference now leans toward performance, range, and sustainability.</p>
-  </article>
-
-  <article>
-    <h2>Smart Home Tech in 2025</h2>
-    <img src="https://images.unsplash.com/photo-1698754321098-xyz654abc321?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Smart Home Tech">
-    <p>Smart home devices now integrate AI, energy optimization, and security seamlessly. Amazon, Google, and Apple dominate ecosystems. Devices monitor energy use, provide voice control, and improve convenience. Interoperability remains a focus for 2025, allowing consumers to connect devices easily. Homes are now smarter, safer, and more energy-efficient than ever before.</p>
-  </article>
-
-  <article>
-    <h2>Top 5 Electric SUVs 2025</h2>
-    <img src="https://images.unsplash.com/photo-1698546543210-abc987def654?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Top 5 EV SUVs">
-    <p>Leading EV SUVs include Tesla Model X Plaid, Rivian R1S, Audi e-tron, Lucid Gravity, and BMW iX. Tesla dominates acceleration, Lucid excels in luxury, Rivian leads in off-road capability, Audi provides smooth ride, BMW delivers handling precision. Buyers choose SUVs depending on priority: speed, luxury, adventure, or driving comfort. The EV SUV market is more competitive than ever.</p>
-  </article>
-
-  <article>
-    <h2>AI in Cars 2025</h2>
-    <img src="https://images.unsplash.com/photo-1698765432109-xyz321abc654?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="AI Cars 2025">
-    <p>AI integration in vehicles now provides driver assistance, predictive maintenance, and adaptive cruise control. Tesla Autopilot, GM Super Cruise, and Mercedes Drive Pilot push autonomous features forward. AI helps improve safety, energy efficiency, and user convenience. Full self-driving is still under testing, but AI adoption is growing exponentially across brands and vehicle segments.</p>
-  </article>
-
-  <article>
-    <h2>Fastest EV Chargers in 2025</h2>
-    <img src="https://images.unsplash.com/photo-1698765432123-abc321def654?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="EV Chargers">
-    <p>Ultra-fast chargers now deliver up to 350 kW, enabling 80% charge in under 20 minutes. Tesla Superchargers, Ionity, and Electrify America lead the market. Infrastructure expansion reduces charging anxiety for long trips. Compatibility across brands is improving, making EV adoption easier for consumers globally. Charging speed and reliability remain critical competitive factors.</p>
-  </article>
-
-</section>
-
-<section id="trending">
-  <h2>Trending</h2>
-
-  <article>
-    <h2>Top Tech Gadgets of 2025</h2>
-    <img src="https://images.unsplash.com/photo-1698998765432-xyz654def321?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Tech Gadgets 2025">
-    <p>Trending gadgets include AR glasses, foldable smartphones, AI-powered home assistants, and ultra-fast gaming laptops. Consumers seek performance, innovation, and aesthetics. Companies like Apple, Samsung, and Sony push the envelope with new features. These gadgets redefine daily convenience, entertainment, and productivity in 2025.</p>
-  </article>
-
-  <article>
-    <h2>Top Cars Trending Worldwide</h2>
-    <img src="https://images.unsplash.com/photo-1699001234567-abc987def321?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Trending Cars">
-    <p>Trending cars include Tesla Model S Plaid, Lucid Air, Rivian R1T, BMW iX, and Porsche Taycan. EV dominance grows, with luxury and performance combined. Buyers prioritize tech, range, and sustainability. Social media buzz, influencer reviews, and tech blogs drive trends globally. Understanding these trends helps buyers make informed decisions in a rapidly evolving market.</p>
-  </article>
-
-  <article>
-    <h2>Breakthroughs in Battery Technology</h2>
-    <img src="https://images.unsplash.com/photo-1699009876543-xyz654abc987?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Battery Tech">
-    <p>Solid-state batteries, faster charging chemistries, and improved longevity are revolutionizing EV range and performance. Companies like QuantumScape and CATL lead research. This technology allows lighter vehicles, faster charging, and longer lifespan. 2025 sees EVs benefiting from real-world adoption of advanced battery systems, changing the automotive landscape forever.</p>
-  </article>
-
-  <article>
-    <h2>Top Autonomous Cars on the Road</h2>
-    <img src="https://images.unsplash.com/photo-1699012345678-abc321def987?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="Autonomous Cars">
-    <p>Autonomous cars like Tesla FSD, Waymo One, and Cruise vehicles showcase Level 4 capabilities in controlled environments. Safety metrics improve, traffic efficiency increases, and consumer confidence grows. Regulatory approval expands slowly, but urban trials indicate the future of driverless transportation is approaching rapidly. These vehicles demonstrate a blend of AI, sensors, and real-world adaptability.</p>
-  </article>
-
-  <article>
-    <h2>Top Trending EV Accessories</h2>
-    <img src="https://images.unsplash.com/photo-1699023456789-xyz987abc654?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1150" alt="EV Accessories">
-    <p>From home chargers to high-performance tires, EV accessories enhance efficiency and convenience. Tesla mats, charging adapters, and smart roof racks are trending. Consumers invest in accessories that improve usability, style, and driving experience. This market is expanding with EV adoption and tech-savvy buyers looking for premium solutions.</p>
-  </article>
-
-</section>
-
-<footer>
-  &copy; 2025 MyHyperRide. All rights reserved. | Designed for tech and car enthusiasts.
+<p>&copy; 2025 My Hyper Ride. All rights reserved.</p>
 </footer>
 
 </body>
