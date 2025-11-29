@@ -1,290 +1,595 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyHyperRide - Ultimate Tech & Car Reviews</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Don't Touch The Human — Play Free</title>
+<meta name="description" content="Don't Touch The Human — a chaotic viral survival game. Survive the human swarm as long as you can!" />
 <style>
-/* Reset & Base */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-body { background: #111; color: #fff; line-height: 1.6; }
-a { color: #1e90ff; text-decoration: none; }
-a:hover { text-decoration: underline; }
-img { max-width: 100%; display: block; border-radius: 12px; }
-
-/* Header */
-header { background: #000; padding: 20px 40px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.5);}
-header h1 { font-size: 2.2rem; color: #1e90ff; letter-spacing: 2px; }
-nav { margin-top: 12px; }
-nav a { margin: 0 15px; font-weight: bold; color: #fff; }
-
-/* Main Content */
-main { max-width: 1500px; margin: 30px auto; padding: 0 20px; }
-
-/* Section Titles */
-section { margin-bottom: 60px; }
-section h2 { font-size: 2rem; margin-bottom: 25px; color: #1e90ff; border-bottom: 2px solid #1e90ff; display: inline-block; padding-bottom: 6px; }
-
-/* Article Cards */
-.articles { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
-.card { background: #1a1a1a; border-radius: 15px; overflow: hidden; flex: 1 1 380px; max-width: 450px; box-shadow: 0 0 15px rgba(0,0,0,0.6); transition: transform 0.4s, box-shadow 0.4s; }
-.card:hover { transform: translateY(-8px); box-shadow: 0 0 35px #1e90ff; }
-.card img { width: 100%; height: 260px; object-fit: cover; transition: transform 0.4s; }
-.card:hover img { transform: scale(1.05); }
-.card-content { padding: 18px; }
-.card-content h3 { font-size: 1.3rem; margin-bottom: 10px; }
-.card-content p { font-size: 0.95rem; color: #ccc; }
-.card-content .fact { background: #111; padding: 8px 12px; border-left: 3px solid #1e90ff; margin-top: 10px; font-size: 0.85rem; }
-
-/* Footer */
-footer { background: #000; text-align: center; padding: 25px; font-size: 0.9rem; color: #888; }
-
-/* Responsive */
-@media(max-width: 1000px){ .card { flex: 1 1 45%; } }
-@media(max-width: 650px){ .card { flex: 1 1 100%; } .card img { height: 220px; } }
+  :root{
+    --bg:#0b0f1a;
+    --panel:#0f1724;
+    --accent:#7cffd6;
+    --muted:#9aa8b6;
+    --danger:#ff6b6b;
+  }
+  html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+  body{background:linear-gradient(180deg,#02030a 0%, #081027 60%);color:#e6f0f7;display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box}
+  .container{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.8);overflow:hidden;display:grid;grid-template-columns:1fr 340px;gap:0}
+  .left{position:relative;background:
+    radial-gradient(1200px 400px at 10% 10%, rgba(124,255,214,0.03), transparent 10%),
+    radial-gradient(800px 300px at 90% 90%, rgba(124,255,214,0.02), transparent 10%);padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  canvas{background:linear-gradient(180deg,#071126,#050816);border-radius:8px;display:block;max-width:100%;height:auto}
+  .hud{position:absolute;top:18px;left:18px;display:flex;gap:12px;align-items:center}
+  .score-pill{background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:999px;font-weight:700;backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:flex-start}
+  .score-pill small{color:var(--muted);font-weight:600;font-size:11px}
+  .controls{position:absolute;bottom:18px;left:18px;display:flex;gap:10px;align-items:center}
+  .btn{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700}
+  .btn:active{transform:translateY(1px)}
+  .right{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));display:flex;flex-direction:column;gap:12px;min-width:260px}
+  h1{margin:0;font-size:18px}
+  .meta{color:var(--muted);font-size:13px}
+  .panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+  .big{font-size:28px;font-weight:900;color:var(--accent);letter-spacing:1px}
+  .muted{color:var(--muted);font-size:13px}
+  .footer{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .link{color:var(--accent);text-decoration:none;font-weight:700}
+  .share{background:linear-gradient(90deg,#3b82f6,#7c3aed);padding:10px;border-radius:10px;color:white;border:none;cursor:pointer}
+  .power{display:flex;gap:8px;align-items:center}
+  .power small{display:block;color:var(--muted);font-size:12px}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px}
+  /* mobile adjustments */
+  @media (max-width:880px){
+    .container{grid-template-columns:1fr;max-width:720px}
+    .right{min-width:unset}
+  }
 </style>
 </head>
 <body>
+<div class="container" role="application" aria-label="Don't Touch The Human game">
+  <div class="left">
+    <div class="hud" aria-hidden="true">
+      <div class="score-pill panel" id="scorePanel">
+        <small>TIME</small>
+        <div id="score" class="big">0</div>
+      </div>
+      <div class="score-pill panel" style="margin-left:6px">
+        <small>BEST</small>
+        <div id="best" class="big">0</div>
+      </div>
+    </div>
 
-<header>
-<h1>MyHyperRide</h1>
-<nav>
-<a href="#tech">Tech</a>
-<a href="#foldables">Foldables</a>
-<a href="#phones">Phones</a>
-<a href="#laptops">Laptops</a>
-<a href="#cars">Cars</a>
-<a href="#reviews">Reviews</a>
-<a href="#facts">Facts</a>
-</nav>
-</header>
+    <canvas id="game" width="900" height="600" aria-label="Game canvas"></canvas>
 
-<main>
+    <div class="controls" aria-hidden="true">
+      <button class="btn" id="startBtn">Start</button>
+      <button class="btn" id="muteBtn">🔊</button>
+      <button class="btn" id="freezeBtn">Freeze (3)</button>
+      <div class="muted" style="margin-left:8px">Tap/Drag to move</div>
+    </div>
+  </div>
 
-<!-- TECH SECTION -->
-<section id="tech">
-<h2>Latest Tech Comparisons</h2>
-<div class="articles">
+  <div class="right">
+    <div>
+      <h1>Don't Touch The Human</h1>
+      <div class="meta">A chaotic survival game — survive the human swarm as long as you can. Built to go viral.</div>
+    </div>
 
-<div class="card">
-<img src="images/iphone17-samsung-s25.jpg" alt="iPhone 17 Pro Max vs Samsung S25 Ultra">
-<div class="card-content">
-<h3>iPhone 17 Pro Max vs Samsung S25 Ultra</h3>
-<p>Design, camera, performance, and battery life comparison of flagship smartphones.</p>
-<div class="fact">Fact: iPhone 17 Pro Max introduced 5 new camera sensors.</div>
-</div>
-</div>
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="muted">How to play</div>
+          <div style="font-weight:800">Tap or drag to move • Avoid humans</div>
+        </div>
+        <div style="text-align:right">
+          <div class="muted">Difficulty</div>
+          <div id="difficultyText" style="font-weight:900">Chaotic</div>
+        </div>
+      </div>
+      <div class="hint">Humans spawn faster over time. Use freezes to survive longer. Share your insane deaths!</div>
+    </div>
 
-<div class="card">
-<img src="images/zfold6-open2.jpg" alt="Galaxy Z Fold 6 vs OnePlus Open 2">
-<div class="card-content">
-<h3>Galaxy Z Fold 6 vs OnePlus Open 2</h3>
-<p>Foldable showdown: display, durability, and software features analyzed.</p>
-<div class="fact">Fact: Z Fold 6 has 7.7-inch main display.</div>
-</div>
-</div>
+    <div class="panel power">
+      <div>
+        <div style="font-weight:900;font-size:16px" id="wave">Wave: 0</div>
+        <div class="muted">Enemies on screen: <span id="enemyCount">0</span></div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div class="muted">Power-ups</div>
+        <div style="font-weight:900" id="freezeCount">3</div>
+        <small class="muted">Freeze bombs</small>
+      </div>
+    </div>
 
-<div class="card">
-<img src="images/ps6-xbox-next.jpg" alt="PlayStation 6 vs Xbox Next">
-<div class="card-content">
-<h3>PlayStation 6 vs Xbox Next</h3>
-<p>Next-gen console performance, exclusive games, and graphics comparison.</p>
-<div class="fact">Fact: Both consoles support 8K gaming.</div>
-</div>
-</div>
+    <div class="panel">
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="share" id="shareBtn">Share high score</button>
+        <button class="btn" id="resetBest">Reset Best</button>
+      </div>
+      <div style="margin-top:8px" class="muted">Best scores are stored in this browser. Publish the site to go viral — I can help with publishing.</div>
+    </div>
 
-<div class="card">
-<img src="images/macbook-future-lenovo.jpg" alt="MacBook Future vs Lenovo Ultra 2025">
-<div class="card-content">
-<h3>MacBook Future vs Lenovo Ultra 2025</h3>
-<p>Laptop comparison: CPU, GPU, battery, and design for power users.</p>
-<div class="fact">Fact: MacBook Future now has 30-hour battery life.</div>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- FOLDABLES SECTION -->
-<section id="foldables">
-<h2>Foldable Phone Battles</h2>
-<div class="articles">
-
-<div class="card">
-<img src="images/fold6-fold7.jpg" alt="Z Fold 6 vs Z Fold 7">
-<div class="card-content">
-<h3>Galaxy Z Fold 6 vs Z Fold 7</h3>
-<p>Comparison of the latest foldables with improvements in durability and display.</p>
-<div class="fact">Fact: Fold 7 introduces Ultra-thin glass 2.0.</div>
-</div>
+    <div class="footer muted">
+      <div>Made with ❤️ by your dev buddy</div>
+      <div style="margin-left:auto">v1.0</div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<img src="images/open2-open3.jpg" alt="OnePlus Open 2 vs Open 3">
-<div class="card-content">
-<h3>OnePlus Open 2 vs Open 3</h3>
-<p>Speed, flexibility, and multitasking features reviewed.</p>
-<div class="fact">Fact: Open 3 supports 240Hz main screen refresh.</div>
-</div>
-</div>
+<script>
+/* -------------------------------
+   DON'T TOUCH THE HUMAN (Browser)
+   single-file game engine (simple)
+   ------------------------------- */
 
-</div>
-</section>
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d', { alpha: false });
+let W = canvas.width, H = canvas.height;
 
-<!-- PHONES SECTION -->
-<section id="phones">
-<h2>Smartphone Showdowns</h2>
-<div class="articles">
+function resizeCanvas() {
+  // keep 16:10 aspect but scale to container
+  const container = canvas.parentElement;
+  const rect = container.getBoundingClientRect();
+  const maxW = rect.width - 36;
+  const maxH = window.innerHeight - 180;
+  const aspect = 16/10;
+  let nw = maxW, nh = Math.round(nw/aspect);
+  if (nh > maxH) { nh = maxH; nw = Math.round(nh*aspect); }
+  canvas.style.width = nw + 'px';
+  canvas.style.height = nh + 'px';
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
-<div class="card">
-<img src="images/google-pixel-10.jpg" alt="Pixel 10 vs Pixel 11">
-<div class="card-content">
-<h3>Pixel 10 vs Pixel 11</h3>
-<p>Camera and AI software improvements compared.</p>
-<div class="fact">Fact: Pixel 11 has upgraded Tensor G4 chip.</div>
-</div>
-</div>
+/* Game state */
+let running = false;
+let score = 0;
+let best = parseInt(localStorage.getItem('dtt_h_best')||'0',10);
+document.getElementById('best').textContent = best;
+let enemies = [];
+let particles = [];
+let freezeCount = 3;
+let enemySpawnInterval = 800; // ms initial
+let lastSpawn = 0;
+let startTime = 0;
+let lastFrame = performance.now();
+let wave = 0;
+let muted = false;
 
-<div class="card">
-<img src="images/xiaomi-ultra.jpg" alt="Xiaomi Ultra vs Xiaomi Mega">
-<div class="card-content">
-<h3>Xiaomi Ultra vs Xiaomi Mega</h3>
-<p>Performance, battery, and screen tech analyzed.</p>
-<div class="fact">Fact: Ultra model has 200MP camera sensor.</div>
-</div>
-</div>
+/* Player */
+const player = {
+  x: W/2, y: H/2, r: 14, vx:0, vy:0, speed: 0.35, color: '#7cffd6', alive: true
+};
+let target = { x: player.x, y: player.y };
 
-</div>
-</section>
+/* Input (touch/mouse) */
+let pointerDown = false;
+function setTargetFromPointer(e){
+  pointerDown = true;
+  const rect = canvas.getBoundingClientRect();
+  const clientX = (e.touches ? e.touches[0].clientX : e.clientX);
+  const clientY = (e.touches ? e.touches[0].clientY : e.clientY);
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  target.x = (clientX - rect.left) * scaleX;
+  target.y = (clientY - rect.top) * scaleY;
+}
+canvas.addEventListener('pointerdown', (e)=>{ setTargetFromPointer(e); });
+canvas.addEventListener('pointermove', (e)=>{ if(e.buttons||e.pressure) setTargetFromPointer(e); });
+canvas.addEventListener('pointerup', ()=>{ pointerDown = false; });
 
-<!-- LAPTOP SECTION -->
-<section id="laptops">
-<h2>Laptop Battles</h2>
-<div class="articles">
+canvas.addEventListener('touchstart', (e)=>{ setTargetFromPointer(e); }, {passive:true});
+canvas.addEventListener('touchmove', (e)=>{ setTargetFromPointer(e); }, {passive:true});
+canvas.addEventListener('touchend', ()=>{ pointerDown = false; });
 
-<div class="card">
-<img src="images/dell-xps-vs-macbook.jpg" alt="Dell XPS vs MacBook Future">
-<div class="card-content">
-<h3>Dell XPS vs MacBook Future</h3>
-<p>High-end laptop showdown for creators and developers.</p>
-<div class="fact">Fact: Dell XPS 2025 supports AI co-processor.</div>
-</div>
-</div>
+/* Sounds (simple beeps generated by WebAudio) */
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function beep(freq=440, len=0.06, vol=0.12){
+  if(muted) return;
+  try{
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type='sine';o.frequency.value=freq;
+    g.gain.setValueAtTime(vol, audioCtx.currentTime);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start();
+    o.stop(audioCtx.currentTime + len);
+  }catch(e){}
+}
 
-<div class="card">
-<img src="images/lenovo-thinkpad.jpg" alt="Lenovo ThinkPad Ultra vs Lenovo Yoga">
-<div class="card-content">
-<h3>Lenovo ThinkPad Ultra vs Lenovo Yoga</h3>
-<p>Durability, battery life, and display compared.</p>
-<div class="fact">Fact: ThinkPad Ultra now uses mini-LED display.</div>
-</div>
-</div>
+/* Helpers */
+function rand(a,b){ return Math.random()*(b-a)+a; }
+function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
 
-</div>
-</section>
+/* Enemy prototype */
+function spawnEnemy(){
+  // spawn at random edge
+  const side = Math.floor(Math.random()*4);
+  let x,y;
+  if(side===0){ x = rand(0,W); y = -20; }
+  else if(side===1){ x = rand(0,W); y = H+20; }
+  else if(side===2){ x = -20; y = rand(0,H); }
+  else { x = W+20; y = rand(0,H); }
 
-<!-- CARS SECTION -->
-<section id="cars">
-<h2>Cars & Supercars</h2>
-<div class="articles">
+  const s = rand(8,12);
+  const speed = rand(0.45 + wave*0.03, 0.75 + wave*0.05);
+  enemies.push({
+    x,y, r: s, vx:0, vy:0, speed, stomped:false, color: '#ffb86b',
+    wobble: rand(0,Math.PI*2)
+  });
+}
 
-<div class="card">
-<img src="images/tesla-porsche.jpg" alt="Tesla Roadster vs Porsche 911">
-<div class="card-content">
-<h3>Tesla Roadster vs Porsche 911</h3>
-<p>Acceleration, top speed, and driving experience analyzed.</p>
-<div class="fact">Fact: Tesla Roadster 2.0 hits 0-60mph in 1.9s.</div>
-</div>
-</div>
+/* Particle (confetti) */
+function spawnParticles(x,y,color,count=12){
+  for(let i=0;i<count;i++){
+    particles.push({
+      x,y,vx:rand(-3,3),vy:rand(-5,1),life:rand(40,90),
+      color: color || `hsl(${Math.floor(rand(0,360))} 80% 60%)`, size: rand(2,4)
+    });
+  }
+}
 
-<div class="card">
-<img src="images/ferrari-lambo.jpg" alt="Ferrari SF90 vs Lamborghini Aventador">
-<div class="card-content">
-<h3>Ferrari SF90 vs Lamborghini Aventador</h3>
-<p>Which Italian beast reigns supreme in 2025?</p>
-<div class="fact">Fact: Aventador has 819HP V12 engine.</div>
-</div>
-</div>
+/* Game Reset */
+function resetGame(){
+  enemies = [];
+  particles = [];
+  score = 0;
+  startTime = performance.now();
+  lastSpawn = 0;
+  enemySpawnInterval = 800;
+  wave = 0;
+  player.x = W/2;
+  player.y = H/2;
+  player.vx = 0; player.vy = 0;
+  player.alive = true;
+  freezeCount = 3;
+  document.getElementById('freezeCount').textContent = freezeCount;
+  document.getElementById('score').textContent = '0';
+  document.getElementById('wave').textContent = 'Wave: 0';
+  document.getElementById('enemyCount').textContent = '0';
+}
 
-<div class="card">
-<img src="images/future-evs.jpg" alt="Future EVs Comparison">
-<div class="card-content">
-<h3>Future EVs Comparison</h3>
-<p>Battery, charging speed, and futuristic design analysis.</p>
-<div class="fact">Fact: EV 2025 models support 500km range in 15min charge.</div>
-</div>
-</div>
+/* Collision detection */
+function dist(a,b){ const dx=a.x-b.x, dy=a.y-b.y; return Math.hypot(dx,dy); }
+function circIntersect(a,b){ return (a.r + b.r) >= Math.hypot(a.x-b.x,a.y-b.y); }
 
-</div>
-</section>
+/* Freeze power-up */
+let freezeUntil = 0;
+function activateFreeze(){
+  if(freezeCount<=0 || !running) return;
+  freezeCount--; document.getElementById('freezeCount').textContent = freezeCount;
+  freezeUntil = performance.now() + 3000;
+  beep(660,0.06); // audio cue
+  flash('freeze');
+}
 
-<!-- REVIEWS SECTION -->
-<section id="reviews">
-<h2>Gadget & Car Reviews</h2>
-<div class="articles">
+/* small visual flash */
+function flash(type){
+  const div = document.createElement('div');
+  div.style.position='fixed';
+  div.style.left=0; div.style.top=0; div.style.right=0; div.style.bottom=0;
+  div.style.pointerEvents='none';
+  div.style.opacity='0.16';
+  div.style.background = type==='freeze' ? 'linear-gradient(90deg,#7cffd6,#3bdfff)' : '#fff';
+  div.style.mixBlendMode='screen';
+  document.body.appendChild(div);
+  setTimeout(()=>{ div.style.transition='opacity 450ms'; div.style.opacity='0'; }, 20);
+  setTimeout(()=>div.remove(),600);
+}
 
-<div class="card">
-<img src="images/gadget-review.jpg" alt="Weekly Gadget Reviews">
-<div class="card-content">
-<h3>Weekly Gadget Reviews</h3>
-<p>Phones, laptops, smartwatches, and more with detailed ratings.</p>
-<div class="fact">Fact: Top-rated smartwatch has 14-day battery.</div>
-</div>
-</div>
+/* Game Over */
+function gameOver(){
+  running = false;
+  player.alive = false;
+  beep(220,0.6,0.2);
+  // update best
+  if(Math.floor(score) > best){
+    best = Math.floor(score);
+    localStorage.setItem('dtt_h_best', String(best));
+    document.getElementById('best').textContent = best;
+    alert(`NEW BEST: ${best} seconds! Share it!`);
+  } else {
+    alert(`Game Over — you survived ${Math.floor(score)} seconds. Best: ${best}`);
+  }
+}
 
-<div class="card">
-<img src="images/car-tech-review.jpg" alt="Car Tech Reviews">
-<div class="card-content">
-<h3>Car Tech Reviews</h3>
-<p>Infotainment, performance, and automotive tech explored.</p>
-<div class="fact">Fact: 2025 EVs feature AI driving assistant.</div>
-</div>
-</div>
+/* Main update loop */
+function update(ts){
+  const dt = (ts - lastFrame);
+  lastFrame = ts;
+  if(!running) { draw(); requestAnimationFrame(update); return; }
 
-</div>
-</section>
+  // scale math to canvas internal size
+  W = canvas.width; H = canvas.height;
 
-<!-- FACTS SECTION -->
-<section id="facts">
-<h2>Tech & Car Facts</h2>
-<div class="articles">
+  // move player toward target
+  const dx = target.x - player.x, dy = target.y - player.y;
+  const d = Math.hypot(dx,dy);
+  if(d > 1){
+    const ax = (dx / d) * player.speed * dt;
+    const ay = (dy / d) * player.speed * dt;
+    player.vx = player.vx*0.85 + ax*0.6;
+    player.vy = player.vy*0.85 + ay*0.6;
+  } else {
+    player.vx *= 0.8; player.vy *= 0.8;
+  }
+  player.x += player.vx * dt/1.6;
+  player.y += player.vy * dt/1.6;
+  // clamp inside
+  player.x = clamp(player.x, player.r, W - player.r);
+  player.y = clamp(player.y, player.r, H - player.r);
 
-<div class="card">
-<img src="images/apple-rise.jpg" alt="Rise of Apple">
-<div class="card-content">
-<h3>The Rise of Apple</h3>
-<p>From garage startup to global tech giant — amazing facts.</p>
-<div class="fact">Fact: Apple produced 2 billion devices worldwide by 2025.</div>
-</div>
-</div>
+  // spawn logic (increase pace with time)
+  const now = performance.now();
+  const elapsed = (now - startTime) / 1000;
+  score = elapsed;
+  document.getElementById('score').textContent = Math.floor(score);
 
-<div class="card">
-<img src="images/tesla-facts.jpg" alt="Tesla Facts">
-<div class="card-content">
-<h3>Tesla Facts You Didn’t Know</h3>
-<p>Interesting insights about Tesla and electric vehicles.</p>
-<div class="fact">Fact: Tesla's Gigafactory produces 2 million EVs annually.</div>
-</div>
-</div>
+  if(now - lastSpawn > enemySpawnInterval){
+    // spawn multiple per tick for chaos
+    const spawnCount = 1 + Math.floor(Math.min(6, elapsed/8 + Math.random()*2));
+    for(let i=0;i<spawnCount;i++) spawnEnemy();
+    lastSpawn = now;
+    // speed up spawn rate slowly
+    enemySpawnInterval = Math.max(160, 800 - Math.floor(elapsed*18));
+    wave = Math.floor(elapsed/8);
+    document.getElementById('wave').textContent = 'Wave: ' + wave;
+  }
 
-<div class="card">
-<img src="images/ev-facts.jpg" alt="EV Future Facts">
-<div class="card-content">
-<h3>EV Future Facts</h3>
-<p>Exploring the rise of electric cars and sustainability trends.</p>
-<div class="fact">Fact: Global EV market projected to hit $1 trillion by 2030.</div>
-</div>
-</div>
+  // enemy behavior
+  for(let i=enemies.length-1;i>=0;i--){
+    const e = enemies[i];
+    if(now < freezeUntil) {
+      // frozen - slight wobble
+      e.wobble += 0.06;
+      e.x += Math.cos(e.wobble)*0.2;
+      e.y += Math.sin(e.wobble)*0.2;
+      continue;
+    }
+    // basic steering toward player with slight jitter
+    const dx = player.x - e.x, dy = player.y - e.y;
+    const d = Math.hypot(dx,dy) || 1;
+    const nx = dx/d, ny = dy/d;
+    // apply velocity toward player
+    e.vx += nx * e.speed * (dt/16);
+    e.vy += ny * e.speed * (dt/16);
+    // add some crowd jitter
+    e.vx += Math.cos(e.wobble)*0.02;
+    e.vy += Math.sin(e.wobble)*0.02;
+    e.wobble += 0.02;
 
-</div>
-</section>
+    // limit speed
+    const sp = Math.hypot(e.vx,e.vy);
+    if(sp > 2.8) { e.vx *= 2.8/sp; e.vy *= 2.8/sp; }
 
-</main>
+    // update pos
+    e.x += e.vx * dt/12;
+    e.y += e.vy * dt/12;
 
-<footer>
-&copy; 2025 MyHyperRide. All rights reserved. Built with ❤️ by Neil.
-</footer>
+    // screen bounds push back
+    if(e.x < -60 || e.x > W+60 || e.y < -60 || e.y > H+60){
+      // remove escaped enemy occasionally
+      enemies.splice(i,1);
+      continue;
+    }
+  }
 
+  // Simple enemy/enemy collisions -> cause 'pile ups' and knockback + particles
+  for(let i=0;i<enemies.length;i++){
+    for(let j=i+1;j<enemies.length;j++){
+      const a = enemies[i], b = enemies[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.hypot(dx,dy) || 1;
+      const minD = a.r + b.r;
+      if(d < minD){
+        // push them apart
+        const overlap = (minD - d) * 0.5;
+        const nx = dx/d, ny = dy/d;
+        a.x -= nx * overlap; a.y -= ny * overlap;
+        b.x += nx * overlap; b.y += ny * overlap;
+        // impart velocities
+        const push = 0.6 + Math.random()*0.8;
+        a.vx -= nx * push; a.vy -= ny * push;
+        b.vx += nx * push; b.vy += ny * push;
+        // spawn confetti occasionally for comedic effect
+        if(Math.random() < 0.06){
+          spawnParticles((a.x+b.x)/2,(a.y+b.y)/2, null, 10);
+          beep(880,0.03,0.02);
+        }
+      }
+    }
+  }
+
+  // Player collisions
+  for(let i=enemies.length-1;i>=0;i--){
+    const e = enemies[i];
+    if(circIntersect(player,e)){
+      // game over
+      spawnParticles(player.x, player.y, '#ff6b6b', 22);
+      gameOver();
+      break;
+    }
+  }
+
+  // particle updates
+  for(let i=particles.length-1;i>=0;i--){
+    const p = particles[i];
+    p.vy += 0.12; p.x += p.vx; p.y += p.vy; p.life--;
+    if(p.life <= 0) particles.splice(i,1);
+  }
+
+  // cleanup too many enemies
+  if(enemies.length > 420) enemies.splice(0, enemies.length - 420);
+
+  // update enemy count UI
+  document.getElementById('enemyCount').textContent = enemies.length;
+
+  requestAnimationFrame(update);
+  draw();
+}
+
+/* Render */
+function draw(){
+  // clear
+  ctx.fillStyle = '#041026';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // simple grid / neon lines for visual
+  ctx.save();
+  ctx.globalAlpha = 0.06;
+  ctx.strokeStyle = '#0bd9b3';
+  ctx.lineWidth = 1;
+  for(let x=0;x<canvas.width;x+=40){
+    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,canvas.height); ctx.stroke();
+  }
+  for(let y=0;y<canvas.height;y+=40){
+    ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke();
+  }
+  ctx.restore();
+
+  // draw player with glow
+  ctx.save();
+  ctx.beginPath();
+  ctx.shadowColor = '#7cffd6';
+  ctx.shadowBlur = 18;
+  ctx.fillStyle = player.color;
+  ctx.arc(player.x, player.y, player.r, 0, Math.PI*2);
+  ctx.fill();
+  ctx.restore();
+
+  // draw enemies (little humans)
+  for(const e of enemies){
+    // body
+    ctx.save();
+    ctx.beginPath();
+    ctx.shadowColor = '#ffb86b';
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = e.color;
+    // torso
+    ctx.fillRect(e.x - e.r*0.5, e.y - e.r*0.3, e.r, e.r*0.9);
+    // head
+    ctx.beginPath();
+    ctx.arc(e.x, e.y - e.r*0.55, Math.max(3, e.r*0.38), 0, Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // draw particles
+  for(const p of particles){
+    ctx.fillStyle = p.color;
+    ctx.fillRect(p.x, p.y, p.size, p.size);
+  }
+
+  // draw freeze overlay
+  if(performance.now() < freezeUntil){
+    ctx.save();
+    ctx.globalAlpha = 0.12;
+    ctx.fillStyle = '#7cffd6';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.restore();
+  }
+
+  // HUD stroked hint
+  if(!running){
+    ctx.save();
+    ctx.globalAlpha = 0.9;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 22px Inter, Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Press START to play', canvas.width/2, canvas.height/2 - 20);
+    ctx.font = '14px Inter, Arial';
+    ctx.fillText('Tap or drag to move • Avoid the humans', canvas.width/2, canvas.height/2 + 6);
+    ctx.restore();
+  }
+}
+
+/* UI bindings */
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  if(!running){
+    resetGame();
+    running = true;
+    startTime = performance.now();
+    lastFrame = performance.now();
+    beep(1000,0.06);
+  } else {
+    // restart mid-run
+    resetGame();
+  }
+});
+document.getElementById('muteBtn').addEventListener('click', ()=>{
+  muted = !muted;
+  document.getElementById('muteBtn').textContent = muted ? '🔇' : '🔊';
+});
+document.getElementById('freezeBtn').addEventListener('click', ()=>{
+  activateFreeze();
+});
+document.getElementById('shareBtn').addEventListener('click', ()=>{
+  const bestText = best || Math.floor(score);
+  const txt = `I survived ${bestText} seconds in Don't Touch The Human! Can you beat me? https://donttouchthehuman.com`;
+  if(navigator.share){
+    navigator.share({title:'Don\'t Touch The Human', text:txt, url:window.location.href});
+  } else {
+    // open share in new window (Twitter)
+    const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(txt);
+    window.open(url,'_blank','noopener');
+  }
+});
+document.getElementById('resetBest').addEventListener('click', ()=>{
+  if(confirm('Reset best score?')){ localStorage.removeItem('dtt_h_best'); best=0; document.getElementById('best').textContent=0; }
+});
+
+/* initial draw & loop */
+draw();
+requestAnimationFrame(update);
+
+/* Ensure canvas internal size matches CSS pixels for crispness */
+(function hiDPI(){
+  const dpr = window.devicePixelRatio || 1;
+  const cssW = canvas.clientWidth;
+  const cssH = canvas.clientHeight;
+  canvas.width = Math.max(600, Math.floor(cssW * dpr));
+  canvas.height = Math.max(400, Math.floor(cssH * dpr));
+  // reposition player center
+  player.x = canvas.width/2;
+  player.y = canvas.height/2;
+  // re-draw scaled
+  draw();
+})();
+
+/* accessibility: keyboard arrows */
+window.addEventListener('keydown', (e)=>{
+  const step = 18;
+  if(e.key === 'ArrowUp') target.y -= step;
+  if(e.key === 'ArrowDown') target.y += step;
+  if(e.key === 'ArrowLeft') target.x -= step;
+  if(e.key === 'ArrowRight') target.x += step;
+});
+
+/* small tip: click canvas to set target */
+canvas.addEventListener('click', (e)=>{
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  target.x = (e.clientX - rect.left) * scaleX;
+  target.y = (e.clientY - rect.top) * scaleY;
+});
+
+/* Improved resizing: keep internal canvas resolution in sync on layout changes */
+let resizeTimer = null;
+new ResizeObserver(()=> {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(()=>{
+    const dpr = window.devicePixelRatio || 1;
+    const cssW = canvas.clientWidth;
+    const cssH = canvas.clientHeight;
+    canvas.width = Math.max(600, Math.floor(cssW * dpr));
+    canvas.height = Math.max(400, Math.floor(cssH * dpr));
+    // maintain player inside
+    player.x = clamp(player.x, player.r, canvas.width - player.r);
+    player.y = clamp(player.y, player.r, canvas.height - player.r);
+    draw();
+  }, 80);
+}).observe(canvas);
+</script>
 </body>
 </html>
